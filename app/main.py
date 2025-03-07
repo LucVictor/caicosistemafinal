@@ -17,7 +17,7 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv('SQLALCHEMY_DATABASE_URL',
-                                                  'mysql+pymysql://root:RnGJi7LokvlcABCG6D581oLUTfgV9md43t9pAqWsgyzpWD4MoN9lfR72aFIYkPZf@191.252.177.179:3350/caicomatriz')
+                                                  'mysql+pymysql://usuario:password@endereco/banco')
 app.config["SECRET_KEY"] = "secretkey"
 app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
     'pool_recycle': 28000,
