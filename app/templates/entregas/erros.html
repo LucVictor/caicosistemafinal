@@ -1,0 +1,92 @@
+{% extends "./template.html" %}
+{% block content %}
+
+       <h3>Listagem de Erros</h3>
+        <h4>Referente ao mês de {{ mes }}</h4>
+    <div class="resumo d-flex justify-content-center m-1 p-1 text-center">
+    <div class="border-orange shadow m-3 p-2 h-25">
+    <h5>Erros por Funcionário</h5>
+    <table class="tabela text-center align-middle border-black">
+        <tr>
+            <th>Funcionário</th>
+            <th>Erros</th>
+            <th>Pedidos</th>
+            <th>Erros %</th>
+        </tr>
+        {% for erro_por_funcionario in erros_por_funcionario %}
+        <tr>
+            <td>{{ erro_por_funcionario.erro_funcionario }}</td>
+            <td>{{ erro_por_funcionario.total_erros }}</td>
+            {% for i in range(total_array_resultados_entregas) %}
+                {% if resultados_entregas[i][0] == erro_por_funcionario.erro_funcionario%}
+                <td>{{ resultados_entregas[i][1] }}</td>
+                    {% if resultados_entregas[i][1] > 0 %}
+                        <td>{{ "%.2f" % ((erro_por_funcionario.total_erros/ resultados_entregas[i][1]  )*100) }}%</td>
+                    {% elif erro_por_funcionario.total_erros < 1 %}
+                        <td>0</td>
+                    {% endif %}
+                {% endif %}
+
+                {% endfor %}
+
+        {% endfor %}
+
+        </tr>
+    </table>
+
+    </div>
+
+
+    <div class="shadow border-orange m-3 p-2 h-25">
+    <h5>Total de erros no mês: {{ total_erros }}</h5>
+    {% if total_de_entregas > 0 %}
+    <h5> Erros por entrega: {{ "%.2f" % ((total_erros / total_de_entregas) * 100)  }}%</h5>
+        {% else %}
+    <h5> Erros por entrega: 0%</h5>
+        {% endif %}
+    </div>
+
+
+    </div>
+    <div class="table-responsive m-2 p-2 fs-12">
+    <table class="shadow-lg table-bordered m-auto background-suave table-sm text-center align-middle border-black">
+        <thead >
+        <tr>
+      <th>Data</th>
+      <th>Funcionário</th>
+      <th>Cliente</th>
+      <th>Motorista</th>
+      <th>Rota</th>
+
+      <th>Erros</th>
+
+      <th>Produtos</th>
+      <th>Descrição do erro</th>
+      <th>Criador</th>
+      <th class="botoesacao">Ação</th>
+
+  </tr></thead>
+   {% for erro in erros  %}
+    <tbody>
+       <tr>
+    <td>{{ erro.data_do_erro.strftime('%d/%m/%Y') }}</td>
+    <td>{{ erro.erro_funcionario }}</td>
+    <td>{{ erro.erro_cliente}}</td>
+    <td>{{ erro.motorista_da_entrega }}</td>
+    <td>{{ erro.rota_da_entrega }}</td>
+    <td>{{ erro.quantidade_de_erros}}</td>
+    <td>{{ erro.produto_erro }}</td>
+    <td >{{ erro.descricao_do_erro }}
+    <td>{{ erro.criador }}</td>
+    <td >
+        <form action="/entregas/editar_erro/{{ erro.id }}" method="get">
+        <input class="botoesacao btn btn-warning btn-sm mt-1 mb-1" type="submit" value="Editar">
+    </form>
+        <form action="/entregas/deletar_erro/{{ erro.id }}" method="post">
+        <input class="botoesacao btn btn-warning btn-sm mb-1" type="submit" value="Apagar">
+    </form></td>
+  </tr>
+        {% endfor %}</tbody>
+</table>
+    </div>
+{% endblock %}

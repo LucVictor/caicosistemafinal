@@ -1,0 +1,19 @@
+{% extends "./template.html" %}
+{% block content %}
+    <h1>Listagem de rotas</h1>
+    <table>
+    <tr>
+        <th>Rotas:</th>
+    </tr>
+        {% for i in rotas_lista %}
+    <tr>
+        <td>{{ i.rota }}</td>
+
+    </tr>
+        {% endfor %}
+
+    </table><br>
+    <form action="/entregas/rotas_cadastrar" method="post">
+      <button type="submit">Cadastrar Rota</button>
+    </form>
+{% endblock %}

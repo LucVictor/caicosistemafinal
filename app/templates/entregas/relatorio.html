@@ -1,0 +1,16 @@
+{% extends "./template.html" %}
+{% block content %}
+    <div class="shadow-lg text-black p-1 m-auto border-orange w-25">
+    <h2>Relatório de entregas</h2>
+    <form class="w-50 m-auto" action="/entregas/emitir_relatorio" method="post">
+
+        <label class="mt-1" for="data_inicial">Data inicial:</label>
+        <input class="form-control text-center mb-2" type="date" id="data_inicial" name="data_inicial" required>
+
+        <label for="data_final">Data final</label><br>
+        <input class="form-control text-center mb-2" type="date" id="data_final" name="data_final" required>
+
+        <input class="btn btn-warning mt-2" type="submit" value="Emitir">
+    </form>
+        </div>
+{% endblock %}

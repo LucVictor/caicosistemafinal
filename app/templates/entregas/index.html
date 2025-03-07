@@ -1,0 +1,124 @@
+{% extends "./template.html" %}
+{% block content %}
+
+        <h2>Listagem de entregas</h2>
+        <h4>Referente ao mês de {{ mes }}</h4>
+
+    <div class="d-flex justify-content-center m-1 p-1 text-center">
+    <div class="shadow border-orange m-3 p-2 h-50">
+    <h4>Rank de motoristas</h4>
+   <table class="table-bordered table-sm text-center align-middle border-black">
+    <tr>
+        <th>Nome:</th>
+        <th>Positivos</th>
+        <th>Negativos</th>
+        <th>Total</th>
+    </tr>
+        {% for i in resultados %}
+    <tr>
+        <td>{{ i.motorista }}</td>
+        <td>{{ i.total_positivo }}</td>
+        <td>{{ i.total_negativo }}</td>
+        <td>{{ i.total_sum  }}</td>
+
+    </tr>
+        {% endfor %}
+
+    </table>
+</div>
+
+       <div class="shadow border-orange m-3 p-2 h-50">
+       <h4>Entregas por rota</h4>
+   <table class="table-bordered table-sm text-center align-middle border-black">
+    <tr>
+        <th>Rota:</th>
+        <th>Entregas</th>
+        <th>Reentregas</th>
+    </tr>
+        {% for i in resultados_entregas %}
+    <tr>
+        <td>{{ i.rota }}</td>
+        <td>{{ i.total_entregas }}</td>
+        <td>{{ i.total_reentregas }}</td>
+
+    </tr>
+        {% endfor %}
+
+    </table><br>
+</div>
+    <div class="shadow border-orange m-3 p-2 h-50">
+    <h4>Média tempo de Entrega</h4>
+   <table class="table-bordered m-auto table-sm text-center align-middle border-black">
+    <tr>
+        <th>Rota:</th>
+        <th>Média de Entrega</th>
+    </tr>
+        {% for i in rotas %}
+    <tr>
+        <td>{{ i.rota }}</td>
+        <td>{{ i.tempo_medio_rota }}</td>
+
+    </tr>
+        {% endfor %}
+
+    </table><br>
+</div>
+              <div class="shadow border-orange m-3 p-2 h-50">
+       <h5>Total de Entregas: {{ total_de_entregas }}</h5>
+       <h5>Total de Entregas Real: {{ total_de_entregas - total_de_reentregas }}</h5>
+       <h5>Total de Reentregas: {{ total_de_reentregas }}</h5>
+       <h6>Total de Entregas não realizadas: {{ tota_nao_entregas }}</h6>
+       {% if total_de_entregas > 0 %}
+       <h6>Reentregas por entregas: {{ "%.2f" % ((total_de_reentregas / total_de_entregas)*100) }}%</h6>
+       {% else %}
+                  <h6>Reentregas por entregas: 0%</h6>
+                  {% endif %}
+       {% if b > 0 %}
+
+       <h6>Média de entregas por dia: {{ "%.0f" % (total_de_entregas / b) }}</h6>
+       <h6>Média de reentregas por dia: {{ "%.0f" % (total_de_reentregas / b) }}</h6>
+        {% endif %}
+</div>
+</div>
+
+    <div class="table-responsive m-2 p-2 fs-12">
+    <table class="shadow-lg table-bordered m-auto background-suave table-sm text-center align-middle border-black">
+  <tr>
+      <th>Data da entrega</th>
+    <th>Motorista</th>
+    <th>Ajudante</th>
+    <th>Conferente</th>
+    <th>Rota</th>
+    <th>Q. de Entrega</th>
+    <th>Reentregas</th>
+    <th>Tempo total</th>
+    <th>T. médio total</th>
+      <th>Tempo de entregas</th>
+      <th>T. médio entregas</th>
+      <th>Tempo</th>
+      <th class="botoesacao">Ação</th>
+  </tr>
+   {% for entrega in entregas %}
+  <tr>
+      <td>{{ entrega.data_da_entrega.strftime('%d/%m/%Y') }}</td>
+    <td>{{ entrega.motorista }}</td>
+    <td>{{ entrega.ajudante }}</td>
+      <td>{{ entrega.conferente }}</td>
+    <td>{{ entrega.rota }}</td>
+    <td>{{ entrega.quantidade_de_entregas }}</td>
+    <td>{{ entrega.reentregas }}</td>
+      <td>{{ entrega.tempo_total }}</td>
+      <td>{{ entrega.tempo_medio_total }}</td>
+    <td>{{ entrega.tempo_total_entrega }}</td>
+   <td>{{ entrega.tempo_medio_entrega }}</td>
+  <td>{{ entrega.resultado_tempo }}</td>
+   <td class="botoesacao">
+    <form action="/entregas/deletar_entrega/{{ entrega.id }}" method="post">
+    <input class="btn btn-warning mt-2 btn-sm" type="submit" value="Apagar">
+    </form></td>
+  </tr>
+        {% endfor %}
+</table>
+</div>
+
+{% endblock %}

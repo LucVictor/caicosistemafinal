@@ -1,0 +1,72 @@
+{% extends "./template.html" %}
+{% block content %}
+       <h3>Listagem de erros de vendas</h3>
+        <h4>Referente ao mês de {{ mes }}</h4>
+    <div class="d-flex justify-content-center m-1 p-1 text-center">
+    <div class="background-suave  border-orange shadow m-3 p-2 h-25">
+    <h4>Erros por Funcionário</h4>
+    <table class="table-bordered m-auto text-center align-middle border-black">
+        <tr>
+            <th>Funcionário</th>
+            <th>Erros</th>
+        </tr>
+        {% for erro_por_funcionario in erros_por_funcionario %}
+        <tr>
+            <td>{{ erro_por_funcionario.erro_funcionario }}</td>
+            <td>{{ (erro_por_funcionario.total_erros) }}</td>
+
+        </tr>
+        {% endfor %}
+    </table>
+    </div>
+
+    <div class="background-suave  border-orange shadow  m-3 p-2 h-25">
+    <h4>Total de erros no mês: {{ total_erros }}</h4>
+    {% if total_de_entregas > 0 %}
+        <h5>Erros por entregas: {{ "%.2f" % ((total_erros/total_de_entregas)*100) }}%</h5>
+    {% endif %}
+
+    </div>
+
+
+    </div>
+
+    <div>
+    <div class="table-responsive background-suave fs-12  m-2">
+    <table class="table-bordered m-auto text-center shadow-lg align-middle border-black">
+    <thead>
+  <tr>
+      <th >Data</th>
+      <th>Funcionário</th>
+      <th>Cliente</th>
+      <th>Erros</th>
+      <th>Motorista</th>
+      <th>Produtos</th>
+      <th>Descrição do erro</th>
+      <th class="botoesacao">Criador</th>
+      <th class="botoesacao">Ação</th>
+
+  </tr></thead>
+    <tbody>
+   {% for erro in erros %}
+  <tr>
+    <td class="p-1">{{ erro.data_do_erro.strftime('%d/%m/%Y') }}</td>
+    <td>{{ erro.erro_funcionario }}</td>
+    <td>{{ erro.erro_cliente}}</td>
+    <td>{{ erro.quantidade_de_erros}}</td>
+    <td>{{ erro.motorista_da_entrega }}</td>
+    <td>{{ erro.produto_erro }}</td>
+    <td>{{ erro.descricao_do_erro }}
+    <td>{{ erro.criador }}</td>
+    <td class="botoesacao">
+        <form action="/vendas/editar_erro/{{ erro.id }}" method="get">
+        <input class="btn btn-warning btn-sm mt-1 mb-1" type="submit" value="Editar">
+    </form>
+        <form action="/vendas/deletar/{{ erro.id }}" method="post">
+        <input class="btn btn-warning btn-sm mb-1" type="submit" value="Apagar">
+    </form></td>
+  </tr>
+        {% endfor %}</tbody>
+</table>
+    </div>
+{% endblock %}

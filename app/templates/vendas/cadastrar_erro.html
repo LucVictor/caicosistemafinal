@@ -1,0 +1,45 @@
+{% extends "./template.html" %}
+{% block content %}
+    <div class="shadow text-black p-1 m-auto border-orange w-25">
+    <h2>Formulário de erro</h2>
+        <div class="mb-3"> <img class="procurarimg" src="../static/imagens/erro.png" width="80" alt=""></div>
+    <form  action="/vendas/cadastrar_erro" method="POST">
+        <div class="form-group mb-3 m-auto"><label for="data_do_erro">Data do erro:</label>
+            <input class="form-control text-center w-50 m-auto" type="date" id="data_do_erro" name="data_do_erro" required></div>
+
+         <div class="form-group mb-3 m-auto"><label for="erro_funcionario">Vendedor:</label>
+                <select  class="form-select text-center w-50 m-auto" name="erro_funcionario" id="erro_funcionario">
+                {% for i in funcionarios %}
+                    {% if i.funcao == 'Vendedor' %}
+                    <option class="lista">{{ i.nome }}</option>
+                    {% endif %}
+                {% endfor %}
+                </select></div>
+
+         <div class="mb-3 m-auto"><label for="erro_cliente">Cliente:</label>
+             <input class="form-control text-center m-auto" type="text" id="erro_cliente" name="erro_cliente" required ></div>
+
+         <div class="mb-3 m-auto"><label for="quantidade_de_erros">Quantidade de erros:</label>
+             <input class="form-control text-center w-50 m-auto" type="number" id="quantidade_de_erros" name="quantidade_de_erros" required></div>
+
+         <div class="mb-3 m-auto"><label for="motorista_da_entrega">Motorista:</label>
+        <select class="form-select text-center w-50 m-auto" name="motorista_da_entrega" id="motorista_da_entrega">
+            {% for i in funcionarios %}
+                {% if i.funcao == 'Motorista' %}
+                <option class="lista">{{ i.nome }}</option>
+                {% endif %}
+            {% endfor %}
+            <option class="lista"> - </option>
+        </select></div>
+         <div class="mb-3 m-auto"><label for="produto_erro">Produtos do erro:</label>
+             <textarea class="form-control text-left m-auto" name="produto_erro" id="produto_erro" > </textarea></div>
+
+         <div class="mb-3 m-auto"><label for="descricao_do_erro">Descrição do erro:</label>
+             <textarea class="form-control text-left m-auto" name="descricao_do_erro" id="descricao_do_erro" > </textarea></div>
+
+
+        <input class="btn btn-warning mb-1" type="submit" value="Cadastrar">
+    </form>
+</div>
+{% endblock %}
+

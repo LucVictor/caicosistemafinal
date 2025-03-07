@@ -1,0 +1,21 @@
+{% extends "./template.html" %}
+{% block content %}
+    <h1>Calcular tempo de rotas</h1>
+    <h2>Tempo médio de rotas:</h2>
+    <table>
+    <tr>
+        <th>Rota</th>
+        <th>Tempo médio</th>
+    </tr>
+        {% for i in rotas_tempo %}
+    <tr>
+        <td>{{ i.rota }}</td>
+        <td>{{ i.tempo_medio_rota }}</td>
+    </tr>
+        {% endfor %}
+
+    </table><br>
+    <form action="/entregas/calcular" method="post">
+      <button type="submit">Recalcular</button>
+    </form>
+{% endblock %}

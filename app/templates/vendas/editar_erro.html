@@ -1,0 +1,49 @@
+{% extends "./template.html" %}
+{% block content %}
+
+    <div class="shadow text-black p-1 m-auto border-orange w-25">
+    <h3>Edição de erro</h3>
+   <img class="procurarimg" src="{{ url_for('static', filename='imagens/erro.png') }}" width="80" alt="">
+    <form action="/vendas/editar_erro/{{ erros.id }}" method="POST">
+
+  <div class="mb-3 m-auto"><label for="data_do_erro">Data do erro:</label>
+            <input class="form-control text-center w-50 m-auto" type="date" value="{{ erros.data_do_erro }}" id="data_do_erro" name="data_do_erro" required></div>
+
+        <div class="mb-3 m-auto"><label for="erro_funcionario">Funcionário:</label>
+                <select class="form-select text-center w-50 m-auto" name="erro_funcionario" id="erro_funcionario" value="{{ erros.erro_funcionario }}">
+                    <option class="lista">{{ erros.erro_funcionario }}</option>
+                    {% for i in funcionarios %}
+                    {% if i.funcao == 'Vendedor' and i.nome != erros.erro_funcionario %}
+                    <option class="lista">{{ i.nome }}</option>
+                    {% endif %}
+                    {% endfor %}
+                </select></div>
+
+        <div class="mb-3 m-auto"><label for="erro_cliente">Cliente:</label>
+            <input  class="form-control text-center m-auto"  type="text" id="erro_cliente" name="erro_cliente" value="{{ erros.erro_cliente }}" required ></div>
+
+
+        <div class="mb-3 m-auto"><label for="quantidade_de_erros">Quantidade de erros:</label>
+            <input  class="form-control text-center w-50 m-auto"  type="number" id="quantidade_de_erros" name="quantidade_de_erros" value="{{ erros.quantidade_de_erros}}" required></div>
+
+        <div class="mb-3 m-auto"><label for="motorista_da_entrega">Motorista:</label>
+        <select class="form-select text-center w-50 m-auto" name="motorista_da_entrega" id="motorista_da_entrega" >
+            <option class="lista">{{ erros.motorista_da_entrega }}</option>
+            {% for i in funcionarios %}
+                {% if i.funcao == 'Motorista' and i.nome != erros.motorista_da_entrega%}
+                <option class="lista">{{ i.nome }}</option>
+                {% endif %}
+            {% endfor %}
+            <option class="lista"> - </option>
+        </select></div>
+        <div class="mb-3 m-auto"><label for="produto_erro">Produtos do erro:</label>
+            <textarea class="form-control text-left m-auto" name="produto_erro" id="produto_erro">{{erros.produto_erro}}</textarea></div>
+
+        <div class="mb-3 m-auto"><label for="descricao_do_erro">Descrição do erro:</label><br>
+            <textarea class="form-control text-left m-auto" name="descricao_do_erro" id="descricao_do_erro" >{{erros.descricao_do_erro}}</textarea></div>
+
+
+        <input class="btn btn-warning mb-1" type="submit" value="Editar">
+    </form>
+</div>
+{% endblock %}
