@@ -42,22 +42,30 @@ def usuarios():
 @login_required
 def cadastrar_usuario():
     if request.method == "POST":
-        user = Users(username=request.form.get("username"),
-                     password=request.form.get("password"), filial=request.form.get("filial"), acesso=request.form.get("acesso"))
-        db.session.add(user)
-        db.session.commit()
-        return redirect(url_for("logar"))
+        try:
+            user = Users.query.filter_by(username=request.form.get("username")).first()
+            if not user:        
+                user = Users(username=request.form.get("username"),
+                            password=request.form.get("password"), filial=request.form.get("filial"), acesso=request.form.get("acesso"))
+                db.session.add(user)
+                db.session.commit()
+                return redirect(url_for("logar"))
+        except:
+            return redirect(url_for("/adm/usuario"))
     return render_template("/adm/cadastrar_usuario.html")
 
 
 @app.route("/logar", methods=["GET", "POST"])
 def logar():
     if request.method == "POST":
-        user = Users.query.filter_by(
-            username=request.form.get("username")).first()
-        if user.password == request.form.get("password"):
-            login_user(user)
-            return redirect(url_for("index"))
+        try:
+            user = Users.query.filter_by(
+                username=request.form.get("username")).first()
+            if user.password == request.form.get("password"):
+                login_user(user)
+                return redirect(url_for("index"))
+        except:
+            return render_template("logar.html")
     return render_template("logar.html")
 
 
