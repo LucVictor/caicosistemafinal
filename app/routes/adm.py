@@ -23,7 +23,8 @@ def funcionarios():
 
 @app.route('/adm/deletar_funcionario/<int:funcionario_id>', methods=['POST'])
 def deletar_funcionario(funcionario_id):
-    funcionario = Funcionarios.query.filter_by(id=funcionario_id).first()
+    funcionario = Funcionarios.query.filter_by(id=int(funcionario_id)).first()
+    
     db.session.delete(funcionario)
     db.session.commit()
     return redirect(url_for('funcionarios'))
@@ -51,8 +52,25 @@ def cadastrar_usuario():
                 db.session.commit()
                 return redirect(url_for("logar"))
         except:
-            return redirect(url_for("/adm/usuario"))
+            return redirect(url_for("usuarios"))
     return render_template("/adm/cadastrar_usuario.html")
+
+
+
+
+@app.route('/adm//deletar_usuario/<int:usuario_id>', methods=["GET", "POST"])
+@access_level_required(1)
+@login_required
+def deletar_usuario(usuario_id):
+    if request.method == "POST":
+        try:
+            user = Users.query.filter(Users.id == usuario_id).delete()
+            db.session.commit()
+            return redirect(url_for("usuarios"))
+
+        except:
+            return redirect(url_for("usuarios"))
+    return redirect(url_for("usuarios"))
 
 
 @app.route("/logar", methods=["GET", "POST"])
