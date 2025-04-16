@@ -1,5 +1,6 @@
 /.idea
 /.venv
+.env
 app/__pycache__/
 app/__pycache__/main.cpython-313.pyc
 app/functions/__pycache__/
@@ -20,3 +21,5 @@ app/routes/__pycache__/entregas.cpython-312.pyc
 app/routes/__pycache__/index.cpython-312.pyc
 app/routes/__pycache__/vencimentos.cpython-312.pyc
 app/routes/__pycache__/vendas.cpython-312.pyc
+app/__pycache__/
+app/routes/__pycache__/

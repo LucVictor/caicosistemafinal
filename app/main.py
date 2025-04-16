@@ -1,5 +1,5 @@
 import os
-#import sqlalchemy
+import sqlalchemy
 from flask import Flask, render_template, request, url_for, redirect
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import secure_filename
