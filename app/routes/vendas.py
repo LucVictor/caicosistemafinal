@@ -1,6 +1,6 @@
 from ..main import *
 @app.route('/vendas/erros', methods=["GET", "POST"])
-@access_level_required(1)
+@access_level_required(2)
 @login_required
 def vendas_erros():
     erros = Erros_Vendas.query.filter(
@@ -60,7 +60,7 @@ def vendas_erros():
 
 
 @app.route('/vendas/erros_relatorio', methods=["GET", "POST"])
-@access_level_required(1)
+@access_level_required(2)
 @login_required
 def relatorio_vendas_erros():
     if request.method == 'POST':
@@ -108,7 +108,7 @@ def relatorio_vendas_erros():
     return render_template('/vendas/relatorio.html')
 
 @app.route('/vendas/cadastrar_erro', methods=["GET", "POST"])
-@access_level_required(1)
+@access_level_required(2)
 @login_required
 def cadastrar_vendas_erro():
     funcionarios = Funcionarios.query.all()
@@ -258,4 +258,3 @@ def vendas_erros_comparar():
                                data_final2=formatar_data(data_final_2), total_erros_periodo_1=total_erros_periodo_1,
                            total_erros_periodo_2=total_erros_periodo_2, calcular_porcentagem=calcular_porcentagem, total_de_entregas=total_de_entregas, total_de_entregas2=total_de_entregas2)
     return render_template('vendas/comparar_erros.html')
-

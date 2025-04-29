@@ -62,7 +62,7 @@
               </ul>{% endif %}
             </div>
             {% if current_user.is_authenticated %}
-            {% if current_user.acesso > 1 %}
+            {% if current_user.acesso => 2 %}
             <div class="dropdown me-2 ">
                 <a class="btn btn-secondary btn-sm dropdown-toggle btn-custom-orange" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Logística
@@ -99,7 +99,7 @@
                     {{  current_user.username.upper() }}
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end fs-12">
-                    {% if current_user.acesso > 1  %}
+                    {% if current_user.acesso =>1  %}
                 <li><a class="dropdown-item" href="/adm/funcionarios">Funcionários</a></li>
                 <li><a class="dropdown-item" href="/adm/cadastrar_funcionario">Cadastrar Funcionário</a></li>
                 <li><a class="dropdown-item" href="/adm/usuarios">Usuários</a></li>

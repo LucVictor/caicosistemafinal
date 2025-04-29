@@ -1,5 +1,7 @@
 from ..main import *
 @app.route('/adm/cadastrar_funcionario', methods=['GET', 'POST'])
+@access_level_required(1)
+@login_required
 def cadastrar_funcionario():
     if request.method == 'POST':
         try:
@@ -16,12 +18,16 @@ def cadastrar_funcionario():
 
 
 @app.route('/adm/funcionarios', methods=['GET', 'POST'])
+@access_level_required(1)
+@login_required
 def funcionarios():
     funcionarios = Funcionarios.query.all()
     return render_template('/adm/funcionarios.html', funcionarios=funcionarios)
 
 
 @app.route('/adm/deletar_funcionario/<int:funcionario_id>', methods=['POST'])
+@access_level_required(1)
+@login_required
 def deletar_funcionario(funcionario_id):
     funcionario = Funcionarios.query.filter_by(id=int(funcionario_id)).first()
 
@@ -47,7 +53,7 @@ def cadastrar_usuario():
             user = Users.query.filter_by(username=request.form.get("username")).first()
             if not user:
                 user = Users(username=request.form.get("username"),
-                            password=request.form.get("password"), filial=request.form.get("filial"), acesso=request.form.get("acesso"))
+                            password=request.form.get("password"), acesso=request.form.get("acesso"))
                 db.session.add(user)
                 db.session.commit()
                 return redirect(url_for("logar"))
@@ -58,7 +64,7 @@ def cadastrar_usuario():
 
 
 
-@app.route('/adm//deletar_usuario/<int:usuario_id>', methods=["GET", "POST"])
+@app.route('/adm/deletar_usuario/<int:usuario_id>', methods=["GET", "POST"])
 @access_level_required(1)
 @login_required
 def deletar_usuario(usuario_id):

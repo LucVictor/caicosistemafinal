@@ -3,7 +3,7 @@ from ..main import *
 
 @app.route('/entregas/', methods=['GET'])
 @login_required
-@access_level_required(1)
+@access_level_required(2)
 def entregas_index():
     subquery = db.session.query(
         Entrega.motorista,
@@ -86,14 +86,14 @@ def entregas_index():
 
 @app.route('/entregas/relatorio', methods=['get'])
 @login_required
-@access_level_required(1)
+@access_level_required(2)
 def entregas_relatorio():
     return render_template('entregas/relatorio.html')
 
 
 @app.route('/entregas/emitir_relatorio', methods=['POST'])
 @login_required
-@access_level_required(1)
+@access_level_required(2)
 def entregas_emitir_relatorio():
     data_inicial = request.form['data_inicial']
     data_final = request.form['data_final']
@@ -170,7 +170,7 @@ def entregas_emitir_relatorio():
 
 @app.route('/entregas/comparar_entregas', methods=['GET', 'POST'])
 @login_required
-@access_level_required(1)
+@access_level_required(2)
 def entregar_comparar_entregas():
     entregas_por_rota = {}
     total_entregas_periodo_1 = 0
@@ -278,7 +278,7 @@ def entregar_comparar_entregas():
 
 @app.route('/entregas/cadastrar', methods=['GET', 'POST'])
 @login_required
-@access_level_required(1)
+@access_level_required(2)
 def entrega_cadastrar():
     if request.method == 'POST':
         data_da_entrega = datetime.strptime(request.form['data_da_entrega'], '%Y-%m-%d').date()
@@ -398,7 +398,7 @@ def rotas_cadastrar():
 
 
 @app.route('/entregas/erros', methods=["GET", "POST"])
-@access_level_required(1)
+@access_level_required(2)
 @login_required
 def entregas_erros():
     erros = Erros_Logistica.query.filter(
@@ -455,7 +455,7 @@ def entregas_erros():
 
 
 @app.route('/entregas/erros_relatorio', methods=["GET", "POST"])
-@access_level_required(1)
+@access_level_required(2)
 @login_required
 def entregas_erros_relatorio():
     if request.method == "POST":
@@ -609,7 +609,8 @@ def entregas_erros_comparar():
 
 
 @app.route('/entregas/cadastrar_erro', methods=["GET", "POST"])
-@access_level_required(1)
+@@access_level_required(2)
+access_level_required(2)
 @login_required
 def cadastrar_entregas_erro():
     funcionarios = Funcionarios.query.all()
