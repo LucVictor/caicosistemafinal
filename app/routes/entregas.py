@@ -609,8 +609,7 @@ def entregas_erros_comparar():
 
 
 @app.route('/entregas/cadastrar_erro', methods=["GET", "POST"])
-@@access_level_required(2)
-access_level_required(2)
+@access_level_required(2)
 @login_required
 def cadastrar_entregas_erro():
     funcionarios = Funcionarios.query.all()
@@ -678,6 +677,7 @@ def entrega_editar(erro_id):
     return render_template('/entregas/editar_erro.html', erros=erros, funcionarios=funcionarios, rotas=rotas)
 
 @app.route('/entregas/projetar_entregas', methods=["GET", "POST"])
+@access_level_required(1)
 def projetar_entregas():
     total_dias = db.session.query(Entrega).filter(
         Entrega.data_da_entrega.between(primeiro_dia_mes(), ultimo_dia_mes())
