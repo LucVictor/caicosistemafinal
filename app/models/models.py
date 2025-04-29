@@ -121,3 +121,13 @@ class Erros_Logistica(db.Model):
     descricao_do_erro = db.Column(db.String(1000), nullable=True)
     criador = db.Column(db.String(250), nullable=True)
 
+
+class Erros_Atacado(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    data_do_erro = db.Column(db.Date, nullable=False)
+    erro_funcionario = db.Column(db.String(250), nullable=False)
+    erro_cliente = db.Column(db.String(250), nullable=False)
+    quantidade_de_erros = db.Column(db.Integer, nullable=False)
+    produto_erro = db.Column(db.String(250), nullable=False)
+    descricao_do_erro = db.Column(db.String(1000), nullable=True)
+    criador = db.Column(db.String(250), nullable=True)

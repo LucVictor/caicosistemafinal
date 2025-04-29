@@ -48,6 +48,19 @@
                 <li><a class="dropdown-item" href="/vencimentos/cadastrar_volume">Cadastrar Volume</a></li>
               </ul>{% endif %}
             </div>
+            <div class="dropdown me-2">
+                <a class="btn btn-secondary btn-sm dropdown-toggle btn-custom-orange" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Atacado
+                </a>
+
+                <ul class="dropdown-menu">
+                    {% if current_user.is_authenticated %}
+                    <li><a class="dropdown-item" href="/atacado/erros">Erros</a></li>
+                    <li><a class="dropdown-item" href="/atacado/cadastrar_erro">Cadastrar Erro</a></li>
+                    <li><a class="dropdown-item" href="/atacado/erros_relatorio">Relatório</a></li>
+                    <li><a class="dropdown-item" href="/atacado/comparar_erros">Comparar</a></li>
+              </ul>{% endif %}
+            </div>
             {% if current_user.is_authenticated %}
             {% if current_user.acesso > 1 %}
             <div class="dropdown me-2 ">
@@ -59,7 +72,7 @@
                 <li><a class="dropdown-item" href="/entregas/cadastrar">Cadastrar Entrega</a></li>
                 <li><a class="dropdown-item" href="/entregas/relatorio">Relatório</a></li>
                 <li><a class="dropdown-item" href="/entregas/comparar_entregas">Comparar</a></li>
-                    <li><a class="dropdown-item" href="/entregas/projetar_entregas">Projetar</a></li>
+                <li><a class="dropdown-item" href="/entregas/projetar_entregas">Projetar</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="/entregas/erros">Erros</a></li>
                 <li><a class="dropdown-item" href="/entregas/cadastrar_erro">Cadastrar Erro</a></li>

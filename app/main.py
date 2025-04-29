@@ -35,5 +35,4 @@ from app.routes.entregas import *
 from app.routes.vencimentos import *
 from app.routes.vendas import *
 from app.routes.adm import *
-
-
+from app.routes.atacado import *
