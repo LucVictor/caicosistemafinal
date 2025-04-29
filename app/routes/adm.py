@@ -24,7 +24,7 @@ def funcionarios():
 @app.route('/adm/deletar_funcionario/<int:funcionario_id>', methods=['POST'])
 def deletar_funcionario(funcionario_id):
     funcionario = Funcionarios.query.filter_by(id=int(funcionario_id)).first()
-    
+
     db.session.delete(funcionario)
     db.session.commit()
     return redirect(url_for('funcionarios'))
@@ -45,7 +45,7 @@ def cadastrar_usuario():
     if request.method == "POST":
         try:
             user = Users.query.filter_by(username=request.form.get("username")).first()
-            if not user:        
+            if not user:
                 user = Users(username=request.form.get("username"),
                             password=request.form.get("password"), filial=request.form.get("filial"), acesso=request.form.get("acesso"))
                 db.session.add(user)
@@ -92,3 +92,7 @@ def sair():
     logout_user()
     return redirect(url_for("logar"))
 
+@app.route('/adm/atualizar_bancos', methods=['GET'])
+def atualizar_bancos():
+    db.create_all()
+    return redirect(url_for("index"))
