@@ -40,7 +40,7 @@ def atacado_erros():
 @access_level_required(1)
 @login_required
 def cadastrar_atacado_erro():
-    funcionarios = Funcionarios.query.filter_by(funcao='Conferente').all()
+    funcionarios = db.session.query(Funcionarios).filter(Funcionarios.funcao.in_(["Conferente", "Faturista"])).all()
     if request.method == "POST":
         data_do_erro = request.form["data_do_erro"]
         erro_funcionario = request.form['erro_funcionario']
