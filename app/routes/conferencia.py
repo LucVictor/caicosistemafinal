@@ -79,3 +79,13 @@ def conferencia_relatorio_emitir():
     return render_template('conferencia/emitir_relatorio.html',
                            conferencias=conferencias, data_inicial=formatar_data(data_inicial), 
                            data_final=formatar_data(data_final), totalitens=totalitens)
+
+
+@app.route('/conferencia/deletar/<int:id>', methods=['GET'])
+@login_required
+def conferencia_deletar(id):
+    conferencia = Produto_Conferido.query.get_or_404(id)
+    if conferencia:
+        db.session.delete(conferencia)
+        db.session.commit()
+    return redirect(url_for('index_conferencia'))
