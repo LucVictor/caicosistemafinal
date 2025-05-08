@@ -7,8 +7,10 @@ def index_conferencia():
     conferencias = Produto_Conferido.query.filter(Produto_Conferido.data_conferencia >= primeiro_dia_mes(),
                                           Produto_Conferido.data_conferencia <= ultimo_dia_mes()).order_by(
         Produto_Conferido.data_conferencia.desc()).all()
-    
-    return render_template('conferencia/index.html', criador=criador, conferencias=conferencias, mes=mes_atual())
+    totalitens = len(conferencias)
+    print(totalitens)
+
+    return render_template('conferencia/index.html', totalitens=totalitens, criador=criador, conferencias=conferencias, mes=mes_atual())
 
 
 
@@ -68,9 +70,12 @@ def conferencia_relatorio_emitir():
         conferencias = Produto_Conferido.query.filter(Produto_Conferido.data_conferencia >= data_inicial,
                                           Produto_Conferido.data_conferencia <=data_final,
                                             Produto_Conferido.codigo_produto==codigo_produto).order_by(Produto_Conferido.data_conferencia.desc()).all()
-        
-        return render_template('conferencia/emitir_relatorio.html',conferencias=conferencias, data_inicial=formatar_data(data_inicial), data_final=formatar_data(data_final))
+        totalitens = len(conferencias)
+        return render_template('conferencia/emitir_relatorio.html', totalitens= totalitens ,conferencias=conferencias, data_inicial=formatar_data(data_inicial), data_final=formatar_data(data_final))
     conferencias = Produto_Conferido.query.filter(Produto_Conferido.data_conferencia >= data_inicial,
                                         Produto_Conferido.data_conferencia <=data_final).order_by(
     Produto_Conferido.data_conferencia.desc()).all()
-    return render_template('conferencia/emitir_relatorio.html',conferencias=conferencias, data_inicial=formatar_data(data_inicial), data_final=formatar_data(data_final))
+    totalitens = len(conferencias)
+    return render_template('conferencia/emitir_relatorio.html',
+                           conferencias=conferencias, data_inicial=formatar_data(data_inicial), 
+                           data_final=formatar_data(data_final), totalitens=totalitens)
