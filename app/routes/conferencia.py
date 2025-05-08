@@ -88,4 +88,5 @@ def conferencia_deletar(id):
     if conferencia:
         db.session.delete(conferencia)
         db.session.commit()
+        return redirect(url_for('index_conferencia'))
     return redirect(url_for('index_conferencia'))
