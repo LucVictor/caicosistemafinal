@@ -36,7 +36,7 @@
     <td> {{ conferencia.conferente}}</td>
            {% if current_user.is_authenticated and current_user.username == conferencia.criador %}
         <td class="flexNoBoards botoesacao">
-        <form action="/conferencia/deletar/{{ conferencia.id }}" method="post">
+        <form action="/conferencia/deletar/{{ conferencia.id }}" method="get">
         <input class="btn btn-sm btn-warning" type="submit" value="Apagar">
         </form></td>
             {% else %}
