@@ -61,6 +61,17 @@
                     <li><a class="dropdown-item" href="/atacado/comparar_erros">Comparar</a></li>
               </ul>
             </div>
+            <div class="dropdown me-2">
+              <a class="btn btn-secondary btn-sm dropdown-toggle btn-custom-orange" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Conferência
+              </a>
+              <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="/conferencia/">Visualizar</a></li>
+                  <li><a class="dropdown-item" href="/conferencia/procurar">Cadastrar</a></li>
+                  <li><a class="dropdown-item" href="/conferencia/relatorio">Relatório</a></li>
+            </ul>
+          </div>
+          
             {% if current_user.acesso == 2 %}
             <div class="dropdown me-2 ">
                 <a class="btn btn-secondary btn-sm dropdown-toggle btn-custom-orange" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

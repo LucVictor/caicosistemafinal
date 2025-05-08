@@ -82,6 +82,10 @@ class Funcionarios(db.Model):
     @classmethod
     def ajudante(cls, nome):
         return cls(nome=nome, funcao='Ajudante')
+    
+    @classmethod
+    def estoque(cls, nome):
+        return cls(nome=nome, funcao='Estoque')
 
     @classmethod
     def vendedor(cls, nome):
@@ -129,4 +133,16 @@ class Erros_Atacado(db.Model):
     quantidade_de_erros = db.Column(db.Integer, nullable=False)
     produto_erro = db.Column(db.String(250), nullable=False)
     descricao_do_erro = db.Column(db.String(1000), nullable=True)
+    criador = db.Column(db.String(250), nullable=True)
+
+
+class Produto_Conferido(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    data_conferencia = db.Column(db.Date, nullable=False)
+    conferente = db.Column(db.String(250), nullable=False)
+    codigo_produto = db.Column(db.String(250), nullable=False)
+    nome_do_produto = db.Column(db.String(250), nullable=False)
+    quantidade_sistema = db.Column(db.DECIMAL(10,3), nullable=False)
+    quantidade_fisico = db.Column(db.DECIMAL(10,3), nullable=False)
+    quantidade_diferenca= db.Column(db.DECIMAL(10,3), nullable=False)
     criador = db.Column(db.String(250), nullable=True)

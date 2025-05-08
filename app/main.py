@@ -36,3 +36,5 @@ from app.routes.vencimentos import *
 from app.routes.vendas import *
 from app.routes.adm import *
 from app.routes.atacado import *
+from app.routes.conferencia import *
+

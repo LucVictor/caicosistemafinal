@@ -1,0 +1,33 @@
+{% extends "./template.html" %}
+{% block content %}
+     <div class="shadow-lg text-black p-1 m-auto border-orange w-25">
+    <h3>Cadastro de conferência</h3>
+    <div class="mb-3"><img class="procurarimg" src="../static/imagens/cadastrar.png" width="60" alt=""></div>
+    <form action="/conferencia/cadastrar" method="post">
+        
+        <div class="mb-3"><label for="data_vencimento">Data de conferência:</label>
+            <input class="form-control text-center w-50 m-auto" type="date" id="data_conferencia" name="data_conferencia" required></div>
+
+        <div class="mb-3"><label for="codigo_produto">Código do Produto:</label>
+            <input class="form-control text-center w-50 m-auto" readonly type="number" id="codigo_produto" name="codigo_produto" value="{{ produto.codigo_do_produto }}" required></div>
+
+        <div class="mb-3"><label for="nome_produto">Nome do Produto:</label>
+        <input class="form-control text-center w-50 m-auto" readonly type="text" id="nome_do_produto" name="nome_do_produto" minlength="600" value="{{ produto.nome_do_produto }}" required ></div>
+
+        <div class="mb-3"><label for="quantidade">Quantidade no sistema:</label>
+        <input class="form-control text-center w-50 m-auto" type="number" id="quantidade_sistema" name="quantidade_sistema" step="0.001" min="0" value="0" required></div>
+        
+        <div class="mb-3"><label for="quantidade">Quantidade no físico:</label>
+        <input class="form-control text-center w-50 m-auto" type="number" id="quantidade_fisico" name="quantidade_fisico" step="0.001" min="0" value="0" required></div>
+    
+        <div class="mb-3"><label for="quantidade">Conferente:</label>
+            <select name="conferente" class="form-select text-center w-50 m-auto" id="conferente">
+                {% for i in conferentes %}
+                    <option class="lista">{{ i.nome }}</option>
+                {% endfor %}
+            </select></div>    
+            
+        <input class="btn btn-sm btn-warning m-2" type="submit" value="Cadastrar">
+    </form>
+    <div>
+{% endblock %}

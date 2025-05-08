@@ -1,0 +1,13 @@
+{% extends "./template.html" %}
+{% block content %}
+    <div class="shadow-lg text-black p-1 m-auto border-orange w-25">
+    <h3>Procurar produto</h3>
+    <div class="m-2"><img class="procurarimg" src="../static/imagens/procurar.png" width="60" alt=""></div>
+    <form class="w-50 m-auto" action="/conferencia/cadastro" method="post">
+        <label class="m-2" for="codigo">Código:</label>
+        <input class="form-control text-center" type="text" id="codigo" name="codigo">
+
+        <input class="btn btn-warning m-2" type="submit" value="Buscar">
+    </form>
+    </div>
+{% endblock %}
