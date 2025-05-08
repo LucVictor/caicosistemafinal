@@ -32,7 +32,11 @@
     </td>
     <td>{{ conferencia.quantidade_fisico | format_quantidade }}
     </td>
-    <td>{{ conferencia.quantidade_diferenca | format_quantidade }}
+    {% if conferencia.quantidade_diferenca < 0 %}
+    <td style="background-color: red;">{{ conferencia.quantidade_diferenca | format_quantidade }}
+    {% else %}
+    <td style="background-color: green">{{ conferencia.quantidade_diferenca | format_quantidade }}
+    {% endif %}
     </td>
     <td> {{ conferencia.conferente}}</td>
            {% if current_user.is_authenticated and current_user.username == conferencia.criador %}
