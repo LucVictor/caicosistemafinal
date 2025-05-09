@@ -105,12 +105,15 @@ def conferencia_planilha():
         criador = current_user.username
         for index, linha in panilha_tratada.iterrows():
             produto = Produto.query.filter(Produto.codigo_do_produto == linha['CODIGO']).first()
-            nova_conferencia = Produto_Conferido(data_conferencia=data_conferencia,conferente=conferente, 
+            if produto:
+                nova_conferencia = Produto_Conferido(data_conferencia=data_conferencia,conferente=conferente, 
                 codigo_produto=produto.codigo_do_produto,nome_do_produto=produto.nome_do_produto,
                 quantidade_sistema=Decimal(str(linha['SISTEMA'])),quantidade_fisico=Decimal(str(linha['FISICO'])),
                 quantidade_diferenca=(Decimal(str(linha['SISTEMA']))) - Decimal(str(linha['FISICO'])),criador=criador)
-            db.session.add(nova_conferencia)
-            db.session.commit()
+                db.session.add(nova_conferencia)
+                db.session.commit()
+            else:
+                return (f"ERROR NA LINHA, {linha['CODIGO'], {linha['FISICO']}, {linha['SISTEMA']}}")
         db.session.close()
         return redirect(url_for('index_conferencia'))
     conferentes = Funcionarios.query.filter(Funcionarios.funcao=="Estoque")
