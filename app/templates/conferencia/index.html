@@ -32,7 +32,7 @@
     </td>
     <td>{{ conferencia.quantidade_fisico | format_quantidade }}
     </td>
-    {% if conferencia.quantidade_diferenca < 0 %}
+    {% if conferencia.quantidade_diferenca > 0 %}
     <td style="background-color: red;">{{ conferencia.quantidade_diferenca | format_quantidade }}
     {% else %}
     <td style="background-color: green">{{ conferencia.quantidade_diferenca | format_quantidade }}
