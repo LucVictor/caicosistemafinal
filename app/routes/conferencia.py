@@ -109,7 +109,7 @@ def conferencia_planilha():
                 nova_conferencia = Produto_Conferido(data_conferencia=data_conferencia,conferente=conferente, 
                 codigo_produto=produto.codigo_do_produto,nome_do_produto=produto.nome_do_produto,
                 quantidade_sistema=Decimal(str(linha['SISTEMA'])),quantidade_fisico=Decimal(str(linha['FISICO'])),
-                quantidade_diferenca=(Decimal(str(linha['SISTEMA']))) - Decimal(str(linha['FISICO'])),criador=criador)
+                quantidade_diferenca=(Decimal(str(linha['FISICO']))) - Decimal(str(linha['SISTEMA'])),criador=criador)
                 db.session.add(nova_conferencia)
                 db.session.commit()
             else:
