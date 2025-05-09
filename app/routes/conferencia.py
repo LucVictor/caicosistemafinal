@@ -113,7 +113,7 @@ def conferencia_planilha():
                 db.session.add(nova_conferencia)
                 db.session.commit()
             else:
-                return (f"ERROR NA LINHA, {linha['CODIGO'], {linha['FISICO']}, {linha['SISTEMA']}}")
+                return (f"ERROR NA LINHA, {linha['CODIGO'], {linha['FISICO']}, {linha[]}}")
         db.session.close()
         return redirect(url_for('index_conferencia'))
     conferentes = Funcionarios.query.filter(Funcionarios.funcao=="Estoque")
