@@ -10,9 +10,12 @@ from flask_login import LoginManager, UserMixin, login_user, logout_user, login_
 from babel.dates import format_datetime
 from datetime import datetime, timedelta, time
 from functools import wraps
+import pandas as pd
+import os
+import numpy as np
 
 UPLOAD_FOLDER = "app/static/uploads"
-ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
+ALLOWED_EXTENSIONS = {'xlsx'}
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 

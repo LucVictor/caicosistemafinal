@@ -9,7 +9,6 @@ def index_conferencia():
         Produto_Conferido.data_conferencia.desc()).all()
     totalitens = len(conferencias)
     print(totalitens)
-
     return render_template('conferencia/index.html', totalitens=totalitens, criador=criador, conferencias=conferencias, mes=mes_atual())
 
 
@@ -90,3 +89,29 @@ def conferencia_deletar(id):
         db.session.commit()
         return redirect(url_for('index_conferencia'))
     return redirect(url_for('index_conferencia'))
+
+
+
+@app.route('/conferencia/planilha', methods=['GET', 'POST'])
+def conferencia_planilha():
+    if request.method == 'POST':
+        file = request.files['planilha']
+        if file and allowed_file(file.filename):
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], 'tabela_planilha.xlsx'))
+        panilha_bruta = pd.read_excel('app/static/uploads/tabela_planilha.xlsx')
+        panilha_tratada = panilha_bruta[['CODIGO', 'SISTEMA', 'FISICO']]
+        data_conferencia = request.form['data_conferencia']
+        conferente = request.form['conferente']
+        criador = current_user.username
+        for index, linha in panilha_tratada.iterrows():
+            produto = Produto.query.filter(Produto.codigo_do_produto == linha['CODIGO']).first()
+            nova_conferencia = Produto_Conferido(data_conferencia=data_conferencia,conferente=conferente, 
+                codigo_produto=produto.codigo_do_produto,nome_do_produto=produto.nome_do_produto,
+                quantidade_sistema=Decimal(str(linha['SISTEMA'])),quantidade_fisico=Decimal(str(linha['FISICO'])),
+                quantidade_diferenca=(Decimal(str(linha['SISTEMA']))) - Decimal(str(linha['FISICO'])),criador=criador)
+            db.session.add(nova_conferencia)
+            db.session.commit()
+        db.session.close()
+        return redirect(url_for('index_conferencia'))
+    conferentes = Funcionarios.query.filter(Funcionarios.funcao=="Estoque")
+    return render_template('conferencia/importar_planilha.html', conferentes=conferentes)
