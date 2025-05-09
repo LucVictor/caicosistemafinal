@@ -51,6 +51,7 @@ class Entrega(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     data_da_entrega = db.Column(db.Date, nullable=False)
     motorista = db.Column(db.String(250), nullable=False)
+    caminhao = db.Column(db.String(250), nullable=False)
     ajudante = db.Column(db.String(250), nullable=False)
     conferente = db.Column(db.String(250), nullable=True)
     rota = db.Column(db.String(250), nullable=False)
@@ -146,3 +147,8 @@ class Produto_Conferido(db.Model):
     quantidade_fisico = db.Column(db.DECIMAL(10,3), nullable=False)
     quantidade_diferenca= db.Column(db.DECIMAL(10,3), nullable=False)
     criador = db.Column(db.String(250), nullable=True)
+
+class Caminhao(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    identificao =  db.Column(db.Integer, nullable=False)
+    placa =  db.Column(db.String(250), nullable=False)

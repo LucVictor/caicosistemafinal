@@ -20,6 +20,12 @@
                     {% endif %}
                 {% endfor %}
             </select></div>
+            <div class="mb-3 m-auto"><label for="caminhao">Caminhão:</label><br>
+                <select name="caminhao" class="form-select text-center w-50 m-auto" id="caminhao">
+                    {% for i in caminhao %}
+                        <option class="lista">{{ i.placa }}</option>
+                    {% endfor %}
+                </select></div>
 
           <div class="mb-3 m-auto"><label for="ajudante">Ajudante:</label><br>
             <select class="form-select text-center w-50 m-auto" name="ajudante" id="ajudante">

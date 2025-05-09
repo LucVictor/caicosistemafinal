@@ -283,6 +283,7 @@ def entrega_cadastrar():
     if request.method == 'POST':
         data_da_entrega = datetime.strptime(request.form['data_da_entrega'], '%Y-%m-%d').date()
         motorista = request.form['motorista']
+        caminhao =  request.form['caminhao']
         ajudante = request.form['ajudante']
         conferente = request.form['conferente']
         rota = request.form['rota']
@@ -316,18 +317,17 @@ def entrega_cadastrar():
             tempo_medio_entrega=tempo_medio_entrega,
             resultado_tempo=resultado_tempo,
             reentregas=reentregas,
-            entreganrealizadas=entreganrealizadas
+            entreganrealizadas=entreganrealizadas,
+            caminhao=caminhao
         )
         db.session.add(entrega)
         db.session.commit()
         recalcular_rotas(rota)
         return redirect("/entregas/")
     rotas_lista = Rotas.query.all()
+    caminhao = Caminhao.query.all()
     funcionarios = Funcionarios.query.all()
-    return render_template("/entregas/cadastrar_entrega.html", rotas_lista=rotas_lista, funcionarios=funcionarios)
-
-
-total_reentregas_periodo_2 = 0
+    return render_template("/entregas/cadastrar_entrega.html", caminhao=caminhao, rotas_lista=rotas_lista, funcionarios=funcionarios)
 
 
 @app.route('/entregas/deletar_entrega/<int:entrega_id>', methods=["post"])
