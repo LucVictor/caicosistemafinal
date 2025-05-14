@@ -1,14 +1,14 @@
 from ..main import *
+from sqlalchemy import func
 from ..models.models import Produto_Conferido
 @app.route('/conferencia/', methods=['GET'])
 @login_required
 def index_conferencia():
     criador = current_user.username
     conferencias = Produto_Conferido.query.filter(Produto_Conferido.data_conferencia >= primeiro_dia_mes(),
-                                          Produto_Conferido.data_conferencia <= ultimo_dia_mes()).order_by(
-        Produto_Conferido.data_conferencia.desc()).limit(60).all()
+                                          Produto_Conferido.data_conferencia <= ultimo_dia_mes(), Produto_Conferido.data_conferencia == data_agora()).order_by(
+        Produto_Conferido.data_conferencia.desc()).all()
     totalitens = len(conferencias)
-    print(totalitens)
     return render_template('conferencia/index.html', totalitens=totalitens, criador=criador, conferencias=conferencias, mes=mes_atual())
 
 
@@ -70,14 +70,28 @@ def conferencia_relatorio_emitir():
                                           Produto_Conferido.data_conferencia <=data_final,
                                             Produto_Conferido.codigo_produto==codigo_produto).order_by(Produto_Conferido.data_conferencia.desc()).all()
         totalitens = len(conferencias)
+        itens_por_conferente = conferencias = Produto_Conferido.query.filter(Produto_Conferido.data_conferencia >= data_inicial,
+                                          Produto_Conferido.data_conferencia <=data_final,
+                                            Produto_Conferido.codigo_produto==codigo_produto).order_by(Produto_Conferido.data_conferencia.desc()).all()
+
         return render_template('conferencia/emitir_relatorio.html', totalitens= totalitens ,conferencias=conferencias, data_inicial=formatar_data(data_inicial), data_final=formatar_data(data_final))
     conferencias = Produto_Conferido.query.filter(Produto_Conferido.data_conferencia >= data_inicial,
                                         Produto_Conferido.data_conferencia <=data_final).order_by(
     Produto_Conferido.data_conferencia.desc()).all()
     totalitens = len(conferencias)
+    conferencias_por_conferente = (
+    db.session.query(Produto_Conferido.conferente, func.count().label('quantidade'))
+    .filter(
+        Produto_Conferido.data_conferencia >= data_inicial,
+        Produto_Conferido.data_conferencia <= data_final,
+    )
+    .group_by(Produto_Conferido.conferente)
+    .order_by(func.count().desc())  # opcional, ordena do maior pro menor
+    .all()
+)
     return render_template('conferencia/emitir_relatorio.html',
                            conferencias=conferencias, data_inicial=formatar_data(data_inicial), 
-                           data_final=formatar_data(data_final), totalitens=totalitens)
+                           data_final=formatar_data(data_final), conferencias_por_conferente=conferencias_por_conferente, totalitens=totalitens)
 
 
 @app.route('/conferencia/deletar/<int:id>', methods=['GET'])
