@@ -103,16 +103,47 @@ def conferencia_zerados_relatorio_emitir():
         conferencias = Produto_Conferido.query.filter(Produto_Conferido.data_conferencia >= data_inicial,
                                           Produto_Conferido.data_conferencia <=data_final,
                                             Produto_Conferido.codigo_produto==codigo_produto, Produto_Conferido.quantidade_fisico==0).order_by(Produto_Conferido.data_conferencia.desc()).all()
+        conferencias_totais=[]
+        for i in conferencias:
+            produto = Produto.query.filter(Produto.codigo_do_produto == i.codigo_produto).first()
+            total = i.quantidade_sistema * produto.preco_do_produto
+            conferencias_totais.append({
+                'codigo_produto': i.codigo_produto,
+                'nome_do_produto': i.nome_do_produto,
+                'data_conferencia': i.data_conferencia,
+                'quantidade_sistema': i.quantidade_sistema,
+                'quantidade_fisico': i.quantidade_fisico,
+                'conferente': i.conferente,
+                'criador': i.criador,
+                'total': total
+            })
+
         totalitens = len(conferencias)
-        return render_template('conferencia/relatorio_zerados.html', totalitens= totalitens ,conferencias=conferencias, data_inicial=formatar_data(data_inicial), data_final=formatar_data(data_final))
+        return render_template('conferencia/relatorio_zerados.html', conferencias_totais=conferencias_totais, totalitens= totalitens ,conferencias=conferencias, data_inicial=formatar_data(data_inicial), data_final=formatar_data(data_final))
 
 
     conferencias = Produto_Conferido.query.filter(Produto_Conferido.data_conferencia >= data_inicial,
                                         Produto_Conferido.data_conferencia <=data_final, Produto_Conferido.quantidade_fisico==0).order_by(
     Produto_Conferido.data_conferencia.desc()).all()
     totalitens = len(conferencias)
+    conferencias_totais=[]
+    for i in conferencias:
+        produto = Produto.query.filter(Produto.codigo_do_produto == i.codigo_produto).first()
+        total = i.quantidade_sistema * produto.preco_do_produto
+        conferencias_totais.append({
+            'codigo_produto': i.codigo_produto,
+            'nome_do_produto': i.nome_do_produto,
+            'data_conferencia': i.data_conferencia,
+            'quantidade_sistema': i.quantidade_sistema,
+            'quantidade_fisico': i.quantidade_fisico,
+            'quantidade_diferenca': i.quantidade_fisico - i.quantidade_sistema,
+            'conferente': i.conferente,
+            'criador': i.criador,
+            'total': total
+        })
+        custo_total = sum(i['total'] for i in conferencias_totais) or 0
     return render_template('conferencia/relatorio_zerados.html',
-                           conferencias=conferencias, data_inicial=formatar_data(data_inicial),
+                           conferencias=conferencias, custo_total=custo_total, conferencias_totais=conferencias_totais,data_inicial=formatar_data(data_inicial),
                            data_final=formatar_data(data_final), totalitens=totalitens)
 
 @app.route('/conferencia/zerados', methods=['GET'])
