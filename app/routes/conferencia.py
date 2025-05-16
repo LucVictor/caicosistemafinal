@@ -25,7 +25,7 @@ def conferencia_cadastrar():
         quantidade_fisico = request.form['quantidade_fisico']
         quantidade_diferenca = Decimal(quantidade_fisico) - Decimal(quantidade_sistema)
         criador = current_user.username
-        nova_conferencia = Produto_Conferido(data_conferencia=data_conferencia,conferente=conferente, 
+        nova_conferencia = Produto_Conferido(data_conferencia=data_conferencia,conferente=conferente,
                                              codigo_produto=codigo_produto,nome_do_produto=nome_do_produto,
                                              quantidade_sistema=quantidade_sistema,quantidade_fisico=quantidade_fisico,
                                              quantidade_diferenca=quantidade_diferenca,criador=criador)
@@ -73,7 +73,6 @@ def conferencia_relatorio_emitir():
         itens_por_conferente = conferencias = Produto_Conferido.query.filter(Produto_Conferido.data_conferencia >= data_inicial,
                                           Produto_Conferido.data_conferencia <=data_final,
                                             Produto_Conferido.codigo_produto==codigo_produto).order_by(Produto_Conferido.data_conferencia.desc()).all()
-
         return render_template('conferencia/emitir_relatorio.html', totalitens= totalitens ,conferencias=conferencias, data_inicial=formatar_data(data_inicial), data_final=formatar_data(data_final))
     conferencias = Produto_Conferido.query.filter(Produto_Conferido.data_conferencia >= data_inicial,
                                         Produto_Conferido.data_conferencia <=data_final).order_by(
@@ -90,8 +89,36 @@ def conferencia_relatorio_emitir():
     .all()
 )
     return render_template('conferencia/emitir_relatorio.html',
-                           conferencias=conferencias, data_inicial=formatar_data(data_inicial), 
+                           conferencias=conferencias, data_inicial=formatar_data(data_inicial),
                            data_final=formatar_data(data_final), conferencias_por_conferente=conferencias_por_conferente, totalitens=totalitens)
+
+
+@app.route('/conferencia/relatorio_zerados_emitir', methods=['POST'])
+@login_required
+def conferencia_zerados_relatorio_emitir():
+    data_inicial = request.form['data_inicial']
+    data_final = request.form['data_final']
+    codigo_produto = request.form['codigo_produto']
+    if codigo_produto:
+        conferencias = Produto_Conferido.query.filter(Produto_Conferido.data_conferencia >= data_inicial,
+                                          Produto_Conferido.data_conferencia <=data_final,
+                                            Produto_Conferido.codigo_produto==codigo_produto, Produto_Conferido.quantidade_fisico==0).order_by(Produto_Conferido.data_conferencia.desc()).all()
+        totalitens = len(conferencias)
+        return render_template('conferencia/relatorio_zerados.html', totalitens= totalitens ,conferencias=conferencias, data_inicial=formatar_data(data_inicial), data_final=formatar_data(data_final))
+
+
+    conferencias = Produto_Conferido.query.filter(Produto_Conferido.data_conferencia >= data_inicial,
+                                        Produto_Conferido.data_conferencia <=data_final, Produto_Conferido.quantidade_fisico==0).order_by(
+    Produto_Conferido.data_conferencia.desc()).all()
+    totalitens = len(conferencias)
+    return render_template('conferencia/relatorio_zerados.html',
+                           conferencias=conferencias, data_inicial=formatar_data(data_inicial),
+                           data_final=formatar_data(data_final), totalitens=totalitens)
+
+@app.route('/conferencia/zerados', methods=['GET'])
+@login_required
+def conferencia_zerados():
+    return render_template('conferencia/zerados.html')
 
 
 @app.route('/conferencia/deletar/<int:id>', methods=['GET'])
@@ -120,7 +147,7 @@ def conferencia_planilha():
         for index, linha in panilha_tratada.iterrows():
             produto = Produto.query.filter(Produto.codigo_do_produto == linha['CODIGO']).first()
             if produto:
-                nova_conferencia = Produto_Conferido(data_conferencia=data_conferencia,conferente=conferente, 
+                nova_conferencia = Produto_Conferido(data_conferencia=data_conferencia,conferente=conferente,
                 codigo_produto=produto.codigo_do_produto,nome_do_produto=produto.nome_do_produto,
                 quantidade_sistema=Decimal(str(linha['SISTEMA'])),quantidade_fisico=Decimal(str(linha['FISICO'])),
                 quantidade_diferenca=(Decimal(str(linha['FISICO']))) - Decimal(str(linha['SISTEMA'])),criador=criador)
