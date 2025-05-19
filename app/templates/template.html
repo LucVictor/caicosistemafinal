@@ -13,7 +13,22 @@
 </head>
 <body class="   ">
     <style>
-
+    body {
+        background-color: #fff !important;
+        color: #000 !important;
+        height: 100%;
+    }
+    .flexNoBoards {
+        display: flex;
+        border: none;
+    }
+    flexNoBoardErros {
+        display: flex;
+        border-left: 1px;
+    }
+    .fs-12 {
+        font-size: 14px;
+    }
     .btn-custom-orange {
         background-color: orange; /* Cor laranja */
         color: black; /* Cor do texto */
@@ -26,7 +41,65 @@
     .btn-custom-orange:target {
         background-color: #e64a19; /* Cor laranja escura para o efeito hover */
         color: black;
-    }</style>
+    }
+    .dropdown-menu {
+        min-width: auto; /* Allow width to fit content */
+        text-align: left;
+        color: black;
+    }
+    .border-orange {
+        border-style: solid;
+        border-radius: 7px;
+        border-width: 1px;
+        border-color: orange;
+    }
+    .navbar-brand,
+    .procurarimg,
+    .caminhao,
+    .logo {
+        mix-blend-mode: multiply;
+    }
+    .dropdown-menu {
+        font-size: 14px;
+        background-color: orange; /* Cor laranja */
+        color: rgb(0, 0, 0); /* Cor do texto */
+        border: none; /* Remover bordas se necessário */
+    }
+    .dropdown-item:hover,
+    .dropdown-item:target,
+    .dropdown-item:active,
+    .dropdown-item:focus {
+        background-color: #e64a19;
+        color: black;
+    }
+    textarea {
+        resize: none;
+    }
+    .dropdown-item {
+        color: black;
+    }
+    .tabela,
+    .tabela tr,
+    .tabela th,
+    .tabela td {
+        border: black 1px solid;
+    }
+
+    @media print {
+        .menu,
+        .banner,
+        footer,
+        .navbar,
+        .botoesacao {
+            display: none;
+        }
+        .resumo {
+            page-break-after: always;
+        }
+    }
+
+
+    </style>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
     <nav class="shadow-sm navbar background-suave navbar-expand-lg navbar-light p-2">
