@@ -1,20 +1,22 @@
-.background-suave{
-
+body,
+.modal-content,
+.card {
+    background-color: #fff !important;
+    color: #000 !important;
 }
 body {
-  height: 100%
+    height: 100%;
 }
-.flexNoBoards{
+.flexNoBoards {
     display: flex;
     border: none;
 }
-flexNoBoardErros{
+flexNoBoardErros {
     display: flex;
     border-left: 1px;
 }
-.fs-12{
+.fs-12 {
     font-size: 14px;
-
 }
 .btn-custom-orange {
     background-color: orange; /* Cor laranja */
@@ -22,7 +24,10 @@ flexNoBoardErros{
     border: none; /* Remover bordas se necessário */
 }
 
-.btn-custom-orange:hover, .btn-custom-orange:focus, .btn-custom-orange:active, .btn-custom-orange:target  {
+.btn-custom-orange:hover,
+.btn-custom-orange:focus,
+.btn-custom-orange:active,
+.btn-custom-orange:target {
     background-color: #e64a19; /* Cor laranja escura para o efeito hover */
     color: black;
 }
@@ -31,40 +36,53 @@ flexNoBoardErros{
     text-align: left;
     color: black;
 }
-.border-orange{
+.border-orange {
     border-style: solid;
     border-radius: 7px;
     border-width: 1px;
     border-color: orange;
-
 }
-.navbar-brand, .procurarimg, .caminhao, .logo{
-    mix-blend-mode:multiply;
+.navbar-brand,
+.procurarimg,
+.caminhao,
+.logo {
+    mix-blend-mode: multiply;
 }
-.dropdown-menu{
+.dropdown-menu {
     font-size: 14px;
     background-color: orange; /* Cor laranja */
     color: rgb(0, 0, 0); /* Cor do texto */
     border: none; /* Remover bordas se necessário */
 }
-.dropdown-item:hover, .dropdown-item:target, .dropdown-item:active, .dropdown-item:focus{
+.dropdown-item:hover,
+.dropdown-item:target,
+.dropdown-item:active,
+.dropdown-item:focus {
     background-color: #e64a19;
- color: black;
-}
-textarea {
-   resize: none;
-}
-.dropdown-item{
     color: black;
 }
-.tabela, .tabela tr, .tabela th, .tabela td{
+textarea {
+    resize: none;
+}
+.dropdown-item {
+    color: black;
+}
+.tabela,
+.tabela tr,
+.tabela th,
+.tabela td {
     border: black 1px solid;
 }
 
 @media print {
-  .menu,
-  .banner, footer, .navbar, .botoesacao { display: none; }
-    .resumo{
+    .menu,
+    .banner,
+    footer,
+    .navbar,
+    .botoesacao {
+        display: none;
+    }
+    .resumo {
         page-break-after: always;
     }
- }
+}

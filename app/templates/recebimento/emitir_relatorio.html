@@ -52,14 +52,14 @@
                     </td>
                     <td>{{ recebimento.quantidade_notas }}</td>
                     <td
-                        class="{{ 'bg-success text-white' if recebimento.estoques else 'bg-dark text-white' }}"
+                        class="{{ 'bg-success text-white' if recebimento.estoques else 'text-white' }}"
                     >
                         {{ 'Realizado' if recebimento.estoques else 'Não
                         realizado' }}
                     </td>
 
                     <td
-                        class="{{ 'bg-success text-white' if recebimento.prateleiras else 'bg-dark text-white' }}"
+                        class="{{ 'bg-success text-white' if recebimento.prateleiras else 'text-white' }}"
                     >
                         {{ 'Realizado' if recebimento.prateleiras else 'Não
                         realizado' }}
