@@ -70,7 +70,7 @@ def conferencia_relatorio_emitir():
                                           Produto_Conferido.data_conferencia <=data_final,
                                             Produto_Conferido.codigo_produto==codigo_produto).order_by(Produto_Conferido.data_conferencia.desc()).all()
         totalitens = len(conferencias)
-        itens_por_conferente = conferencias = Produto_Conferido.query.filter(Produto_Conferido.data_conferencia >= data_inicial,
+        itens_por_conferente = Produto_Conferido.query.filter(Produto_Conferido.data_conferencia >= data_inicial,
                                           Produto_Conferido.data_conferencia <=data_final,
                                             Produto_Conferido.codigo_produto==codigo_produto).order_by(Produto_Conferido.data_conferencia.desc()).all()
         return render_template('conferencia/emitir_relatorio.html', totalitens= totalitens ,conferencias=conferencias, data_inicial=formatar_data(data_inicial), data_final=formatar_data(data_final))

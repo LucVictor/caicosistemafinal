@@ -14,10 +14,12 @@ import pandas as pd
 import os
 import numpy as np
 
-UPLOAD_FOLDER = "app/static/uploads"
-ALLOWED_EXTENSIONS = {'xlsx'}
+ALLOWED_EXTENSIONS = {
+    'jpg', 'jpeg', 'png', 'gif', 'webp', 'svg', 'avif', 'bmp', 'ico'
+}
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['UPLOAD_FOLDER'] =  "app/static/uploads"
+app.config['UPLOAD_FOLDER_PRANCHETA'] = 'app/static/uploads/recebimento_fotos'
 
 app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv('SQLALCHEMY_DATABASE_URL',
                                                   'mysql+pymysql://usuario:password@endereco/banco')
@@ -40,4 +42,4 @@ from app.routes.vendas import *
 from app.routes.adm import *
 from app.routes.atacado import *
 from app.routes.conferencia import *
-
+from app.routes.recebimento import *

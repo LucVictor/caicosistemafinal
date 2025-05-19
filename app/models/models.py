@@ -83,7 +83,7 @@ class Funcionarios(db.Model):
     @classmethod
     def ajudante(cls, nome):
         return cls(nome=nome, funcao='Ajudante')
-    
+
     @classmethod
     def estoque(cls, nome):
         return cls(nome=nome, funcao='Estoque')
@@ -152,3 +152,15 @@ class Caminhao(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     identificao =  db.Column(db.Integer, nullable=False)
     placa =  db.Column(db.String(250), nullable=False)
+
+
+class Recebimento(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    data_recebimento = db.Column(db.Date, nullable=False)
+    conferente = db.Column(db.String(250), nullable=False)
+    quantidade_notas = db.Column(db.Integer, nullable=False)
+    estoques = db.Column(db.Boolean, nullable=False)
+    prateleiras = db.Column(db.Boolean, nullable=False)
+    produto_novo = db.Column(db.Boolean, nullable=False)
+    criador = db.Column(db.String(250), nullable=True)
+    foto = db.Column(db.String(250), nullable=True)

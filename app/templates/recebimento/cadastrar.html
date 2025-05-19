@@ -1,0 +1,47 @@
+{% extends "./template.html" %}
+{% block content %}
+     <div class="shadow-lg text-black p-1 m-auto border-orange w-25">
+    <h3>Cadastro de conferência</h3>
+    <div class="mb-3"><img class="procurarimg" src="../static/imagens/cadastrar.png" width="60" alt=""></div>
+    <form action="/recebimento/cadastrar" enctype=multipart/form-data method="post">
+
+        <div class="mb-3"><label for="data_recebimento">Data do recebimento:</label>
+            <input class="form-control text-center w-50 m-auto" type="date" id="data_recebimento" name="data_recebimento" required></div>
+
+        <div class="mb-3"><label for="quantidade_notas">Quantidade de notas:</label>
+        <input class="form-control text-center w-50 m-auto" type="number" id="quantidade_notas" name="quantidade_notas" step="0.001" min="0" value="0" required></div>
+
+        <label for="estoque">Todos os estoques conferidos?</label>
+        <select class="form-select text-center w-50 m-auto" name="estoque" id="estoque">
+        <option value="True">Sim</option>
+        <option value="False">Não</option>
+        </select>
+
+        <label for="prateleiras">Prateleiras inseridas?</label>
+        <select class="form-select text-center w-50 m-auto" name="prateleiras" id="prateleiras">
+        <option value="True">Sim</option>
+        <option value="False">Não</option>
+        </select>
+
+        <label for="produto_novo">Produto novo?</label>
+        <select class="form-select text-center w-50 m-auto" name="produto_novo" id="produto_novo">
+        <option value="True">Sim</option>
+        <option value="False">Não</option>
+        </select>
+
+        <label class="m-3" for="foto_prancheta">Foto da Prancheta:</label><br>
+        <input class="form-control form-control-sm m-auto" placeholder="Foto" type="file" id="foto_prancheta" required name="foto_prancheta">
+
+
+        <div class="mb-3"><label for="conferente">Conferente:</label>
+            <select required name="conferente" class="form-select text-center w-50 m-auto" id="conferente">
+                {% for i in conferentes %}
+                    <option class="lista">{{ i.nome }}</option>
+                {% endfor %}
+            </select></div>
+
+
+        <input class="btn btn-sm btn-warning m-2" type="submit" value="Cadastrar">
+    </form>
+    <div>
+{% endblock %}
