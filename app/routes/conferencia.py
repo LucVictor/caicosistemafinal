@@ -176,6 +176,7 @@ def conferencia_planilha():
         conferente = request.form['conferente']
         criador = current_user.username
         for index, linha in panilha_tratada.iterrows():
+            print(linha['CODIGO'])
             produto = Produto.query.filter(Produto.codigo_do_produto == linha['CODIGO']).first()
             if produto:
                 nova_conferencia = Produto_Conferido(data_conferencia=data_conferencia,conferente=conferente,

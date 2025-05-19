@@ -15,10 +15,10 @@ import os
 import numpy as np
 
 ALLOWED_EXTENSIONS = {
-    'jpg', 'jpeg', 'png', 'gif', 'webp', 'svg', 'avif', 'bmp', 'ico'
+    'jpg', 'jpeg', 'png', 'gif', 'webp', 'svg', 'avif', 'bmp', 'ico', 'xlsx','xls'
 }
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] =  "app/static/uploads"
+app.config['UPLOAD_FOLDER'] =  'app/static/uploads'
 app.config['UPLOAD_FOLDER_PRANCHETA'] = 'app/static/uploads/recebimento_fotos'
 
 app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv('SQLALCHEMY_DATABASE_URL',
