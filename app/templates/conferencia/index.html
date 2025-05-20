@@ -1,56 +1,84 @@
-{% extends "./template.html" %}
-{% block content %}
-    <h2 class="m-2">Produtos conferidos hoje</h2><br>
-    <h5 class="m-2">Total de itens conferidos: {{totalitens}}.</h5>
+{% extends "./template.html" %} {% block content %}
+<h2 class="m-2">Produtos conferidos hoje</h2>
+<br />
+<h5 class="m-2">Total de itens conferidos: {{totalitens}}.</h5>
 
-    <div class="d-flex justify-content-center text-center">
-    <div class="shadow-lg table-responsive ">
-    <table class="table-bordered text-center align-middle">
-  <thead>
-        <tr>
-        <th>Data</th>
-      <th>Código</th>
-      <th>Produto</th>
-      <th>Sistema</th>
-      <th>Físico</th>
-      <th>Diferença</th>
-      <th>Conferente</th>
-      <th>Ação</th>
-          {% if current_user.is_authenticated %}
-  {% endif %}      <th class="botoesacao">Criador</th>
+<div class="d-flex justify-content-center text-center">
+    <div class="shadow-lg table-responsive">
+        <table class="table-bordered text-center align-middle">
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Código</th>
+                    <th>Produto</th>
+                    <th>Lojas?</th>
+                    <th>Ajuste?</th>
+                    <th>Divergência?</th>
+                    <th>Sistema</th>
+                    <th>Físico</th>
+                    <th>Diferença</th>
+                    <th>Conferente</th>
+                    <th>Ação</th>
+                    {% if current_user.is_authenticated %} {% endif %}
+                    <th class="botoesacao">Criador</th>
+                </tr>
+            </thead>
+            {% for conferencia in conferencias %}
+            <tbody>
+                <tr>
+                    <td>
+                        {{ conferencia.data_conferencia.strftime('%d/%m') }}
+                    </td>
+                    <td>{{ conferencia.codigo_produto }}</td>
+                    <td>{{ conferencia.nome_do_produto }}</td>
+                    <td>
+                        {{ 'Sim' if conferencia.produto_conferido_lojas else
+                        'Não' }}
+                    </td>
+                    <td>{{ 'Sim' if conferencia.ajuste else 'Não' }}</td>
+                    <td>
+                        {{ 'Sim' if conferencia.divergencia_sistema else 'Não'
+                        }}
+                    </td>
+                    <td>
+                        {{ conferencia.quantidade_sistema | format_quantidade }}
+                    </td>
+                    <td>
+                        {{ conferencia.quantidade_fisico | format_quantidade }}
+                    </td>
+                    {% if conferencia.quantidade_diferenca < 0 %}
+                    <td style="background-color: red">
+                        {{ conferencia.quantidade_diferenca | format_quantidade
+                        }} {% else %}
+                    </td>
 
-
-  </tr></thead>
-   {% for conferencia in conferencias %}
-  <tbody>
-       <tr>
-       <td> {{ conferencia.data_conferencia.strftime('%d/%m') }}</td>
-    <td>{{ conferencia.codigo_produto }}</td>
-    <td>{{ conferencia.nome_do_produto }}</td>
-    <td>{{ conferencia.quantidade_sistema | format_quantidade }}
-    </td>
-    <td>{{ conferencia.quantidade_fisico | format_quantidade }}
-    </td>
-    {% if conferencia.quantidade_diferenca < 0 %}
-    <td style="background-color: red;">{{ conferencia.quantidade_diferenca | format_quantidade }}
-    {% else %}
-    <td style="background-color: green">{{ conferencia.quantidade_diferenca | format_quantidade }}
-    {% endif %}
-    </td>
-    <td> {{ conferencia.conferente}}</td>
-           {% if current_user.is_authenticated and current_user.username == conferencia.criador %}
-        <td class="flexNoBoards botoesacao">
-        <form action="/conferencia/deletar/{{ conferencia.id }}" method="get">
-        <input class="btn btn-sm btn-warning" type="submit" value="Apagar">
-        </form></td>
-            {% else %}
-            <td class="flexNoBoards botoesacao" >
-    </td>
-    {% endif %}
-    <td class="">{{ conferencia.criador }}</td>
-  </tr>
-        {% endfor %}</tbody>
-</table>
+                    <td style="background-color: green">
+                        {{ conferencia.quantidade_diferenca | format_quantidade
+                        }} {% endif %}
+                    </td>
+                    <td>{{ conferencia.conferente}}</td>
+                    {% if current_user.is_authenticated and
+                    current_user.username == conferencia.criador %}
+                    <td class="flexNoBoards botoesacao">
+                        <form
+                            action="/conferencia/deletar/{{ conferencia.id }}"
+                            method="get"
+                        >
+                            <input
+                                class="btn btn-sm btn-warning"
+                                type="submit"
+                                value="Apagar"
+                            />
+                        </form>
+                    </td>
+                    {% else %}
+                    <td class="flexNoBoards botoesacao"></td>
+                    {% endif %}
+                    <td class="">{{ conferencia.criador }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
-    </div>
+</div>
 {% endblock %}

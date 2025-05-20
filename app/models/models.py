@@ -147,6 +147,10 @@ class Produto_Conferido(db.Model):
     quantidade_fisico = db.Column(db.DECIMAL(10,3), nullable=False)
     quantidade_diferenca= db.Column(db.DECIMAL(10,3), nullable=False)
     criador = db.Column(db.String(250), nullable=True)
+    divergencia_sistema = db.Column(db.Boolean, default=False, nullable=True)
+    produto_conferido_lojas= db.Column(db.Boolean, default=False, nullable=True)
+    ajuste = db.Column(db.Boolean, default=False, nullable=True)
+
 
 class Caminhao(db.Model):
     id = db.Column(db.Integer, primary_key=True)

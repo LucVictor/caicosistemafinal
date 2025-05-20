@@ -20,6 +20,16 @@
         <div class="mb-3"><label for="quantidade">Quantidade no físico:</label>
         <input class="form-control text-center w-50 m-auto" type="number" id="quantidade_fisico" name="quantidade_fisico" step="0.001" min="0" value="0" required></div>
 
+        <div class="mb-3"><label for="quantidade">Produto ajustado?:</label>
+        <input class="form-check-input" type="checkbox" id="ajuste" name="ajuste" value="True">
+        </div>
+
+        <div class="mb-3"><label for="produtos_conferidos_lojas">Produto conferido nas lojas?:</label>
+        <input class="form-check-input" type="checkbox" id="produtos_conferidos_lojas" name="produtos_conferidos_lojas" value="True"></div>
+
+        <div class="mb-3"><label for="divergencia_sistema">Divergência no sistema:</label>
+        <input class="form-check-input" type="checkbox" id="divergencia_sistema" name="divergencia_sistema" value="True"></div>
+
         <div class="mb-3"><label for="quantidade">Conferente:</label>
             <select required name="conferente" class="form-select text-center w-50 m-auto" id="conferente">
                 {% for i in conferentes %}
