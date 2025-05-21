@@ -1,0 +1,60 @@
+[INFO] 2025-05-21 12:28:19 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[INFO] 2025-05-21 12:28:19 - [33mPress CTRL+C to quit[0m
+[INFO] 2025-05-21 12:28:19 -  * Restarting with stat
+[WARNING] 2025-05-21 12:28:20 -  * Debugger is active!
+[INFO] 2025-05-21 12:28:20 -  * Debugger PIN: 674-789-149
+[INFO] 2025-05-21 12:28:22 - 127.0.0.1 - - [21/May/2025 12:28:22] "GET /download-log HTTP/1.1" 200 -
+[INFO] 2025-05-21 12:29:49 -  * Detected change in 'C:\\Users\\Lucas\\Desktop\\caicosistemafinal\\app\\main.py', reloading
+[INFO] 2025-05-21 12:29:49 -  * Restarting with stat
+[WARNING] 2025-05-21 12:29:50 -  * Debugger is active!
+[INFO] 2025-05-21 12:29:50 -  * Debugger PIN: 674-789-149
+[INFO] 2025-05-21 12:29:53 - 127.0.0.1 - - [21/May/2025 12:29:53] "GET /download-log HTTP/1.1" 200 -
+[INFO] 2025-05-21 12:30:05 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[INFO] 2025-05-21 12:30:05 - [33mPress CTRL+C to quit[0m
+[INFO] 2025-05-21 12:30:05 -  * Restarting with stat
+[WARNING] 2025-05-21 12:30:07 -  * Debugger is active!
+[INFO] 2025-05-21 12:30:07 -  * Debugger PIN: 674-789-149
+[INFO] 2025-05-21 12:30:10 - 127.0.0.1 - - [21/May/2025 12:30:10] "GET /download-log HTTP/1.1" 200 -
+[INFO] 2025-05-21 12:30:52 -  * Detected change in 'C:\\Users\\Lucas\\Desktop\\caicosistemafinal\\app\\routes\\logs.py', reloading
+[INFO] 2025-05-21 12:30:53 -  * Restarting with stat
+[INFO] 2025-05-21 12:31:46 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[INFO] 2025-05-21 12:31:46 - [33mPress CTRL+C to quit[0m
+[INFO] 2025-05-21 12:31:46 -  * Restarting with stat
+[WARNING] 2025-05-21 12:31:47 -  * Debugger is active!
+[INFO] 2025-05-21 12:31:47 -  * Debugger PIN: 674-789-149
+[INFO] 2025-05-21 12:31:48 - 127.0.0.1 - - [21/May/2025 12:31:48] "[33mGET /download-log HTTP/1.1[0m" 404 -
+[INFO] 2025-05-21 12:31:48 - 127.0.0.1 - - [21/May/2025 12:31:48] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+[INFO] 2025-05-21 12:31:53 - 127.0.0.1 - - [21/May/2025 12:31:53] "[33mGET /download-log HTTP/1.1[0m" 404 -
+[INFO] 2025-05-21 12:32:37 -  * Detected change in 'C:\\Users\\Lucas\\Desktop\\caicosistemafinal\\app\\routes\\logs.py', reloading
+[INFO] 2025-05-21 12:32:38 -  * Restarting with stat
+[INFO] 2025-05-21 12:33:12 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[INFO] 2025-05-21 12:33:12 - [33mPress CTRL+C to quit[0m
+[INFO] 2025-05-21 12:33:12 -  * Restarting with stat
+[WARNING] 2025-05-21 12:33:13 -  * Debugger is active!
+[INFO] 2025-05-21 12:33:13 -  * Debugger PIN: 674-789-149
+[INFO] 2025-05-21 12:33:14 - 127.0.0.1 - - [21/May/2025 12:33:14] "[33mGET /download-log HTTP/1.1[0m" 404 -
+[INFO] 2025-05-21 12:33:32 -  * Detected change in 'C:\\Users\\Lucas\\Desktop\\caicosistemafinal\\app\\routes\\logs.py', reloading
+[INFO] 2025-05-21 12:33:32 -  * Restarting with stat
+[WARNING] 2025-05-21 12:33:33 -  * Debugger is active!
+[INFO] 2025-05-21 12:33:33 -  * Debugger PIN: 674-789-149
+[INFO] 2025-05-21 12:33:33 - 127.0.0.1 - - [21/May/2025 12:33:33] "[33mGET /download-log HTTP/1.1[0m" 404 -
+[INFO] 2025-05-21 12:33:37 - 127.0.0.1 - - [21/May/2025 12:33:37] "[33mGET /download-log HTTP/1.1[0m" 404 -
+[INFO] 2025-05-21 12:34:18 -  * Detected change in 'C:\\Users\\Lucas\\Desktop\\caicosistemafinal\\app\\routes\\logs.py', reloading
+[INFO] 2025-05-21 12:34:18 -  * Restarting with stat
+[WARNING] 2025-05-21 12:34:19 -  * Debugger is active!
+[INFO] 2025-05-21 12:34:19 -  * Debugger PIN: 674-789-149
+[INFO] 2025-05-21 12:34:20 - 127.0.0.1 - - [21/May/2025 12:34:20] "[33mGET /download-log HTTP/1.1[0m" 404 -
+[INFO] 2025-05-21 12:34:22 - 127.0.0.1 - - [21/May/2025 12:34:22] "[33mGET /download-log HTTP/1.1[0m" 404 -
+[INFO] 2025-05-21 12:34:36 -  * Detected change in 'C:\\Users\\Lucas\\Desktop\\caicosistemafinal\\app\\main.py', reloading
+[INFO] 2025-05-21 12:34:36 -  * Restarting with stat
+[INFO] 2025-05-21 12:34:58 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[INFO] 2025-05-21 12:34:58 - [33mPress CTRL+C to quit[0m
+[INFO] 2025-05-21 12:34:58 -  * Restarting with stat
+[WARNING] 2025-05-21 12:34:59 -  * Debugger is active!
+[INFO] 2025-05-21 12:34:59 -  * Debugger PIN: 674-789-149
+[INFO] 2025-05-21 12:34:59 - 127.0.0.1 - - [21/May/2025 12:34:59] "GET /download-log HTTP/1.1" 200 -

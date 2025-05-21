@@ -1,0 +1,368 @@
+[WARNING] 2025-05-21 11:08:49 -  * Debugger is active!
+[INFO] 2025-05-21 11:08:49 -  * Debugger PIN: 674-789-149
+[INFO] 2025-05-21 11:09:13 -  * Detected change in 'C:\\Users\\Lucas\\Desktop\\caicosistemafinal\\app\\main.py', reloading
+[WARNING] 2025-05-21 11:09:14 -  * Debugger is active!
+[INFO] 2025-05-21 11:09:14 -  * Debugger PIN: 674-789-149
+[INFO] 2025-05-21 11:09:15 - 127.0.0.1 - - [21/May/2025 11:09:15] "[35m[1mGET /download-log HTTP/1.1[0m" 500 -
+[INFO] 2025-05-21 11:09:15 - 127.0.0.1 - - [21/May/2025 11:09:15] "GET /download-log?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+[INFO] 2025-05-21 11:09:15 - 127.0.0.1 - - [21/May/2025 11:09:15] "GET /download-log?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+[INFO] 2025-05-21 11:09:15 - 127.0.0.1 - - [21/May/2025 11:09:15] "[36mGET /download-log?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+[INFO] 2025-05-21 11:09:24 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[INFO] 2025-05-21 11:09:24 - [33mPress CTRL+C to quit[0m
+[INFO] 2025-05-21 11:09:24 -  * Restarting with stat
+[WARNING] 2025-05-21 11:09:25 -  * Debugger is active!
+[INFO] 2025-05-21 11:09:25 -  * Debugger PIN: 674-789-149
+[INFO] 2025-05-21 11:09:26 - 127.0.0.1 - - [21/May/2025 11:09:26] "[35m[1mGET /download-log HTTP/1.1[0m" 500 -
+[INFO] 2025-05-21 11:09:27 - 127.0.0.1 - - [21/May/2025 11:09:27] "[36mGET /download-log?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+[INFO] 2025-05-21 11:09:27 - 127.0.0.1 - - [21/May/2025 11:09:27] "GET /download-log?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+[INFO] 2025-05-21 11:09:27 - 127.0.0.1 - - [21/May/2025 11:09:27] "[36mGET /download-log?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+[INFO] 2025-05-21 11:09:44 -  * Detected change in 'C:\\Users\\Lucas\\Desktop\\caicosistemafinal\\app\\main.py', reloading
+[INFO] 2025-05-21 11:09:44 -  * Restarting with stat
+[WARNING] 2025-05-21 11:09:45 -  * Debugger is active!
+[INFO] 2025-05-21 11:09:45 -  * Debugger PIN: 674-789-149
+[INFO] 2025-05-21 11:09:46 -  * Detected change in 'C:\\Users\\Lucas\\Desktop\\caicosistemafinal\\app\\main.py', reloading
+[INFO] 2025-05-21 11:09:47 -  * Restarting with stat
+[WARNING] 2025-05-21 11:09:47 -  * Debugger is active!
+[INFO] 2025-05-21 11:09:47 -  * Debugger PIN: 674-789-149
+[INFO] 2025-05-21 11:09:52 - 127.0.0.1 - - [21/May/2025 11:09:52] "[35m[1mGET /download-log HTTP/1.1[0m" 500 -
+[INFO] 2025-05-21 11:09:53 - 127.0.0.1 - - [21/May/2025 11:09:53] "[36mGET /download-log?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+[INFO] 2025-05-21 11:09:53 - 127.0.0.1 - - [21/May/2025 11:09:53] "GET /download-log?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+[INFO] 2025-05-21 11:09:53 - 127.0.0.1 - - [21/May/2025 11:09:53] "GET /download-log?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[INFO] 2025-05-21 11:09:53 - 127.0.0.1 - - [21/May/2025 11:09:53] "[36mGET /download-log?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+[INFO] 2025-05-21 11:10:56 -  * Detected change in 'C:\\Users\\Lucas\\Desktop\\caicosistemafinal\\app\\main.py', reloading
+[INFO] 2025-05-21 11:10:56 -  * Restarting with stat
+[WARNING] 2025-05-21 11:10:57 -  * Debugger is active!
+[INFO] 2025-05-21 11:10:57 -  * Debugger PIN: 674-789-149
+[INFO] 2025-05-21 11:10:58 - 127.0.0.1 - - [21/May/2025 11:10:58] "[35m[1mGET /download-log HTTP/1.1[0m" 500 -
+[INFO] 2025-05-21 11:10:58 - 127.0.0.1 - - [21/May/2025 11:10:58] "[36mGET /download-log?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+[INFO] 2025-05-21 11:10:58 - 127.0.0.1 - - [21/May/2025 11:10:58] "GET /download-log?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+[INFO] 2025-05-21 11:10:58 - 127.0.0.1 - - [21/May/2025 11:10:58] "[36mGET /download-log?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+[INFO] 2025-05-21 11:11:26 -  * Detected change in 'C:\\Users\\Lucas\\Desktop\\caicosistemafinal\\app\\main.py', reloading
+[INFO] 2025-05-21 11:11:26 -  * Restarting with stat
+[WARNING] 2025-05-21 11:11:27 -  * Debugger is active!
+[INFO] 2025-05-21 11:11:27 -  * Debugger PIN: 674-789-149
+[INFO] 2025-05-21 11:11:34 -  * Detected change in 'C:\\Users\\Lucas\\Desktop\\caicosistemafinal\\app\\main.py', reloading
+[INFO] 2025-05-21 11:11:34 -  * Restarting with stat
+[WARNING] 2025-05-21 11:11:35 -  * Debugger is active!
+[INFO] 2025-05-21 11:11:35 -  * Debugger PIN: 674-789-149
+[INFO] 2025-05-21 11:11:35 - 127.0.0.1 - - [21/May/2025 11:11:35] "[35m[1mGET /download-log HTTP/1.1[0m" 500 -
+[INFO] 2025-05-21 11:11:35 - 127.0.0.1 - - [21/May/2025 11:11:35] "GET /download-log?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+[INFO] 2025-05-21 11:11:35 - 127.0.0.1 - - [21/May/2025 11:11:35] "[36mGET /download-log?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+[INFO] 2025-05-21 11:11:35 - 127.0.0.1 - - [21/May/2025 11:11:35] "GET /download-log?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[INFO] 2025-05-21 11:11:35 - 127.0.0.1 - - [21/May/2025 11:11:35] "[36mGET /download-log?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+[INFO] 2025-05-21 11:11:43 -  * Detected change in 'C:\\Users\\Lucas\\Desktop\\caicosistemafinal\\app\\main.py', reloading
+[INFO] 2025-05-21 11:11:43 -  * Restarting with stat
+[WARNING] 2025-05-21 11:11:44 -  * Debugger is active!
+[INFO] 2025-05-21 11:11:44 -  * Debugger PIN: 674-789-149
+[INFO] 2025-05-21 11:11:44 - 127.0.0.1 - - [21/May/2025 11:11:44] "[35m[1mGET /download-log HTTP/1.1[0m" 500 -
+[INFO] 2025-05-21 11:11:44 - 127.0.0.1 - - [21/May/2025 11:11:44] "[36mGET /download-log?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+[INFO] 2025-05-21 11:11:44 - 127.0.0.1 - - [21/May/2025 11:11:44] "[36mGET /download-log?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+[INFO] 2025-05-21 11:11:45 - 127.0.0.1 - - [21/May/2025 11:11:45] "[36mGET /download-log?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+[INFO] 2025-05-21 11:11:53 - 127.0.0.1 - - [21/May/2025 11:11:53] "[35m[1mGET /download-log HTTP/1.1[0m" 500 -
+[INFO] 2025-05-21 11:11:53 - 127.0.0.1 - - [21/May/2025 11:11:53] "[36mGET /download-log?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+[INFO] 2025-05-21 11:11:53 - 127.0.0.1 - - [21/May/2025 11:11:53] "[36mGET /download-log?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+[INFO] 2025-05-21 11:11:53 - 127.0.0.1 - - [21/May/2025 11:11:53] "[36mGET /download-log?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+[INFO] 2025-05-21 12:13:53 -  * Detected change in 'C:\\Users\\Lucas\\Desktop\\caicosistemafinal\\app\\main.py', reloading
+[INFO] 2025-05-21 12:13:53 -  * Restarting with stat
+[WARNING] 2025-05-21 12:13:54 -  * Debugger is active!
+[INFO] 2025-05-21 12:13:54 -  * Debugger PIN: 674-789-149
+[INFO] 2025-05-21 12:14:06 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[INFO] 2025-05-21 12:14:06 - [33mPress CTRL+C to quit[0m
+[INFO] 2025-05-21 12:14:06 -  * Restarting with stat
+[WARNING] 2025-05-21 12:14:07 -  * Debugger is active!
+[INFO] 2025-05-21 12:14:07 -  * Debugger PIN: 674-789-149
+[INFO] 2025-05-21 12:14:16 - SELECT DATABASE()
+[INFO] 2025-05-21 12:14:16 - [raw sql] {}
+[DEBUG] 2025-05-21 12:14:17 - Col ('DATABASE()',)
+[DEBUG] 2025-05-21 12:14:17 - Row ('caicomatriz',)
+[INFO] 2025-05-21 12:14:17 - SELECT @@sql_mode
+[INFO] 2025-05-21 12:14:17 - [raw sql] {}
+[DEBUG] 2025-05-21 12:14:17 - Col ('@@sql_mode',)
+[DEBUG] 2025-05-21 12:14:17 - Row ('ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION',)
+[INFO] 2025-05-21 12:14:17 - SELECT @@lower_case_table_names
+[INFO] 2025-05-21 12:14:17 - [raw sql] {}
+[DEBUG] 2025-05-21 12:14:18 - Col ('@@lower_case_table_names',)
+[DEBUG] 2025-05-21 12:14:18 - Row (0,)
+[INFO] 2025-05-21 12:14:18 - BEGIN (implicit)
+[INFO] 2025-05-21 12:14:18 - SELECT users.id AS users_id, users.username AS users_username, users.password AS users_password, users.acesso AS users_acesso 
+FROM users 
+WHERE users.id = %(pk_1)s
+[INFO] 2025-05-21 12:14:18 - [generated in 0.00043s] {'pk_1': '1'}
+[DEBUG] 2025-05-21 12:14:18 - Col ('users_id', 'users_username', 'users_password', 'users_acesso')
+[DEBUG] 2025-05-21 12:14:18 - Row (1, 'lucas', '88335938', 4)
+[INFO] 2025-05-21 12:14:18 - SELECT produto__avaria.data_de_insercao AS produto__avaria_data_de_insercao, sum(produto__avaria.preco_total) AS total_value 
+FROM produto__avaria 
+WHERE produto__avaria.data_de_insercao >= %(data_de_insercao_1)s AND produto__avaria.data_de_insercao <= %(data_de_insercao_2)s GROUP BY produto__avaria.data_de_insercao
+[INFO] 2025-05-21 12:14:18 - [generated in 0.00031s] {'data_de_insercao_1': datetime.date(2025, 5, 1), 'data_de_insercao_2': datetime.date(2025, 5, 31)}
+[DEBUG] 2025-05-21 12:14:18 - Col ('produto__avaria_data_de_insercao', 'total_value')
+[INFO] 2025-05-21 12:14:18 - SELECT produto__avaria.id AS produto__avaria_id, produto__avaria.codigo_do_produto AS produto__avaria_codigo_do_produto, produto__avaria.nome_do_produto AS produto__avaria_nome_do_produto, produto__avaria.preco_do_produto AS produto__avaria_preco_do_produto, produto__avaria.quantidade AS produto__avaria_quantidade, produto__avaria.preco_total AS produto__avaria_preco_total, produto__avaria.data_de_insercao AS produto__avaria_data_de_insercao, produto__avaria.criador AS produto__avaria_criador, produto__avaria.tipodeavaria AS produto__avaria_tipodeavaria, produto__avaria.usoeconsumo AS produto__avaria_usoeconsumo 
+FROM produto__avaria ORDER BY produto__avaria.data_de_insercao DESC 
+ LIMIT %(param_1)s
+[INFO] 2025-05-21 12:14:18 - [generated in 0.00033s] {'param_1': 5}
+[DEBUG] 2025-05-21 12:14:19 - Col ('produto__avaria_id', 'produto__avaria_codigo_do_produto', 'produto__avaria_nome_do_produto', 'produto__avaria_preco_do_produto', 'produto__avaria_quantidade', 'produto__avaria_preco_total', 'produto__avaria_data_de_insercao', 'produto__avaria_criador', 'produto__avaria_tipodeavaria', 'produto__avaria_usoeconsumo')
+[DEBUG] 2025-05-21 12:14:19 - Row (290, 351, 'GRANULADO CROC. MULTICOLOR HARALD CX 10 PCT 1.01KG', Decimal('18.20'), Decimal('62.000'), Decimal('1128.40'), datetime.date(2025, 4, 9), 'jussier', 'Vencido', 'Não')
+[DEBUG] 2025-05-21 12:14:19 - Row (289, 7796, 'PRESUNTO SEM CAPA DE GORDURA PEPERI CX 7 KG', Decimal('17.84'), Decimal('3.000'), Decimal('53.52'), datetime.date(2025, 4, 8), 'alyson', 'Vencido', 'Não')
+[DEBUG] 2025-05-21 12:14:19 - Row (288, 213, 'DOCE DE SORO DE LEITE CHOCOLATE AUREA 4.8 KG ', Decimal('33.30'), Decimal('1.000'), Decimal('33.30'), datetime.date(2025, 4, 5), 'jussier', 'Vencido', 'Não')
+[DEBUG] 2025-05-21 12:14:19 - Row (287, 11019, 'CHOCOLATE BARRA NOBRE BRANCO SICAO  CX 10 UN 1.010 KG', Decimal('53.41'), Decimal('12.000'), Decimal('640.92'), datetime.date(2025, 4, 5), 'jussier', 'Vencido', 'Não')
+[DEBUG] 2025-05-21 12:14:19 - Row (286, 2814, 'MANTEIGA EM GARRAFA PURA AUREAS 500ML', Decimal('20.00'), Decimal('10.000'), Decimal('200.00'), datetime.date(2025, 3, 25), 'jussier', 'Vencido', 'Não')
+[INFO] 2025-05-21 12:14:19 - SELECT produto__vencimento.id AS produto__vencimento_id, produto__vencimento.codigo_do_produto AS produto__vencimento_codigo_do_produto, produto__vencimento.nome_do_produto AS produto__vencimento_nome_do_produto, produto__vencimento.quantidade AS produto__vencimento_quantidade, produto__vencimento.data_de_vencimento AS produto__vencimento_data_de_vencimento, produto__vencimento.data_de_insercao AS produto__vencimento_data_de_insercao, produto__vencimento.atualizacao AS produto__vencimento_atualizacao, produto__vencimento.criador AS produto__vencimento_criador 
+FROM produto__vencimento ORDER BY produto__vencimento.data_de_vencimento 
+ LIMIT %(param_1)s
+[INFO] 2025-05-21 12:14:19 - [generated in 0.00045s] {'param_1': 5}
+[DEBUG] 2025-05-21 12:14:19 - Col ('produto__vencimento_id', 'produto__vencimento_codigo_do_produto', 'produto__vencimento_nome_do_produto', 'produto__vencimento_quantidade', 'produto__vencimento_data_de_vencimento', 'produto__vencimento_data_de_insercao', 'produto__vencimento_atualizacao', 'produto__vencimento_criador')
+[DEBUG] 2025-05-21 12:14:19 - Row (584, 4226, 'FILE MIGNON DE BOVINO SEM CORDAO 4/5 RESFRIADO', Decimal('39.00'), datetime.date(2025, 4, 24), datetime.date(2025, 4, 10), datetime.date(2025, 4, 10), 'jussier')
+[DEBUG] 2025-05-21 12:14:19 - Row (586, 115, 'COXAO DURO DE BOVINO RESFRIADO', Decimal('120.00'), datetime.date(2025, 4, 24), datetime.date(2025, 4, 11), datetime.date(2025, 4, 11), 'jussier')
+[DEBUG] 2025-05-21 12:14:19 - Row (574, 114, 'COXAO MOLE DE BOVINO RESFRIADO', Decimal('100.00'), datetime.date(2025, 4, 24), datetime.date(2025, 4, 3), datetime.date(2025, 4, 11), 'alyson')
+[DEBUG] 2025-05-21 12:14:19 - Row (567, 2585, 'KIT FEIJOADA MAIS SUINOS CX 10 PCT 1 KG', Decimal('25.00'), datetime.date(2025, 4, 26), datetime.date(2025, 4, 3), datetime.date(2025, 4, 3), 'alyson')
+[DEBUG] 2025-05-21 12:14:19 - Row (546, 4982, 'LINGUICA CALABRESA RETA NUTRIBRAS PCT 4,5KG', Decimal('9.00'), datetime.date(2025, 4, 27), datetime.date(2025, 3, 26), datetime.date(2025, 4, 7), 'alyson')
+[INFO] 2025-05-21 12:14:19 - ROLLBACK
+[INFO] 2025-05-21 12:14:19 - 127.0.0.1 - - [21/May/2025 12:14:19] "GET / HTTP/1.1" 200 -
+[INFO] 2025-05-21 12:14:20 - 127.0.0.1 - - [21/May/2025 12:14:20] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+[INFO] 2025-05-21 12:14:20 - 127.0.0.1 - - [21/May/2025 12:14:20] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+[INFO] 2025-05-21 12:14:20 - 127.0.0.1 - - [21/May/2025 12:14:20] "GET /static/imagens/logo.png HTTP/1.1" 200 -
+[INFO] 2025-05-21 12:14:57 -  * Detected change in 'C:\\Users\\Lucas\\Desktop\\caicosistemafinal\\app\\main.py', reloading
+[INFO] 2025-05-21 12:14:57 -  * Restarting with stat
+[WARNING] 2025-05-21 12:14:59 -  * Debugger is active!
+[INFO] 2025-05-21 12:14:59 -  * Debugger PIN: 674-789-149
+[INFO] 2025-05-21 12:15:37 -  * Detected change in 'C:\\Users\\Lucas\\Desktop\\caicosistemafinal\\app\\main.py', reloading
+[INFO] 2025-05-21 12:15:37 -  * Restarting with stat
+[WARNING] 2025-05-21 12:15:39 -  * Debugger is active!
+[INFO] 2025-05-21 12:15:39 -  * Debugger PIN: 674-789-149
+[INFO] 2025-05-21 12:15:43 - SELECT DATABASE()
+[INFO] 2025-05-21 12:15:43 - [raw sql] {}
+[DEBUG] 2025-05-21 12:15:43 - Col ('DATABASE()',)
+[DEBUG] 2025-05-21 12:15:43 - Row ('caicomatriz',)
+[INFO] 2025-05-21 12:15:43 - SELECT @@sql_mode
+[INFO] 2025-05-21 12:15:43 - [raw sql] {}
+[DEBUG] 2025-05-21 12:15:44 - Col ('@@sql_mode',)
+[DEBUG] 2025-05-21 12:15:44 - Row ('ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION',)
+[INFO] 2025-05-21 12:15:44 - SELECT @@lower_case_table_names
+[INFO] 2025-05-21 12:15:44 - [raw sql] {}
+[DEBUG] 2025-05-21 12:15:44 - Col ('@@lower_case_table_names',)
+[DEBUG] 2025-05-21 12:15:44 - Row (0,)
+[INFO] 2025-05-21 12:15:45 - BEGIN (implicit)
+[INFO] 2025-05-21 12:15:45 - SELECT users.id AS users_id, users.username AS users_username, users.password AS users_password, users.acesso AS users_acesso 
+FROM users 
+WHERE users.id = %(pk_1)s
+[INFO] 2025-05-21 12:15:45 - [generated in 0.00044s] {'pk_1': '1'}
+[DEBUG] 2025-05-21 12:15:45 - Col ('users_id', 'users_username', 'users_password', 'users_acesso')
+[DEBUG] 2025-05-21 12:15:45 - Row (1, 'lucas', '88335938', 4)
+[INFO] 2025-05-21 12:15:45 - SELECT produto__avaria.data_de_insercao AS produto__avaria_data_de_insercao, sum(produto__avaria.preco_total) AS total_value 
+FROM produto__avaria 
+WHERE produto__avaria.data_de_insercao >= %(data_de_insercao_1)s AND produto__avaria.data_de_insercao <= %(data_de_insercao_2)s GROUP BY produto__avaria.data_de_insercao
+[INFO] 2025-05-21 12:15:45 - [generated in 0.00040s] {'data_de_insercao_1': datetime.date(2025, 5, 1), 'data_de_insercao_2': datetime.date(2025, 5, 31)}
+[DEBUG] 2025-05-21 12:15:45 - Col ('produto__avaria_data_de_insercao', 'total_value')
+[INFO] 2025-05-21 12:15:45 - SELECT produto__avaria.id AS produto__avaria_id, produto__avaria.codigo_do_produto AS produto__avaria_codigo_do_produto, produto__avaria.nome_do_produto AS produto__avaria_nome_do_produto, produto__avaria.preco_do_produto AS produto__avaria_preco_do_produto, produto__avaria.quantidade AS produto__avaria_quantidade, produto__avaria.preco_total AS produto__avaria_preco_total, produto__avaria.data_de_insercao AS produto__avaria_data_de_insercao, produto__avaria.criador AS produto__avaria_criador, produto__avaria.tipodeavaria AS produto__avaria_tipodeavaria, produto__avaria.usoeconsumo AS produto__avaria_usoeconsumo 
+FROM produto__avaria ORDER BY produto__avaria.data_de_insercao DESC 
+ LIMIT %(param_1)s
+[INFO] 2025-05-21 12:15:45 - [generated in 0.00029s] {'param_1': 5}
+[DEBUG] 2025-05-21 12:15:45 - Col ('produto__avaria_id', 'produto__avaria_codigo_do_produto', 'produto__avaria_nome_do_produto', 'produto__avaria_preco_do_produto', 'produto__avaria_quantidade', 'produto__avaria_preco_total', 'produto__avaria_data_de_insercao', 'produto__avaria_criador', 'produto__avaria_tipodeavaria', 'produto__avaria_usoeconsumo')
+[DEBUG] 2025-05-21 12:15:45 - Row (290, 351, 'GRANULADO CROC. MULTICOLOR HARALD CX 10 PCT 1.01KG', Decimal('18.20'), Decimal('62.000'), Decimal('1128.40'), datetime.date(2025, 4, 9), 'jussier', 'Vencido', 'Não')
+[DEBUG] 2025-05-21 12:15:45 - Row (289, 7796, 'PRESUNTO SEM CAPA DE GORDURA PEPERI CX 7 KG', Decimal('17.84'), Decimal('3.000'), Decimal('53.52'), datetime.date(2025, 4, 8), 'alyson', 'Vencido', 'Não')
+[DEBUG] 2025-05-21 12:15:45 - Row (288, 213, 'DOCE DE SORO DE LEITE CHOCOLATE AUREA 4.8 KG ', Decimal('33.30'), Decimal('1.000'), Decimal('33.30'), datetime.date(2025, 4, 5), 'jussier', 'Vencido', 'Não')
+[DEBUG] 2025-05-21 12:15:45 - Row (287, 11019, 'CHOCOLATE BARRA NOBRE BRANCO SICAO  CX 10 UN 1.010 KG', Decimal('53.41'), Decimal('12.000'), Decimal('640.92'), datetime.date(2025, 4, 5), 'jussier', 'Vencido', 'Não')
+[DEBUG] 2025-05-21 12:15:45 - Row (286, 2814, 'MANTEIGA EM GARRAFA PURA AUREAS 500ML', Decimal('20.00'), Decimal('10.000'), Decimal('200.00'), datetime.date(2025, 3, 25), 'jussier', 'Vencido', 'Não')
+[INFO] 2025-05-21 12:15:45 - SELECT produto__vencimento.id AS produto__vencimento_id, produto__vencimento.codigo_do_produto AS produto__vencimento_codigo_do_produto, produto__vencimento.nome_do_produto AS produto__vencimento_nome_do_produto, produto__vencimento.quantidade AS produto__vencimento_quantidade, produto__vencimento.data_de_vencimento AS produto__vencimento_data_de_vencimento, produto__vencimento.data_de_insercao AS produto__vencimento_data_de_insercao, produto__vencimento.atualizacao AS produto__vencimento_atualizacao, produto__vencimento.criador AS produto__vencimento_criador 
+FROM produto__vencimento ORDER BY produto__vencimento.data_de_vencimento 
+ LIMIT %(param_1)s
+[INFO] 2025-05-21 12:15:45 - [generated in 0.00122s] {'param_1': 5}
+[DEBUG] 2025-05-21 12:15:46 - Col ('produto__vencimento_id', 'produto__vencimento_codigo_do_produto', 'produto__vencimento_nome_do_produto', 'produto__vencimento_quantidade', 'produto__vencimento_data_de_vencimento', 'produto__vencimento_data_de_insercao', 'produto__vencimento_atualizacao', 'produto__vencimento_criador')
+[DEBUG] 2025-05-21 12:15:46 - Row (584, 4226, 'FILE MIGNON DE BOVINO SEM CORDAO 4/5 RESFRIADO', Decimal('39.00'), datetime.date(2025, 4, 24), datetime.date(2025, 4, 10), datetime.date(2025, 4, 10), 'jussier')
+[DEBUG] 2025-05-21 12:15:46 - Row (586, 115, 'COXAO DURO DE BOVINO RESFRIADO', Decimal('120.00'), datetime.date(2025, 4, 24), datetime.date(2025, 4, 11), datetime.date(2025, 4, 11), 'jussier')
+[DEBUG] 2025-05-21 12:15:46 - Row (574, 114, 'COXAO MOLE DE BOVINO RESFRIADO', Decimal('100.00'), datetime.date(2025, 4, 24), datetime.date(2025, 4, 3), datetime.date(2025, 4, 11), 'alyson')
+[DEBUG] 2025-05-21 12:15:46 - Row (567, 2585, 'KIT FEIJOADA MAIS SUINOS CX 10 PCT 1 KG', Decimal('25.00'), datetime.date(2025, 4, 26), datetime.date(2025, 4, 3), datetime.date(2025, 4, 3), 'alyson')
+[DEBUG] 2025-05-21 12:15:46 - Row (546, 4982, 'LINGUICA CALABRESA RETA NUTRIBRAS PCT 4,5KG', Decimal('9.00'), datetime.date(2025, 4, 27), datetime.date(2025, 3, 26), datetime.date(2025, 4, 7), 'alyson')
+[INFO] 2025-05-21 12:15:46 - ROLLBACK
+[INFO] 2025-05-21 12:15:46 - 127.0.0.1 - - [21/May/2025 12:15:46] "GET / HTTP/1.1" 200 -
+[INFO] 2025-05-21 12:15:46 - 127.0.0.1 - - [21/May/2025 12:15:46] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+[INFO] 2025-05-21 12:15:46 - 127.0.0.1 - - [21/May/2025 12:15:46] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+[INFO] 2025-05-21 12:15:47 - 127.0.0.1 - - [21/May/2025 12:15:47] "GET /static/imagens/logo.png HTTP/1.1" 200 -
+[INFO] 2025-05-21 12:17:07 -  * Detected change in 'C:\\Users\\Lucas\\Desktop\\caicosistemafinal\\app\\main.py', reloading
+[INFO] 2025-05-21 12:17:07 -  * Restarting with stat
+[INFO] 2025-05-21 12:17:32 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[INFO] 2025-05-21 12:17:32 - [33mPress CTRL+C to quit[0m
+[INFO] 2025-05-21 12:17:32 -  * Restarting with stat
+[WARNING] 2025-05-21 12:17:33 -  * Debugger is active!
+[INFO] 2025-05-21 12:17:33 -  * Debugger PIN: 674-789-149
+[INFO] 2025-05-21 12:17:33 - 127.0.0.1 - - [21/May/2025 12:17:33] "[33mGET /download-log HTTP/1.1[0m" 404 -
+[INFO] 2025-05-21 12:17:33 - 127.0.0.1 - - [21/May/2025 12:17:33] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+[INFO] 2025-05-21 12:20:34 -  * Detected change in 'C:\\Users\\Lucas\\Desktop\\caicosistemafinal\\app\\main.py', reloading
+[INFO] 2025-05-21 12:20:35 -  * Restarting with stat
+[INFO] 2025-05-21 12:22:29 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[INFO] 2025-05-21 12:22:29 - [33mPress CTRL+C to quit[0m
+[INFO] 2025-05-21 12:22:29 -  * Restarting with stat
+[WARNING] 2025-05-21 12:22:30 -  * Debugger is active!
+[INFO] 2025-05-21 12:22:30 -  * Debugger PIN: 674-789-149
+[INFO] 2025-05-21 12:22:32 -  * Detected change in 'C:\\Users\\Lucas\\Desktop\\caicosistemafinal\\app\\main.py', reloading
+[INFO] 2025-05-21 12:22:32 -  * Restarting with stat
+[WARNING] 2025-05-21 12:22:33 -  * Debugger is active!
+[INFO] 2025-05-21 12:22:33 -  * Debugger PIN: 674-789-149
+[INFO] 2025-05-21 12:22:37 -  * Detected change in 'C:\\Users\\Lucas\\Desktop\\caicosistemafinal\\app\\main.py', reloading
+[INFO] 2025-05-21 12:22:37 -  * Restarting with stat
+[WARNING] 2025-05-21 12:22:38 -  * Debugger is active!
+[INFO] 2025-05-21 12:22:38 -  * Debugger PIN: 674-789-149
+[INFO] 2025-05-21 12:23:01 -  * Detected change in 'C:\\Users\\Lucas\\Desktop\\caicosistemafinal\\app\\main.py', reloading
+[INFO] 2025-05-21 12:23:01 -  * Restarting with stat
+[WARNING] 2025-05-21 12:23:02 -  * Debugger is active!
+[INFO] 2025-05-21 12:23:02 -  * Debugger PIN: 674-789-149
+[INFO] 2025-05-21 12:23:14 - SELECT DATABASE()
+[INFO] 2025-05-21 12:23:14 - [raw sql] {}
+[DEBUG] 2025-05-21 12:23:14 - Col ('DATABASE()',)
+[DEBUG] 2025-05-21 12:23:14 - Row ('caicomatriz',)
+[INFO] 2025-05-21 12:23:15 - SELECT @@sql_mode
+[INFO] 2025-05-21 12:23:15 - [raw sql] {}
+[DEBUG] 2025-05-21 12:23:15 - Col ('@@sql_mode',)
+[DEBUG] 2025-05-21 12:23:15 - Row ('ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION',)
+[INFO] 2025-05-21 12:23:15 - SELECT @@lower_case_table_names
+[INFO] 2025-05-21 12:23:15 - [raw sql] {}
+[DEBUG] 2025-05-21 12:23:15 - Col ('@@lower_case_table_names',)
+[DEBUG] 2025-05-21 12:23:15 - Row (0,)
+[INFO] 2025-05-21 12:23:16 - BEGIN (implicit)
+[INFO] 2025-05-21 12:23:16 - SELECT users.id AS users_id, users.username AS users_username, users.password AS users_password, users.acesso AS users_acesso 
+FROM users 
+WHERE users.id = %(pk_1)s
+[INFO] 2025-05-21 12:23:16 - [generated in 0.00138s] {'pk_1': '1'}
+[DEBUG] 2025-05-21 12:23:16 - Col ('users_id', 'users_username', 'users_password', 'users_acesso')
+[DEBUG] 2025-05-21 12:23:16 - Row (1, 'lucas', '88335938', 4)
+[INFO] 2025-05-21 12:23:16 - SELECT produto__avaria.data_de_insercao AS produto__avaria_data_de_insercao, sum(produto__avaria.preco_total) AS total_value 
+FROM produto__avaria 
+WHERE produto__avaria.data_de_insercao >= %(data_de_insercao_1)s AND produto__avaria.data_de_insercao <= %(data_de_insercao_2)s GROUP BY produto__avaria.data_de_insercao
+[INFO] 2025-05-21 12:23:16 - [generated in 0.00090s] {'data_de_insercao_1': datetime.date(2025, 5, 1), 'data_de_insercao_2': datetime.date(2025, 5, 31)}
+[DEBUG] 2025-05-21 12:23:16 - Col ('produto__avaria_data_de_insercao', 'total_value')
+[INFO] 2025-05-21 12:23:16 - SELECT produto__avaria.id AS produto__avaria_id, produto__avaria.codigo_do_produto AS produto__avaria_codigo_do_produto, produto__avaria.nome_do_produto AS produto__avaria_nome_do_produto, produto__avaria.preco_do_produto AS produto__avaria_preco_do_produto, produto__avaria.quantidade AS produto__avaria_quantidade, produto__avaria.preco_total AS produto__avaria_preco_total, produto__avaria.data_de_insercao AS produto__avaria_data_de_insercao, produto__avaria.criador AS produto__avaria_criador, produto__avaria.tipodeavaria AS produto__avaria_tipodeavaria, produto__avaria.usoeconsumo AS produto__avaria_usoeconsumo 
+FROM produto__avaria ORDER BY produto__avaria.data_de_insercao DESC 
+ LIMIT %(param_1)s
+[INFO] 2025-05-21 12:23:16 - [generated in 0.00059s] {'param_1': 5}
+[DEBUG] 2025-05-21 12:23:17 - Col ('produto__avaria_id', 'produto__avaria_codigo_do_produto', 'produto__avaria_nome_do_produto', 'produto__avaria_preco_do_produto', 'produto__avaria_quantidade', 'produto__avaria_preco_total', 'produto__avaria_data_de_insercao', 'produto__avaria_criador', 'produto__avaria_tipodeavaria', 'produto__avaria_usoeconsumo')
+[DEBUG] 2025-05-21 12:23:17 - Row (290, 351, 'GRANULADO CROC. MULTICOLOR HARALD CX 10 PCT 1.01KG', Decimal('18.20'), Decimal('62.000'), Decimal('1128.40'), datetime.date(2025, 4, 9), 'jussier', 'Vencido', 'Não')
+[DEBUG] 2025-05-21 12:23:17 - Row (289, 7796, 'PRESUNTO SEM CAPA DE GORDURA PEPERI CX 7 KG', Decimal('17.84'), Decimal('3.000'), Decimal('53.52'), datetime.date(2025, 4, 8), 'alyson', 'Vencido', 'Não')
+[DEBUG] 2025-05-21 12:23:17 - Row (288, 213, 'DOCE DE SORO DE LEITE CHOCOLATE AUREA 4.8 KG ', Decimal('33.30'), Decimal('1.000'), Decimal('33.30'), datetime.date(2025, 4, 5), 'jussier', 'Vencido', 'Não')
+[DEBUG] 2025-05-21 12:23:17 - Row (287, 11019, 'CHOCOLATE BARRA NOBRE BRANCO SICAO  CX 10 UN 1.010 KG', Decimal('53.41'), Decimal('12.000'), Decimal('640.92'), datetime.date(2025, 4, 5), 'jussier', 'Vencido', 'Não')
+[DEBUG] 2025-05-21 12:23:17 - Row (286, 2814, 'MANTEIGA EM GARRAFA PURA AUREAS 500ML', Decimal('20.00'), Decimal('10.000'), Decimal('200.00'), datetime.date(2025, 3, 25), 'jussier', 'Vencido', 'Não')
+[INFO] 2025-05-21 12:23:17 - SELECT produto__vencimento.id AS produto__vencimento_id, produto__vencimento.codigo_do_produto AS produto__vencimento_codigo_do_produto, produto__vencimento.nome_do_produto AS produto__vencimento_nome_do_produto, produto__vencimento.quantidade AS produto__vencimento_quantidade, produto__vencimento.data_de_vencimento AS produto__vencimento_data_de_vencimento, produto__vencimento.data_de_insercao AS produto__vencimento_data_de_insercao, produto__vencimento.atualizacao AS produto__vencimento_atualizacao, produto__vencimento.criador AS produto__vencimento_criador 
+FROM produto__vencimento ORDER BY produto__vencimento.data_de_vencimento 
+ LIMIT %(param_1)s
+[INFO] 2025-05-21 12:23:17 - [generated in 0.00308s] {'param_1': 5}
+[DEBUG] 2025-05-21 12:23:17 - Col ('produto__vencimento_id', 'produto__vencimento_codigo_do_produto', 'produto__vencimento_nome_do_produto', 'produto__vencimento_quantidade', 'produto__vencimento_data_de_vencimento', 'produto__vencimento_data_de_insercao', 'produto__vencimento_atualizacao', 'produto__vencimento_criador')
+[DEBUG] 2025-05-21 12:23:17 - Row (584, 4226, 'FILE MIGNON DE BOVINO SEM CORDAO 4/5 RESFRIADO', Decimal('39.00'), datetime.date(2025, 4, 24), datetime.date(2025, 4, 10), datetime.date(2025, 4, 10), 'jussier')
+[DEBUG] 2025-05-21 12:23:17 - Row (586, 115, 'COXAO DURO DE BOVINO RESFRIADO', Decimal('120.00'), datetime.date(2025, 4, 24), datetime.date(2025, 4, 11), datetime.date(2025, 4, 11), 'jussier')
+[DEBUG] 2025-05-21 12:23:17 - Row (574, 114, 'COXAO MOLE DE BOVINO RESFRIADO', Decimal('100.00'), datetime.date(2025, 4, 24), datetime.date(2025, 4, 3), datetime.date(2025, 4, 11), 'alyson')
+[DEBUG] 2025-05-21 12:23:17 - Row (567, 2585, 'KIT FEIJOADA MAIS SUINOS CX 10 PCT 1 KG', Decimal('25.00'), datetime.date(2025, 4, 26), datetime.date(2025, 4, 3), datetime.date(2025, 4, 3), 'alyson')
+[DEBUG] 2025-05-21 12:23:17 - Row (546, 4982, 'LINGUICA CALABRESA RETA NUTRIBRAS PCT 4,5KG', Decimal('9.00'), datetime.date(2025, 4, 27), datetime.date(2025, 3, 26), datetime.date(2025, 4, 7), 'alyson')
+[INFO] 2025-05-21 12:23:17 - ROLLBACK
+[INFO] 2025-05-21 12:23:18 - 127.0.0.1 - - [21/May/2025 12:23:18] "GET / HTTP/1.1" 200 -
+[INFO] 2025-05-21 12:23:18 - 127.0.0.1 - - [21/May/2025 12:23:18] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+[INFO] 2025-05-21 12:23:18 - 127.0.0.1 - - [21/May/2025 12:23:18] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+[INFO] 2025-05-21 12:23:18 - 127.0.0.1 - - [21/May/2025 12:23:18] "[36mGET /static/imagens/logo.png HTTP/1.1[0m" 304 -
+[INFO] 2025-05-21 12:23:21 - BEGIN (implicit)
+[INFO] 2025-05-21 12:23:21 - SELECT produto__vencimento.id AS produto__vencimento_id, produto__vencimento.codigo_do_produto AS produto__vencimento_codigo_do_produto, produto__vencimento.nome_do_produto AS produto__vencimento_nome_do_produto, produto__vencimento.quantidade AS produto__vencimento_quantidade, produto__vencimento.data_de_vencimento AS produto__vencimento_data_de_vencimento, produto__vencimento.data_de_insercao AS produto__vencimento_data_de_insercao, produto__vencimento.atualizacao AS produto__vencimento_atualizacao, produto__vencimento.criador AS produto__vencimento_criador 
+FROM produto__vencimento ORDER BY produto__vencimento.data_de_vencimento ASC
+[INFO] 2025-05-21 12:23:21 - [generated in 0.00071s] {}
+[DEBUG] 2025-05-21 12:23:21 - Col ('produto__vencimento_id', 'produto__vencimento_codigo_do_produto', 'produto__vencimento_nome_do_produto', 'produto__vencimento_quantidade', 'produto__vencimento_data_de_vencimento', 'produto__vencimento_data_de_insercao', 'produto__vencimento_atualizacao', 'produto__vencimento_criador')
+[DEBUG] 2025-05-21 12:23:21 - Row (574, 114, 'COXAO MOLE DE BOVINO RESFRIADO', Decimal('100.00'), datetime.date(2025, 4, 24), datetime.date(2025, 4, 3), datetime.date(2025, 4, 11), 'alyson')
+[DEBUG] 2025-05-21 12:23:21 - Row (586, 115, 'COXAO DURO DE BOVINO RESFRIADO', Decimal('120.00'), datetime.date(2025, 4, 24), datetime.date(2025, 4, 11), datetime.date(2025, 4, 11), 'jussier')
+[DEBUG] 2025-05-21 12:23:21 - Row (584, 4226, 'FILE MIGNON DE BOVINO SEM CORDAO 4/5 RESFRIADO', Decimal('39.00'), datetime.date(2025, 4, 24), datetime.date(2025, 4, 10), datetime.date(2025, 4, 10), 'jussier')
+[DEBUG] 2025-05-21 12:23:21 - Row (567, 2585, 'KIT FEIJOADA MAIS SUINOS CX 10 PCT 1 KG', Decimal('25.00'), datetime.date(2025, 4, 26), datetime.date(2025, 4, 3), datetime.date(2025, 4, 3), 'alyson')
+[DEBUG] 2025-05-21 12:23:21 - Row (577, 2735, 'LINGUICA CALABRESA RETA FRIMESA CX 4 PCT 3 KG', Decimal('15.00'), datetime.date(2025, 4, 27), datetime.date(2025, 4, 7), datetime.date(2025, 4, 9), 'jussier')
+[DEBUG] 2025-05-21 12:23:21 - Row (546, 4982, 'LINGUICA CALABRESA RETA NUTRIBRAS PCT 4,5KG', Decimal('9.00'), datetime.date(2025, 4, 27), datetime.date(2025, 3, 26), datetime.date(2025, 4, 7), 'alyson')
+[DEBUG] 2025-05-21 12:23:21 - Row (555, 11293, 'QUEIJO BURRATA DIBUFALO POTE 200G', Decimal('11.00'), datetime.date(2025, 4, 28), datetime.date(2025, 3, 28), datetime.date(2025, 3, 28), 'jussier')
+[DEBUG] 2025-05-21 12:23:21 - Row (553, 11290, 'QUEIJO MOZZARELLA BOLINHA DIBUFALO POTE 250 G', Decimal('16.00'), datetime.date(2025, 4, 28), datetime.date(2025, 3, 28), datetime.date(2025, 3, 28), 'jussier')
+[DEBUG] 2025-05-21 12:23:21 - Row (532, 9129, 'WAFER TODDY CHOCOLATE TRUFADO CX 58 UN 94 G', Decimal('293.00'), datetime.date(2025, 4, 29), datetime.date(2025, 3, 19), datetime.date(2025, 4, 8), 'jussier')
+[DEBUG] 2025-05-21 12:23:21 - Row (452, 10890, 'MOSTARDA AMARELA HEMMER CX 12 UN 1 KG', Decimal('58.00'), datetime.date(2025, 4, 30), datetime.date(2025, 2, 4), datetime.date(2025, 4, 7), 'lucas')
+[DEBUG] 2025-05-21 12:23:21 - Row (531, 9125, 'RECHEADO TODDY CHOCOLATE 100 G', Decimal('28.00'), datetime.date(2025, 4, 30), datetime.date(2025, 3, 19), datetime.date(2025, 3, 19), 'jussier')
+[DEBUG] 2025-05-21 12:23:21 - Row (583, 8464, 'QUEIJO GOUDA PECA BELLA ITALIA', Decimal('160.00'), datetime.date(2025, 5, 1), datetime.date(2025, 4, 10), datetime.date(2025, 4, 10), 'jussier')
+[DEBUG] 2025-05-21 12:23:21 - Row (575, 8288, 'MANTEIGA NATULACT C/SAL  200 G', Decimal('177.00'), datetime.date(2025, 5, 3), datetime.date(2025, 4, 4), datetime.date(2025, 4, 9), 'jussier')
+[DEBUG] 2025-05-21 12:23:21 - Row (565, 1795, 'REQUEIJAO CHEDDAR COPO POLENGHI CX 12 UN 200 G', Decimal('23.00'), datetime.date(2025, 5, 4), datetime.date(2025, 4, 3), datetime.date(2025, 4, 3), 'alyson')
+[DEBUG] 2025-05-21 12:23:21 - Row (500, 2, 'UVA PASSA PRETA MIUDA SEM SEMENTE ', Decimal('5.00'), datetime.date(2025, 5, 5), datetime.date(2025, 3, 5), datetime.date(2025, 4, 8), 'lucas')
+[DEBUG] 2025-05-21 12:23:21 - Row (562, 41, 'BACON EM MANTA INTEIRO SADIA ', Decimal('45.00'), datetime.date(2025, 5, 6), datetime.date(2025, 4, 3), datetime.date(2025, 4, 8), 'jussier')
+[DEBUG] 2025-05-21 12:23:21 - Row (571, 330, 'MORTADELA DE FRANGO FRIATO CX 14KG', Decimal('228.00'), datetime.date(2025, 5, 9), datetime.date(2025, 4, 3), datetime.date(2025, 4, 9), 'alyson')
+[DEBUG] 2025-05-21 12:23:21 - Row (530, 9126, 'RECHEADO TODDY MORANGO 100 G', Decimal('80.00'), datetime.date(2025, 5, 10), datetime.date(2025, 3, 19), datetime.date(2025, 3, 19), 'jussier')
+[DEBUG] 2025-05-21 12:23:21 - Row (549, 4732, 'MOLHO DE ALHO LANCHERO PET CX 12  UN 1,01 LT', Decimal('61.00'), datetime.date(2025, 5, 11), datetime.date(2025, 3, 26), datetime.date(2025, 3, 26), 'alyson')
+[DEBUG] 2025-05-21 12:23:21 - Row (495, 419, 'MAIONESE AUREA BALDE 3 KG', Decimal('39.00'), datetime.date(2025, 5, 12), datetime.date(2025, 3, 5), datetime.date(2025, 4, 3), 'lucas')
+[DEBUG] 2025-05-21 12:23:21 - Row (563, 3794, 'REQ SABOR CHEDDAR TOP CHEDDAR CX 12 UN 1.2 KG', Decimal('11.00'), datetime.date(2025, 5, 13), datetime.date(2025, 4, 3), datetime.date(2025, 4, 3), 'alyson')
+[DEBUG] 2025-05-21 12:23:21 - Row (582, 2326, 'QUEIJO PROC CHEDDAR POLENGHI CX 4 UN 2.73 KG', Decimal('885.00'), datetime.date(2025, 5, 14), datetime.date(2025, 4, 9), datetime.date(2025, 4, 9), 'jussier')
+[DEBUG] 2025-05-21 12:23:21 - Row (535, 11292, 'QUEIJO MOZZARELLA DIBUFALO BARRA GRANDE 2,5 KG', Decimal('17.00'), datetime.date(2025, 5, 19), datetime.date(2025, 3, 19), datetime.date(2025, 3, 19), 'jussier')
+[DEBUG] 2025-05-21 12:23:21 - Row (566, 2813, 'QUEIJO DE MANTEIGA AUREA PC GRANDE', Decimal('13.00'), datetime.date(2025, 5, 24), datetime.date(2025, 4, 3), datetime.date(2025, 4, 9), 'alyson')
+[DEBUG] 2025-05-21 12:23:21 - Row (534, 11295, 'QUEIJO MOZZARELLA DIBUFALO BARRA PEQUENA 500G', Decimal('5.00'), datetime.date(2025, 5, 24), datetime.date(2025, 3, 19), datetime.date(2025, 3, 19), 'jussier')
+[DEBUG] 2025-05-21 12:23:21 - Row (578, 8395, 'LOMBO CANADENSE SUINO NUTRIBRAS ', Decimal('223.00'), datetime.date(2025, 5, 27), datetime.date(2025, 4, 7), datetime.date(2025, 4, 9), 'alyson')
+[DEBUG] 2025-05-21 12:23:21 - Row (569, 9804, 'MOSTARDA AMARELA HEMMER CX 4 UN 3.6 KG', Decimal('28.00'), datetime.date(2025, 5, 31), datetime.date(2025, 4, 3), datetime.date(2025, 4, 9), 'alyson')
+[DEBUG] 2025-05-21 12:23:21 - Row (559, 8565, 'GOMETS GOMA TUBO FRUTAS CX 30 UN 32G', Decimal('10.00'), datetime.date(2025, 5, 31), datetime.date(2025, 4, 3), datetime.date(2025, 4, 3), 'alyson')
+[DEBUG] 2025-05-21 12:23:21 - Row (579, 278, 'MARGARINA AMELIA FOLHADA CX 6 UN 2 KG', Decimal('18.00'), datetime.date(2025, 6, 2), datetime.date(2025, 4, 7), datetime.date(2025, 4, 9), 'alyson')
+[INFO] 2025-05-21 12:23:21 - SELECT users.id AS users_id, users.username AS users_username, users.password AS users_password, users.acesso AS users_acesso 
+FROM users 
+WHERE users.id = %(pk_1)s
+[INFO] 2025-05-21 12:23:21 - [cached since 5.261s ago] {'pk_1': '1'}
+[DEBUG] 2025-05-21 12:23:21 - Col ('users_id', 'users_username', 'users_password', 'users_acesso')
+[DEBUG] 2025-05-21 12:23:21 - Row (1, 'lucas', '88335938', 4)
+[INFO] 2025-05-21 12:23:21 - ROLLBACK
+[INFO] 2025-05-21 12:23:22 - 127.0.0.1 - - [21/May/2025 12:23:22] "GET /vencimentos/ HTTP/1.1" 200 -
+[INFO] 2025-05-21 12:23:22 - 127.0.0.1 - - [21/May/2025 12:23:22] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+[INFO] 2025-05-21 12:23:22 - 127.0.0.1 - - [21/May/2025 12:23:22] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+[INFO] 2025-05-21 12:23:22 - 127.0.0.1 - - [21/May/2025 12:23:22] "GET /static/imagens/logo.png HTTP/1.1" 200 -
+[INFO] 2025-05-21 12:23:29 - BEGIN (implicit)
+[INFO] 2025-05-21 12:23:29 - SELECT users.id AS users_id, users.username AS users_username, users.password AS users_password, users.acesso AS users_acesso 
+FROM users 
+WHERE users.id = %(pk_1)s
+[INFO] 2025-05-21 12:23:29 - [cached since 13.32s ago] {'pk_1': '1'}
+[DEBUG] 2025-05-21 12:23:29 - Col ('users_id', 'users_username', 'users_password', 'users_acesso')
+[DEBUG] 2025-05-21 12:23:29 - Row (1, 'lucas', '88335938', 4)
+[INFO] 2025-05-21 12:23:29 - SELECT produto__vencimento.id AS produto__vencimento_id, produto__vencimento.codigo_do_produto AS produto__vencimento_codigo_do_produto, produto__vencimento.nome_do_produto AS produto__vencimento_nome_do_produto, produto__vencimento.quantidade AS produto__vencimento_quantidade, produto__vencimento.data_de_vencimento AS produto__vencimento_data_de_vencimento, produto__vencimento.data_de_insercao AS produto__vencimento_data_de_insercao, produto__vencimento.atualizacao AS produto__vencimento_atualizacao, produto__vencimento.criador AS produto__vencimento_criador 
+FROM produto__vencimento 
+WHERE produto__vencimento.id = %(pk_1)s
+[INFO] 2025-05-21 12:23:29 - [generated in 0.00021s] {'pk_1': 574}
+[DEBUG] 2025-05-21 12:23:30 - Col ('produto__vencimento_id', 'produto__vencimento_codigo_do_produto', 'produto__vencimento_nome_do_produto', 'produto__vencimento_quantidade', 'produto__vencimento_data_de_vencimento', 'produto__vencimento_data_de_insercao', 'produto__vencimento_atualizacao', 'produto__vencimento_criador')
+[DEBUG] 2025-05-21 12:23:30 - Row (574, 114, 'COXAO MOLE DE BOVINO RESFRIADO', Decimal('100.00'), datetime.date(2025, 4, 24), datetime.date(2025, 4, 3), datetime.date(2025, 4, 11), 'alyson')
+[INFO] 2025-05-21 12:23:30 - DELETE FROM produto__vencimento WHERE produto__vencimento.id = %(id)s
+[INFO] 2025-05-21 12:23:30 - [generated in 0.00034s] {'id': 574}
+[INFO] 2025-05-21 12:23:30 - COMMIT
+[INFO] 2025-05-21 12:23:31 - 127.0.0.1 - - [21/May/2025 12:23:31] "[32mPOST /vencimentos/deletar/574 HTTP/1.1[0m" 302 -
+[INFO] 2025-05-21 12:23:31 - BEGIN (implicit)
+[INFO] 2025-05-21 12:23:31 - SELECT produto__vencimento.id AS produto__vencimento_id, produto__vencimento.codigo_do_produto AS produto__vencimento_codigo_do_produto, produto__vencimento.nome_do_produto AS produto__vencimento_nome_do_produto, produto__vencimento.quantidade AS produto__vencimento_quantidade, produto__vencimento.data_de_vencimento AS produto__vencimento_data_de_vencimento, produto__vencimento.data_de_insercao AS produto__vencimento_data_de_insercao, produto__vencimento.atualizacao AS produto__vencimento_atualizacao, produto__vencimento.criador AS produto__vencimento_criador 
+FROM produto__vencimento ORDER BY produto__vencimento.data_de_vencimento ASC
+[INFO] 2025-05-21 12:23:31 - [cached since 10.34s ago] {}
+[DEBUG] 2025-05-21 12:23:31 - Col ('produto__vencimento_id', 'produto__vencimento_codigo_do_produto', 'produto__vencimento_nome_do_produto', 'produto__vencimento_quantidade', 'produto__vencimento_data_de_vencimento', 'produto__vencimento_data_de_insercao', 'produto__vencimento_atualizacao', 'produto__vencimento_criador')
+[DEBUG] 2025-05-21 12:23:31 - Row (586, 115, 'COXAO DURO DE BOVINO RESFRIADO', Decimal('120.00'), datetime.date(2025, 4, 24), datetime.date(2025, 4, 11), datetime.date(2025, 4, 11), 'jussier')
+[DEBUG] 2025-05-21 12:23:31 - Row (584, 4226, 'FILE MIGNON DE BOVINO SEM CORDAO 4/5 RESFRIADO', Decimal('39.00'), datetime.date(2025, 4, 24), datetime.date(2025, 4, 10), datetime.date(2025, 4, 10), 'jussier')
+[DEBUG] 2025-05-21 12:23:31 - Row (567, 2585, 'KIT FEIJOADA MAIS SUINOS CX 10 PCT 1 KG', Decimal('25.00'), datetime.date(2025, 4, 26), datetime.date(2025, 4, 3), datetime.date(2025, 4, 3), 'alyson')
+[DEBUG] 2025-05-21 12:23:31 - Row (546, 4982, 'LINGUICA CALABRESA RETA NUTRIBRAS PCT 4,5KG', Decimal('9.00'), datetime.date(2025, 4, 27), datetime.date(2025, 3, 26), datetime.date(2025, 4, 7), 'alyson')
+[DEBUG] 2025-05-21 12:23:31 - Row (577, 2735, 'LINGUICA CALABRESA RETA FRIMESA CX 4 PCT 3 KG', Decimal('15.00'), datetime.date(2025, 4, 27), datetime.date(2025, 4, 7), datetime.date(2025, 4, 9), 'jussier')
+[DEBUG] 2025-05-21 12:23:31 - Row (553, 11290, 'QUEIJO MOZZARELLA BOLINHA DIBUFALO POTE 250 G', Decimal('16.00'), datetime.date(2025, 4, 28), datetime.date(2025, 3, 28), datetime.date(2025, 3, 28), 'jussier')
+[DEBUG] 2025-05-21 12:23:31 - Row (555, 11293, 'QUEIJO BURRATA DIBUFALO POTE 200G', Decimal('11.00'), datetime.date(2025, 4, 28), datetime.date(2025, 3, 28), datetime.date(2025, 3, 28), 'jussier')
+[DEBUG] 2025-05-21 12:23:31 - Row (532, 9129, 'WAFER TODDY CHOCOLATE TRUFADO CX 58 UN 94 G', Decimal('293.00'), datetime.date(2025, 4, 29), datetime.date(2025, 3, 19), datetime.date(2025, 4, 8), 'jussier')
+[DEBUG] 2025-05-21 12:23:31 - Row (452, 10890, 'MOSTARDA AMARELA HEMMER CX 12 UN 1 KG', Decimal('58.00'), datetime.date(2025, 4, 30), datetime.date(2025, 2, 4), datetime.date(2025, 4, 7), 'lucas')
+[DEBUG] 2025-05-21 12:23:31 - Row (531, 9125, 'RECHEADO TODDY CHOCOLATE 100 G', Decimal('28.00'), datetime.date(2025, 4, 30), datetime.date(2025, 3, 19), datetime.date(2025, 3, 19), 'jussier')
+[DEBUG] 2025-05-21 12:23:31 - Row (583, 8464, 'QUEIJO GOUDA PECA BELLA ITALIA', Decimal('160.00'), datetime.date(2025, 5, 1), datetime.date(2025, 4, 10), datetime.date(2025, 4, 10), 'jussier')
+[DEBUG] 2025-05-21 12:23:31 - Row (575, 8288, 'MANTEIGA NATULACT C/SAL  200 G', Decimal('177.00'), datetime.date(2025, 5, 3), datetime.date(2025, 4, 4), datetime.date(2025, 4, 9), 'jussier')
+[DEBUG] 2025-05-21 12:23:31 - Row (565, 1795, 'REQUEIJAO CHEDDAR COPO POLENGHI CX 12 UN 200 G', Decimal('23.00'), datetime.date(2025, 5, 4), datetime.date(2025, 4, 3), datetime.date(2025, 4, 3), 'alyson')
+[DEBUG] 2025-05-21 12:23:31 - Row (500, 2, 'UVA PASSA PRETA MIUDA SEM SEMENTE ', Decimal('5.00'), datetime.date(2025, 5, 5), datetime.date(2025, 3, 5), datetime.date(2025, 4, 8), 'lucas')
+[DEBUG] 2025-05-21 12:23:31 - Row (562, 41, 'BACON EM MANTA INTEIRO SADIA ', Decimal('45.00'), datetime.date(2025, 5, 6), datetime.date(2025, 4, 3), datetime.date(2025, 4, 8), 'jussier')
+[DEBUG] 2025-05-21 12:23:31 - Row (571, 330, 'MORTADELA DE FRANGO FRIATO CX 14KG', Decimal('228.00'), datetime.date(2025, 5, 9), datetime.date(2025, 4, 3), datetime.date(2025, 4, 9), 'alyson')
+[DEBUG] 2025-05-21 12:23:31 - Row (530, 9126, 'RECHEADO TODDY MORANGO 100 G', Decimal('80.00'), datetime.date(2025, 5, 10), datetime.date(2025, 3, 19), datetime.date(2025, 3, 19), 'jussier')
+[DEBUG] 2025-05-21 12:23:31 - Row (549, 4732, 'MOLHO DE ALHO LANCHERO PET CX 12  UN 1,01 LT', Decimal('61.00'), datetime.date(2025, 5, 11), datetime.date(2025, 3, 26), datetime.date(2025, 3, 26), 'alyson')
+[DEBUG] 2025-05-21 12:23:31 - Row (495, 419, 'MAIONESE AUREA BALDE 3 KG', Decimal('39.00'), datetime.date(2025, 5, 12), datetime.date(2025, 3, 5), datetime.date(2025, 4, 3), 'lucas')
+[DEBUG] 2025-05-21 12:23:31 - Row (563, 3794, 'REQ SABOR CHEDDAR TOP CHEDDAR CX 12 UN 1.2 KG', Decimal('11.00'), datetime.date(2025, 5, 13), datetime.date(2025, 4, 3), datetime.date(2025, 4, 3), 'alyson')
+[DEBUG] 2025-05-21 12:23:31 - Row (582, 2326, 'QUEIJO PROC CHEDDAR POLENGHI CX 4 UN 2.73 KG', Decimal('885.00'), datetime.date(2025, 5, 14), datetime.date(2025, 4, 9), datetime.date(2025, 4, 9), 'jussier')
+[DEBUG] 2025-05-21 12:23:31 - Row (535, 11292, 'QUEIJO MOZZARELLA DIBUFALO BARRA GRANDE 2,5 KG', Decimal('17.00'), datetime.date(2025, 5, 19), datetime.date(2025, 3, 19), datetime.date(2025, 3, 19), 'jussier')
+[DEBUG] 2025-05-21 12:23:31 - Row (566, 2813, 'QUEIJO DE MANTEIGA AUREA PC GRANDE', Decimal('13.00'), datetime.date(2025, 5, 24), datetime.date(2025, 4, 3), datetime.date(2025, 4, 9), 'alyson')
+[DEBUG] 2025-05-21 12:23:31 - Row (534, 11295, 'QUEIJO MOZZARELLA DIBUFALO BARRA PEQUENA 500G', Decimal('5.00'), datetime.date(2025, 5, 24), datetime.date(2025, 3, 19), datetime.date(2025, 3, 19), 'jussier')
+[DEBUG] 2025-05-21 12:23:31 - Row (578, 8395, 'LOMBO CANADENSE SUINO NUTRIBRAS ', Decimal('223.00'), datetime.date(2025, 5, 27), datetime.date(2025, 4, 7), datetime.date(2025, 4, 9), 'alyson')
+[DEBUG] 2025-05-21 12:23:31 - Row (569, 9804, 'MOSTARDA AMARELA HEMMER CX 4 UN 3.6 KG', Decimal('28.00'), datetime.date(2025, 5, 31), datetime.date(2025, 4, 3), datetime.date(2025, 4, 9), 'alyson')
+[DEBUG] 2025-05-21 12:23:31 - Row (559, 8565, 'GOMETS GOMA TUBO FRUTAS CX 30 UN 32G', Decimal('10.00'), datetime.date(2025, 5, 31), datetime.date(2025, 4, 3), datetime.date(2025, 4, 3), 'alyson')
+[DEBUG] 2025-05-21 12:23:31 - Row (579, 278, 'MARGARINA AMELIA FOLHADA CX 6 UN 2 KG', Decimal('18.00'), datetime.date(2025, 6, 2), datetime.date(2025, 4, 7), datetime.date(2025, 4, 9), 'alyson')
+[INFO] 2025-05-21 12:23:31 - SELECT users.id AS users_id, users.username AS users_username, users.password AS users_password, users.acesso AS users_acesso 
+FROM users 
+WHERE users.id = %(pk_1)s
+[INFO] 2025-05-21 12:23:31 - [cached since 15.57s ago] {'pk_1': '1'}
+[DEBUG] 2025-05-21 12:23:32 - Col ('users_id', 'users_username', 'users_password', 'users_acesso')
+[DEBUG] 2025-05-21 12:23:32 - Row (1, 'lucas', '88335938', 4)
+[INFO] 2025-05-21 12:23:32 - ROLLBACK
+[INFO] 2025-05-21 12:23:32 - 127.0.0.1 - - [21/May/2025 12:23:32] "GET /vencimentos/ HTTP/1.1" 200 -
+[INFO] 2025-05-21 12:23:32 - 127.0.0.1 - - [21/May/2025 12:23:32] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+[INFO] 2025-05-21 12:23:32 - 127.0.0.1 - - [21/May/2025 12:23:32] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+[INFO] 2025-05-21 12:23:32 - 127.0.0.1 - - [21/May/2025 12:23:32] "GET /static/imagens/logo.png HTTP/1.1" 200 -
+[INFO] 2025-05-21 12:26:17 -  * Detected change in 'C:\\Users\\Lucas\\Desktop\\caicosistemafinal\\app\\main.py', reloading
+[INFO] 2025-05-21 12:26:17 -  * Restarting with stat

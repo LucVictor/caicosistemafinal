@@ -1,6 +1,7 @@
 import os
+import logging
 import sqlalchemy
-from flask import Flask, render_template, request, url_for, redirect
+from flask import Flask, render_template, request, url_for, redirect, send_file
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import secure_filename
 import calendar
@@ -31,6 +32,43 @@ app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
 db = SQLAlchemy(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
+
+# Caminho completo para a pasta 'static'
+static_folder = os.path.join(os.path.dirname(__file__), 'static')
+
+# Garante que a pasta 'static' existe
+os.makedirs(static_folder, exist_ok=True)
+
+# Caminho para o arquivo de log dentro da pasta 'static'
+log_file = os.path.join(static_folder, 'logs.txt')
+
+# Configuração do logging
+logging.basicConfig(
+    filename=log_file,
+    level=logging.DEBUG,
+    format='[%(levelname)s] %(asctime)s - %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S',
+    filemode='a'
+)
+
+logger = logging.getLogger('sqlalchemy.engine')
+logger.setLevel(logging.DEBUG)
+
+
+@app.route('/download-log')
+def download_log():
+    log_path = os.path.join(os.path.dirname(__file__), 'static', 'logs.txt')
+    if os.path.exists(log_path):
+        return send_file(
+            log_path,
+            as_attachment=True,
+            download_name='logs.txt',
+            mimetype='text/plain'
+        )
+    else:
+        return "Arquivo de log não encontrado.", 404
+
+
 
 from app.models.models import *
 from app.functions.functions import *
