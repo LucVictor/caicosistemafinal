@@ -58,3 +58,210 @@
 [WARNING] 2025-05-21 12:34:59 -  * Debugger is active!
 [INFO] 2025-05-21 12:34:59 -  * Debugger PIN: 674-789-149
 [INFO] 2025-05-21 12:34:59 - 127.0.0.1 - - [21/May/2025 12:34:59] "GET /download-log HTTP/1.1" 200 -
+[INFO] 2025-05-21 12:35:14 -  * Detected change in 'C:\\Users\\Lucas\\Desktop\\caicosistemafinal\\app\\main.py', reloading
+[INFO] 2025-05-21 12:35:14 -  * Restarting with stat
+[WARNING] 2025-05-21 12:35:15 -  * Debugger is active!
+[INFO] 2025-05-21 12:35:15 -  * Debugger PIN: 674-789-149
+[INFO] 2025-05-21 16:11:55 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[INFO] 2025-05-21 16:11:55 - [33mPress CTRL+C to quit[0m
+[INFO] 2025-05-21 16:11:55 -  * Restarting with stat
+[WARNING] 2025-05-21 16:11:56 -  * Debugger is active!
+[INFO] 2025-05-21 16:11:56 -  * Debugger PIN: 674-789-149
+[INFO] 2025-05-21 16:18:56 -  * Detected change in 'C:\\Users\\Lucas\\Desktop\\caicosistemafinal\\app\\routes\\conferencia.py', reloading
+[INFO] 2025-05-21 16:18:56 -  * Restarting with stat
+[WARNING] 2025-05-21 16:18:57 -  * Debugger is active!
+[INFO] 2025-05-21 16:18:57 -  * Debugger PIN: 674-789-149
+[INFO] 2025-05-21 16:20:19 -  * Detected change in 'C:\\Users\\Lucas\\Desktop\\caicosistemafinal\\app\\routes\\conferencia.py', reloading
+[INFO] 2025-05-21 16:20:19 -  * Restarting with stat
+[WARNING] 2025-05-21 16:20:20 -  * Debugger is active!
+[INFO] 2025-05-21 16:20:20 -  * Debugger PIN: 674-789-149
+[INFO] 2025-05-21 16:20:40 - SELECT DATABASE()
+[INFO] 2025-05-21 16:20:40 - [raw sql] {}
+[DEBUG] 2025-05-21 16:20:40 - Col ('DATABASE()',)
+[DEBUG] 2025-05-21 16:20:40 - Row ('caicomatriz',)
+[INFO] 2025-05-21 16:20:41 - SELECT @@sql_mode
+[INFO] 2025-05-21 16:20:41 - [raw sql] {}
+[DEBUG] 2025-05-21 16:20:41 - Col ('@@sql_mode',)
+[DEBUG] 2025-05-21 16:20:41 - Row ('ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION',)
+[INFO] 2025-05-21 16:20:41 - SELECT @@lower_case_table_names
+[INFO] 2025-05-21 16:20:41 - [raw sql] {}
+[DEBUG] 2025-05-21 16:20:41 - Col ('@@lower_case_table_names',)
+[DEBUG] 2025-05-21 16:20:41 - Row (0,)
+[INFO] 2025-05-21 16:20:41 - BEGIN (implicit)
+[INFO] 2025-05-21 16:20:41 - SELECT users.id AS users_id, users.username AS users_username, users.password AS users_password, users.acesso AS users_acesso 
+FROM users 
+WHERE users.id = %(pk_1)s
+[INFO] 2025-05-21 16:20:41 - [generated in 0.00037s] {'pk_1': '1'}
+[DEBUG] 2025-05-21 16:20:41 - Col ('users_id', 'users_username', 'users_password', 'users_acesso')
+[DEBUG] 2025-05-21 16:20:41 - Row (1, 'lucas', '88335938', 4)
+[INFO] 2025-05-21 16:20:41 - SELECT produto__avaria.data_de_insercao AS produto__avaria_data_de_insercao, sum(produto__avaria.preco_total) AS total_value 
+FROM produto__avaria 
+WHERE produto__avaria.data_de_insercao >= %(data_de_insercao_1)s AND produto__avaria.data_de_insercao <= %(data_de_insercao_2)s GROUP BY produto__avaria.data_de_insercao
+[INFO] 2025-05-21 16:20:41 - [generated in 0.00039s] {'data_de_insercao_1': datetime.date(2025, 5, 1), 'data_de_insercao_2': datetime.date(2025, 5, 31)}
+[DEBUG] 2025-05-21 16:20:42 - Col ('produto__avaria_data_de_insercao', 'total_value')
+[INFO] 2025-05-21 16:20:42 - SELECT produto__avaria.id AS produto__avaria_id, produto__avaria.codigo_do_produto AS produto__avaria_codigo_do_produto, produto__avaria.nome_do_produto AS produto__avaria_nome_do_produto, produto__avaria.preco_do_produto AS produto__avaria_preco_do_produto, produto__avaria.quantidade AS produto__avaria_quantidade, produto__avaria.preco_total AS produto__avaria_preco_total, produto__avaria.data_de_insercao AS produto__avaria_data_de_insercao, produto__avaria.criador AS produto__avaria_criador, produto__avaria.tipodeavaria AS produto__avaria_tipodeavaria, produto__avaria.usoeconsumo AS produto__avaria_usoeconsumo 
+FROM produto__avaria ORDER BY produto__avaria.data_de_insercao DESC 
+ LIMIT %(param_1)s
+[INFO] 2025-05-21 16:20:42 - [generated in 0.00040s] {'param_1': 5}
+[DEBUG] 2025-05-21 16:20:42 - Col ('produto__avaria_id', 'produto__avaria_codigo_do_produto', 'produto__avaria_nome_do_produto', 'produto__avaria_preco_do_produto', 'produto__avaria_quantidade', 'produto__avaria_preco_total', 'produto__avaria_data_de_insercao', 'produto__avaria_criador', 'produto__avaria_tipodeavaria', 'produto__avaria_usoeconsumo')
+[DEBUG] 2025-05-21 16:20:42 - Row (290, 351, 'GRANULADO CROC. MULTICOLOR HARALD CX 10 PCT 1.01KG', Decimal('18.20'), Decimal('62.000'), Decimal('1128.40'), datetime.date(2025, 4, 9), 'jussier', 'Vencido', 'Não')
+[DEBUG] 2025-05-21 16:20:42 - Row (289, 7796, 'PRESUNTO SEM CAPA DE GORDURA PEPERI CX 7 KG', Decimal('17.84'), Decimal('3.000'), Decimal('53.52'), datetime.date(2025, 4, 8), 'alyson', 'Vencido', 'Não')
+[DEBUG] 2025-05-21 16:20:42 - Row (288, 213, 'DOCE DE SORO DE LEITE CHOCOLATE AUREA 4.8 KG ', Decimal('33.30'), Decimal('1.000'), Decimal('33.30'), datetime.date(2025, 4, 5), 'jussier', 'Vencido', 'Não')
+[DEBUG] 2025-05-21 16:20:42 - Row (287, 11019, 'CHOCOLATE BARRA NOBRE BRANCO SICAO  CX 10 UN 1.010 KG', Decimal('53.41'), Decimal('12.000'), Decimal('640.92'), datetime.date(2025, 4, 5), 'jussier', 'Vencido', 'Não')
+[DEBUG] 2025-05-21 16:20:42 - Row (286, 2814, 'MANTEIGA EM GARRAFA PURA AUREAS 500ML', Decimal('20.00'), Decimal('10.000'), Decimal('200.00'), datetime.date(2025, 3, 25), 'jussier', 'Vencido', 'Não')
+[INFO] 2025-05-21 16:20:42 - SELECT produto__vencimento.id AS produto__vencimento_id, produto__vencimento.codigo_do_produto AS produto__vencimento_codigo_do_produto, produto__vencimento.nome_do_produto AS produto__vencimento_nome_do_produto, produto__vencimento.quantidade AS produto__vencimento_quantidade, produto__vencimento.data_de_vencimento AS produto__vencimento_data_de_vencimento, produto__vencimento.data_de_insercao AS produto__vencimento_data_de_insercao, produto__vencimento.atualizacao AS produto__vencimento_atualizacao, produto__vencimento.criador AS produto__vencimento_criador 
+FROM produto__vencimento ORDER BY produto__vencimento.data_de_vencimento 
+ LIMIT %(param_1)s
+[INFO] 2025-05-21 16:20:42 - [generated in 0.00035s] {'param_1': 5}
+[DEBUG] 2025-05-21 16:20:42 - Col ('produto__vencimento_id', 'produto__vencimento_codigo_do_produto', 'produto__vencimento_nome_do_produto', 'produto__vencimento_quantidade', 'produto__vencimento_data_de_vencimento', 'produto__vencimento_data_de_insercao', 'produto__vencimento_atualizacao', 'produto__vencimento_criador')
+[DEBUG] 2025-05-21 16:20:42 - Row (586, 115, 'COXAO DURO DE BOVINO RESFRIADO', Decimal('120.00'), datetime.date(2025, 4, 24), datetime.date(2025, 4, 11), datetime.date(2025, 4, 11), 'jussier')
+[DEBUG] 2025-05-21 16:20:42 - Row (584, 4226, 'FILE MIGNON DE BOVINO SEM CORDAO 4/5 RESFRIADO', Decimal('39.00'), datetime.date(2025, 4, 24), datetime.date(2025, 4, 10), datetime.date(2025, 4, 10), 'jussier')
+[DEBUG] 2025-05-21 16:20:42 - Row (567, 2585, 'KIT FEIJOADA MAIS SUINOS CX 10 PCT 1 KG', Decimal('25.00'), datetime.date(2025, 4, 26), datetime.date(2025, 4, 3), datetime.date(2025, 4, 3), 'alyson')
+[DEBUG] 2025-05-21 16:20:42 - Row (546, 4982, 'LINGUICA CALABRESA RETA NUTRIBRAS PCT 4,5KG', Decimal('9.00'), datetime.date(2025, 4, 27), datetime.date(2025, 3, 26), datetime.date(2025, 4, 7), 'alyson')
+[DEBUG] 2025-05-21 16:20:42 - Row (577, 2735, 'LINGUICA CALABRESA RETA FRIMESA CX 4 PCT 3 KG', Decimal('15.00'), datetime.date(2025, 4, 27), datetime.date(2025, 4, 7), datetime.date(2025, 4, 9), 'jussier')
+[INFO] 2025-05-21 16:20:42 - ROLLBACK
+[INFO] 2025-05-21 16:20:42 - 127.0.0.1 - - [21/May/2025 16:20:42] "GET / HTTP/1.1" 200 -
+[INFO] 2025-05-21 16:20:43 - 127.0.0.1 - - [21/May/2025 16:20:43] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+[INFO] 2025-05-21 16:20:43 - 127.0.0.1 - - [21/May/2025 16:20:43] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+[INFO] 2025-05-21 16:20:43 - 127.0.0.1 - - [21/May/2025 16:20:43] "[36mGET /static/imagens/logo.png HTTP/1.1[0m" 304 -
+[INFO] 2025-05-21 16:20:48 - BEGIN (implicit)
+[INFO] 2025-05-21 16:20:48 - SELECT users.id AS users_id, users.username AS users_username, users.password AS users_password, users.acesso AS users_acesso 
+FROM users 
+WHERE users.id = %(pk_1)s
+[INFO] 2025-05-21 16:20:48 - [cached since 6.372s ago] {'pk_1': '1'}
+[DEBUG] 2025-05-21 16:20:48 - Col ('users_id', 'users_username', 'users_password', 'users_acesso')
+[DEBUG] 2025-05-21 16:20:48 - Row (1, 'lucas', '88335938', 4)
+[INFO] 2025-05-21 16:20:48 - ROLLBACK
+[INFO] 2025-05-21 16:20:48 - 127.0.0.1 - - [21/May/2025 16:20:48] "GET /conferencia/relatorio HTTP/1.1" 200 -
+[INFO] 2025-05-21 16:20:48 - 127.0.0.1 - - [21/May/2025 16:20:48] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+[INFO] 2025-05-21 16:20:48 - 127.0.0.1 - - [21/May/2025 16:20:48] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+[INFO] 2025-05-21 16:20:48 - 127.0.0.1 - - [21/May/2025 16:20:48] "GET /static/imagens/logo.png HTTP/1.1" 200 -
+[INFO] 2025-05-21 16:21:00 - BEGIN (implicit)
+[INFO] 2025-05-21 16:21:00 - SELECT users.id AS users_id, users.username AS users_username, users.password AS users_password, users.acesso AS users_acesso 
+FROM users 
+WHERE users.id = %(pk_1)s
+[INFO] 2025-05-21 16:21:00 - [cached since 18.55s ago] {'pk_1': '1'}
+[DEBUG] 2025-05-21 16:21:00 - Col ('users_id', 'users_username', 'users_password', 'users_acesso')
+[DEBUG] 2025-05-21 16:21:00 - Row (1, 'lucas', '88335938', 4)
+[INFO] 2025-05-21 16:21:00 - ROLLBACK
+[INFO] 2025-05-21 16:21:00 - 127.0.0.1 - - [21/May/2025 16:21:00] "GET /conferencia/relatorio HTTP/1.1" 200 -
+[INFO] 2025-05-21 16:21:00 - 127.0.0.1 - - [21/May/2025 16:21:00] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+[INFO] 2025-05-21 16:21:00 - 127.0.0.1 - - [21/May/2025 16:21:00] "[36mGET /static/imagens/logo.png HTTP/1.1[0m" 304 -
+[INFO] 2025-05-21 16:21:11 - BEGIN (implicit)
+[INFO] 2025-05-21 16:21:11 - SELECT users.id AS users_id, users.username AS users_username, users.password AS users_password, users.acesso AS users_acesso 
+FROM users 
+WHERE users.id = %(pk_1)s
+[INFO] 2025-05-21 16:21:11 - [cached since 29.82s ago] {'pk_1': '1'}
+[DEBUG] 2025-05-21 16:21:11 - Col ('users_id', 'users_username', 'users_password', 'users_acesso')
+[DEBUG] 2025-05-21 16:21:11 - Row (1, 'lucas', '88335938', 4)
+[INFO] 2025-05-21 16:21:11 - SELECT produto__conferido.id AS produto__conferido_id, produto__conferido.data_conferencia AS produto__conferido_data_conferencia, produto__conferido.conferente AS produto__conferido_conferente, produto__conferido.codigo_produto AS produto__conferido_codigo_produto, produto__conferido.nome_do_produto AS produto__conferido_nome_do_produto, produto__conferido.quantidade_sistema AS produto__conferido_quantidade_sistema, produto__conferido.quantidade_fisico AS produto__conferido_quantidade_fisico, produto__conferido.quantidade_diferenca AS produto__conferido_quantidade_diferenca, produto__conferido.criador AS produto__conferido_criador, produto__conferido.divergencia_sistema AS produto__conferido_divergencia_sistema, produto__conferido.produto_conferido_lojas AS produto__conferido_produto_conferido_lojas, produto__conferido.ajuste AS produto__conferido_ajuste 
+FROM produto__conferido 
+WHERE produto__conferido.data_conferencia >= %(data_conferencia_1)s AND produto__conferido.data_conferencia <= %(data_conferencia_2)s AND produto__conferido.quantidade_sistema <= %(quantidade_sistema_1)s ORDER BY produto__conferido.data_conferencia DESC
+[INFO] 2025-05-21 16:21:11 - [generated in 0.00046s] {'data_conferencia_1': '2025-05-19', 'data_conferencia_2': '2025-05-19', 'quantidade_sistema_1': '50'}
+[DEBUG] 2025-05-21 16:21:12 - Col ('produto__conferido_id', 'produto__conferido_data_conferencia', 'produto__conferido_conferente', 'produto__conferido_codigo_produto', 'produto__conferido_nome_do_produto', 'produto__conferido_quantidade_sistema', 'produto__conferido_quantidade_fisico', 'produto__conferido_quantidade_diferenca', 'produto__conferido_criador', 'produto__conferido_divergencia_sistema', 'produto__conferido_produto_conferido_lojas', 'produto__conferido_ajuste')
+[DEBUG] 2025-05-21 16:21:12 - Row (27, datetime.date(2025, 5, 19), 'Hudson', '339', 'REQUEIJAO CATUPIRY CX 12 UN 1,5 KG ', Decimal('10.000'), Decimal('10.000'), Decimal('0.000'), 'lucas', False, False, False)
+[DEBUG] 2025-05-21 16:21:12 - Row (28, datetime.date(2025, 5, 19), 'Hudson', '339', 'REQUEIJAO CATUPIRY CX 12 UN 1,5 KG ', Decimal('10.000'), Decimal('15.000'), Decimal('5.000'), 'lucas', False, False, False)
+[DEBUG] 2025-05-21 16:21:12 - Row (29, datetime.date(2025, 5, 19), 'Hudson', '450', 'FARINHA FINNA S/ FERMENTO FD 10 PCT 1KG ', Decimal('15.000'), Decimal('10.000'), Decimal('-5.000'), 'lucas', False, False, False)
+[DEBUG] 2025-05-21 16:21:12 - Row (30, datetime.date(2025, 5, 19), 'Hudson', '339', 'REQUEIJAO CATUPIRY CX 12 UN 1,5 KG ', Decimal('10.000'), Decimal('15.000'), Decimal('5.000'), 'lucas', False, False, False)
+[DEBUG] 2025-05-21 16:21:12 - Row (31, datetime.date(2025, 5, 19), 'Hudson', '450', 'FARINHA FINNA S/ FERMENTO FD 10 PCT 1KG ', Decimal('15.000'), Decimal('10.000'), Decimal('-5.000'), 'lucas', False, False, False)
+[DEBUG] 2025-05-21 16:21:12 - Row (32, datetime.date(2025, 5, 19), 'Hudson', '339', 'REQUEIJAO CATUPIRY CX 12 UN 1,5 KG ', Decimal('10.000'), Decimal('15.000'), Decimal('5.000'), 'lucas', False, False, False)
+[DEBUG] 2025-05-21 16:21:12 - Row (33, datetime.date(2025, 5, 19), 'Hudson', '450', 'FARINHA FINNA S/ FERMENTO FD 10 PCT 1KG ', Decimal('15.000'), Decimal('10.000'), Decimal('-5.000'), 'lucas', False, False, False)
+[DEBUG] 2025-05-21 16:21:12 - Row (35, datetime.date(2025, 5, 19), 'Hudson', '2365', 'REQ CULINARIA SAB CHEDDAR REKEMINAS CX 12 UN 1,2 KG', Decimal('8.000'), Decimal('8.000'), Decimal('0.000'), 'lucas', False, False, False)
+[DEBUG] 2025-05-21 16:21:12 - Row (36, datetime.date(2025, 5, 19), 'Hudson', '2355', 'REQ CULINARIA SABOR CHEDDAR ROSELI CX 12 UN 1,2 KG', Decimal('1.000'), Decimal('0.000'), Decimal('-1.000'), 'lucas', False, False, False)
+[DEBUG] 2025-05-21 16:21:12 - Row (38, datetime.date(2025, 5, 19), 'Hudson', '5429', 'REQ CULINARIA TRADICIONAL CX 8 UN 1,8 KG', Decimal('16.000'), Decimal('0.000'), Decimal('-16.000'), 'lucas', False, False, False)
+[INFO] 2025-05-21 16:21:12 - SELECT produto__conferido.conferente AS produto__conferido_conferente, count(*) AS quantidade 
+FROM produto__conferido 
+WHERE produto__conferido.data_conferencia >= %(data_conferencia_1)s AND produto__conferido.data_conferencia <= %(data_conferencia_2)s GROUP BY produto__conferido.conferente ORDER BY count(*) DESC
+[INFO] 2025-05-21 16:21:12 - [generated in 0.00066s] {'data_conferencia_1': '2025-05-19', 'data_conferencia_2': '2025-05-19'}
+[DEBUG] 2025-05-21 16:21:12 - Col ('produto__conferido_conferente', 'quantidade')
+[DEBUG] 2025-05-21 16:21:12 - Row ('Hudson', 12)
+[INFO] 2025-05-21 16:21:12 - ROLLBACK
+[INFO] 2025-05-21 16:21:12 - 127.0.0.1 - - [21/May/2025 16:21:12] "POST /conferencia/relatorio_emitir HTTP/1.1" 200 -
+[INFO] 2025-05-21 16:21:12 - 127.0.0.1 - - [21/May/2025 16:21:12] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+[INFO] 2025-05-21 16:21:12 - 127.0.0.1 - - [21/May/2025 16:21:12] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+[INFO] 2025-05-21 16:21:12 - 127.0.0.1 - - [21/May/2025 16:21:12] "GET /static/imagens/logo.png HTTP/1.1" 200 -
+[INFO] 2025-05-21 16:21:23 - BEGIN (implicit)
+[INFO] 2025-05-21 16:21:23 - SELECT users.id AS users_id, users.username AS users_username, users.password AS users_password, users.acesso AS users_acesso 
+FROM users 
+WHERE users.id = %(pk_1)s
+[INFO] 2025-05-21 16:21:23 - [cached since 42.25s ago] {'pk_1': '1'}
+[DEBUG] 2025-05-21 16:21:24 - Col ('users_id', 'users_username', 'users_password', 'users_acesso')
+[DEBUG] 2025-05-21 16:21:24 - Row (1, 'lucas', '88335938', 4)
+[INFO] 2025-05-21 16:21:24 - SELECT produto__conferido.id AS produto__conferido_id, produto__conferido.data_conferencia AS produto__conferido_data_conferencia, produto__conferido.conferente AS produto__conferido_conferente, produto__conferido.codigo_produto AS produto__conferido_codigo_produto, produto__conferido.nome_do_produto AS produto__conferido_nome_do_produto, produto__conferido.quantidade_sistema AS produto__conferido_quantidade_sistema, produto__conferido.quantidade_fisico AS produto__conferido_quantidade_fisico, produto__conferido.quantidade_diferenca AS produto__conferido_quantidade_diferenca, produto__conferido.criador AS produto__conferido_criador, produto__conferido.divergencia_sistema AS produto__conferido_divergencia_sistema, produto__conferido.produto_conferido_lojas AS produto__conferido_produto_conferido_lojas, produto__conferido.ajuste AS produto__conferido_ajuste 
+FROM produto__conferido 
+WHERE produto__conferido.data_conferencia >= %(data_conferencia_1)s AND produto__conferido.data_conferencia <= %(data_conferencia_2)s AND produto__conferido.quantidade_sistema <= %(quantidade_sistema_1)s ORDER BY produto__conferido.data_conferencia DESC
+[INFO] 2025-05-21 16:21:24 - [cached since 12.34s ago] {'data_conferencia_1': '2025-05-19', 'data_conferencia_2': '2025-05-19', 'quantidade_sistema_1': '5'}
+[DEBUG] 2025-05-21 16:21:24 - Col ('produto__conferido_id', 'produto__conferido_data_conferencia', 'produto__conferido_conferente', 'produto__conferido_codigo_produto', 'produto__conferido_nome_do_produto', 'produto__conferido_quantidade_sistema', 'produto__conferido_quantidade_fisico', 'produto__conferido_quantidade_diferenca', 'produto__conferido_criador', 'produto__conferido_divergencia_sistema', 'produto__conferido_produto_conferido_lojas', 'produto__conferido_ajuste')
+[DEBUG] 2025-05-21 16:21:24 - Row (36, datetime.date(2025, 5, 19), 'Hudson', '2355', 'REQ CULINARIA SABOR CHEDDAR ROSELI CX 12 UN 1,2 KG', Decimal('1.000'), Decimal('0.000'), Decimal('-1.000'), 'lucas', False, False, False)
+[INFO] 2025-05-21 16:21:24 - SELECT produto__conferido.conferente AS produto__conferido_conferente, count(*) AS quantidade 
+FROM produto__conferido 
+WHERE produto__conferido.data_conferencia >= %(data_conferencia_1)s AND produto__conferido.data_conferencia <= %(data_conferencia_2)s GROUP BY produto__conferido.conferente ORDER BY count(*) DESC
+[INFO] 2025-05-21 16:21:24 - [cached since 12.32s ago] {'data_conferencia_1': '2025-05-19', 'data_conferencia_2': '2025-05-19'}
+[DEBUG] 2025-05-21 16:21:24 - Col ('produto__conferido_conferente', 'quantidade')
+[DEBUG] 2025-05-21 16:21:24 - Row ('Hudson', 12)
+[INFO] 2025-05-21 16:21:24 - ROLLBACK
+[INFO] 2025-05-21 16:21:25 - 127.0.0.1 - - [21/May/2025 16:21:25] "POST /conferencia/relatorio_emitir HTTP/1.1" 200 -
+[INFO] 2025-05-21 16:21:25 - 127.0.0.1 - - [21/May/2025 16:21:25] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+[INFO] 2025-05-21 16:21:25 - 127.0.0.1 - - [21/May/2025 16:21:25] "[36mGET /static/imagens/logo.png HTTP/1.1[0m" 304 -
+[INFO] 2025-05-21 16:21:31 - BEGIN (implicit)
+[INFO] 2025-05-21 16:21:31 - SELECT users.id AS users_id, users.username AS users_username, users.password AS users_password, users.acesso AS users_acesso 
+FROM users 
+WHERE users.id = %(pk_1)s
+[INFO] 2025-05-21 16:21:31 - [cached since 49.78s ago] {'pk_1': '1'}
+[DEBUG] 2025-05-21 16:21:31 - Col ('users_id', 'users_username', 'users_password', 'users_acesso')
+[DEBUG] 2025-05-21 16:21:31 - Row (1, 'lucas', '88335938', 4)
+[INFO] 2025-05-21 16:21:31 - SELECT produto__conferido.id AS produto__conferido_id, produto__conferido.data_conferencia AS produto__conferido_data_conferencia, produto__conferido.conferente AS produto__conferido_conferente, produto__conferido.codigo_produto AS produto__conferido_codigo_produto, produto__conferido.nome_do_produto AS produto__conferido_nome_do_produto, produto__conferido.quantidade_sistema AS produto__conferido_quantidade_sistema, produto__conferido.quantidade_fisico AS produto__conferido_quantidade_fisico, produto__conferido.quantidade_diferenca AS produto__conferido_quantidade_diferenca, produto__conferido.criador AS produto__conferido_criador, produto__conferido.divergencia_sistema AS produto__conferido_divergencia_sistema, produto__conferido.produto_conferido_lojas AS produto__conferido_produto_conferido_lojas, produto__conferido.ajuste AS produto__conferido_ajuste 
+FROM produto__conferido 
+WHERE produto__conferido.data_conferencia >= %(data_conferencia_1)s AND produto__conferido.data_conferencia <= %(data_conferencia_2)s AND produto__conferido.quantidade_sistema <= %(quantidade_sistema_1)s ORDER BY produto__conferido.data_conferencia DESC
+[INFO] 2025-05-21 16:21:31 - [cached since 19.95s ago] {'data_conferencia_1': '2025-05-19', 'data_conferencia_2': '2025-05-19', 'quantidade_sistema_1': '10'}
+[DEBUG] 2025-05-21 16:21:31 - Col ('produto__conferido_id', 'produto__conferido_data_conferencia', 'produto__conferido_conferente', 'produto__conferido_codigo_produto', 'produto__conferido_nome_do_produto', 'produto__conferido_quantidade_sistema', 'produto__conferido_quantidade_fisico', 'produto__conferido_quantidade_diferenca', 'produto__conferido_criador', 'produto__conferido_divergencia_sistema', 'produto__conferido_produto_conferido_lojas', 'produto__conferido_ajuste')
+[DEBUG] 2025-05-21 16:21:31 - Row (27, datetime.date(2025, 5, 19), 'Hudson', '339', 'REQUEIJAO CATUPIRY CX 12 UN 1,5 KG ', Decimal('10.000'), Decimal('10.000'), Decimal('0.000'), 'lucas', False, False, False)
+[DEBUG] 2025-05-21 16:21:31 - Row (28, datetime.date(2025, 5, 19), 'Hudson', '339', 'REQUEIJAO CATUPIRY CX 12 UN 1,5 KG ', Decimal('10.000'), Decimal('15.000'), Decimal('5.000'), 'lucas', False, False, False)
+[DEBUG] 2025-05-21 16:21:31 - Row (30, datetime.date(2025, 5, 19), 'Hudson', '339', 'REQUEIJAO CATUPIRY CX 12 UN 1,5 KG ', Decimal('10.000'), Decimal('15.000'), Decimal('5.000'), 'lucas', False, False, False)
+[DEBUG] 2025-05-21 16:21:31 - Row (32, datetime.date(2025, 5, 19), 'Hudson', '339', 'REQUEIJAO CATUPIRY CX 12 UN 1,5 KG ', Decimal('10.000'), Decimal('15.000'), Decimal('5.000'), 'lucas', False, False, False)
+[DEBUG] 2025-05-21 16:21:31 - Row (35, datetime.date(2025, 5, 19), 'Hudson', '2365', 'REQ CULINARIA SAB CHEDDAR REKEMINAS CX 12 UN 1,2 KG', Decimal('8.000'), Decimal('8.000'), Decimal('0.000'), 'lucas', False, False, False)
+[DEBUG] 2025-05-21 16:21:31 - Row (36, datetime.date(2025, 5, 19), 'Hudson', '2355', 'REQ CULINARIA SABOR CHEDDAR ROSELI CX 12 UN 1,2 KG', Decimal('1.000'), Decimal('0.000'), Decimal('-1.000'), 'lucas', False, False, False)
+[INFO] 2025-05-21 16:21:31 - SELECT produto__conferido.conferente AS produto__conferido_conferente, count(*) AS quantidade 
+FROM produto__conferido 
+WHERE produto__conferido.data_conferencia >= %(data_conferencia_1)s AND produto__conferido.data_conferencia <= %(data_conferencia_2)s GROUP BY produto__conferido.conferente ORDER BY count(*) DESC
+[INFO] 2025-05-21 16:21:31 - [cached since 19.92s ago] {'data_conferencia_1': '2025-05-19', 'data_conferencia_2': '2025-05-19'}
+[DEBUG] 2025-05-21 16:21:32 - Col ('produto__conferido_conferente', 'quantidade')
+[DEBUG] 2025-05-21 16:21:32 - Row ('Hudson', 12)
+[INFO] 2025-05-21 16:21:32 - ROLLBACK
+[INFO] 2025-05-21 16:21:32 - 127.0.0.1 - - [21/May/2025 16:21:32] "POST /conferencia/relatorio_emitir HTTP/1.1" 200 -
+[INFO] 2025-05-21 16:21:32 - 127.0.0.1 - - [21/May/2025 16:21:32] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+[INFO] 2025-05-21 16:21:32 - 127.0.0.1 - - [21/May/2025 16:21:32] "[36mGET /static/imagens/logo.png HTTP/1.1[0m" 304 -
+[INFO] 2025-05-21 16:21:56 - BEGIN (implicit)
+[INFO] 2025-05-21 16:21:56 - SELECT users.id AS users_id, users.username AS users_username, users.password AS users_password, users.acesso AS users_acesso 
+FROM users 
+WHERE users.id = %(pk_1)s
+[INFO] 2025-05-21 16:21:56 - [cached since 75.2s ago] {'pk_1': '1'}
+[DEBUG] 2025-05-21 16:21:57 - Col ('users_id', 'users_username', 'users_password', 'users_acesso')
+[DEBUG] 2025-05-21 16:21:57 - Row (1, 'lucas', '88335938', 4)
+[INFO] 2025-05-21 16:21:57 - ROLLBACK
+[INFO] 2025-05-21 16:21:57 - 127.0.0.1 - - [21/May/2025 16:21:57] "GET /conferencia/relatorio HTTP/1.1" 200 -
+[INFO] 2025-05-21 16:21:57 - 127.0.0.1 - - [21/May/2025 16:21:57] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+[INFO] 2025-05-21 16:21:57 - 127.0.0.1 - - [21/May/2025 16:21:57] "[36mGET /static/imagens/logo.png HTTP/1.1[0m" 304 -
+[INFO] 2025-05-21 16:22:16 - BEGIN (implicit)
+[INFO] 2025-05-21 16:22:16 - SELECT users.id AS users_id, users.username AS users_username, users.password AS users_password, users.acesso AS users_acesso 
+FROM users 
+WHERE users.id = %(pk_1)s
+[INFO] 2025-05-21 16:22:16 - [cached since 95.09s ago] {'pk_1': '1'}
+[DEBUG] 2025-05-21 16:22:16 - Col ('users_id', 'users_username', 'users_password', 'users_acesso')
+[DEBUG] 2025-05-21 16:22:16 - Row (1, 'lucas', '88335938', 4)
+[INFO] 2025-05-21 16:22:16 - ROLLBACK
+[INFO] 2025-05-21 16:22:17 - 127.0.0.1 - - [21/May/2025 16:22:17] "GET /conferencia/relatorio HTTP/1.1" 200 -
+[INFO] 2025-05-21 16:22:17 - 127.0.0.1 - - [21/May/2025 16:22:17] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+[INFO] 2025-05-21 16:22:17 - 127.0.0.1 - - [21/May/2025 16:22:17] "[36mGET /static/imagens/logo.png HTTP/1.1[0m" 304 -
+[INFO] 2025-05-21 16:22:24 - BEGIN (implicit)
+[INFO] 2025-05-21 16:22:24 - SELECT users.id AS users_id, users.username AS users_username, users.password AS users_password, users.acesso AS users_acesso 
+FROM users 
+WHERE users.id = %(pk_1)s
+[INFO] 2025-05-21 16:22:24 - [cached since 103.2s ago] {'pk_1': '1'}
+[DEBUG] 2025-05-21 16:22:25 - Col ('users_id', 'users_username', 'users_password', 'users_acesso')
+[DEBUG] 2025-05-21 16:22:25 - Row (1, 'lucas', '88335938', 4)
+[INFO] 2025-05-21 16:22:25 - ROLLBACK
+[INFO] 2025-05-21 16:22:25 - 127.0.0.1 - - [21/May/2025 16:22:25] "GET /conferencia/relatorio HTTP/1.1" 200 -
+[INFO] 2025-05-21 16:22:25 - 127.0.0.1 - - [21/May/2025 16:22:25] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+[INFO] 2025-05-21 16:22:25 - 127.0.0.1 - - [21/May/2025 16:22:25] "[36mGET /static/imagens/logo.png HTTP/1.1[0m" 304 -

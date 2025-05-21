@@ -70,17 +70,22 @@ def conferencia_relatorio_emitir():
     data_inicial = request.form['data_inicial']
     data_final = request.form['data_final']
     codigo_produto = request.form['codigo_produto']
+    quantidade = request.form.get('filtro_quantidade', 100000)
+
     if codigo_produto:
         conferencias = Produto_Conferido.query.filter(Produto_Conferido.data_conferencia >= data_inicial,
                                           Produto_Conferido.data_conferencia <=data_final,
-                                            Produto_Conferido.codigo_produto==codigo_produto).order_by(Produto_Conferido.data_conferencia.desc()).all()
+                                            Produto_Conferido.codigo_produto==codigo_produto,
+                                            Produto_Conferido.quantidade_sistema <= quantidade).order_by(Produto_Conferido.data_conferencia.desc()).all()
         totalitens = len(conferencias)
         itens_por_conferente = Produto_Conferido.query.filter(Produto_Conferido.data_conferencia >= data_inicial,
                                           Produto_Conferido.data_conferencia <=data_final,
-                                            Produto_Conferido.codigo_produto==codigo_produto).order_by(Produto_Conferido.data_conferencia.desc()).all()
+                                            Produto_Conferido.codigo_produto==codigo_produto,
+                                            Produto_Conferido.quantidade_sistema <= quantidade).order_by(Produto_Conferido.data_conferencia.desc()).all()
         return render_template('conferencia/emitir_relatorio.html', totalitens= totalitens ,conferencias=conferencias, data_inicial=formatar_data(data_inicial), data_final=formatar_data(data_final))
     conferencias = Produto_Conferido.query.filter(Produto_Conferido.data_conferencia >= data_inicial,
-                                        Produto_Conferido.data_conferencia <=data_final).order_by(
+                                        Produto_Conferido.data_conferencia <=data_final,
+                                        Produto_Conferido.quantidade_sistema <= quantidade).order_by(
     Produto_Conferido.data_conferencia.desc()).all()
     totalitens = len(conferencias)
     conferencias_por_conferente = (
@@ -110,7 +115,7 @@ def conferencia_zerados_relatorio_emitir():
                                             Produto_Conferido.codigo_produto==codigo_produto, Produto_Conferido.ajuste==True, Produto_Conferido.divergencia_sistema==False).order_by(Produto_Conferido.data_conferencia.desc()).all()
         conferencias_totais=[]
         for i in conferencias:
-            if i.quantidade_sistema > i.quantidade_fisico:
+            if i.quantidade_sistema > i.quantidade_fisico :
                 produto = Produto.query.filter(Produto.codigo_do_produto == i.codigo_produto).first()
                 total = (i.quantidade_sistema - i.quantidade_fisico) * produto.preco_do_produto
                 conferencias_totais.append({
