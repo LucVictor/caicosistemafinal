@@ -113,7 +113,7 @@
               <img src="../static/imagens/logo.png" alt="" width="40">
             </a>
           </div>
-          {% if current_user.is_authenticated %}
+          {% if current_user.acesso == 1 or current_user.acesso == 4 %}
         <div class="d-flex ms-auto p-2">
             <div class="dropdown mr-2">
                 <a class="me-2 btn btn-secondary btn-sm dropdown-toggle btn-custom-orange"href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -135,25 +135,14 @@
 
                 <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="/vencimentos/">Visualizar</a></li>
-                    {% if current_user.is_authenticated %}
+                    {% if current_user.is_authenticated and current_user.acesso == 1 or current_user.acesso == 4 %}
                 <li><a class="dropdown-item" href="/vencimentos/procurar">Cadastrar</a></li>
                 <li><a class="dropdown-item" href="/vencimentos/analisarvolume">Analisar</a></li>
                 <li><a class="dropdown-item" href="/vencimentos/cadastrar_volume">Cadastrar Volume</a></li>
               </ul>{% endif %}
             </div>
-            {% if current_user.is_authenticated %}
-            <div class="dropdown me-2">
-                <a class="btn btn-secondary btn-sm dropdown-toggle btn-custom-orange" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Atacado
-                </a>
+            {% if current_user.acesso == 1 or current_user.acesso == 4 %}
 
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="/atacado/erros">Erros</a></li>
-                    <li><a class="dropdown-item" href="/atacado/cadastrar_erro">Cadastrar Erro</a></li>
-                    <li><a class="dropdown-item" href="/atacado/erros_relatorio">Relatório</a></li>
-                    <li><a class="dropdown-item" href="/atacado/comparar_erros">Comparar</a></li>
-              </ul>
-            </div>
             <div class="dropdown me-2">
               <a class="btn btn-secondary btn-sm dropdown-toggle btn-custom-orange" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Recebimento
@@ -177,8 +166,20 @@
 
             </ul>
           </div>
+            {% endif %}
+            {% if current_user.acesso == 2 or current_user.acesso == 4 %}
+            <div class="dropdown me-2">
+                <a class="btn btn-secondary btn-sm dropdown-toggle btn-custom-orange" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Atacado
+                </a>
 
-            {% if current_user.acesso == 2 %}
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/atacado/erros">Erros</a></li>
+                    <li><a class="dropdown-item" href="/atacado/cadastrar_erro">Cadastrar Erro</a></li>
+                    <li><a class="dropdown-item" href="/atacado/erros_relatorio">Relatório</a></li>
+                    <li><a class="dropdown-item" href="/atacado/comparar_erros">Comparar</a></li>
+              </ul>
+            </div>
             <div class="dropdown me-2 ">
                 <a class="btn btn-secondary btn-sm dropdown-toggle btn-custom-orange" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Logística
@@ -210,20 +211,23 @@
               </ul>
             </div>
             {% endif %}
+            {% if current_user.is_authenticated %}
             <div class="dropdown ">
                 <a class="btn  btn-secondary btn-sm dropdown-toggle btn-custom-orange" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     {{  current_user.username.upper() }}
                 </a>
                 <ul class="dropdown-menu dropdown-menu dropdown-menu-end fs-12">
+                {% if current_user.acesso == 4%}
                 <li><a class="dropdown-item" href="/adm/funcionarios">Funcionários</a></li>
                 <li><a class="dropdown-item" href="/adm/cadastrar_funcionario">Cadastrar Funcionário</a></li>
                 <li><a class="dropdown-item" href="/adm/usuarios">Usuários</a></li>
                 <li><a class="dropdown-item" href="/adm/cadastrar_usuario">Cadastrar Usuário</a></li>
-
+                {% endif %}
                 <li><a class="dropdown-item" href="/sair">Sair</a></li>
               </ul>
             </div>
             {% endif %}
+
         </div>
     </nav>
 <div class="conteudo p-1 m-4 w-80 m-auto m-top mt-1 text-center">

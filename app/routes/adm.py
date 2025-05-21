@@ -1,6 +1,6 @@
 from ..main import *
 @app.route('/adm/cadastrar_funcionario', methods=['GET', 'POST'])
-@access_level_required(1)
+@access_level_required(4)
 @login_required
 def cadastrar_funcionario():
     if request.method == 'POST':
@@ -18,7 +18,7 @@ def cadastrar_funcionario():
 
 
 @app.route('/adm/funcionarios', methods=['GET', 'POST'])
-@access_level_required(1)
+@access_level_required(4)
 @login_required
 def funcionarios():
     funcionarios = Funcionarios.query.all()
@@ -26,7 +26,7 @@ def funcionarios():
 
 
 @app.route('/adm/deletar_funcionario/<int:funcionario_id>', methods=['POST'])
-@access_level_required(1)
+@access_level_required(4)
 @login_required
 def deletar_funcionario(funcionario_id):
     funcionario = Funcionarios.query.filter_by(id=int(funcionario_id)).first()
@@ -37,7 +37,7 @@ def deletar_funcionario(funcionario_id):
 
 
 @app.route('/adm/usuarios', methods=["GET", "POST"])
-@access_level_required(1)
+@access_level_required(4)
 @login_required
 def usuarios():
     usuarios = Users.query.all()
@@ -45,7 +45,7 @@ def usuarios():
 
 
 @app.route('/adm/cadastrar_usuario', methods=["GET", "POST"])
-@access_level_required(1)
+@access_level_required(4)
 @login_required
 def cadastrar_usuario():
     if request.method == "POST":
@@ -65,7 +65,7 @@ def cadastrar_usuario():
 
 
 @app.route('/adm/deletar_usuario/<int:usuario_id>', methods=["GET", "POST"])
-@access_level_required(1)
+@access_level_required(4)
 @login_required
 def deletar_usuario(usuario_id):
     if request.method == "POST":
@@ -99,6 +99,7 @@ def sair():
     return redirect(url_for("logar"))
 
 @app.route('/adm/atualizar_bancos', methods=['GET'])
+@access_level_required(4)
 def atualizar_bancos():
     db.create_all()
     return redirect(url_for("index"))

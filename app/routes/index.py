@@ -2,29 +2,32 @@ from ..main import *
 @app.route('/')
 @login_required
 def index():
-    start_date = primeiro_dia_mes()
-    end_date = ultimo_dia_mes()
+    if current_user.acesso == 1 or current_user.acesso == 4:
+        start_date = primeiro_dia_mes()
+        end_date = ultimo_dia_mes()
 
-    avarias = db.session.query(
-        Produto_Avaria.data_de_insercao,
-        func.sum(Produto_Avaria.preco_total).label('total_value')
-    )
+        avarias = db.session.query(
+            Produto_Avaria.data_de_insercao,
+            func.sum(Produto_Avaria.preco_total).label('total_value')
+        )
 
-    if start_date:
-        avarias = avarias.filter(Produto_Avaria.data_de_insercao >= start_date)
+        if start_date:
+            avarias = avarias.filter(Produto_Avaria.data_de_insercao >= start_date)
 
-    if end_date:
-        avarias = avarias.filter(Produto_Avaria.data_de_insercao <= end_date)
+        if end_date:
+            avarias = avarias.filter(Produto_Avaria.data_de_insercao <= end_date)
 
-    results = avarias.group_by(Produto_Avaria.data_de_insercao).all()
-    dates = [result.data_de_insercao.strftime('%d-%m') for result in results]
-    total_values = [result.total_value for result in results]
-    dez_itens = Produto_Avaria.query.order_by(
-        Produto_Avaria.data_de_insercao.desc()).limit(5).all()
-    dez_vencimentos = Produto_Vencimento.query.order_by(
-        Produto_Vencimento.data_de_vencimento).limit(5).all()
-    return render_template('index.html', dates=dates, total_values=total_values, dez_itens=dez_itens,
-                           dez_vencimentos=dez_vencimentos)
+        results = avarias.group_by(Produto_Avaria.data_de_insercao).all()
+        dates = [result.data_de_insercao.strftime('%d-%m') for result in results]
+        total_values = [result.total_value for result in results]
+        dez_itens = Produto_Avaria.query.order_by(
+            Produto_Avaria.data_de_insercao.desc()).limit(5).all()
+        dez_vencimentos = Produto_Vencimento.query.order_by(
+            Produto_Vencimento.data_de_vencimento).limit(5).all()
+        return render_template('index.html', dates=dates, total_values=total_values, dez_itens=dez_itens,
+                            dez_vencimentos=dez_vencimentos)
+    if current_user.acesso == 2:
+        return redirect(url_for('entregas_index'))
 
 @app.route('/upload', methods=['GET', 'POST'])
 def upload_file():
@@ -42,5 +45,3 @@ def upload_file():
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             return redirect(url_for('download_file', name=filename))
     return render_template("upload.html")
-
-
