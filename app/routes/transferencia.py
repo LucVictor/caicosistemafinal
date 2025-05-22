@@ -27,6 +27,15 @@ def index_transferencia():
     .order_by(func.count().desc())
     .all())
 
+    transferencias_por_lojas = (db.session.query(Transferencia.loja, func.count().label('quantidade'))
+    .filter(
+        Transferencia.data >= primeiro_dia_mes(),
+        Transferencia.data <= ultimo_dia_mes(),
+    )
+    .group_by(Transferencia.loja)
+    .order_by(func.count().desc())
+    .all())
+
     if transferencias_por_comprador:
         compradores, qtd_transferencias = zip(*transferencias_por_comprador)
     else:
@@ -36,9 +45,13 @@ def index_transferencia():
     else:
         tipos, quantidades = [], []
 
+    if transferencias_por_lojas:
+        lojas, lojas_quantidades = zip(*transferencias_por_lojas)
+    else:
+        lojas, lojas_quantidades = [], []
 
     total_transferencias = len(transferencias)
-    return render_template('transferencia/index.html', tipos=tipos, quantidades=quantidades, compradores=compradores, qtd_transferencias=qtd_transferencias, transferencias_por_tipo=transferencias_por_tipo, transferencias_por_comprador=transferencias_por_comprador, total_transferencias=total_transferencias, criador=criador, transferencias=transferencias, mes=mes_atual())
+    return render_template('transferencia/index.html', lojas=lojas, lojas_quantidades=lojas_quantidades, tipos=tipos, quantidades=quantidades, compradores=compradores, qtd_transferencias=qtd_transferencias, transferencias_por_tipo=transferencias_por_tipo, transferencias_por_comprador=transferencias_por_comprador, total_transferencias=total_transferencias, criador=criador, transferencias=transferencias, mes=mes_atual())
 
 @app.route('/transferencia/dashboard', methods=['GET'])
 @login_required
@@ -117,6 +130,16 @@ def emitir_relatorio_transferencia():
     .order_by(func.count().desc())
     .all())
 
+    transferencias_por_lojas = (db.session.query(Transferencia.loja, func.count().label('quantidade'))
+    .filter(
+        Transferencia.data >= data_inicial,
+        Transferencia.data <= data_final,
+    )
+    .group_by(Transferencia.loja)
+    .order_by(func.count().desc())
+    .all())
+
+
     if transferencias_por_comprador:
         compradores, qtd_transferencias = zip(*transferencias_por_comprador)
     else:
@@ -125,7 +148,11 @@ def emitir_relatorio_transferencia():
         tipos, quantidades = zip(*transferencias_por_tipo)
     else:
         tipos, quantidades = [], []
-    return render_template('transferencia/emitir_relatorio.html',compradores=compradores, qtd_transferencias=qtd_transferencias ,tipos=tipos, quantidades=quantidades, transferencias_por_tipo=transferencias_por_tipo, data_inicial=formatar_data(data_inicial), data_final=formatar_data(data_final), transferencias_por_comprador=transferencias_por_comprador, total_transferencias=total_transferencias, transferencias=transferencias)
+    if transferencias_por_lojas:
+        lojas, lojas_quantidades = zip(*transferencias_por_lojas)
+    else:
+        lojas, lojas_quantidades = [], []
+    return render_template('transferencia/emitir_relatorio.html',lojas=lojas, lojas_quantidades=lojas_quantidades, compradores=compradores, qtd_transferencias=qtd_transferencias ,tipos=tipos, quantidades=quantidades, transferencias_por_tipo=transferencias_por_tipo, data_inicial=formatar_data(data_inicial), data_final=formatar_data(data_final), transferencias_por_comprador=transferencias_por_comprador, total_transferencias=total_transferencias, transferencias=transferencias)
 
 
 @app.route('/transferencia/deletar/<int:id>', methods=['GET'])

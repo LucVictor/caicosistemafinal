@@ -1,7 +1,14 @@
 {% extends "./template.html" %} {% block content %}
 <style>
+    #graficoContainer2 {
+        max-width: 400px;
+    }
     #graficoContainer {
         max-width: 400px;
+    }
+    #graficoLojasBarras {
+        width: 400px;
+        height: 250px;
     }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -11,24 +18,35 @@
     {{data_final.strftime('%d/%m/%Y')}}:
 </h2>
 <br />
-<h4 class="m-2">Total de transferências: {{total_transferencias}}.</h4>
+<h4 class="p-2">Total de transferências: {{total_transferencias}}.</h4>
 
-<div class="row border container w-100 m-auto">
-    <div class="col-md-6">
+<div class="row border container m-auto">
+    <div class="col">
         <h4>Transferências por comprador:</h4>
 
-        <div class="m-auto" id="graficoContainer">
+        <div class="m-auto" id="graficoContainer2">
             <canvas id="graficoComprador"></canvas>
         </div>
     </div>
 
-    <div class="col-md-6">
+    <div
+        class="col border d-flex justify justify-content-center align-items-center flex-column"
+    >
+        <h4>Transferências por lojas:</h4>
+        <div class="m-auto" id="graficoLojasBarras">
+            <canvas id="graficoLoja"></canvas>
+        </div>
+    </div>
+
+    <div class="col">
         <h4>Transferências por tipo:</h4>
         <div class="m-auto" id="graficoContainer">
             <canvas id="graficoRosquinha"></canvas>
         </div>
     </div>
 </div>
+<hr />
+<h4>Tabela</h4>
 
 <div class="d-flex justify-content-center text-center">
     <div class="table-responsive w-100 p-3">
@@ -86,6 +104,11 @@
     const qtdTransferencias = {{ qtd_transferencias | tojson }};
     const totalCompras = qtdTransferencias.reduce((a, b) => a + b, 0);
 
+    const lojas = {{ lojas | tojson }};
+    const lojasQuantidades = {{ lojas_quantidades | tojson }};
+    const totalLojas = lojasQuantidades.reduce((a, b) => a + b, 0);
+
+    // Gráfico Rosquinha por Tipo
     const ctx = document.getElementById('graficoRosquinha').getContext('2d');
     const grafico = new Chart(ctx, {
         type: 'doughnut',
@@ -144,6 +167,7 @@
         plugins: [ChartDataLabels]
     });
 
+    // Gráfico Rosquinha por Comprador
     const ctxComprador = document.getElementById('graficoComprador').getContext('2d');
     const graficoComprador = new Chart(ctxComprador, {
         type: 'doughnut',
@@ -177,7 +201,7 @@
                             return data.labels.map((label, i) => {
                                 const value = dataset.data[i];
                                 return {
-                                    text: `${label} (${value})`, // 👈 Mostra "Nome (Quantidade)"
+                                    text: `${label} (${value})`,
                                     fillStyle: dataset.backgroundColor[i],
                                     strokeStyle: dataset.borderColor,
                                     lineWidth: 1,
@@ -193,6 +217,65 @@
                         label: (context) => {
                             const value = context.raw;
                             const percentage = ((value / totalCompras) * 100).toFixed(1);
+                            return `${context.label}: ${value} (${percentage}%)`;
+                        }
+                    }
+                }
+            }
+        },
+        plugins: [ChartDataLabels]
+    });
+
+    // Gráfico Rosquinha por Loja
+    const ctxLoja = document.getElementById('graficoLoja').getContext('2d');
+    const graficoLoja = new Chart(ctxLoja, {
+        type: 'bar',
+        data: {
+            labels: lojas,
+            datasets: [{
+                data: lojasQuantidades,
+                backgroundColor: [
+                    '#1F77B4', '#AEC7E8', '#FF7F0E', '#FFBB78',
+                    '#2CA02C', '#98DF8A', '#D62728', '#FF9896'
+                ],
+                borderColor: '#fff',
+                borderWidth: 2
+            }]
+        },
+        options: {
+            plugins: {
+                datalabels: {
+                    formatter: (value) => `${((value / totalLojas) * 100).toFixed(1)}%\n(${value})`,
+                    color: '#000',
+                    font: { weight: 'bold', size: 14 }
+                },
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        boxWidth: 20,
+                        color: '#000',
+                        generateLabels: function(chart) {
+                            const data = chart.data;
+                            const dataset = data.datasets[0];
+                            return data.labels.map((label, i) => {
+                                const value = dataset.data[i];
+                                return {
+                                    text: `${label} (${value})`,
+                                    fillStyle: dataset.backgroundColor[i],
+                                    strokeStyle: dataset.borderColor,
+                                    lineWidth: 1,
+                                    hidden: !chart.getDatasetMeta(0).data[i],
+                                    index: i
+                                };
+                            });
+                        }
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: (context) => {
+                            const value = context.raw;
+                            const percentage = ((value / totalLojas) * 100).toFixed(1);
                             return `${context.label}: ${value} (${percentage}%)`;
                         }
                     }
