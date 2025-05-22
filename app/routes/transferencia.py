@@ -116,8 +116,14 @@ def emitir_relatorio_transferencia():
     tipos, quantidades = zip(*transferencias_por_tipo)
     compradores, qtd_transferencias  = zip(*transferencias_por_comprador)
 
-    print(transferencias_por_tipo)
-    print(tipos)
+    if transferencias_por_comprador:
+        compradores, qtd_transferencias = zip(*transferencias_por_comprador)
+    else:
+        compradores, qtd_transferencias = [], []
+    if transferencias_por_tipo:
+        tipos, quantidades = zip(*transferencias_por_tipo)
+    else:
+        tipos, quantidades = [], []
     return render_template('transferencia/emitir_relatorio.html',compradores=compradores, qtd_transferencias=qtd_transferencias ,tipos=tipos, quantidades=quantidades, transferencias_por_tipo=transferencias_por_tipo, data_inicial=formatar_data(data_inicial), data_final=formatar_data(data_final), transferencias_por_comprador=transferencias_por_comprador, total_transferencias=total_transferencias, transferencias=transferencias)
 
 
