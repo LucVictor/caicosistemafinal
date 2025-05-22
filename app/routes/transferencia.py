@@ -17,8 +17,21 @@ def index_transferencia():
     .group_by(Transferencia.comprador)
     .order_by(func.count().desc())
     .all())
+
+    transferencias_por_tipo = (db.session.query(Transferencia.tipo, func.count().label('quantidade'))
+    .filter(
+        Transferencia.data >= primeiro_dia_mes(),
+        Transferencia.data <= ultimo_dia_mes(),
+    )
+    .group_by(Transferencia.tipo)
+    .order_by(func.count().desc())
+    .all())
+
+    tipos, quantidades = zip(*transferencias_por_tipo)
+    compradores, qtd_transferencias  = zip(*transferencias_por_comprador)
+
     total_transferencias = len(transferencias)
-    return render_template('transferencia/index.html', transferencias_por_comprador=transferencias_por_comprador, total_transferencias=total_transferencias, criador=criador, transferencias=transferencias, mes=mes_atual())
+    return render_template('transferencia/index.html', tipos=tipos, quantidades=quantidades, compradores=compradores, qtd_transferencias=qtd_transferencias, transferencias_por_tipo=transferencias_por_tipo, transferencias_por_comprador=transferencias_por_comprador, total_transferencias=total_transferencias, criador=criador, transferencias=transferencias, mes=mes_atual())
 
 
 
@@ -71,9 +84,19 @@ def cadastrar_tipos_transferencia():
 def emitir_relatorio_transferencia():
     data_inicial = request.form['data_inicial']
     data_final = request.form['data_final']
+
     transferencias = Transferencia.query.filter(Transferencia.data >= data_inicial, Transferencia.data <= data_final).order_by(
         Transferencia.data.desc()).all()
     total_transferencias = len(transferencias)
+
+    transferencias_por_tipo = (db.session.query(Transferencia.tipo, func.count().label('quantidade'))
+    .filter(
+        Transferencia.data >= data_inicial,
+        Transferencia.data <= data_final,
+    )
+    .group_by(Transferencia.tipo)
+    .order_by(func.count().desc())
+    .all())
 
     transferencias_por_comprador = (db.session.query(Transferencia.comprador, func.count().label('quantidade'))
     .filter(
@@ -83,8 +106,12 @@ def emitir_relatorio_transferencia():
     .group_by(Transferencia.comprador)
     .order_by(func.count().desc())
     .all())
+    tipos, quantidades = zip(*transferencias_por_tipo)
+    compradores, qtd_transferencias  = zip(*transferencias_por_comprador)
 
-    return render_template('transferencia/emitir_relatorio.html', data_inicial=formatar_data(data_inicial), data_final=formatar_data(data_final), transferencias_por_comprador=transferencias_por_comprador, total_transferencias=total_transferencias, transferencias=transferencias)
+    print(transferencias_por_tipo)
+    print(tipos)
+    return render_template('transferencia/emitir_relatorio.html',compradores=compradores, qtd_transferencias=qtd_transferencias ,tipos=tipos, quantidades=quantidades, transferencias_por_tipo=transferencias_por_tipo, data_inicial=formatar_data(data_inicial), data_final=formatar_data(data_final), transferencias_por_comprador=transferencias_por_comprador, total_transferencias=total_transferencias, transferencias=transferencias)
 
 
 @app.route('/transferencia/deletar/<int:id>', methods=['GET'])
