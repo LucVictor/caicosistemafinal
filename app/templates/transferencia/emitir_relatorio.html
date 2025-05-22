@@ -1,7 +1,7 @@
 {% extends "./template.html" %} {% block content %}
 <style>
     #graficoContainer2 {
-        max-width: 400px;
+        max-width: 300px;
     }
     #graficoContainer {
         max-width: 400px;
@@ -20,7 +20,7 @@
 <br />
 <h4 class="p-2">Total de transferências: {{total_transferencias}}.</h4>
 
-<div class="row border container m-auto">
+<div class="row border container m-auto fs-6">
     <div class="col">
         <h4>Transferências por comprador:</h4>
 
@@ -129,7 +129,7 @@
                 datalabels: {
                     formatter: (value) => `${((value / total) * 100).toFixed(1)}%\n(${value})`,
                     color: '#000',
-                    font: { weight: 'bold', size: 14 }
+                    font: { weight: 'bold', size: 12 }
                 },
                 legend: {
                     position: 'bottom',
@@ -188,7 +188,7 @@
                 datalabels: {
                     formatter: (value) => `${((value / totalCompras) * 100).toFixed(1)}%\n(${value})`,
                     color: '#000',
-                    font: { weight: 'bold', size: 14 }
+                    font: { weight: 'bold', size: 12 }
                 },
                 legend: {
                     position: 'bottom',
@@ -247,7 +247,7 @@
                 datalabels: {
                     formatter: (value) => `${((value / totalLojas) * 100).toFixed(1)}%\n(${value})`,
                     color: '#000',
-                    font: { weight: 'bold', size: 14 }
+                    font: { weight: 'bold', size: 12 }
                 },
                 legend: {
                     position: 'bottom',
