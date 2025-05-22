@@ -113,8 +113,6 @@ def emitir_relatorio_transferencia():
     .group_by(Transferencia.comprador)
     .order_by(func.count().desc())
     .all())
-    tipos, quantidades = zip(*transferencias_por_tipo)
-    compradores, qtd_transferencias  = zip(*transferencias_por_comprador)
 
     if transferencias_por_comprador:
         compradores, qtd_transferencias = zip(*transferencias_por_comprador)
