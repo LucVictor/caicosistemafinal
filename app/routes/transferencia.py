@@ -27,8 +27,15 @@ def index_transferencia():
     .order_by(func.count().desc())
     .all())
 
-    tipos, quantidades = zip(*transferencias_por_tipo)
-    compradores, qtd_transferencias  = zip(*transferencias_por_comprador)
+    if transferencias_por_comprador:
+        compradores, qtd_transferencias = zip(*transferencias_por_comprador)
+    else:
+        compradores, qtd_transferencias = [], []
+    if transferencias_por_tipo:
+        tipos, quantidades = zip(*transferencias_por_tipo)
+    else:
+        tipos, quantidades = [], []
+
 
     total_transferencias = len(transferencias)
     return render_template('transferencia/index.html', tipos=tipos, quantidades=quantidades, compradores=compradores, qtd_transferencias=qtd_transferencias, transferencias_por_tipo=transferencias_por_tipo, transferencias_por_comprador=transferencias_por_comprador, total_transferencias=total_transferencias, criador=criador, transferencias=transferencias, mes=mes_atual())
