@@ -28,6 +28,8 @@ def index():
                             dez_vencimentos=dez_vencimentos)
     if current_user.acesso == 2:
         return redirect(url_for('entregas_index'))
+    if current_user.acesso == 3:
+        return redirect(url_for('index_transferencia'))
 
 @app.route('/upload', methods=['GET', 'POST'])
 def upload_file():

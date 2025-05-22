@@ -168,3 +168,17 @@ class Recebimento(db.Model):
     produto_novo = db.Column(db.Boolean, nullable=False)
     criador = db.Column(db.String(250), nullable=True)
     foto = db.Column(db.String(250), nullable=True)
+
+class Transferencia(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    data = db.Column(db.Date, nullable=False)
+    comprador = db.Column(db.String(250), nullable=False)
+    pedido = db.Column(db.Integer, nullable=False)
+    loja = db.Column(db.String(250), nullable=False)
+    tipo = db.Column(db.String(250), nullable=False)
+    obs = db.Column(db.Text, nullable=True)
+    criador = db.Column(db.String(250), nullable=False)
+
+class Tipos_Transferencias(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    nome = db.Column(db.String(250), unique=True, nullable=False)

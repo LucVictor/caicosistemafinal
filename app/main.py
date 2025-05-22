@@ -73,6 +73,7 @@ def download_log():
 from app.models.models import *
 from app.functions.functions import *
 from app.routes.index import *
+from app.routes.transferencia import *
 from app.routes.avarias import *
 from app.routes.entregas import *
 from app.routes.vencimentos import *

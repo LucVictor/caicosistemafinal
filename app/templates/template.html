@@ -211,6 +211,19 @@
               </ul>
             </div>
             {% endif %}
+            {% if current_user.acesso == 3 or current_user.acesso == 4 %}
+            <div class="dropdown me-2">
+              <a class="btn btn-secondary btn-sm dropdown-toggle btn-custom-orange" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Transferências
+              </a>
+              <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="/transferencia/">Visualizar</a></li>
+                  <li><a class="dropdown-item" href="/transferencia/cadastro">Cadastrar</a></li>
+                  <li><a class="dropdown-item" href="/transferencia/relatorio">Relatório</a></li>
+            </ul>
+          </div>
+          {% endif %}
+
             {% if current_user.is_authenticated %}
             <div class="dropdown ">
                 <a class="btn  btn-secondary btn-sm dropdown-toggle btn-custom-orange" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -230,7 +243,7 @@
 
         </div>
     </nav>
-<div class="conteudo p-1 m-4 w-80 m-auto m-top mt-1 text-center">
+<div class="shadow-lg conteudo p-1 m-4 w-80 m-auto m-top mt-1 text-center">
     {% block content %}{% endblock %}
   </div>
 </body>

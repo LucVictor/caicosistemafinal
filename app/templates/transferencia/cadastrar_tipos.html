@@ -1,0 +1,30 @@
+{% extends "./template.html" %} {% block content %}
+<div class="text-black p-1 m-auto border-orange fs-6 w-50">
+    <h4 class="vermelho">{{ erro }}</h2>
+    <h4 class="verde">{{ sucesso }}</h2>
+    <h3>Cadastro de tipos de transferências</h3>
+
+    <form
+        class="w-75 p-3 m-auto"
+        action="/transferencia/tipos"
+        method="post"
+    >
+        <div class="mb-3 m-auto">
+            <label for="nome">Nome:</label>
+            <input
+                class="form-control text-center w-50 m-auto"
+                type="text"
+                id="nome"
+                name="nome"
+                required
+            />
+        </div>
+
+        <input
+            class="btn btn-sm btn-warning m-2"
+            type="submit"
+            value="Cadastrar"
+        />
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "./template.html" %}
+{% block content %}
+     <div class="shadow-lg text-black p-1 d-flex justify-content-center align-items-center flex-column m-auto border-orange w-50">
+    <h3>Cadastro de transferência</h3>
+    <div class="mb-3"><img class="procurarimg" src="../static/imagens/registro.gif" width="100" alt=""></div>
+    <form action="/transferencia/cadastrar" enctype=multipart/form-data method="post">
+
+        <div class="mb-3 w-50 m-auto"><label for="data">Data da transferência:</label>
+        <input class="form-control text-center" type="date" id="data" name="data" required></div>
+
+        <div class="mb-3 w-50  m-auto"><label for="pedido">Nº pedido:</label>
+        <input class="form-control text-center" type="number" id="pedido" name="pedido" step="1" min="0" value="0" required></div>
+
+        <div class="mb-3 w-50  m-auto">
+        <label for="tipo">Tipo</label>
+        <select class="form-select text-center" name="tipo" id="tipo">
+            {% for i in tipos %}
+                <option class="lista">{{ i.nome }}</option>
+            {% endfor %}
+        </select></div>
+
+        <div class="mb-3 w-50  m-auto">
+        <label for="tipo">Loja</label>
+        <select class="form-select text-center" name="loja" id="loja">
+        <option class="m-auto" value="Parnamirim">Parnamirim</option>
+        <option class="m-auto" value="Lagoa Nova">Lagoa Nova</option>
+        <option class="m-auto" value="Zona Norte">Zona Norte</option>
+        <option class="m-auto" value="Distribuidora">Distribuidora</option>
+        </select></div>
+
+        <div class="mb-3 w-50  m-auto">
+        <label for="comprador">Comprador:</label>
+        <select required name="comprador" class="form-select  text-center" id="comprador">
+            {% for i in compradores %}
+                <option class="lista">{{ i.nome }}</option>
+            {% endfor %}
+        </select></div>
+
+        <div class="mb-3 m-auto">
+        <label for="prateleiras">Obs</label>
+        <textarea class="form-control text-left" name="obs" id="obs" cols="50" rows="5"> </textarea></div>
+
+
+        <input class="btn btn-sm btn-warning m-2" type="submit" value="Cadastrar">
+    </form>
+    <div>
+{% endblock %}

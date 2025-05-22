@@ -1,6 +1,8 @@
 /.idea
 /.venv
 .env
+logs.txt
+/app/static/logs.txt
 app/__pycache__/
 app/__pycache__/main.cpython-313.pyc
 app/functions/__pycache__/
