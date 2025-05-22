@@ -40,7 +40,10 @@ def index_transferencia():
     total_transferencias = len(transferencias)
     return render_template('transferencia/index.html', tipos=tipos, quantidades=quantidades, compradores=compradores, qtd_transferencias=qtd_transferencias, transferencias_por_tipo=transferencias_por_tipo, transferencias_por_comprador=transferencias_por_comprador, total_transferencias=total_transferencias, criador=criador, transferencias=transferencias, mes=mes_atual())
 
-
+@app.route('/transferencia/dashboard', methods=['GET'])
+@login_required
+def transferencias_dashboard():
+    return render_template('/transferencia/dashboard.html')
 
 @app.route('/transferencia/cadastrar', methods=['POST'])
 @login_required

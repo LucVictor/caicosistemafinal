@@ -1,7 +1,7 @@
 {% extends "./template.html" %} {% block content %}
 <style>
     #graficoContainer {
-        max-width: 200px;
+        max-width: 400px;
     }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -12,51 +12,19 @@
 </h2>
 <br />
 <h4 class="m-2">Total de transferências: {{total_transferencias}}.</h4>
-<div
-    class="d-flex gap-4 align-items-center justify-content-center text-center mt-4"
->
-    <div class="border p-2 align-items-center m-4">
-        <h5>Transferências por comprador:</h5>
-        <table class="table-bordered mb-4 w-25 text-center align-middle">
-            <thead>
-                <tr>
-                    <th>Comprador</th>
-                    <th>Transferências</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for comprador, quantidade in transferencias_por_comprador %}
-                <tr>
-                    <td>{{ comprador }}</td>
-                    <td>{{ quantidade }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        <div id="graficoContainer">
+
+<div class="row border container w-100 m-auto">
+    <div class="col-md-6">
+        <h4>Transferências por comprador:</h4>
+
+        <div class="m-auto" id="graficoContainer">
             <canvas id="graficoComprador"></canvas>
         </div>
     </div>
 
-    <div class="border d-flex flex-column p-2 align-items-center m-4">
-        <h5>Transferências por tipo:</h5>
-        <table class="table-bordered mb-4 w-25 text-center align-middle">
-            <thead>
-                <tr>
-                    <th>Tipo</th>
-                    <th>Transferências</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for tipo, quantidade in transferencias_por_tipo %}
-                <tr>
-                    <td>{{ tipo }}</td>
-                    <td>{{ quantidade }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        <div id="graficoContainer">
+    <div class="col-md-6">
+        <h4>Transferências por tipo:</h4>
+        <div class="m-auto" id="graficoContainer">
             <canvas id="graficoRosquinha"></canvas>
         </div>
     </div>
@@ -64,7 +32,7 @@
 
 <div class="d-flex justify-content-center text-center">
     <div class="table-responsive w-100 p-3">
-        <table class="table-bordered text-center min-vw-50 m-auto align-middle">
+        <table class="table table-bordered text-center align-middle">
             <thead>
                 <tr>
                     <th>Data</th>
@@ -74,22 +42,21 @@
                     <th>Comprador</th>
                     <th>Observação</th>
                     <th>Ação</th>
-                    <th class="botoesacao">Criador</th>
+                    <th>Criador</th>
                 </tr>
             </thead>
-            {% for transferencia in transferencias %}
             <tbody>
+                {% for transferencia in transferencias %}
                 <tr>
                     <td>{{ transferencia.data.strftime('%d/%m/%Y') }}</td>
                     <td>{{ transferencia.pedido }}</td>
-                    <td>{{transferencia.loja}}</td>
-                    <td>{{transferencia.tipo}}</td>
-                    <td>{{transferencia.comprador}}</td>
-                    <td>{{transferencia.obs}}</td>
-
-                    {% if current_user.is_authenticated and
-                    current_user.username == transferencia.criador %}
-                    <td class="flexNoBoards botoesacao">
+                    <td>{{ transferencia.loja }}</td>
+                    <td>{{ transferencia.tipo }}</td>
+                    <td>{{ transferencia.comprador }}</td>
+                    <td>{{ transferencia.obs }}</td>
+                    <td class="botoesacao">
+                        {% if current_user.is_authenticated and
+                        current_user.username == transferencia.criador %}
                         <form
                             action="/transferencia/deletar/{{ transferencia.id }}"
                             method="get"
@@ -100,11 +67,9 @@
                                 value="Apagar"
                             />
                         </form>
+                        {% endif %}
                     </td>
-                    {% else %}
-                    <td class="flexNoBoards botoesacao"></td>
-                    {% endif %}
-                    <td>{{ transferencia.criador}}</td>
+                    <td>{{ transferencia.criador }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -115,8 +80,11 @@
 <script>
     const tipos = {{ tipos | tojson }};
     const quantidades = {{ quantidades | tojson }};
-
     const total = quantidades.reduce((a, b) => a + b, 0);
+
+    const compradores = {{ compradores | tojson }};
+    const qtdTransferencias = {{ qtd_transferencias | tojson }};
+    const totalCompras = qtdTransferencias.reduce((a, b) => a + b, 0);
 
     const ctx = document.getElementById('graficoRosquinha').getContext('2d');
     const grafico = new Chart(ctx, {
@@ -136,30 +104,38 @@
         options: {
             plugins: {
                 datalabels: {
-                    formatter: (value, context) => {
-                        const percentage = ((value / total) * 100).toFixed(1);
-                        return `${percentage}%\n(${value})`;
-                    },
+                    formatter: (value) => `${((value / total) * 100).toFixed(1)}%\n(${value})`,
                     color: '#000',
-                    font: {
-                        weight: 'bold',
-                        size: 14
-                    }
+                    font: { weight: 'bold', size: 14 }
                 },
                 legend: {
                     position: 'bottom',
                     labels: {
                         boxWidth: 20,
-                        color: '#000'
+                        color: '#000',
+                        generateLabels: function(chart) {
+                            const data = chart.data;
+                            const dataset = data.datasets[0];
+                            return data.labels.map((label, i) => {
+                                const value = dataset.data[i];
+                                return {
+                                    text: `${label} (${value})`,
+                                    fillStyle: dataset.backgroundColor[i],
+                                    strokeStyle: dataset.borderColor,
+                                    lineWidth: 1,
+                                    hidden: !chart.getDatasetMeta(0).data[i],
+                                    index: i
+                                };
+                            });
+                        }
                     }
                 },
                 tooltip: {
                     callbacks: {
-                        label: function(context) {
+                        label: (context) => {
                             const value = context.raw;
-                            const label = context.label;
                             const percentage = ((value / total) * 100).toFixed(1);
-                            return `${label}: ${value} (${percentage}%)`;
+                            return `${context.label}: ${value} (${percentage}%)`;
                         }
                     }
                 }
@@ -167,58 +143,63 @@
         },
         plugins: [ChartDataLabels]
     });
-      const compradores = {{ compradores | tojson }};
-      const qtdTransferencias = {{ qtd_transferencias | tojson }};
-      const totalCompras = qtdTransferencias.reduce((a, b) => a + b, 0);
 
-      const ctxComprador = document.getElementById('graficoComprador').getContext('2d');
-      const graficoComprador = new Chart(ctxComprador, {
-          type: 'doughnut',
-          data: {
-              labels: compradores,
-              datasets: [{
-                  data: qtdTransferencias,
-                  backgroundColor: [
-                      '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0',
-                      '#9966FF', '#FF9F40', '#E7E9ED', '#00A36C'
-                  ],
-                  borderColor: '#fff',
-                  borderWidth: 2
-              }]
-          },
-          options: {
-              plugins: {
-                  datalabels: {
-                      formatter: (value, context) => {
-                          const percentage = ((value / totalCompras) * 100).toFixed(1);
-                          return `${percentage}%\n(${value})`;
-                      },
-                      color: '#000',
-                      font: {
-                          weight: 'bold',
-                          size: 14
-                      }
-                  },
-                  legend: {
-                      position: 'bottom',
-                      labels: {
-                          boxWidth: 20,
-                          color: '#000'
-                      }
-                  },
-                  tooltip: {
-                      callbacks: {
-                          label: function(context) {
-                              const value = context.raw;
-                              const label = context.label;
-                              const percentage = ((value / totalCompras) * 100).toFixed(1);
-                              return `${label}: ${value} (${percentage}%)`;
-                          }
-                      }
-                  }
-              }
-          },
-          plugins: [ChartDataLabels]
-      });
+    const ctxComprador = document.getElementById('graficoComprador').getContext('2d');
+    const graficoComprador = new Chart(ctxComprador, {
+        type: 'doughnut',
+        data: {
+            labels: compradores,
+            datasets: [{
+                data: qtdTransferencias,
+                backgroundColor: [
+                    '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0',
+                    '#9966FF', '#FF9F40', '#E7E9ED', '#00A36C'
+                ],
+                borderColor: '#fff',
+                borderWidth: 2
+            }]
+        },
+        options: {
+            plugins: {
+                datalabels: {
+                    formatter: (value) => `${((value / totalCompras) * 100).toFixed(1)}%\n(${value})`,
+                    color: '#000',
+                    font: { weight: 'bold', size: 14 }
+                },
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        boxWidth: 20,
+                        color: '#000',
+                        generateLabels: function(chart) {
+                            const data = chart.data;
+                            const dataset = data.datasets[0];
+                            return data.labels.map((label, i) => {
+                                const value = dataset.data[i];
+                                return {
+                                    text: `${label} (${value})`, // 👈 Mostra "Nome (Quantidade)"
+                                    fillStyle: dataset.backgroundColor[i],
+                                    strokeStyle: dataset.borderColor,
+                                    lineWidth: 1,
+                                    hidden: !chart.getDatasetMeta(0).data[i],
+                                    index: i
+                                };
+                            });
+                        }
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: (context) => {
+                            const value = context.raw;
+                            const percentage = ((value / totalCompras) * 100).toFixed(1);
+                            return `${context.label}: ${value} (${percentage}%)`;
+                        }
+                    }
+                }
+            }
+        },
+        plugins: [ChartDataLabels]
+    });
 </script>
 {% endblock %}
