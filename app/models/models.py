@@ -31,6 +31,7 @@ class Produto_Avaria(db.Model):
     data_de_insercao = db.Column(db.Date)
     criador = db.Column(db.String(300), nullable=True)
     tipodeavaria = db.Column(db.String(300), nullable=True)
+    origem = db.Column(db.String(300), nullable=True)
     usoeconsumo = db.Column(db.String(300), nullable=True)
 
 

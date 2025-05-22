@@ -25,7 +25,7 @@ def index_avarias():
 
     avarias_quantidade = db.session.query(func.sum(Produto_Avaria.quantidade)).filter(
         Produto_Avaria.data_de_insercao >= primeiro_dia_mes(),
-        Produto_Avaria.data_de_insercao <= ultimo_dia_mes()).scalar() or 0 
+        Produto_Avaria.data_de_insercao <= ultimo_dia_mes()).scalar() or 0
     avarias_embalagem_quantidade = db.session.query(func.sum(Produto_Avaria.quantidade)).filter(
         Produto_Avaria.data_de_insercao >= primeiro_dia_mes(),
         Produto_Avaria.data_de_insercao <= ultimo_dia_mes(), Produto_Avaria.tipodeavaria == "Embalagem").scalar() or 0
@@ -78,7 +78,7 @@ def avarias_cadastrar():
                 return redirect(url_for('avarias_procurar'))
     except:
         return redirect(url_for('avarias_procurar'))
-        
+
     return render_template('avarias/cadastrar.html', data_agora=data_agora())
 
 
@@ -91,6 +91,7 @@ def avarias_cadastro():
         tipodeavaria = request.form['tipodeavaria']
         usoeconsumo = request.form['usoeconsumo']
         data_de_insercao = request.form['data_de_insercao']
+        origem = request.form['origem']
         produto = Produto.query.filter(Produto.codigo_do_produto == codigo).first()
         cadastrar_avaria = Produto_Avaria(
             codigo_do_produto=produto.codigo_do_produto,
@@ -101,12 +102,13 @@ def avarias_cadastro():
             data_de_insercao=data_de_insercao,
             criador=current_user.username,
             tipodeavaria=tipodeavaria,
+            origem=origem,
             usoeconsumo=usoeconsumo)
         db.session.add(cadastrar_avaria)
         db.session.commit()
         db.session.close()
     except:
-        return redirect("/avarias/")       
+        return redirect("/avarias/")
     return redirect("/avarias/")
 
 
@@ -250,7 +252,7 @@ def avarias_deletar(avaria_id):
         return redirect(url_for('index_avarias'))
     except:
         return redirect(url_for('index_avarias'))
-    
+
 
 @app.route('/avarias/comparar', methods=['post', 'get'])
 @login_required
@@ -359,4 +361,3 @@ def avarias_comparar():
 
 
 #FIM AVARIAS
-
