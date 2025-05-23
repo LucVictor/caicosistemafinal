@@ -2,7 +2,7 @@
 <div class="shadow-lg text-black p-1 m-auto border-orange w-25">
     <h2>Relatório de Conferência</h2>
     <form
-        class="m-2 w-50 m-auto"
+        class="m-2 w-75 m-auto"
         action="/conferencia/relatorio_emitir"
         method="post"
     >
@@ -32,13 +32,12 @@
             required
         />
 
-        <label class="m-2" for="data_final">Quantidade<= :</label><br />
+        <label class="m-2" for="data_final">Quantidade menor que:</label><br />
         <input
             class="form-control text-center"
             type="Number"
             id="filtro_quantidade"
             name="filtro_quantidade"
-            required
         />
 
         <input class="btn btn-warning m-2" type="submit" value="Emitir" />
