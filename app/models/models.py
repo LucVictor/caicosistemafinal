@@ -125,6 +125,7 @@ class Erros_Logistica(db.Model):
     produto_erro = db.Column(db.String(250), nullable=False)
     descricao_do_erro = db.Column(db.String(1000), nullable=True)
     criador = db.Column(db.String(250), nullable=True)
+    tipo_do_erro = db.Column(db.String(250), nullable=True)
 
 
 class Erros_Atacado(db.Model):

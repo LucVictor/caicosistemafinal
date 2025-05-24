@@ -14,7 +14,8 @@
                     <th>Dias</th>
                     <th>Última At.</th>
                     {% if current_user.is_authenticated and current_user.acesso
-                    == 1%}
+                    == 1 or current_user.is_authenticated and
+                    current_user.acesso == 4 %}
 
                     <th class="botoesacao">Ação</th>
                     <th>Usuário</th>
@@ -38,7 +39,8 @@
                     </td>
                     <td>{{ vencimento.atualizacao.strftime('%d/%m') }}</td>
                     {% if current_user.is_authenticated and current_user.acesso
-                    == 1%}
+                    == 1 or current_user.is_authenticated and
+                    current_user.acesso == 4%}
                     <td class="flexNoBoards botoesacao">
                         <form
                             action="/vencimentos/editar/{{ vencimento.id }}"
