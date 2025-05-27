@@ -695,3 +695,8 @@ def projetar_entregas():
     dias_ate_data_atual = int(datetime.now().strftime('%d')) - 1
 
     return render_template('/entregas/projetar_entregas.html', mes_atual=mes_atual(), dias_ate_data_atual=dias_ate_data_atual, dias_no_mes=dias_no_mes, total_de_entregas=total_de_entregas)
+
+@app.route('/entregas/dashboard', methods=['GET'])
+@login_required
+def entregas_dashboard():
+    return render_template('/entregas/dashboard.html')

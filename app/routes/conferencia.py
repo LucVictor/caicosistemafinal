@@ -63,7 +63,6 @@ def conferencia_cadastro():
 def conferencia_relatorio():
     return render_template('conferencia/relatorio.html')
 
-
 @app.route('/conferencia/relatorio_emitir', methods=['POST'])
 @login_required
 def conferencia_relatorio_emitir():
@@ -71,37 +70,61 @@ def conferencia_relatorio_emitir():
     data_final = request.form['data_final']
     codigo_produto = request.form['codigo_produto']
     quantidade = request.form.get('filtro_quantidade', 100000)
-    if not quantidade :
-        quantidade=10000
-    if codigo_produto:
-        conferencias = Produto_Conferido.query.filter(Produto_Conferido.data_conferencia >= data_inicial,
-                                          Produto_Conferido.data_conferencia <=data_final,
-                                            Produto_Conferido.codigo_produto==codigo_produto,
-                                            Produto_Conferido.quantidade_sistema <= quantidade).order_by(Produto_Conferido.data_conferencia.desc()).all()
-        totalitens = len(conferencias)
-        itens_por_conferente = Produto_Conferido.query.filter(Produto_Conferido.data_conferencia >= data_inicial,
-                                          Produto_Conferido.data_conferencia <=data_final,
-                                            Produto_Conferido.codigo_produto==codigo_produto,
-                                            Produto_Conferido.quantidade_sistema <= quantidade).order_by(Produto_Conferido.data_conferencia.desc()).all()
-        return render_template('conferencia/emitir_relatorio.html', totalitens= totalitens ,conferencias=conferencias, data_inicial=formatar_data(data_inicial), data_final=formatar_data(data_final))
-    conferencias = Produto_Conferido.query.filter(Produto_Conferido.data_conferencia >= data_inicial,
-                                        Produto_Conferido.data_conferencia <=data_final,
-                                        Produto_Conferido.quantidade_sistema <= quantidade).order_by(
-    Produto_Conferido.data_conferencia.desc()).all()
-    totalitens = len(conferencias)
-    conferencias_por_conferente = (
-    db.session.query(Produto_Conferido.conferente, func.count().label('quantidade'))
-    .filter(
+    filtroPassando = request.form.get('filtroPassando', 'todos')  # Padrão "todos"
+
+    if not quantidade:
+        quantidade = 100000
+
+    query = Produto_Conferido.query.filter(
         Produto_Conferido.data_conferencia >= data_inicial,
         Produto_Conferido.data_conferencia <= data_final,
+        Produto_Conferido.quantidade_sistema <= quantidade
     )
-    .group_by(Produto_Conferido.conferente)
-    .order_by(func.count().desc())  # opcional, ordena do maior pro menor
-    .all()
-)
-    return render_template('conferencia/emitir_relatorio.html',
-                           conferencias=conferencias, data_inicial=formatar_data(data_inicial),
-                           data_final=formatar_data(data_final), conferencias_por_conferente=conferencias_por_conferente, totalitens=totalitens)
+
+    # Aplica o filtro de "Passando" ou "Faltando"
+    if filtroPassando == 'passando':
+        query = query.filter(Produto_Conferido.quantidade_fisico > Produto_Conferido.quantidade_sistema)
+    elif filtroPassando == 'faltando':
+        query = query.filter(Produto_Conferido.quantidade_fisico < Produto_Conferido.quantidade_sistema)
+
+    if codigo_produto:
+        query = query.filter(Produto_Conferido.codigo_produto == codigo_produto)
+
+    conferencias = query.order_by(Produto_Conferido.data_conferencia.desc()).all()
+    totalitens = len(conferencias)
+
+    # Relatório agrupado por conferente (opcional: aplicar mesmo filtro para consistência)
+    query_por_conferente = db.session.query(
+        Produto_Conferido.conferente, func.count().label('quantidade')
+    ).filter(
+        Produto_Conferido.data_conferencia >= data_inicial,
+        Produto_Conferido.data_conferencia <= data_final
+    )
+
+    if filtroPassando == 'passando':
+        query_por_conferente = query_por_conferente.filter(
+            Produto_Conferido.quantidade_fisico > Produto_Conferido.quantidade_sistema
+        )
+    elif filtroPassando == 'faltando':
+        query_por_conferente = query_por_conferente.filter(
+            Produto_Conferido.quantidade_fisico < Produto_Conferido.quantidade_sistema
+        )
+
+    conferencias_por_conferente = (
+        query_por_conferente.group_by(Produto_Conferido.conferente)
+        .order_by(func.count().desc())
+        .all()
+    )
+
+    return render_template(
+        'conferencia/emitir_relatorio.html',
+        conferencias=conferencias,
+        data_inicial=formatar_data(data_inicial),
+        data_final=formatar_data(data_final),
+        conferencias_por_conferente=conferencias_por_conferente,
+        totalitens=totalitens
+    )
+
 
 
 @app.route('/conferencia/relatorio_zerados_emitir', methods=['POST'])
