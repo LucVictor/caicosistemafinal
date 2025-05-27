@@ -1,11 +1,28 @@
 {% extends "./template.html" %} {% block content %}
 <iframe
-    src="https://dados.lucascoding.com.br/public/dashboard/66eb966a-d08a-4a5b-96ad-dd3834ce22dc"
+    style="width: 100%; height: 1800px"
+    src="https://dados.lucascoding.com.br/public/dashboard/f188b2b1-b0c9-4f1d-9042-dd3bb1201951"
     frameborder="0"
-    class="embed-responsive-item"
     allowtransparency
-    width="1300"
-    height="1400"
+    id="Iframe"
 ></iframe>
+
+<script>
+    // Selecting the iframe element
+    var frame = document.getElementById("Iframe");
+
+    // Adjusting the iframe height onload event
+    frame.onload = function () {
+        // set the height of the iframe as
+        // the height of the iframe content
+        frame.style.height =
+            frame.contentWindow.document.body.scrollHeight + "px";
+
+        // set the width of the iframe as the
+        // width of the iframe content
+        frame.style.width =
+            frame.contentWindow.document.body.scrollWidth + "px";
+    };
+</script>
 
 {% endblock %}
