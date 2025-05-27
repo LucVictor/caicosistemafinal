@@ -623,7 +623,7 @@ def cadastrar_entregas_erro():
         produto_erro = request.form['produto_erro']
         rota_da_entrega = request.form['rota_da_entrega']
         descricao_do_erro = request.form['descricao_do_erro']
-        tipo_do_erro = request.form.getlist()['tipo_do_erro']
+        tipo_do_erro = request.form['tipo_do_erro']
         criador = current_user.username
         erro = Erros_Logistica(data_do_erro=data_do_erro, erro_funcionario=erro_funcionario,
                                quantidade_de_erros=quantidade_de_erros, erro_cliente=erro_cliente,
