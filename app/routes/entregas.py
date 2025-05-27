@@ -700,3 +700,9 @@ def projetar_entregas():
 @login_required
 def entregas_dashboard():
     return render_template('/entregas/dashboard.html')
+
+
+@app.route('/entregas/dashboard_erros', methods=['GET'])
+@login_required
+def entregas_erros_dashboard():
+    return render_template('/entregas/dashboard_erros.html')

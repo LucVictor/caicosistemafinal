@@ -258,3 +258,8 @@ def vendas_erros_comparar():
                                data_final2=formatar_data(data_final_2), total_erros_periodo_1=total_erros_periodo_1,
                            total_erros_periodo_2=total_erros_periodo_2, calcular_porcentagem=calcular_porcentagem, total_de_entregas=total_de_entregas, total_de_entregas2=total_de_entregas2)
     return render_template('vendas/comparar_erros.html')
+
+@app.route('/vendas/dashboard', methods=['GET'])
+@login_required
+def vendas_dashboard():
+    return render_template('/vendas/dashboard.html')
