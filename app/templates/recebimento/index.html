@@ -89,7 +89,7 @@
                                     <div class="modal-header">
                                         <h5
                                             class="modal-title"
-                                            id="modalLabel{{ i.id }}"
+                                            id="modalLabel{{ recebimento.id }}"
                                         >
                                             Foto
                                         </h5>
@@ -100,7 +100,15 @@
                                             aria-label="Fechar"
                                         ></button>
                                     </div>
-                                    <div class="modal-body"></div>
+                                    <div class="modal-body">
+                                        <div class="modal-body">
+                                            <img
+                                                src="{{ url_for('static', filename='uploads/recebimento_fotos/' + recebimento.foto) }}"
+                                                alt="Foto do recebimento"
+                                                class="img-fluid"
+                                            />
+                                        </div>
+                                    </div>
                                     <div class="modal-footer">
                                         <button
                                             type="button"
