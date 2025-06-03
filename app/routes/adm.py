@@ -1,6 +1,6 @@
 from ..main import *
 @app.route('/adm/cadastrar_funcionario', methods=['GET', 'POST'])
-@access_level_required(4)
+@access_level_required(2)
 @login_required
 def cadastrar_funcionario():
     if request.method == 'POST':
@@ -18,7 +18,7 @@ def cadastrar_funcionario():
 
 
 @app.route('/adm/funcionarios', methods=['GET', 'POST'])
-@access_level_required(4)
+@access_level_required(2)
 @login_required
 def funcionarios():
     funcionarios = Funcionarios.query.all()
@@ -26,7 +26,7 @@ def funcionarios():
 
 
 @app.route('/adm/deletar_funcionario/<int:funcionario_id>', methods=['POST'])
-@access_level_required(4)
+@access_level_required(2)
 @login_required
 def deletar_funcionario(funcionario_id):
     funcionario = Funcionarios.query.filter_by(id=int(funcionario_id)).first()

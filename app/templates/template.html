@@ -237,9 +237,11 @@
                     {{  current_user.username.upper() }}
                 </a>
                 <ul class="dropdown-menu dropdown-menu dropdown-menu-end fs-12">
-                {% if current_user.acesso == 4%}
+                {% if current_user.acesso == 4 or current_user.acesso == 2  %}
                 <li><a class="dropdown-item" href="/adm/funcionarios">Funcionários</a></li>
                 <li><a class="dropdown-item" href="/adm/cadastrar_funcionario">Cadastrar Funcionário</a></li>
+                {% endif %}
+                {% if current_user.acesso == 4%}
                 <li><a class="dropdown-item" href="/adm/usuarios">Usuários</a></li>
                 <li><a class="dropdown-item" href="/adm/cadastrar_usuario">Cadastrar Usuário</a></li>
                 {% endif %}
