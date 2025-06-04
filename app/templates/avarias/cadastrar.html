@@ -88,9 +88,9 @@
                     name="tipodeavaria"
                     id="tipodeavaria"
                 >
-                    <option>Embalagem</option>
-                    <option>Estragado</option>
-                    <option>Vencido</option>
+                    <option value="Embalagem">Embalagem</option>
+                    <option value="Estragado">Estragado</option>
+                    <option value="Vencido">Vencido</option>
                 </select>
             </div>
             <div class="col mb-3">
@@ -100,10 +100,11 @@
                     name="origem"
                     id="origem"
                 >
-                    <option>Não identificado</option>
-                    <option>Sem giro</option>
-                    <option>Armazenamento</option>
-                    <option>Esquecimento</option>
+                    <option value="Não identificado">Não identificado</option>
+                    <option value="Manipulação">Manipulação</option>
+                    <option value="Sem giro">Sem giro</option>
+                    <option value="Armazenamento">Armazenamento</option>
+                    <option value="Esquecimento">Esquecimento</option>
                 </select>
             </div>
 
@@ -122,4 +123,48 @@
         <input class="btn btn-warning" type="submit" value="Cadastrar" />
     </form>
 </div>
+
+<script>
+    const avaria = document.querySelector("#tipodeavaria");
+    const origem = document.querySelector("#origem");
+    const identificado = origem.querySelector(
+        'option[value="Não identificado"]',
+    );
+    const armazenamento = origem.querySelector('option[value="Armazenamento"]');
+    const manipulacao = origem.querySelector('option[value="Manipulação"]');
+    const giro = origem.querySelector('option[value="Sem giro"]');
+    const esquecimento = origem.querySelector('option[value="Esquecimento"]');
+    
+    function atualizarOrigemComBaseNaAvaria() {
+        if (avaria.value == "Estragado") {
+            giro.disabled = true;
+            esquecimento.disabled = true;
+            identificado.disabled = false;
+            manipulacao.disabled = false;
+            armazenamento.disabled = false;
+            origem.value = "Armazenamento";
+        }
+        if (avaria.value == "Vencido") {
+            manipulacao.disabled = true;
+            identificado.disabled = true;
+            armazenamento.disabled = true;
+            esquecimento.disabled = false;
+            giro.disabled = false;
+            origem.value = "Esquecimento";
+        }
+        if (avaria.value == "Embalagem") {
+            manipulacao.disabled = false;
+            identificado.disabled = false;
+            armazenamento.disabled = false;
+            esquecimento.disabled = true;
+            giro.disabled = true;
+            origem.value = "Manipulação";
+        }
+    }
+
+    avaria.addEventListener("change", atualizarOrigemComBaseNaAvaria);
+
+    window.addEventListener("DOMContentLoaded", atualizarOrigemComBaseNaAvaria);
+</script>
+
 {% endblock %}
