@@ -1,12 +1,22 @@
 {% extends "./template.html" %} {% block content %}
-<div class="shadow-lg text-black p-1 m-auto border-orange w-50">
-    <h2>Relatório de transferências</h2>
+<!-- Importar Bootstrap Icons caso não esteja no template -->
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+/>
+
+<div class="shadow-lg p-1 m-auto border-orange w-50">
+    <h2>
+        <i class="bi bi-file-earmark-text me-2"></i>Relatório de transferências
+    </h2>
     <form
         class="m-2 w-25 m-auto"
         action="/transferencia/relatorio_emitir"
         method="post"
     >
-        <label class="m-2" for="data_inicial">Data inicial:</label><br />
+        <label class="m-2" for="data_inicial">
+            <i class="bi bi-calendar-date me-1"></i>Data inicial: </label
+        ><br />
         <input
             class="form-control text-center"
             type="date"
@@ -15,7 +25,9 @@
             required
         />
 
-        <label class="m-2" for="data_final">Data final:</label><br />
+        <label class="m-2" for="data_final">
+            <i class="bi bi-calendar-date me-1"></i>Data final: </label
+        ><br />
         <input
             class="form-control text-center"
             type="date"
@@ -24,7 +36,14 @@
             required
         />
 
-        <input class="btn btn-warning m-2" type="submit" value="Emitir" />
+        <div class="m-4">
+            <button
+                type="submit"
+                class="btn btn-primary m-auto d-flex align-items-center justify-content-center"
+            >
+                <i class="bi bi-file-earmark-text me-2"></i>Emitir
+            </button>
+        </div>
     </form>
 </div>
 {% endblock %}
