@@ -110,14 +110,19 @@
                 <td>{{ avaria.origem }}</td>
                 <td>{{ avaria.criador }}</td>
                 <td class="botoesacao">
-                    <form
-                        action="/avarias/deletar/{{ avaria.id }}"
-                        method="post"
-                    >
-                        <button type="submit" class="btn btn-sm btn-danger m-2">
-                            <i class="bi bi-trash-fill"></i> Apagar
-                        </button>
-                    </form>
+                    <div class="d-flex flex-row">
+                        <form
+                            action="/avarias/deletar/{{ avaria.id }}"
+                            method="post"
+                        >
+                            <button
+                                type="submit"
+                                class="btn btn-sm btn-danger m-2"
+                            >
+                                <i class="bi bi-trash-fill"></i>
+                            </button>
+                        </form>
+                    </div>
                 </td>
             </tr>
             {% endfor %}
