@@ -1,106 +1,138 @@
-{% extends "./template.html" %}
-{% block content %}
+{% extends "./template.html" %} {% block content %}
 
-        <h3>Listagem de entregas</h3>
-        <h4>Referente ao período de {{ data_inicial.strftime('%d/%m/%Y') + " à " + data_final.strftime('%d/%m/%Y') }}</h4>
+<h3><i class="bi bi-list-check me-2"></i>Listagem de entregas</h3>
+<h4>
+    <i class="bi bi-calendar-range me-2"></i>
+    Referente ao período de {{ data_inicial.strftime('%d/%m/%Y') + " à " +
+    data_final.strftime('%d/%m/%Y') }}
+</h4>
 
-    <div class="resumo d-flex justify-content-center m-1 p-1 text-center">
+<div class="resumo d-flex justify-content-center m-1 p-1 text-center">
     <div class="shadow border-orange m-3 p-2 h-50">
-    <h3>Rank de motoristas</h3>
-   <table class="table-bordered table table-sm text-center border border-black align-middle">
-    <tr>
-        <th>Nome:</th>
-        <th>Positivos</th>
-        <th>Negativos</th>
-        <th>Total</th>
-    </tr>
-        {% for i in resultados %}
-    <tr>
-        <td>{{ i.motorista }}</td>
-        <td>{{ i.total_positivo }}</td>
-        <td>{{ i.total_negativo }}</td>
-        <td>{{ i.total_sum  }}</td>
+        <h3><i class="bi bi-trophy me-2"></i>Rank de motoristas</h3>
+        <table
+            class="table-bordered table table-sm text-center border border-black align-middle"
+        >
+            <tr>
+                <th>Nome:</th>
+                <th>Positivos</th>
+                <th>Negativos</th>
+                <th>Total</th>
+            </tr>
+            {% for i in resultados %}
+            <tr>
+                <td>{{ i.motorista }}</td>
+                <td>{{ i.total_positivo }}</td>
+                <td>{{ i.total_negativo }}</td>
+                <td>{{ i.total_sum }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
 
-    </tr>
-        {% endfor %}
+    <div class="shadow border-orange m-3 p-2 h-50">
+        <h3><i class="bi bi-truck me-2"></i>Entregas por rota</h3>
+        <table
+            class="table-bordered table table-sm text-center align-middle border-black"
+        >
+            <tr>
+                <th>Rota:</th>
+                <th>Entregas</th>
+                <th>Reentregas</th>
+            </tr>
+            {% for i in resultados_entregas %}
+            <tr>
+                <td>{{ i.rota }}</td>
+                <td>{{ i.total_entregas }}</td>
+                <td>{{ i.total_reentregas }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
 
+    <div class="shadow border-orange m-3 p-2 h-50">
+        <div class="d-inline-flex h-75 m-auto flex-column">
+            <h4>
+                <i class="bi bi-bar-chart-line me-2"></i>Total de Entregas: {{
+                total_de_entregas }}
+            </h4>
+            <h4>
+                <i class="bi bi-arrow-repeat me-2"></i>Total de Reentregas: {{
+                total_de_reentregas }}
+            </h4>
+            {% if b > 0 %}
+            <h6>
+                <i class="bi bi-calendar-check me-1"></i>
+                Média de entregas por dia: {{ "%.0f" % (total_de_entregas / b)
+                }}
+            </h6>
+            <h6>
+                <i class="bi bi-calendar-check me-1"></i>
+                Média de reentregas por dia: {{ "%.0f" % (total_de_reentregas /
+                b) }}
+            </h6>
+            {% endif %}
+        </div>
+        <br />
+    </div>
+</div>
+
+<div class="table-responsive m-2 p-2 fs-12">
+    <table
+        class="shadow-lg table-bordered m-auto table-sm text-center align-middle border-black"
+    >
+        <thead class="table-dark border-black">
+            <tr>
+                <th><i class="bi bi-calendar-event"></i> Data</th>
+                <th><i class="bi bi-person"></i> Motorista</th>
+                <th><i class="bi bi-truck"></i> Caminhão</th>
+                <th><i class="bi bi-person-badge"></i> Conferente</th>
+                <th><i class="bi bi-signpost-2"></i> Rota</th>
+                <th><i class="bi bi-boxes me-1"></i>Q. Entregas</th>
+                <th><i class="bi bi-arrow-repeat me-1"></i>Reentregas</th>
+                <th><i class="bi bi-stopwatch-fill me-1">Tempo Total</th>
+                <th><i class="bi bi-stopwatch me-1">Média Total</th>
+                <th><i class="bi bi-stopwatch-fill me-1">Tempo Entregas</th>
+                <th><i class="bi bi-stopwatch me-1">Média Entregas</th>
+                <th>Tempo</th>
+                <th class="botoesacao">
+                    <div><i class="bi bi-gear"></i> Ação</div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entrega in entregas %}
+            <tr>
+                <td>{{ entrega.data_da_entrega.strftime('%d/%m/%Y') }}</td>
+                <td>{{ entrega.motorista }}</td>
+                <td>{{ entrega.caminhao }}</td>
+                <td>{{ entrega.conferente }}</td>
+                <td>{{ entrega.rota }}</td>
+                <td>{{ entrega.quantidade_de_entregas }}</td>
+                <td>{{ entrega.reentregas }}</td>
+                <td>{{ entrega.tempo_total }}</td>
+                <td>{{ entrega.tempo_medio_total }}</td>
+                <td>{{ entrega.tempo_total_entrega }}</td>
+                <td>{{ entrega.tempo_medio_entrega }}</td>
+                <td>{{ entrega.resultado_tempo }}</td>
+                <td>
+                    <form
+                        action="/entregas/deletar_entrega/{{ entrega.id }}"
+                        method="post"
+                    >
+                        <button
+                            class="btn btn-danger btn-sm"
+                            type="submit"
+                            title="Apagar"
+                        >
+                            <i class="bi bi-trash-fill"></i>
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
     </table>
-</div>
-
-       <div class="shadow border-orange m-3 p-2 h-50">
-       <div>
-           <h3>Entregas por rota</h3>
-   <table class="table-bordered table table-sm text-center align-middle border-black">
-    <tr>
-        <th>Rota:</th>
-        <th>Entregas</th>
-        <th>Reentregas</th>
-    </tr>
-        {% for i in resultados_entregas %}
-    <tr>
-        <td>{{ i.rota }}</td>
-        <td>{{ i.total_entregas }}</td>
-        <td>{{ i.total_reentregas }}</td>
-
-    </tr>
-        {% endfor %}
-
-    </table>
-       </div>
-</div>
-
-
-       <div class="shadow border-orange m-3 p-2 h-50 ">
-           <div class="d-inline-flex h-75 m-auto flex-column">
-       <h4>Total de Entregas: {{ total_de_entregas }}</h4>
-       <h4>Total de Reentregas: {{ total_de_reentregas }}</h4>
-                      {% if b > 0 %}
-       <h6>Média de entregas por dia: {{ "%.0f" % (total_de_entregas / b) }}</h6>
-       <h6>Média de reentregas por dia: {{ "%.0f" % (total_de_reentregas / b) }}</h6>
-        {% endif %}
-</div>
-               <br>
-</div>
-</div>
-
-    <div class="table-responsive m-2 fs-12 p-2">
-    <table class="shadow-lg table-bordered m-auto table-sm text-center align-middle border-black">
-  <tr>
-      <th>Data da entrega</th>
-    <th>Motorista</th>
-    <th>Caminhão</th>
-      <th>Conferente</th>
-    <th>Rota</th>
-    <th>Q. de Entrega</th>
-      <th>Reentregas</th>
-    <th>Tempo total</th>
-    <th>T. médio total</th>
-      <th>Tempo de entregas</th>
-      <th>T. médio entregas</th>
-      <th>Tempo</th>
-      <th class="botoesacao">Ação</th>
-  </tr>
-   {% for entrega in entregas %}
-  <tr>
-      <td>{{ entrega.data_da_entrega.strftime('%d/%m/%Y') }}</td>
-    <td>{{ entrega.motorista }}</td>
-    <td>{{ entrega.caminhao }}</td>
-      <td>{{ entrega.conferente }}</td>
-    <td>{{ entrega.rota }}</td>
-    <td>{{ entrega.quantidade_de_entregas }}</td>
-    <td>{{ entrega.reentregas }}</td>
-      <td>{{ entrega.tempo_total }}</td>
-      <td>{{ entrega.tempo_medio_total }}</td>
-    <td>{{ entrega.tempo_total_entrega }}</td>
-   <td>{{ entrega.tempo_medio_entrega }}</td>
-  <td>{{ entrega.resultado_tempo }}</td>
-   <td class="botoesacao">
-    <form action="/entregas/deletar_entrega/{{ entrega.id }}" method="post">
-    <input  class="btn btn-sm btn-warning m-2" type="submit" value="Apagar">
-    </form></td>
-  </tr>
-        {% endfor %}
-</table>
 </div>
 
 {% endblock %}

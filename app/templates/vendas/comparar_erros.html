@@ -1,84 +1,183 @@
-{% extends "./template.html" %}
-{% block content %}
+{% extends "./template.html" %} {% block content %} {% if not
+erros_por_funcionario %}
+<div class="p-1 m-auto shadow-lg border-orange w-50">
+    <div class="cadastrar_produto">
+        <h5>
+            <i class="bi bi-bar-chart-line-fill me-2"></i>Comparar Relatórios
+        </h5>
 
-        {% if not erros_por_funcionario %}
-<div class="text-black p-1 m-auto shadow-lg border-orange w-25">
-        <div class="cadastrar_produto">
-    <H5>Comparar Relatórios</H5>
+        <form
+            class="m-auto w-75 mt-3 d-flex flex-column gap-4"
+            action="/vendas/comparar_erros"
+            method="post"
+        >
+            <div class="row">
+                <h6>
+                    <i class="bi bi-journal-check me-2"></i>Primeiro relatório
+                </h6>
+                <div class="col mb-1">
+                    <label for="data_inicial1">
+                        <i class="bi bi-calendar-event-fill me-1"></i>Data
+                        inicial:
+                    </label>
+                    <input
+                        class="form-control text-center w-75 m-auto mb-2"
+                        type="date"
+                        id="data_inicial1"
+                        name="data_inicial1"
+                        required
+                    />
+                </div>
+                <div class="col mb-1">
+                    <label for="data_final1">
+                        <i class="bi bi-calendar-event-fill me-1"></i>Data
+                        final:
+                    </label>
+                    <input
+                        class="form-control text-center w-75 m-auto mb-2"
+                        type="date"
+                        id="data_final1"
+                        name="data_final1"
+                        required
+                    />
+                </div>
+            </div>
+            <div class="row">
+                <h6>
+                    <i class="bi bi-journal-check me-2"></i>Segundo relatório
+                </h6>
+                <div class="col mb-1">
+                    <label for="data_inicial2">
+                        <i class="bi bi-calendar-event-fill me-1"></i>Data
+                        inicial:
+                    </label>
+                    <input
+                        class="form-control text-center w-75 m-auto mb-2"
+                        type="date"
+                        id="data_inicial2"
+                        name="data_inicial2"
+                        required
+                    />
+                </div>
+                <div class="col mb-1">
+                    <label for="data_final2">
+                        <i class="bi bi-calendar-event-fill me-1"></i>Data
+                        final:
+                    </label>
+                    <input
+                        class="form-control text-center w-75 m-auto mb-2"
+                        type="date"
+                        id="data_final2"
+                        name="data_final2"
+                        required
+                    />
+                </div>
+            </div>
+            <button class="btn btn-primary w-25 m-auto mt-2" type="submit">
+                <i class="bi bi-file-earmark-bar-graph-fill me-1"></i>Emitir
+            </button>
+        </form>
+    </div>
+</div>
+{% endif %} {% if erros_por_funcionario %}
 
-    <form class="m-auto w-75" action="/vendas/comparar_erros" method="post">
-        <div class="mb-1 mt-3">
-        <h6>Primeiro relatório</h6>
-        <label for="data_inicial1">Data inicial:</label>
-        <input class="form-control text-center w-75 m-auto mb-2" type="date" id="data_inicial1" name="data_inicial1" required>
-        </div>
-        <label for="data_final1">Data final</label><br>
-        <input class="form-control text-center w-75 m-auto mb-2" type="date" id="data_final1" name="data_final1" required>
-        <div class="mt-3">
-         <h6>Segundo relatório</h6>
-        <label for="data_inicial2">Data inicial:</label><br>
-        <input class="form-control text-center w-75 m-auto mb-2" type="date" id="data_inicial2" name="data_inicial2" required>
+<h2>
+    <i class="bi bi-bar-chart-fill me-2"></i>Comparação de relatórios de erros
+    de Vendas
+</h2>
 
-        <label for="data_final2">Data final</label><br>
-        <input class="form-control text-center w-75 m-auto mb-2" type="date" id="data_final2" name="data_final2" required>
-        </div>
-        <input class="btn btn-warning  mt-2" type="submit" value="Emitir">
-    </form>
-        </div></div>
-    {% endif %}
+<h5>
+    <i class="bi bi-calendar-range me-1"></i>Relatório 1: {{
+    data_inicial1.strftime('%d/%m/%Y') }} à {{ data_final1.strftime('%d/%m/%Y')
+    }}
+</h5>
 
-    {% if erros_por_funcionario %}
+<h5>
+    <i class="bi bi-calendar-range me-1"></i>Relatório 2: {{
+    data_inicial2.strftime('%d/%m/%Y') }} à {{ data_final2.strftime('%d/%m/%Y')
+    }}
+</h5>
 
-    <h2>Comparação de relatórios de erros de Vendas</h2>
-    <H5>Relatório 1: {{ data_inicial1.strftime('%d/%m/%Y')  }} à {{ data_final1.strftime('%d/%m/%Y')  }}</H5>
-    <H5>Relatório 2: {{ data_inicial2.strftime('%d/%m/%Y')  }} à {{ data_final2.strftime('%d/%m/%Y')  }}</H5>
 <div class="d-flex justify-content-center m-1 p-1 text-center">
-       <div class="background-suave border-orange border-black m-3 p-2 h-25">
-       <H4>Relatórios</H4>
-       <H5>Erro por vendedor</H5>
-   <table class="table-bordered m-auto text-center align-middle border-black">
-    <tr>
-        <th>Vendedor</th>
-        <th>Relatório 1</th>
-        <th>Relatório 2</th>
-        <th>%</th>
-    </tr>
-         {% for funcionario, erros in erros_por_funcionario.items()  %}
-    <tr>
-        <td>{{ funcionario  }}</td>
-        <td>{{ erros.total1 }}</td>
-    <td>{{ erros.total2 }}</td>
-    <td>{{ calcular_porcentagem(erros.total1,  erros.total2) }}</td>
-
-    </tr>
-        {% endfor %}
-
-    </table><br>
-</div>
-
-              <div class="background-suave  border-orange border-black m-3 p-2 h-25">
-              <H4>Totais</H4>
-                  <H5>Relatório 1</H5>
-       <h5>Total de erros: {{ total_erros_periodo_1  }}</h5>
-       <h5>Total de entregas:{{ total_de_entregas }}</h5>
-       <h5>Erros por entrega: {{   "%.2f" % ((total_erros_periodo_1 / total_de_entregas)*100) }} % </h5> <br>
-                  <H5>Relatório 2</H5>
-       <h5>Total de erros: {{ total_erros_periodo_2 }}</h5>
-       <h5>Total de entregas:{{ total_de_entregas2 }}</h5>
-        <h5>Erros por entrega: {{  "%.2f" % ((total_erros_periodo_2 / total_de_entregas2) * 100) }}%</h5>
-
-               <br>
-</div>
-        <div class="background-suave  border-orange border-black m-3 p-2 h-25">
-              <H4>Comparação</H4>
-                <H5>Total de erros:{{ calcular_porcentagem(total_erros_periodo_1, total_erros_periodo_2) }}</H5>
-                <H5>Média de erros: {{  calcular_porcentagem((total_erros_periodo_1 / total_de_entregas), (total_erros_periodo_2 / total_de_entregas2)) }}</H5>
-                <canvas id="myChart1"></canvas>
-                <br>
-</div>
+    <div class="background-suave border-orange border-black m-3 p-2 h-25">
+        <h4><i class="bi bi-people-fill me-2"></i>Relatórios</h4>
+        <h5><i class="bi bi-person-badge me-2"></i>Erro por vendedor</h5>
+        <table
+            class="table-bordered m-auto text-center align-middle border-black"
+        >
+            <thead>
+                <tr>
+                    <th><i class="bi bi-person-fill"></i> Vendedor</th>
+                    <th><i class="bi bi-clipboard-data"></i> Relatório 1</th>
+                    <th><i class="bi bi-clipboard-data"></i> Relatório 2</th>
+                    <th><i class="bi bi-percent"></i> %</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for funcionario, erros in erros_por_funcionario.items() %}
+                <tr>
+                    <td>{{ funcionario }}</td>
+                    <td>{{ erros.total1 }}</td>
+                    <td>{{ erros.total2 }}</td>
+                    <td>
+                        {{ calcular_porcentagem(erros.total1, erros.total2) }}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <br />
     </div>
 
+    <div class="background-suave border-orange border-black m-3 p-2 h-25">
+        <h4><i class="bi bi-list-check me-2"></i>Totais</h4>
 
+        <h5><i class="bi bi-file-earmark-text me-1"></i>Relatório 1</h5>
+        <h5>
+            <i class="bi bi-exclamation-circle me-2"></i>Total de erros: {{
+            total_erros_periodo_1 }}
+        </h5>
+        <h5>
+            <i class="bi bi-truck me-2"></i>Total de entregas: {{
+            total_de_entregas }}
+        </h5>
+        <h5>
+            <i class="bi bi-percent me-2"></i>Erros por entrega: {{ "%.2f" %
+            ((total_erros_periodo_1 / total_de_entregas)*100) }}%
+        </h5>
+        <br />
+
+        <h5><i class="bi bi-file-earmark-text me-1"></i>Relatório 2</h5>
+        <h5>
+            <i class="bi bi-exclamation-circle me-2"></i>Total de erros: {{
+            total_erros_periodo_2 }}
+        </h5>
+        <h5>
+            <i class="bi bi-truck me-2"></i>Total de entregas: {{
+            total_de_entregas2 }}
+        </h5>
+        <h5>
+            <i class="bi bi-percent me-2"></i>Erros por entrega: {{ "%.2f" %
+            ((total_erros_periodo_2 / total_de_entregas2) * 100) }}%
+        </h5>
+    </div>
+
+    <div class="background-suave border-orange border-black m-3 p-2 h-25">
+        <h4><i class="bi bi-bar-chart-line-fill me-2"></i>Comparação</h4>
+        <h5>
+            <i class="bi bi-exclamation-triangle me-2"></i>Total de erros: {{
+            calcular_porcentagem(total_erros_periodo_1, total_erros_periodo_2)
+            }}
+        </h5>
+        <h5>
+            <i class="bi bi-calculator me-2"></i>Média de erros: {{
+            calcular_porcentagem((total_erros_periodo_1 / total_de_entregas),
+            (total_erros_periodo_2 / total_de_entregas2)) }}
+        </h5>
+        <canvas id="myChart1"></canvas>
+        <br />
+    </div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -87,28 +186,26 @@
     new Chart(ctx1, {
         type: 'bar',
         data: {
-          labels: ["Relatório 1" , "Relatório 2"],
-          datasets: [{
-            label: 'Erros',
-            data: {{  array_erros  | tojson }},
-              backgroundColor: "orange",
-            borderWidth: 1
-          }]
+            labels: ["Relatório 1", "Relatório 2"],
+            datasets: [{
+                label: 'Erros',
+                data: {{ array_erros | tojson }},
+                backgroundColor: "orange",
+                borderWidth: 1
+            }]
         },
         options: {
-          scales: {
-            y: {
-              beginAtZero: true,
-                min:0,
-                ticks:{
-                  stepSize: 20
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    min: 0,
+                    ticks: {
+                        stepSize: 20
+                    }
                 }
-
             }
-          }
         }
-      });
-
+    });
 </script>
-{% endif %}
-{% endblock %}
+
+{% endif %} {% endblock %}

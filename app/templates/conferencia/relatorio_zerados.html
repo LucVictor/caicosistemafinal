@@ -1,33 +1,40 @@
 {% extends "./template.html" %} {% block content %}
 
 <h2 class="m-2">
-    Produtos perdidos de {{data_inicial.strftime('%d/%m/%Y')}} á
-    {{data_final.strftime('%d/%m/%Y')}}
+    <i class="bi bi-calendar-event me-2"></i> Produtos perdidos de
+    {{data_inicial.strftime('%d/%m/%Y')}} á {{data_final.strftime('%d/%m/%Y')}}
 </h2>
 <hr />
-<h4 class="m-2">Total de custo: R${{"%.2f" % custo_total}}</h4>
-<h5 class="m-2">Total de itens perdidos: {{totalitens}}</h5>
+<h4 class="m-2">
+    <i class="bi bi-currency-dollar me-2"></i> Total de custo: R${{"%.2f" %
+    custo_total}}
+</h4>
+<h5 class="m-2">
+    <i class="bi bi-box-seam me-2"></i> Total de itens perdidos: {{totalitens}}
+</h5>
+
 <div
     class="d-flex flex-column align-items-center w-50 m-auto justify-content-center text-center mt-4"
 ></div>
 <div class="d-flex justify-content-center text-center">
     <div class="shadow-lg table-responsive">
-        <table class="table-bordered text-center align-middle">
+        <table class="table-bordered text-center align-middle border-black">
             <thead>
                 <tr>
-                    <th>Data</th>
-                    <th>Código</th>
-                    <th>Produto</th>
-                    <th>Lojas?</th>
-                    <th>Ajuste?</th>
-                    <th>Sistema</th>
-                    <th>Físico</th>
-                    <th>Custo</th>
-                    <th>Diferença</th>
-                    <th>Conferente</th>
-                    <th>Ação</th>
-                    {% if current_user.is_authenticated %} {% endif %}
-                    <th class="botoesacao">Criador</th>
+                    <th><i class="bi bi-calendar-day"></i> Data</th>
+                    <th><i class="bi bi-upc-scan"></i> Código</th>
+                    <th><i class="bi bi-box"></i> Produto</th>
+                    <th><i class="bi bi-shop"></i> Lojas?</th>
+                    <th><i class="bi bi-tools"></i> Ajuste?</th>
+                    <th><i class="bi bi-gear"></i> Sistema</th>
+                    <th><i class="bi bi-cube"></i> Físico</th>
+                    <th><i class="bi bi-cash-stack"></i> Custo</th>
+                    <th><i class="bi bi-arrow-left-right"></i> Diferença</th>
+                    <th><i class="bi bi-person-check"></i> Conferente</th>
+                    <th><i class="bi bi-pencil-square"></i> Ação</th>
+                    <th class="botoesacao">
+                        <i class="bi bi-person"></i> Criador
+                    </th>
                 </tr>
             </thead>
             {% for conferencia in conferencias_totais %}
@@ -40,7 +47,6 @@
                     <td>{{ conferencia["nome_do_produto"] }}</td>
                     <td>{{ 'Sim' if conferencia["lojas"] else 'Não' }}</td>
                     <td>{{ 'Sim' if conferencia["ajuste"] else 'Não' }}</td>
-
                     <td>
                         {{ conferencia["quantidade_sistema"] | format_quantidade
                         }}
@@ -49,19 +55,19 @@
                         {{ conferencia["quantidade_fisico"] | format_quantidade
                         }}
                     </td>
-                    <td>R$ {{"%.2f" % conferencia["total"]}}{{" "}}</td>
+                    <td>R$ {{"%.2f" % conferencia["total"]}}</td>
                     {% if conferencia["quantidade_diferenca"] < 0 %}
                     <td style="background-color: red">
                         {{ conferencia["quantidade_diferenca"] |
-                        format_quantidade }} {% else %}
+                        format_quantidade }}
                     </td>
-
+                    {% else %}
                     <td style="background-color: green">
                         {{ conferencia["quantidade_diferenca"] |
-                        format_quantidade }} {% endif %}
+                        format_quantidade }}
                     </td>
-
-                    <td>{{ conferencia.conferente}}</td>
+                    {% endif %}
+                    <td>{{ conferencia.conferente }}</td>
                     {% if current_user.is_authenticated and
                     current_user.username == conferencia["criador"] %}
                     <td class="flexNoBoards botoesacao">
@@ -69,21 +75,24 @@
                             action="/conferencia/deletar/{{ conferencia.id }}"
                             method="get"
                         >
-                            <input
-                                class="btn btn-sm btn-warning"
+                            <button
                                 type="submit"
-                                value="Apagar"
-                            />
+                                class="btn btn-sm btn-warning"
+                                title="Apagar"
+                            >
+                                <i class="bi bi-trash"></i>
+                            </button>
                         </form>
                     </td>
                     {% else %}
                     <td class="flexNoBoards botoesacao"></td>
                     {% endif %}
-                    <td class="">{{ conferencia.criador }}</td>
+                    <td>{{ conferencia.criador }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
 </div>
+
 {% endblock %}

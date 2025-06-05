@@ -1,25 +1,61 @@
-{% extends "./template.html" %}
-{% block content %}
+{% extends "./template.html" %} {% block content %}
 
+<div class="shadow-lg p-4 m-auto border-orange w-50">
+    <h2><i class="bi bi-upload"></i> Importar planilha de conferência</h2>
+    <form
+        class="m-2 w-50 m-auto"
+        action="/conferencia/planilha"
+        enctype="multipart/form-data"
+        method="post"
+    >
+        <div class="m-3">
+            <label class="m-2" for="formFileSm">
+                <i class="bi bi-file-earmark-spreadsheet"></i> Planilha: </label
+            ><br />
+            <input
+                class="form-control form-control-sm"
+                placeholder="Selecione a planilha"
+                type="file"
+                id="planilha"
+                name="planilha"
+            />
+        </div>
+        <div class="m-3">
+            <label for="data_conferencia">
+                <i class="bi bi-calendar-event"></i> Data de conferência:
+            </label>
+            <input
+                class="form-control text-center w-75"
+                style="margin: auto auto"
+                type="date"
+                id="data_conferencia"
+                name="data_conferencia"
+                required
+            />
+        </div>
 
-<div class="shadow-lg text-black p-1 m-auto border-orange w-50">
-  <h2>Importar planilha de conferência</h2>
-  <form class="m-2 w-50 m-auto" action="/conferencia/planilha" enctype=multipart/form-data method="post">
-      <label class="m-2" for="formFileSm"> Planilha:</label><br>
-      <input class="form-control form-control-sm" placeholder="Selecione a planilha" type="file" id="planilha" name="planilha">
-
-      <label class="m-2" for="data_inicial">Data de conferência:</label><br>
-      <input requerid class="form-control text-center w-75" style="margin: auto auto" type="date" id="data_conferencia" name="data_conferencia" required>
-    
-      <div class="mb-3"><label for="quantidade">Conferente:</label>
-        <select name="conferente" class="form-select text-center w-75 m-auto" id="conferente">
-            {% for i in conferentes %}
+        <div class="m-3">
+            <label for="conferente">
+                <i class="bi bi-person-badge"></i> Conferente:
+            </label>
+            <select
+                name="conferente"
+                class="form-select text-center w-75 m-auto"
+                id="conferente"
+            >
+                {% for i in conferentes %}
                 <option class="lista">{{ i.nome }}</option>
-            {% endfor %}
-        </select></div>
+                {% endfor %}
+            </select>
+        </div>
 
-      <input class="btn btn-warning m-2" type="submit" value="Cadastrar">
-  </form>
-      </div>
+        <button
+            type="submit"
+            class="btn btn-primary m-auto btn-sm m-2 d-flex align-items-center"
+        >
+            <i class="bi bi-check-circle me-2"></i> Cadastrar
+        </button>
+    </form>
+</div>
 
 {% endblock %}

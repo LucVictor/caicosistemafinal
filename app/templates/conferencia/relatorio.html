@@ -1,13 +1,15 @@
 {% extends "./template.html" %} {% block content %}
-<div class="shadow-lg text-black text-center p-1 m-auto border-orange w-75">
-    <h2>Relatório de Conferência</h2>
-    <div class="w-75 m-auto">
-        <form class="m-2" action="/conferencia/relatorio_emitir" method="post">
-            <div class="row">
+<div
+    class="shadow-lg text-center p-4 m-auto border-orange rounded w-75 bg-dark"
+>
+    <h2><i class="bi bi-bar-chart-fill"></i> Relatório de Conferência</h2>
+    <div class="w-100 m-auto">
+        <form class="m-3" action="/conferencia/relatorio_emitir" method="post">
+            <div class="row mb-3">
                 <div class="col">
-                    <label class="m-2" for="codigo_produto"
-                        >Código do Produto:</label
-                    ><br />
+                    <label class="m-2" for="codigo_produto">
+                        <i class="bi bi-upc-scan"></i> Código do Produto:
+                    </label>
                     <input
                         class="form-control text-center"
                         type="text"
@@ -16,8 +18,9 @@
                     />
                 </div>
                 <div class="col">
-                    <label class="m-2" for="data_inicial">Data inicial:</label
-                    ><br />
+                    <label class="m-2" for="data_inicial">
+                        <i class="bi bi-calendar-check"></i> Data inicial:
+                    </label>
                     <input
                         class="form-control text-center"
                         type="date"
@@ -27,8 +30,9 @@
                     />
                 </div>
                 <div class="col">
-                    <label class="m-2" for="data_final">Data final:</label
-                    ><br />
+                    <label class="m-2" for="data_final">
+                        <i class="bi bi-calendar-check-fill"></i> Data final:
+                    </label>
                     <input
                         class="form-control text-center"
                         type="date"
@@ -38,23 +42,26 @@
                     />
                 </div>
             </div>
-            <div class="row">
-                <div class="col">
-                    <label class="m-2" for="data_final"
-                        >Quantidade menor que:</label
-                    ><br />
+
+            <div class="row mb-3">
+                <div class="col d-flex flex-column align-items-center">
+                    <label class="m-2" for="filtro_quantidade">
+                        <i class="bi bi-arrow-down-short"></i> Quantidade menor
+                        que:
+                    </label>
                     <input
-                        class="form-control m-auto w-50 text-center"
-                        type="Number"
+                        class="form-control w-50 text-center"
+                        type="number"
                         id="filtro_quantidade"
                         name="filtro_quantidade"
                     />
                 </div>
-                <div class="col">
-                    <label class="m-2" for="filtroPassando">Estoque?:</label
-                    ><br />
+                <div class="col d-flex flex-column align-items-center">
+                    <label class="m-2" for="filtroPassando">
+                        <i class="bi bi-funnel-fill"></i> Estoque:
+                    </label>
                     <select
-                        class="form-control text-center m-auto w-50"
+                        class="form-control w-50 text-center"
                         name="filtroPassando"
                         id="filtroPassando"
                     >
@@ -64,7 +71,12 @@
                     </select>
                 </div>
             </div>
-            <input class="btn btn-warning m-2" type="submit" value="Emitir" />
+
+            <div class="mt-3">
+                <button class="btn btn-primary" type="submit">
+                    <i class="bi bi-file-earmark-bar-graph"></i> Emitir
+                </button>
+            </div>
         </form>
     </div>
 </div>

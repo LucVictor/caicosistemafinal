@@ -1,56 +1,67 @@
 {% extends "./template.html" %} {% block content %}
 
-<h2>Relatório de Avarias</h2>
+<h2><i class="bi bi-clipboard-data"></i> Relatório de Avarias</h2>
 <h3>
+    <i class="bi bi-calendar-range"></i>
     Referente ao período de {{ data_inicial.strftime('%d/%m/%Y') + " à " +
     data_final.strftime('%d/%m/%Y') }}
 </h3>
 <br />
+
 <div class="resumo d-flex justify-content-center m-1 p-1 text-center">
     <div class="shadow border-orange m-3 p-2 h-50">
-        <h3>Custos:</h3>
+        <h3><i class=""></i> Custos:</h3>
         <h4>
+            <i class="bi bi-cash-coin"></i>
             Custos de avarias: R${{ total_soma_avarias -
             total_soma_avarias_usoeconsumo }}
         </h4>
-        <h4>Total: R${{ total_soma_avarias }}</h4>
+        <h4><i class="bi bi-wallet2"></i> Total: R${{ total_soma_avarias }}</h4>
         <h4>
+            <i class="bi bi-graph-down-arrow"></i>
             Custos médio por avaria: R${{ "{:.2f}".format(total_soma_avarias /
             avarias_quantidade) }}
         </h4>
     </div>
     <br />
     <div class="shadow border-orange m-3 p-2 h-50">
-        <h3>Descrição de custos:</h3>
+        <h3><i class="bi bi-receipt"></i> Descrição de custos:</h3>
         <h5>
-            Custos de avarias por embalagem: R${{ total_soma_avarias_embalagem
-            }}
+            <i class="bi bi-box-seam"></i>
+            Embalagem: R${{ total_soma_avarias_embalagem }}
         </h5>
         <h5>
-            Custos de avarias por vencimento: R${{ total_soma_avarias_vencimento
-            }}
+            <i class="bi bi-hourglass-split"></i>
+            Vencimento: R${{ total_soma_avarias_vencimento }}
         </h5>
         <h5>
-            Custos de avarias estragadas: R${{ total_soma_avarias_estragado }}
+            <i class="bi bi-emoji-frown"></i>
+            Estragadas: R${{ total_soma_avarias_estragado }}
         </h5>
         <br />
-        <h3>Descrição de itens:</h3>
+        <h3><i class="bi bi-tags"></i> Descrição de itens:</h3>
         <h5>
-            Quantidade de embalagem: {{ avarias_embalagem_quantidade |int }}
+            <i class="bi bi-box"></i> Quantidade de embalagem: {{
+            avarias_embalagem_quantidade | int }}
         </h5>
-        <h5>Quantidade de vencidos: {{ avarias_vencidos_quantidade |int }}</h5>
         <h5>
-            Quantidade de estragados: {{ avarias_estragados_quantidade |int }}
+            <i class="bi bi-clock-history"></i> Quantidade de vencidos: {{
+            avarias_vencidos_quantidade | int }}
+        </h5>
+        <h5>
+            <i class="bi bi-trash3"></i> Quantidade de estragados: {{
+            avarias_estragados_quantidade | int }}
         </h5>
     </div>
+
     <div class="shadow border-orange m-3 p-2 h-50">
-        <h3>10 maiores custos</h3>
+        <h3><i class="bi bi-arrow-up-right-circle"></i> 10 maiores custos</h3>
         <table
             class="table-bordered m-auto table-sm text-center align-middle border-black"
         >
             <tr>
-                <th>Código</th>
-                <th>Custo</th>
+                <th><i class="bi bi-upc-scan"></i> Código</th>
+                <th><i class="bi bi-cash-stack"></i> Custo</th>
             </tr>
             {% for i in dez_itens %}
             <tr>
@@ -68,15 +79,27 @@
     >
         <thead>
             <tr class="align-middle">
-                <th class="text-center">Data</th>
-                <th class="text-center">Código</th>
-                <th class="text-center">Produto</th>
-                <th class="text-center">Quantidade</th>
-                <th class="text-center">Custo</th>
-                <th class="text-center">Tipo de Avaria</th>
-                <th class="text-center">Origem</th>
-                <th class="text-center">Usuário</th>
-                <th class="botoesacao text-center">Ação</th>
+                <th class="text-center"><i class="bi bi-calendar"></i> Data</th>
+                <th class="text-center"><i class="bi bi-upc"></i> Código</th>
+                <th class="text-center"><i class="bi bi-tag"></i> Produto</th>
+                <th class="text-center">
+                    <i class="bi bi-boxes"></i> Quantidade
+                </th>
+                <th class="text-center">
+                    <i class="bi bi-currency-dollar"></i> Custo
+                </th>
+                <th class="text-center">
+                    <i class="bi bi-exclamation-circle"></i> Tipo
+                </th>
+                <th class="text-center">
+                    <i class="bi bi-geo-alt"></i> Origem
+                </th>
+                <th class="text-center">
+                    <i class="bi bi-person-circle"></i> Usuário
+                </th>
+                <th class="botoesacao text-center">
+                    <i class="bi bi-trash"></i> Ação
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -85,7 +108,7 @@
                 <td>{{ resultado.data_de_insercao.strftime('%d/%m/%Y') }}</td>
                 <td>{{ resultado.codigo_do_produto }}</td>
                 <td>{{ resultado.nome_do_produto }}</td>
-                <td>{{ resultado.quantidade | format_quantidade}}</td>
+                <td>{{ resultado.quantidade | format_quantidade }}</td>
                 <td class="col-auto">R$ {{ resultado.preco_total }}</td>
                 <td>{{ resultado.tipodeavaria }}</td>
                 <td>{{ resultado.origem }}</td>
@@ -95,16 +118,15 @@
                         action="/avarias/deletar/{{ resultado.id }}"
                         method="post"
                     >
-                        <input
-                            class="btn btn-sm btn-warning m-2"
-                            type="submit"
-                            value="Apagar"
-                        />
+                        <button class="btn btn-sm btn-danger m-2">
+                            <i class="bi bi-x-circle"></i> Apagar
+                        </button>
                     </form>
                 </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
-    {% endblock %}
 </div>
+
+{% endblock %}

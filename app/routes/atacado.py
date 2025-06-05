@@ -154,5 +154,5 @@ def atacado_erros_comparar():
         return render_template('atacado/comparar_erros.html', data_inicial1=formatar_data(data_inicial_1),
         data_final1=formatar_data(data_final_1),array_totais=array_totais, data_inicial2=formatar_data(data_inicial_2),
         data_final2=formatar_data(data_final_2), data_grafico=data_grafico, array_erros_por_funcionario=array_erros_por_funcionario, erros_por_funcionario=erros_por_funcionario,
-        erros_por_funcionario2=erros_por_funcionario2, )
+        erros_por_funcionario2=erros_por_funcionario2)
     return render_template('atacado/comparar_erros.html')

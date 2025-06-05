@@ -1,6 +1,6 @@
 {% extends "./template.html" %} {% block content %}
-<div class="shadow-lg text-black p-1 m-auto border-orange w-50">
-    <h3>Formulário de erro</h3>
+<div class="shadow-lg p-1 m-auto border-orange w-50">
+    <h3><i class="bi bi-clipboard2-plus"></i> Formulário de erro logístico</h3>
     <div class="mb-3">
         <img
             class="procurarimg"
@@ -13,7 +13,9 @@
     <form class="m-auto p-4" action="/entregas/cadastrar_erro" method="post">
         <div class="row">
             <div class="mb-3 col m-auto">
-                <label for="data_do_erro">Data do erro:</label>
+                <label for="data_do_erro"
+                    ><i class="bi bi-calendar-event"></i> Data do erro:</label
+                >
                 <input
                     class="form-control text-center m-auto"
                     type="date"
@@ -24,7 +26,9 @@
             </div>
 
             <div class="mb-3 col m-auto">
-                <label for="erro_cliente">Cliente:</label>
+                <label for="erro_cliente"
+                    ><i class="bi bi-person-lines-fill"></i> Cliente:</label
+                >
                 <input
                     class="form-control text-center m-auto"
                     type="text"
@@ -34,9 +38,12 @@
                 />
             </div>
         </div>
+
         <div class="row">
             <div class="mb-3 col m-auto">
-                <label for="erro_funcionario">Funcionário:</label>
+                <label for="erro_funcionario"
+                    ><i class="bi bi-person-badge-fill"></i> Funcionário:</label
+                >
                 <select
                     class="form-select text-center m-auto"
                     name="erro_funcionario"
@@ -50,7 +57,9 @@
             </div>
 
             <div class="mb-3 m-auto col">
-                <label for="rota_da_entrega">Rota:</label>
+                <label for="rota_da_entrega"
+                    ><i class="bi bi-signpost-2"></i> Rota:</label
+                >
                 <select
                     class="form-select text-center m-auto"
                     name="rota_da_entrega"
@@ -62,8 +71,12 @@
                     {% endfor %}
                 </select>
             </div>
+
             <div class="mb-3 m-auto col">
-                <label for="quantidade_de_erros">Quantidade de erros:</label>
+                <label for="quantidade_de_erros"
+                    ><i class="bi bi-exclamation-triangle"></i> Quantidade de
+                    erros:</label
+                >
                 <input
                     class="form-control text-center m-auto"
                     type="number"
@@ -77,7 +90,9 @@
 
         <div class="row">
             <div class="mb-3 col">
-                <label for="motorista_da_entrega">Motorista:</label>
+                <label for="motorista_da_entrega"
+                    ><i class="bi bi-truck"></i> Motorista:</label
+                >
                 <select
                     class="form-select text-center m-auto"
                     name="motorista_da_entrega"
@@ -92,7 +107,9 @@
             </div>
 
             <div class="mb-3 col m-auto">
-                <label for="tipo_do_erro">Tipo do erro:</label>
+                <label for="tipo_do_erro"
+                    ><i class="bi bi-flag-fill"></i> Tipo do erro:</label
+                >
                 <select
                     class="form-select text-center m-auto"
                     name="tipo_do_erro"
@@ -105,29 +122,34 @@
                 </select>
             </div>
         </div>
+
         <div class="mb-3 m-auto">
-            <label for="produto_erro">Produtos do erro:</label>
+            <label for="produto_erro"
+                ><i class="bi bi-box-seam"></i> Produtos do erro:</label
+            >
             <textarea
                 class="form-control text-left m-auto"
                 name="produto_erro"
                 id="produto_erro"
                 required
-            >
-            </textarea>
+            ></textarea>
         </div>
 
         <div class="mb-3 m-auto">
-            <label for="descricao_do_erro">Descrição do erro:</label>
+            <label for="descricao_do_erro"
+                ><i class="bi bi-card-text"></i> Descrição do erro:</label
+            >
             <textarea
                 class="form-control text-left m-auto"
                 name="descricao_do_erro"
                 id="descricao_do_erro"
                 required
-            >
-            </textarea>
+            ></textarea>
         </div>
 
-        <input class="btn btn-warning mb-1" type="submit" value="Cadastrar" />
+        <button class="btn btn-primary mb-1" type="submit">
+            <i class="bi bi-send-check"></i> Cadastrar
+        </button>
     </form>
 </div>
 {% endblock %}

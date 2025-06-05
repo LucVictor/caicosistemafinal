@@ -1,146 +1,222 @@
-{% extends "./template.html" %}
-{% block content %}
-    {% if not total_entregas_periodo_1 %}
-    <div class="shadow-lg text-black p-1 m-auto border-orange w-25">
-        <div class="cadastrar_produto">
-    <h4>Comparar Relatórios</h4>
-    <form class="m-auto w-75" action="/entregas/comparar_entregas" method="post">
-        <div class="mb-1 mt-3">
-        <h6>Primeiro relatório</h6>
-        <label for="data_inicial1">Data inicial:</label>
-        <input class="form-control text-center w-75 m-auto mb-2" type="date" id="data_inicial1" name="data_inicial1" required>
-        </div>
-        <label for="data_final1">Data final</label><br>
-        <input class="form-control text-center w-75 m-auto mb-2" type="date" id="data_final1" name="data_final1" required>
-        <div class="mt-3">
-         <h6>Segundo relatório</h6>
-        <label for="data_inicial2">Data inicial:</label><br>
-        <input class="form-control text-center w-75 m-auto mb-2" type="date" id="data_inicial2" name="data_inicial2" required>
-
-        <label for="data_final2">Data final</label><br>
-        <input class="form-control text-center w-75 m-auto mb-2" type="date" id="data_final2" name="data_final2" required>
-        </div>
-        <input class="btn btn-warning  mt-2" type="submit" value="Emitir">
-    </form>
-        </div></div>
-    {% endif %}
-{% if total_entregas_periodo_1 %}
-    <h5>Comparação de relatórios de entregas</h5>
-    <h6>Relatório 1: {{ data_inicial1.strftime('%d/%m/%Y')  }} á {{ data_final1.strftime('%d/%m/%Y')  }}</h6>
-    <h6>Relatório 2: {{ data_inicial2.strftime('%d/%m/%Y')  }} á {{ data_final2.strftime('%d/%m/%Y')  }}</h6>
-
-    <div class="d-flex justify-content-center m-1 p-1 text-center">
-       <div class="shadow border-orange m-3 p-2 h-50">
-       <h4>Relatórios</h4>
-       <h5>Entregas por rota</h5>
-   <table class="table-bordered table table-sm text-center align-middle border-black">
-    <tr>
-        <th>Rota:</th>
-        <th>Relatório 1</th>
-        <th>Relatório 2</th>
-        <th>%</th>
-    </tr>
-     {% for rota, entregas in entregas_por_rota.items() %}
-    <tr>
-        <td>{{ rota }}</td>
-        <td>{{ entregas.total_entregas_1 }}</td>
-        <td>{{ entregas.total_entregas_2 }}</td>
-        <td>{{ calcular_porcentagem(entregas.total_entregas_1, entregas.total_entregas_2) }}</td>
-    {% endfor %}
-    </tr>
-
-
-    </table><br>
+{% extends "./template.html" %} {% block content %} {% if not
+total_entregas_periodo_1 %}
+<div class="shadow-lg p-1 m-auto border-orange w-50">
+    <div class="cadastrar_produto">
+        <h4><i class="bi bi-bar-chart me-2"></i>Comparar Relatórios</h4>
+        <form
+            class="m-auto w-75 d-flex mt-3 flex-column gap-4"
+            action="/entregas/comparar_entregas"
+            method="post"
+        >
+            <div class="row">
+                <h6><i class="bi bi-calendar me-2"></i>Primeiro relatório</h6>
+                <div class="col mb-1">
+                    <label for="data_inicial1">Data inicial:</label>
+                    <input
+                        class="form-control text-center w-75 m-auto mb-2"
+                        type="date"
+                        id="data_inicial1"
+                        name="data_inicial1"
+                        required
+                    />
+                </div>
+                <div class="col mb-1">
+                    <label for="data_final1">Data final:</label><br />
+                    <input
+                        class="form-control text-center w-75 m-auto mb-2"
+                        type="date"
+                        id="data_final1"
+                        name="data_final1"
+                        required
+                    />
+                </div>
+            </div>
+            <div class="row">
+                <h6><i class="bi bi-calendar me-2"></i>Segundo relatório</h6>
+                <div class="col mb-1">
+                    <label for="data_inicial2">Data inicial:</label><br />
+                    <input
+                        class="form-control text-center w-75 m-auto mb-2"
+                        type="date"
+                        id="data_inicial2"
+                        name="data_inicial2"
+                        required
+                    />
+                </div>
+                <div class="col mb-1">
+                    <label for="data_final2">Data final:</label><br />
+                    <input
+                        class="form-control text-center w-75 m-auto mb-2"
+                        type="date"
+                        id="data_final2"
+                        name="data_final2"
+                        required
+                    />
+                </div>
+            </div>
+            <button
+                type="submit"
+                class="btn btn-primary m-auto d-flex align-items-center justify-content-center"
+            >
+                <i class="bi bi-file-earmark-text me-2"></i>Emitir
+            </button>
+        </form>
+    </div>
 </div>
+{% endif %} {% if total_entregas_periodo_1 %}
+<h5>
+    <i class="bi bi-arrow-left-right me-2"></i>Comparação de relatórios de
+    entregas
+</h5>
+<h6>
+    <i class="bi bi-calendar-range me-1"></i>Relatório 1: {{
+    data_inicial1.strftime('%d/%m/%Y') }} á {{ data_final1.strftime('%d/%m/%Y')
+    }}
+</h6>
+<h6>
+    <i class="bi bi-calendar-range me-1"></i>Relatório 2: {{
+    data_inicial2.strftime('%d/%m/%Y') }} á {{ data_final2.strftime('%d/%m/%Y')
+    }}
+</h6>
 
-              <div class="shadow border-orange text-center  m-3 p-2 h-25">
-              <h4>Totais</h4>
-                  <h5>Relatório 1</h5>
-       <h6>Total de Entregas: {{ total_entregas_periodo_1 }}</h6>
-       <h6>Total de Reentregas: {{ total_reentregas_periodo_1 }}</h6>
-       <h6>Entrega por reentrega: {{ "{:.2f}".format((total_reentregas_periodo_1 / total_entregas_periodo_1) * 100) }}%</h6>
-                  {% if b > 0 %}
-       <h6>Média de entregas por dia: {{ "%.0f" % (total_entregas_periodo_1 / b) }}</h6>
-       <h6>Média de reentregas por dia: {{ "%.0f" % (total_reentregas_periodo_1 / b) }}</h6>
-        {% endif %}<br>
-
-                  <h5>Relatório 2</h5>
-       <h6>Total de Entregas: {{ total_entregas_periodo_2 }}</h6>
-       <h6>Total de Reentregas:{{ total_reentregas_periodo_2 }} </h6>
-       <h6>Entrega por reentrega: {{ "{:.2f}".format((total_reentregas_periodo_2 / total_entregas_periodo_2) * 100) }}%</h6>
-       {% if d > 0 %}
-       <h6>Média de entregas por dia: {{ "%.0f" % (total_entregas_periodo_2 / d ) }}</h6>
-       <h6>Média de reentregas por dia: {{ "%.0f" % (total_reentregas_periodo_2 / d) }}</h6>
-        {% endif %}
-               <br>
-</div>
-
-        <div class="shadow border-orange m-3 p-2 h-50">
-              <h4>Comparação</h4>
-                  <h5>Relatórios</h5>
-            <h6>Total de Entregas: {{ calcular_porcentagem(total_entregas_periodo_1,total_entregas_periodo_2) }}</h6>
-            <h6>Total de Reentregas:  {{ calcular_porcentagem(total_reentregas_periodo_1,total_reentregas_periodo_2) }}</h6>
-               <br>
-                    <canvas id="myChart2"></canvas><br>
-        <canvas id="myChart1"></canvas>
-</div>
+<div class="d-flex justify-content-center m-1 p-1 text-center">
+    <div class="shadow border-orange m-3 p-2 h-50">
+        <h4><i class="bi bi-diagram-3-fill me-2"></i>Relatórios</h4>
+        <h5><i class="bi bi-truck me-1"></i>Entregas por rota</h5>
+        <table
+            class="table-bordered table table-sm text-center align-middle border-black"
+        >
+            <tr>
+                <th>Rota:</th>
+                <th>Relatório 1</th>
+                <th>Relatório 2</th>
+                <th>%</th>
+            </tr>
+            {% for rota, entregas in entregas_por_rota.items() %}
+            <tr>
+                <td>{{ rota }}</td>
+                <td>{{ entregas.total_entregas_1 }}</td>
+                <td>{{ entregas.total_entregas_2 }}</td>
+                <td>
+                    {{ calcular_porcentagem(entregas.total_entregas_1,
+                    entregas.total_entregas_2) }}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br />
     </div>
 
+    <div class="shadow border-orange text-center m-3 p-2 h-25">
+        <h4><i class="bi bi-clipboard-data me-2"></i>Totais</h4>
+        <h5>Relatório 1</h5>
+        <h6>Total de Entregas: {{ total_entregas_periodo_1 }}</h6>
+        <h6>Total de Reentregas: {{ total_reentregas_periodo_1 }}</h6>
+        <h6>
+            Entrega por reentrega: {{
+            "{:.2f}".format((total_reentregas_periodo_1 /
+            total_entregas_periodo_1) * 100) }}%
+        </h6>
+        {% if b > 0 %}
+        <h6>
+            Média de entregas por dia: {{ "%.0f" % (total_entregas_periodo_1 /
+            b) }}
+        </h6>
+        <h6>
+            Média de reentregas por dia: {{ "%.0f" % (total_reentregas_periodo_1
+            / b) }}
+        </h6>
+        {% endif %}<br />
+
+        <h5>Relatório 2</h5>
+        <h6>Total de Entregas: {{ total_entregas_periodo_2 }}</h6>
+        <h6>Total de Reentregas: {{ total_reentregas_periodo_2 }}</h6>
+        <h6>
+            Entrega por reentrega: {{
+            "{:.2f}".format((total_reentregas_periodo_2 /
+            total_entregas_periodo_2) * 100) }}%
+        </h6>
+        {% if d > 0 %}
+        <h6>
+            Média de entregas por dia: {{ "%.0f" % (total_entregas_periodo_2 / d
+            ) }}
+        </h6>
+        <h6>
+            Média de reentregas por dia: {{ "%.0f" % (total_reentregas_periodo_2
+            / d) }}
+        </h6>
+        {% endif %}
+        <br />
+    </div>
+
+    <div class="shadow border-orange m-3 p-2 h-50">
+        <h4><i class="bi bi-graph-up-arrow me-2"></i>Comparação</h4>
+        <h5>Relatórios</h5>
+        <h6>
+            Total de Entregas: {{
+            calcular_porcentagem(total_entregas_periodo_1,total_entregas_periodo_2)
+            }}
+        </h6>
+        <h6>
+            Total de Reentregas: {{
+            calcular_porcentagem(total_reentregas_periodo_1,total_reentregas_periodo_2)
+            }}
+        </h6>
+        <br />
+        <canvas id="myChart2"></canvas><br />
+        <canvas id="myChart1"></canvas>
+    </div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-
-
 <script>
     const ctx1 = document.getElementById('myChart1');
-  const ctx2 = document.getElementById('myChart2');
+    const ctx2 = document.getElementById('myChart2');
     new Chart(ctx1, {
         type: 'bar',
         data: {
-          labels: ["Relatório 1" , "Relatório 2"],
-          datasets: [{
-            label: 'Reentregas',
-            data: {{  arry_reentregas  | tojson }},
-              backgroundColor: "orange",
-            borderWidth: 1
-          }]
+            labels: ["Relatório 1", "Relatório 2"],
+            datasets: [{
+                label: 'Reentregas',
+                data: {{ arry_reentregas | tojson }},
+                backgroundColor: "orange",
+                borderWidth: 1
+            }]
         },
         options: {
-          scales: {
-            y: {
-              beginAtZero: true,
-                min:0,
-                ticks:{
-                  stepSize: 20
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    min: 0,
+                    ticks: {
+                        stepSize: 20
+                    }
                 }
-
             }
-          }
         }
-      });
+    });
 
     new Chart(ctx2, {
         type: 'bar',
         data: {
-          labels: ["Relatório 1" , "Relatório 2"],
-          datasets: [{
-            label: 'Entregas',
-            data: {{  arry_entregas  | tojson }},
-              backgroundColor: "orange", display: true,
-            borderWidth: 1
-          }]
+            labels: ["Relatório 1", "Relatório 2"],
+            datasets: [{
+                label: 'Entregas',
+                data: {{ arry_entregas | tojson }},
+                backgroundColor: "orange",
+                borderWidth: 1
+            }]
         },
         options: {
-          scales: {
-            y: {
-              beginAtZero: true,
-                ticks:{
-                  stepSize: 100
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 100
+                    }
                 }
             }
-          }
         }
-      });
-
+    });
 </script>
-{% endif %}
-{% endblock %}
+{% endif %} {% endblock %}

@@ -1,50 +1,157 @@
-{% extends "./template.html" %}
-{% block content %}
-     <div class="shadow-lg text-black p-1 m-auto border-orange w-50">
-    <h3>Cadastro de conferência</h3>
-    <div class="mb-3"><img class="procurarimg" src="../static/imagens/formregister.gif" width="100" alt=""></div>
-    <hr/>
-    <form class="p-4" action="/conferencia/cadastrar" enctype=multipart/form-data method="post">
+{% extends "./template.html" %} {% block content %}
+<div class="shadow-lg p-2 mt-3 mb-5 border-orange rounded w-50 m-auto bg-dark">
+    <h3><i class="bi bi-pencil-square"></i> Cadastro de conferência</h3>
+    <hr />
+
+    <form
+        class="p-2"
+        action="/conferencia/cadastrar"
+        enctype="multipart/form-data"
+        method="post"
+    >
         <div class="row">
-
-        <div class="col mb-3"><label for="codigo_produto">Código do Produto:</label>
-            <input class="form-control text-center m-auto" readonly type="number" id="codigo_produto" name="codigo_produto" value="{{ produto.codigo_do_produto }}" required></div>
-
-        <div class="col mb-3"><label for="nome_produto">Nome do Produto:</label>
-        <input class="form-control text-center m-auto" readonly type="text" id="nome_do_produto" name="nome_do_produto" minlength="600" value="{{ produto.nome_do_produto }}" required ></div>
+            <div class="col mb-3">
+                <label for="codigo_produto"
+                    ><i class="bi bi-upc-scan"></i> Código do Produto:</label
+                >
+                <input
+                    class="form-control text-center"
+                    readonly
+                    type="number"
+                    id="codigo_produto"
+                    name="codigo_produto"
+                    value="{{ produto.codigo_do_produto }}"
+                    required
+                />
+            </div>
+            <div class="col mb-3">
+                <label for="nome_produto"
+                    ><i class="bi bi-box-seam"></i> Nome do Produto:</label
+                >
+                <input
+                    class="form-control text-center"
+                    readonly
+                    type="text"
+                    id="nome_do_produto"
+                    name="nome_do_produto"
+                    value="{{ produto.nome_do_produto }}"
+                    required
+                />
+            </div>
         </div>
+
         <div class="row">
-        <div class="col mb-3"><label for="data_vencimento">Data de conferência:</label>
-            <input class="form-control text-center m-auto" type="date" id="data_conferencia" name="data_conferencia" required></div>
-
-        <div class="col mb-3"><label for="quantidade">Quantidade no sistema:</label>
-        <input class="form-control text-center m-auto" type="number" id="quantidade_sistema" name="quantidade_sistema" step="0.001" min="0" value="0" required></div>
-
-        <div class="col mb-3"><label for="quantidade">Quantidade no físico:</label>
-        <input class="form-control text-center m-auto" type="number" id="quantidade_fisico" name="quantidade_fisico" step="0.001" min="0" value="0" required></div>
+            <div class="col mb-3">
+                <label for="data_conferencia"
+                    ><i class="bi bi-calendar-date"></i> Data de
+                    conferência:</label
+                >
+                <input
+                    class="form-control text-center"
+                    type="date"
+                    id="data_conferencia"
+                    name="data_conferencia"
+                    required
+                />
+            </div>
+            <div class="col mb-3">
+                <label for="quantidade_sistema"
+                    ><i class="bi bi-hdd-network"></i> Quantidade no
+                    sistema:</label
+                >
+                <input
+                    class="form-control text-center"
+                    type="number"
+                    id="quantidade_sistema"
+                    name="quantidade_sistema"
+                    step="0.001"
+                    min="0"
+                    value="0"
+                    required
+                />
+            </div>
+            <div class="col mb-3">
+                <label for="quantidade_fisico"
+                    ><i class="bi bi-archive-fill"></i> Quantidade no
+                    físico:</label
+                >
+                <input
+                    class="form-control text-center"
+                    type="number"
+                    id="quantidade_fisico"
+                    name="quantidade_fisico"
+                    step="0.001"
+                    min="0"
+                    value="0"
+                    required
+                />
+            </div>
         </div>
+
         <div class="row">
-        <div class="mb-3 col"><label for="quantidade">Produto ajustado?:</label>
-        <input class="form-check-input" type="checkbox" id="ajuste" name="ajuste" value="True">
+            <div class="col mb-3 d-flex align-items-center gap-2">
+                <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="ajuste"
+                    name="ajuste"
+                    value="True"
+                />
+                <label class="form-check-label" for="ajuste"
+                    ><i class="bi bi-pencil-fill"></i> Produto ajustado?</label
+                >
+            </div>
+            <div class="col mb-3 d-flex align-items-center gap-2">
+                <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="produtos_conferidos_lojas"
+                    name="produtos_conferidos_lojas"
+                    value="True"
+                />
+                <label class="form-check-label" for="produtos_conferidos_lojas"
+                    ><i class="bi bi-shop"></i> Produto conferido nas
+                    lojas?</label
+                >
+            </div>
         </div>
 
-        <div class="mb-3 col"><label for="produtos_conferidos_lojas">Produto conferido nas lojas?:</label>
-        <input class="form-check-input" type="checkbox" id="produtos_conferidos_lojas" name="produtos_conferidos_lojas" value="True"></div>
-
-        </div>
         <div class="row">
-        <div class="mb-3 col align-items-center d-flex justify-content-center gap-1 align-items-center "><label for="divergencia_sistema">Divergência no sistema: </label>
-        <input class="form-check-input" type="checkbox" id="divergencia_sistema" name="divergencia_sistema" value="True"></div>
-
-        <div class="mb-3 col"><label for="quantidade">Conferente:</label>
-            <select required name="conferente" class="align-self-center form-select text-center m-auto" id="conferente">
-                {% for i in conferentes %}
+            <div class="col mb-3 d-flex align-items-center gap-2">
+                <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="divergencia_sistema"
+                    name="divergencia_sistema"
+                    value="True"
+                />
+                <label class="form-check-label" for="divergencia_sistema"
+                    ><i class="bi bi-exclamation-circle-fill"></i> Divergência
+                    no sistema?</label
+                >
+            </div>
+            <div class="col mb-3">
+                <label for="conferente"
+                    ><i class="bi bi-person-fill"></i> Conferente:</label
+                >
+                <select
+                    required
+                    name="conferente"
+                    class="form-select text-center"
+                    id="conferente"
+                >
+                    {% for i in conferentes %}
                     <option class="lista">{{ i.nome }}</option>
-                {% endfor %}
-            </select></div>
-
+                    {% endfor %}
+                </select>
+            </div>
         </div>
-        <input class="btn btn-sm btn-warning m-2" type="submit" value="Cadastrar">
+
+        <div class="d-flex justify-content-center">
+            <button class="btn btn-primary btn-sm" type="submit">
+                <i class="bi bi-check2-circle"></i> Cadastrar
+            </button>
+        </div>
     </form>
-    <div>
+</div>
 {% endblock %}

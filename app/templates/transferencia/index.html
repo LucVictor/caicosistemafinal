@@ -16,12 +16,19 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 
-<h2 class="m-2">Transferências do mês de {{ mes }}:</h2>
-<h4 class="m-2">Total de transferências do mês: {{ total_transferencias }}.</h4>
+<h2 class="m-2">
+    </i>Transferências do mês de {{ mes }}:
+</h2>
+<h4 class="m-2">
+    <i class="bi bi-check2-circle me-2"></i>Total de transferências do mês: {{
+    total_transferencias }}.
+</h4>
 
 <div class="row border container m-auto">
     <div class="col">
-        <h4>Transferências por comprador:</h4>
+        <h4>
+            <i class="bi bi-person-check me-2"></i>Transferências por comprador:
+        </h4>
 
         <div class="m-auto" id="graficoContainer2">
             <canvas id="graficoComprador"></canvas>
@@ -29,37 +36,38 @@
     </div>
 
     <div
-        class="col border d-flex justify justify-content-center align-items-center flex-column"
+        class="col border d-flex justify-content-center align-items-center flex-column"
     >
-        <h4>Transferências por lojas:</h4>
+        <h4><i class="bi bi-shop me-2"></i>Transferências por lojas:</h4>
         <div class="m-auto" id="graficoLojasBarras">
             <canvas id="graficoLoja"></canvas>
         </div>
     </div>
 
     <div class="col">
-        <h4>Transferências por tipo:</h4>
+        <h4><i class="bi bi-tags me-2"></i>Transferências por tipo:</h4>
         <div class="m-auto" id="graficoContainer">
             <canvas id="graficoRosquinha"></canvas>
         </div>
     </div>
 </div>
+
 <hr />
-<h4>Tabela</h4>
+<h4><i class="fas fa-table me-2"></i>Tabela de transferências</h4>
 
 <div class="d-flex justify-content-center text-center">
     <div class="table-responsive w-100 p-3">
         <table class="table table-bordered text-center align-middle">
             <thead>
                 <tr>
-                    <th>Data</th>
-                    <th>Nº Pedido</th>
-                    <th>Loja</th>
-                    <th>Tipo</th>
-                    <th>Comprador</th>
-                    <th>Observação</th>
-                    <th>Ação</th>
-                    <th>Criador</th>
+                    <th><i class="bi bi-calendar3 me-1"></i>Data</th>
+                    <th><i class="bi bi-hash me-1"></i>Nº Pedido</th>
+                    <th><i class="bi bi-shop me-1"></i>Loja</th>
+                    <th><i class="bi bi-tags me-1"></i>Tipo</th>
+                    <th><i class="bi bi-person-check me-1"></i>Comprador</th>
+                    <th><i class="bi bi-chat-left-text me-1"></i>Observação</th>
+                    <th><i class="bi bi-gear-fill me-1"></i>Ação</th>
+                    <th><i class="bi bi-person-badge me-1"></i>Criador</th>
                 </tr>
             </thead>
             <tbody>
@@ -93,6 +101,7 @@
         </table>
     </div>
 </div>
+
 <script>
     const tipos = {{ tipos | tojson }};
     const quantidades = {{ quantidades | tojson }};
@@ -105,6 +114,21 @@
     const lojas = {{ lojas | tojson }};
     const lojasQuantidades = {{ lojas_quantidades | tojson }};
     const totalLojas = lojasQuantidades.reduce((a, b) => a + b, 0);
+
+    const commonDataLabelOptions = {
+        formatter: (value, ctx) => {
+            let totalCount = 0;
+            if(ctx.chart.config.type === 'doughnut') {
+                totalCount = ctx.chart._metasets[0].total;
+            } else {
+                totalCount = ctx.chart._metasets[0].total;
+            }
+            const percent = ((value / totalCount) * 100).toFixed(1);
+            return `${percent}%\n(${value})`;
+        },
+        color: '#fff',  // branco
+        font: { weight: 'bold', size: 12 }
+    };
 
     // Gráfico Rosquinha por Tipo
     const ctx = document.getElementById('graficoRosquinha').getContext('2d');
@@ -125,30 +149,14 @@
         options: {
             plugins: {
                 datalabels: {
+                    ...commonDataLabelOptions,
                     formatter: (value) => `${((value / total) * 100).toFixed(1)}%\n(${value})`,
-                    color: '#000',
-                    font: { weight: 'bold', size: 12 }
                 },
                 legend: {
                     position: 'bottom',
                     labels: {
                         boxWidth: 20,
-                        color: '#000',
-                        generateLabels: function(chart) {
-                            const data = chart.data;
-                            const dataset = data.datasets[0];
-                            return data.labels.map((label, i) => {
-                                const value = dataset.data[i];
-                                return {
-                                    text: `${label} (${value})`,
-                                    fillStyle: dataset.backgroundColor[i],
-                                    strokeStyle: dataset.borderColor,
-                                    lineWidth: 1,
-                                    hidden: !chart.getDatasetMeta(0).data[i],
-                                    index: i
-                                };
-                            });
-                        }
+                        color: '#fff', // branco
                     }
                 },
                 tooltip: {
@@ -158,7 +166,9 @@
                             const percentage = ((value / total) * 100).toFixed(1);
                             return `${context.label}: ${value} (${percentage}%)`;
                         }
-                    }
+                    },
+                    bodyFont: {color: '#fff'}, // branco tooltip
+                    titleFont: {color: '#fff'}
                 }
             }
         },
@@ -184,30 +194,14 @@
         options: {
             plugins: {
                 datalabels: {
+                    ...commonDataLabelOptions,
                     formatter: (value) => `${((value / totalCompras) * 100).toFixed(1)}%\n(${value})`,
-                    color: '#000',
-                    font: { weight: 'bold', size: 12 }
                 },
                 legend: {
                     position: 'bottom',
                     labels: {
                         boxWidth: 20,
-                        color: '#000',
-                        generateLabels: function(chart) {
-                            const data = chart.data;
-                            const dataset = data.datasets[0];
-                            return data.labels.map((label, i) => {
-                                const value = dataset.data[i];
-                                return {
-                                    text: `${label} (${value})`,
-                                    fillStyle: dataset.backgroundColor[i],
-                                    strokeStyle: dataset.borderColor,
-                                    lineWidth: 1,
-                                    hidden: !chart.getDatasetMeta(0).data[i],
-                                    index: i
-                                };
-                            });
-                        }
+                        color: '#fff', // branco
                     }
                 },
                 tooltip: {
@@ -217,14 +211,16 @@
                             const percentage = ((value / totalCompras) * 100).toFixed(1);
                             return `${context.label}: ${value} (${percentage}%)`;
                         }
-                    }
+                    },
+                    bodyFont: {color: '#fff'},
+                    titleFont: {color: '#fff'}
                 }
             }
         },
         plugins: [ChartDataLabels]
     });
 
-    // Gráfico Rosquinha por Loja
+    // Gráfico Barras por Loja
     const ctxLoja = document.getElementById('graficoLoja').getContext('2d');
     const graficoLoja = new Chart(ctxLoja, {
         type: 'bar',
@@ -243,30 +239,14 @@
         options: {
             plugins: {
                 datalabels: {
+                    ...commonDataLabelOptions,
                     formatter: (value) => `${((value / totalLojas) * 100).toFixed(1)}%\n(${value})`,
-                    color: '#000',
-                    font: { weight: 'bold', size: 12 }
                 },
                 legend: {
                     position: 'bottom',
                     labels: {
                         boxWidth: 20,
-                        color: '#000',
-                        generateLabels: function(chart) {
-                            const data = chart.data;
-                            const dataset = data.datasets[0];
-                            return data.labels.map((label, i) => {
-                                const value = dataset.data[i];
-                                return {
-                                    text: `${label} (${value})`,
-                                    fillStyle: dataset.backgroundColor[i],
-                                    strokeStyle: dataset.borderColor,
-                                    lineWidth: 1,
-                                    hidden: !chart.getDatasetMeta(0).data[i],
-                                    index: i
-                                };
-                            });
-                        }
+                        color: '#fff', // branco
                     }
                 },
                 tooltip: {
@@ -276,6 +256,27 @@
                             const percentage = ((value / totalLojas) * 100).toFixed(1);
                             return `${context.label}: ${value} (${percentage}%)`;
                         }
+                    },
+                    bodyFont: {color: '#fff'},
+                    titleFont: {color: '#fff'}
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        color: '#fff'  // fonte do eixo y branca
+                    },
+                    grid: {
+                      color: 'rgba(255,255,255,0.2)' // grade suave branca
+                    }
+                },
+                x: {
+                    ticks: {
+                        color: '#fff' // fonte do eixo x branca
+                    },
+                    grid: {
+                      color: 'rgba(255,255,255,0.2)'
                     }
                 }
             }

@@ -1,6 +1,6 @@
 {% extends "./template.html" %} {% block content %}
-<div class="shadow-lg text-black p-1 m-auto border-orange w-50">
-    <h3>Formulário de erro</h3>
+<div class="shadow-lg p-1 m-auto border-orange w-50">
+    <h3><i class="bi bi-pencil-square"></i> Formulário de erro</h3>
     <div class="mb-4">
         <img
             class="procurarimg"
@@ -17,7 +17,9 @@
     >
         <div class="row">
             <div class="col mb-3 m-auto">
-                <label for="data_do_erro">Data do erro:</label>
+                <label for="data_do_erro"
+                    ><i class="bi bi-calendar-event"></i> Data do erro:</label
+                >
                 <input
                     class="form-control text-center m-auto"
                     type="date"
@@ -29,7 +31,9 @@
             </div>
 
             <div class="col mb-3 m-auto">
-                <label for="erro_cliente">Cliente:</label><br />
+                <label for="erro_cliente"
+                    ><i class="bi bi-person-badge"></i> Cliente:</label
+                ><br />
                 <input
                     class="form-control text-center m-auto"
                     type="text"
@@ -40,9 +44,12 @@
                 />
             </div>
         </div>
+
         <div class="row">
             <div class="col mb-3 m-auto">
-                <label for="erro_funcionario">Funcionário:</label>
+                <label for="erro_funcionario"
+                    ><i class="bi bi-person-workspace"></i> Funcionário:</label
+                >
                 <select
                     class="form-select text-center m-auto"
                     name="erro_funcionario"
@@ -56,8 +63,11 @@
                     {% endif %} {% endfor %}
                 </select>
             </div>
+
             <div class="col mb-3 m-auto">
-                <label for="rota_da_entrega">Rota:</label><br />
+                <label for="rota_da_entrega"
+                    ><i class="bi bi-truck"></i> Rota:</label
+                ><br />
                 <select
                     class="form-select text-center m-auto"
                     name="rota_da_entrega"
@@ -66,27 +76,32 @@
                     required
                 >
                     <option class="lista">{{ erros.rota_da_entrega }}</option>
-                    {% for i in rotas %} {% if i.rota != erros.rota_da_entrega%}
+                    {% for i in rotas %} {% if i.rota != erros.rota_da_entrega
+                    %}
                     <option class="lista">{{ i.rota }}</option>
                     {% endif %} {% endfor %}
                 </select>
             </div>
 
             <div class="col mb-3 m-auto">
-                <label for="quantidade_de_erros">Quantidade de erros:</label>
+                <label for="quantidade_de_erros"
+                    ><i class="bi bi-x-circle"></i> Quantidade de erros:</label
+                >
                 <input
                     class="form-control text-center m-auto"
                     type="number"
                     id="quantidade_de_erros"
                     name="quantidade_de_erros"
-                    value="{{ erros.quantidade_de_erros}}"
+                    value="{{ erros.quantidade_de_erros }}"
                     required
                 />
             </div>
         </div>
-        <div></div>
+
         <div class="col mb-3 m-auto">
-            <label for="motorista_da_entrega">Motorista:</label>
+            <label for="motorista_da_entrega"
+                ><i class="bi bi-person-lines-fill"></i> Motorista:</label
+            >
             <select
                 class="form-select text-center w-25 m-auto"
                 name="motorista_da_entrega"
@@ -94,35 +109,42 @@
             >
                 <option class="lista">{{ erros.motorista_da_entrega }}</option>
                 {% for i in funcionarios %} {% if i.funcao == 'Motorista' and
-                i.nome != erros.motorista_da_entrega%}
+                i.nome != erros.motorista_da_entrega %}
                 <option class="lista">{{ i.nome }}</option>
                 {% endif %} {% endfor %}
                 <option class="lista">-</option>
             </select>
         </div>
+
         <div class="mb-3 m-auto">
-            <label for="produto_erro">Produtos do erro:</label>
+            <label for="produto_erro"
+                ><i class="bi bi-box-seam"></i> Produtos do erro:</label
+            >
             <textarea
                 class="form-control text-left m-auto"
                 name="produto_erro"
                 id="produto_erro"
             >
-                    {{erros.produto_erro}}</textarea
+{{ erros.produto_erro }}</textarea
             >
         </div>
 
         <div class="mb-3 m-auto">
-            <label for="descricao_do_erro">Descrição do erro:</label>
+            <label for="descricao_do_erro"
+                ><i class="bi bi-card-text"></i> Descrição do erro:</label
+            >
             <textarea
                 class="form-control text-left m-auto"
                 name="descricao_do_erro"
                 id="descricao_do_erro"
             >
-{{erros.descricao_do_erro}}</textarea
+{{ erros.descricao_do_erro }}</textarea
             >
         </div>
 
-        <input class="btn btn-warning mb-1" type="submit" value="Editar" />
+        <button class="btn btn-warning mb-1" type="submit">
+            <i class="bi bi-pencil-square"></i> Editar
+        </button>
     </form>
 </div>
 {% endblock %}

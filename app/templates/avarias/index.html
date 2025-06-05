@@ -1,56 +1,65 @@
 {% extends "./template.html" %} {% block content %}
 
-<h2>Listagem de Avarias</h2>
-<h5>Referente ao mês de {{ mes }}</h5>
-<div class="resumo d-flex justify-content-center m-1 p-1 text-center">
+<h2><i class="bi bi-list-ul"></i> Listagem de Avarias</h2>
+<h5><i class="bi bi-calendar-month"></i> Referente ao mês de {{ mes }}</h5>
+
+<div class="d-flex justify-content-center m-1 p-1 text-center">
     <div class="shadow border border-black m-3 p-2 h-50">
-        <h5>Custos:</h5>
+        <h5><i class="bi bi-cash-coin"></i> Custos:</h5>
         <h5>
+            <i class="bi bi-exclamation-triangle-fill text-danger"></i>
             Custos de avarias: R${{ total_soma_avarias -
             total_soma_avarias_usoeconsumo }}
         </h5>
-        <h5>Total: R${{ total_soma_avarias }}</h5>
-        {% if total_soma_avarias and total_soma_avarias %}
+        <h5><i class="bi bi-coin"></i> Total: R${{ total_soma_avarias }}</h5>
+        {% if total_soma_avarias and avarias_quantidade %}
         <h5>
+            <i class="bi bi-calculator"></i>
             Custos médio por avaria: R${{ "{:.2f}".format(total_soma_avarias /
             avarias_quantidade) }}
         </h5>
         {% else %}
-        <h5>Custos médio por avaria: R$0</h5>
+        <h5><i class="bi bi-calculator"></i> Custos médio por avaria: R$0</h5>
         {% endif %}
     </div>
 
     <div class="shadow border border-black m-3 p-2 h-50">
-        <h5>Descrição de custos:</h5>
+        <h5><i class="bi bi-receipt"></i> Descrição de custos:</h5>
         <h5>
-            Custos de avarias por embalagem: R${{ total_soma_avarias_embalagem
-            }}
+            <i class="bi bi-box-seam"></i>
+            Avarias por embalagem: R${{ total_soma_avarias_embalagem }}
         </h5>
         <h5>
-            Custos de avarias por vencimento: R${{ total_soma_avarias_vencimento
-            }}
+            <i class="bi bi-hourglass-split"></i>
+            Avarias por vencimento: R${{ total_soma_avarias_vencimento }}
         </h5>
         <h5>
-            Custos de avarias estragadas: R${{ total_soma_avarias_estragado }}
+            <i class="bi bi-x-circle-fill"></i>
+            Avarias estragadas: R${{ total_soma_avarias_estragado }}
         </h5>
-        <h5 class="mt-3">Descrição de itens:</h5>
+        <h5 class="mt-3"><i class="bi bi-boxes"></i> Descrição de itens:</h5>
         <h5>
-            Quantidade de embalagem: {{ avarias_embalagem_quantidade | int}}
+            <i class="bi bi-box2-heart"></i> Quantidade de embalagem: {{
+            avarias_embalagem_quantidade | int }}
         </h5>
-        <h5>Quantidade de vencidos: {{ avarias_vencidos_quantidade | int }}</h5>
         <h5>
-            Quantidade de estragados: {{ avarias_estragados_quantidade | int }}
+            <i class="bi bi-calendar-x-fill"></i> Quantidade de vencidos: {{
+            avarias_vencidos_quantidade | int }}
+        </h5>
+        <h5>
+            <i class="bi bi-virus2"></i> Quantidade de estragados: {{
+            avarias_estragados_quantidade | int }}
         </h5>
     </div>
 
     <div class="shadow border border-black m-3 p-2">
-        <h5>10 maiores custos</h5>
+        <h5><i class="bi bi-trophy"></i> 10 maiores custos</h5>
         <table
             class="table-bordered m-auto table-sm text-center align-middle border-black"
         >
             <tr>
-                <th>Código</th>
-                <th>Custo</th>
+                <th><i class="bi bi-upc-scan"></i> Código</th>
+                <th><i class="bi bi-cash-stack"></i> Custo</th>
             </tr>
             {% for i in dez_itens %}
             <tr>
@@ -68,15 +77,25 @@
     >
         <thead>
             <tr class="align-middle">
-                <th class="text-center">Data</th>
-                <th class="text-center">Código</th>
-                <th class="text-center">Produto</th>
-                <th class="text-center">Quantidade</th>
-                <th class="text-center">Custo</th>
-                <th class="text-center">Tipo de Avaria</th>
-                <th class="text-center">Origem</th>
-                <th class="text-center">Usuário</th>
-                <th class="botoesacao text-center">Ação</th>
+                <th class="text-center">
+                    <i class="bi bi-calendar-event"></i> Data
+                </th>
+                <th class="text-center"><i class="bi bi-upc"></i> Código</th>
+                <th class="text-center"><i class="bi bi-box"></i> Produto</th>
+                <th class="text-center">
+                    <i class="bi bi-stack"></i> Quantidade
+                </th>
+                <th class="text-center">
+                    <i class="bi bi-currency-dollar"></i> Custo
+                </th>
+                <th class="text-center">
+                    <i class="bi bi-exclamation-circle"></i> Tipo
+                </th>
+                <th class="text-center"><i class="bi bi-geo"></i> Origem</th>
+                <th class="text-center">
+                    <i class="bi bi-person"></i> Usuário
+                </th>
+                <th class="text-center"><i class="bi bi-tools"></i> Ação</th>
             </tr>
         </thead>
         <tbody>
@@ -85,7 +104,7 @@
                 <td>{{ avaria.data_de_insercao.strftime('%d/%m/%Y') }}</td>
                 <td>{{ avaria.codigo_do_produto }}</td>
                 <td>{{ avaria.nome_do_produto }}</td>
-                <td>{{ avaria.quantidade | format_quantidade}}</td>
+                <td>{{ avaria.quantidade | format_quantidade }}</td>
                 <td class="col-auto">R$ {{ avaria.preco_total }}</td>
                 <td>{{ avaria.tipodeavaria }}</td>
                 <td>{{ avaria.origem }}</td>
@@ -95,11 +114,9 @@
                         action="/avarias/deletar/{{ avaria.id }}"
                         method="post"
                     >
-                        <input
-                            class="btn btn-sm btn-warning m-2"
-                            type="submit"
-                            value="Apagar"
-                        />
+                        <button type="submit" class="btn btn-sm btn-danger m-2">
+                            <i class="bi bi-trash-fill"></i> Apagar
+                        </button>
                     </form>
                 </td>
             </tr>

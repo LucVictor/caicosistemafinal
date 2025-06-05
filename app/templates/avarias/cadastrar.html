@@ -1,19 +1,17 @@
 {% extends "./template.html" %} {% block content %}
-<div class="shadow text-black p-1 m-auto border-orange w-50">
-    <h3>Formulário de Avaria</h3>
-    <div class="mb-4">
-        <img
-            class="procurarimg"
-            src="../static/imagens/formregister.gif"
-            width="100"
-            alt=""
-        />
-    </div>
+
+<div class="shadow p-1 m-auto border-orange w-50">
+    <h3 class="text-primary">
+        <i class="bi bi-pencil-square"></i> Formulário de Avaria
+    </h3>
+
     <hr />
     <form class="p-3" action="/avarias/cadastro" method="post">
         <div class="row">
             <div class="col mb-3">
-                <label for="codigo_produto">Código do Produto:</label>
+                <label for="codigo_produto">
+                    <i class="bi bi-upc-scan"></i> Código do Produto:
+                </label>
                 <input
                     readonly
                     class="form-control text-center m-auto"
@@ -21,29 +19,31 @@
                     id="codigo_produto"
                     name="codigo_produto"
                     value="{{ produto.codigo_do_produto }}"
-                    readonly
                     required
                 />
             </div>
 
             <div class="col mb-3">
-                <label for="nome_produto">Nome do Produto:</label>
+                <label for="nome_produto">
+                    <i class="bi bi-box-seam"></i> Nome do Produto:
+                </label>
                 <input
                     readonly
                     class="form-control text-center m-auto"
                     type="text"
                     id="nome_produto"
                     name="nome_produto"
-                    minlength="600"
                     value="{{ produto.nome_do_produto }}"
-                    readonly
                     required
                 />
             </div>
         </div>
+
         <div class="row">
             <div class="col mb-3">
-                <label for="data_de_insercao">Data:</label>
+                <label for="data_de_insercao">
+                    <i class="bi bi-calendar-date"></i> Data:
+                </label>
                 <input
                     class="form-control text-center m-auto"
                     type="date"
@@ -52,22 +52,26 @@
                     required
                 />
             </div>
+
             <div class="col mb-3">
-                <label for="preco_produto">Preço de custo (R$): </label>
+                <label for="preco_produto">
+                    <i class="bi bi-currency-dollar"></i> Preço de custo (R$):
+                </label>
                 <input
                     readonly
                     class="form-control text-center m-auto"
                     type="text"
                     id="preco_produto"
                     name="preco_produto"
-                    value="{{produto.preco_do_produto}}"
+                    value="{{ produto.preco_do_produto }}"
                     required
-                    readonly
                 />
             </div>
 
             <div class="col mb-3">
-                <label for="quantidade">Quantidade: </label><br />
+                <label for="quantidade">
+                    <i class="bi bi-hash"></i> Quantidade:
+                </label>
                 <input
                     class="form-control text-center m-auto"
                     type="number"
@@ -80,9 +84,12 @@
                 />
             </div>
         </div>
+
         <div class="row">
             <div class="col mb-3">
-                <label>Tipo de Avaria: </label>
+                <label>
+                    <i class="bi bi-exclamation-triangle"></i> Tipo de Avaria:
+                </label>
                 <select
                     class="form-select text-center m-auto"
                     name="tipodeavaria"
@@ -93,8 +100,11 @@
                     <option value="Vencido">Vencido</option>
                 </select>
             </div>
+
             <div class="col mb-3">
-                <label>Origem de avaria: </label>
+                <label>
+                    <i class="bi bi-gear-fill"></i> Origem de avaria:
+                </label>
                 <select
                     class="form-select text-center m-auto"
                     name="origem"
@@ -109,7 +119,9 @@
             </div>
 
             <div class="col mb-3">
-                <label>Uso e consumo?:</label>
+                <label>
+                    <i class="bi bi-check-circle"></i> Uso e consumo?:
+                </label>
                 <select
                     class="form-select text-center m-auto"
                     name="usoeconsumo"
@@ -120,7 +132,13 @@
                 </select>
             </div>
         </div>
-        <input class="btn btn-warning" type="submit" value="Cadastrar" />
+
+        <button
+            type="submit"
+            class="btn btn-primary m-auto btn-sm m-2 d-flex align-items-center"
+        >
+            <i class="bi bi-check-circle me-2"></i> Cadastrar
+        </button>
     </form>
 </div>
 
@@ -134,9 +152,9 @@
     const manipulacao = origem.querySelector('option[value="Manipulação"]');
     const giro = origem.querySelector('option[value="Sem giro"]');
     const esquecimento = origem.querySelector('option[value="Esquecimento"]');
-    
+
     function atualizarOrigemComBaseNaAvaria() {
-        if (avaria.value == "Estragado") {
+        if (avaria.value === "Estragado") {
             giro.disabled = true;
             esquecimento.disabled = true;
             identificado.disabled = false;
@@ -144,7 +162,8 @@
             armazenamento.disabled = false;
             origem.value = "Armazenamento";
         }
-        if (avaria.value == "Vencido") {
+
+        if (avaria.value === "Vencido") {
             manipulacao.disabled = true;
             identificado.disabled = true;
             armazenamento.disabled = true;
@@ -152,7 +171,8 @@
             giro.disabled = false;
             origem.value = "Esquecimento";
         }
-        if (avaria.value == "Embalagem") {
+
+        if (avaria.value === "Embalagem") {
             manipulacao.disabled = false;
             identificado.disabled = false;
             armazenamento.disabled = false;
@@ -163,7 +183,6 @@
     }
 
     avaria.addEventListener("change", atualizarOrigemComBaseNaAvaria);
-
     window.addEventListener("DOMContentLoaded", atualizarOrigemComBaseNaAvaria);
 </script>
 

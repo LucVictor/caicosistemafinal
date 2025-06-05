@@ -1,13 +1,30 @@
-{% extends "./template.html" %}
-{% block content %}
-    <div class="shadow-lg text-black p-1 m-auto border-orange w-25">
-    <h3>Procurar produto</h3>
-    <div class="m-2"><img class="procurarimg" src="../static/imagens/procurar.png" width="60" alt=""></div>
-    <form class="w-50 m-auto" action="/conferencia/cadastro" method="post">
-        <label class="m-2" for="codigo">Código:</label>
-        <input class="form-control text-center" type="text" id="codigo" name="codigo">
+{% extends "./template.html" %} {% block content %}
+<div class="shadow-lg p-1 m-auto border-orange w-25">
+    <h3 class="text-primary"><i class="bi bi-search"></i> Procurar Produto</h3>
+    <form class="w-75 m-auto" action="/conferencia/cadastro" method="post">
+        <label class="m-2 text-primary" for="codigo">
+            <i class="bi bi-upc"></i> Código:
+        </label>
+        <input
+            class="form-control text-center"
+            type="text"
+            id="codigo"
+            name="codigo"
+        />
 
-        <input class="btn btn-warning m-2" type="submit" value="Buscar">
+        <label class="m-2 text-primary" for="codigo_barras">
+            <i class="bi bi-upc-scan"></i> Código de Barras:
+        </label>
+        <input
+            class="form-control text-center"
+            type="text"
+            id="codigo_barras"
+            name="codigo_barras"
+        />
+
+        <button type="submit" class="btn btn-primary m-3">
+            <i class="bi bi-search"></i> Buscar
+        </button>
     </form>
-    </div>
+</div>
 {% endblock %}

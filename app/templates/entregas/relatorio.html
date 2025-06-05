@@ -1,16 +1,35 @@
-{% extends "./template.html" %}
-{% block content %}
-    <div class="shadow-lg text-black p-1 m-auto border-orange w-25">
-    <h2>Relatório de entregas</h2>
+{% extends "./template.html" %} {% block content %}
+<div class="shadow-lg p-1 m-auto border-orange w-50">
+    <h2>
+        <i class="bi bi-file-earmark-text-fill me-2"></i>
+        Relatório de entregas
+    </h2>
     <form class="w-50 m-auto" action="/entregas/emitir_relatorio" method="post">
+        <label class="mt-1" for="data_inicial">
+            <i class="bi bi-calendar-event me-1"></i> Data inicial:
+        </label>
+        <input
+            class="form-control text-center mb-2"
+            type="date"
+            id="data_inicial"
+            name="data_inicial"
+            required
+        />
 
-        <label class="mt-1" for="data_inicial">Data inicial:</label>
-        <input class="form-control text-center mb-2" type="date" id="data_inicial" name="data_inicial" required>
+        <label for="data_final">
+            <i class="bi bi-calendar-event me-1"></i> Data final: </label
+        ><br />
+        <input
+            class="form-control text-center mb-2"
+            type="date"
+            id="data_final"
+            name="data_final"
+            required
+        />
 
-        <label for="data_final">Data final</label><br>
-        <input class="form-control text-center mb-2" type="date" id="data_final" name="data_final" required>
-
-        <input class="btn btn-warning mt-2" type="submit" value="Emitir">
+        <button type="submit" class="btn btn-primary mt-2">
+            <i class="bi bi-file-earmark-arrow-up-fill me-1"></i> Emitir
+        </button>
     </form>
-        </div>
+</div>
 {% endblock %}

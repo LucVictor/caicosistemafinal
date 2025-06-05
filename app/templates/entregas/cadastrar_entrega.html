@@ -1,171 +1,223 @@
 {% extends "./template.html" %} {% block content %}
-<div class="shadow-lg text-black p-1 m-auto border-orange fs-5 w-75">
+<div
+    class="shadow-lg p-4 m-auto border-orange fs-5 w-75 bg-dark rounded-4 text-white"
+>
     <form class="m-auto" method="POST" action="/entregas/cadastrar">
-        <div>
-            <h2 class="vermelho">{{ erro }}</h2>
-            <h2 class="verde">{{ sucesso }}</h2>
-        </div>
-        <h3>Cadastro de entrega</h3>
-
+        <h3 class="text-center mb-3">
+            <i class="bi bi-box-seam-fill me-2"></i>Cadastro de Entrega
+        </h3>
         <div class="mb-3">
             <img
-                class="caminhao"
+                class="procurarimg"
                 src="../static/imagens/caminhao-de-entrega.gif"
-                width="120"
+                width="100"
                 alt=""
             />
         </div>
+
         <hr />
-        <div>
+
+        <fieldset class="mb-4">
+            <legend class="fs-5">
+                <i class="bi bi-info-circle-fill me-1"></i>Informações
+                principais
+            </legend>
             <div class="row">
-                <div class="mb-3 m-auto col">
-                    <label for="data_da_entrega">Data da Entrega:</label>
+                <div class="col mb-3">
+                    <label for="data_da_entrega"
+                        ><i class="bi bi-calendar-event me-1"></i>Data da
+                        Entrega:</label
+                    >
                     <input
                         type="date"
-                        class="form-control text-center m-auto"
                         id="data_da_entrega"
                         name="data_da_entrega"
+                        class="form-control text-center"
                         required
                     />
                 </div>
 
-                <div class="mb-3 m-auto col">
-                    <label for="motorista">Motorista:</label><br />
+                <div class="col mb-3">
+                    <label for="motorista"
+                        ><i class="bi bi-person-badge-fill me-1"></i
+                        >Motorista:</label
+                    >
                     <select
                         name="motorista"
-                        class="form-select text-center m-auto"
                         id="motorista"
+                        class="form-select text-center"
                     >
-                        {% for i in funcionarios %} {% if i.funcao ==
-                        'Motorista' %}
-                        <option class="lista">{{ i.nome }}</option>
-                        {% endif %} {% endfor %}
+                        {% for i in funcionarios if i.funcao == 'Motorista' %}
+                        <option>{{ i.nome }}</option>
+                        {% endfor %}
                     </select>
                 </div>
-                <div class="mb-3 m-auto col">
-                    <label for="caminhao">Caminhão:</label><br />
+
+                <div class="col mb-3">
+                    <label for="caminhao"
+                        ><i class="bi bi-truck-front-fill me-1"></i
+                        >Caminhão:</label
+                    >
                     <select
                         name="caminhao"
-                        class="form-select text-center m-auto"
                         id="caminhao"
+                        class="form-select text-center"
                     >
                         {% for i in caminhao %}
-                        <option class="lista">{{ i.placa }}</option>
+                        <option>{{ i.placa }}</option>
                         {% endfor %}
                     </select>
                 </div>
             </div>
+        </fieldset>
+
+        <fieldset class="mb-4">
+            <legend class="fs-5">
+                <i class="bi bi-people-fill me-1"></i>Equipe e Rota
+            </legend>
             <div class="row">
-                <div class="mb-3 m-auto col">
-                    <label for="ajudante">Ajudante:</label><br />
+                <div class="col mb-3">
+                    <label for="ajudante"
+                        ><i class="bi bi-person-fill-gear me-1"></i
+                        >Ajudante:</label
+                    >
                     <select
-                        class="form-select text-center m-auto"
                         name="ajudante"
                         id="ajudante"
+                        class="form-select text-center"
                     >
-                        {% for i in funcionarios %} {% if i.funcao == 'Ajudante'
-                        %}
-                        <option class="lista">{{ i.nome }}</option>
-                        {% endif %} {% endfor %}
+                        {% for i in funcionarios if i.funcao == 'Ajudante' %}
+                        <option>{{ i.nome }}</option>
+                        {% endfor %}
                     </select>
                 </div>
 
-                <div class="mb-3 m-auto col">
-                    <label for="conferente">Conferente:</label><br />
+                <div class="col mb-3">
+                    <label for="conferente"
+                        ><i class="bi bi-check2-square me-1"></i
+                        >Conferente:</label
+                    >
                     <select
-                        class="form-select text-center m-auto"
                         name="conferente"
                         id="conferente"
+                        class="form-select text-center"
                     >
-                        {% for i in funcionarios %} {% if i.funcao ==
-                        'Conferente' %}
-                        <option class="lista">{{ i.nome }}</option>
-                        {% endif %} {% endfor %}
+                        {% for i in funcionarios if i.funcao == 'Conferente' %}
+                        <option>{{ i.nome }}</option>
+                        {% endfor %}
                     </select>
                 </div>
 
-                <div class="mb-3 m-auto col">
-                    <label for="rota">Rota:</label><br />
+                <div class="col mb-3">
+                    <label for="rota"
+                        ><i class="bi bi-signpost-2-fill me-1"></i>Rota:</label
+                    >
                     <select
-                        class="form-select text-center m-auto"
                         name="rota"
                         id="rota"
+                        class="form-select text-center"
                     >
                         {% for i in rotas_lista %}
-                        <option class="lista">{{ i.rota }}</option>
+                        <option>{{ i.rota }}</option>
                         {% endfor %}
                     </select>
                 </div>
             </div>
+        </fieldset>
+
+        <fieldset class="mb-4">
+            <legend class="fs-5">
+                <i class="bi bi-clipboard-data-fill me-1"></i>Dados da Entrega
+            </legend>
             <div class="row">
-                <div class="mb-3 m-auto col">
-                    <label for="quantidade_de_entregas">Entregas:</label><br />
+                <div class="col mb-3">
+                    <label for="quantidade_de_entregas"
+                        ><i class="bi bi-boxes me-1"></i>Entregas:</label
+                    >
                     <input
-                        class="form-control text-center m-auto"
                         type="number"
                         id="quantidade_de_entregas"
+                        name="quantidade_de_entregas"
                         value="0"
                         min="1"
-                        name="quantidade_de_entregas"
+                        class="form-control text-center"
                         required
                     />
                 </div>
 
-                <div class="mb-3 m-auto col">
-                    <label for="reentregas">Reentregas:</label>
-                    <input
-                        class="form-control text-center m-auto"
-                        type="number"
-                        class=""
-                        id="reentregas"
-                        value="0"
-                        min="0"
-                        name="reentregas"
-                        required
-                    />
-                </div>
-
-                <div class="mb-3 m-auto col">
-                    <label for="entreganrealizadas"
-                        >Entregas não realizadas:</label
+                <div class="col mb-3">
+                    <label for="reentregas"
+                        ><i class="bi bi-arrow-repeat me-1"></i
+                        >Reentregas:</label
                     >
                     <input
                         type="number"
-                        class="form-control text-center m-auto"
-                        id="entreganrealizadas"
+                        id="reentregas"
+                        name="reentregas"
                         value="0"
                         min="0"
+                        class="form-control text-center"
+                        required
+                    />
+                </div>
+
+                <div class="col mb-3">
+                    <label for="entreganrealizadas"
+                        ><i class="bi bi-x-circle-fill me-1"></i>Entregas Não
+                        Realizadas:</label
+                    >
+                    <input
+                        type="number"
+                        id="entreganrealizadas"
                         name="entreganrealizadas"
+                        value="0"
+                        min="0"
+                        class="form-control text-center"
                         required
                     />
                 </div>
             </div>
+        </fieldset>
+
+        <fieldset class="mb-4">
+            <legend class="fs-5">
+                <i class="bi bi-clock-fill me-1"></i>Tempos
+            </legend>
             <div class="row">
-                <div class="mb-3 m-auto col">
-                    <label for="tempo_total">Tempo Total:</label>
+                <div class="col mb-3">
+                    <label for="tempo_total"
+                        ><i class="bi bi-stopwatch-fill me-1"></i>Tempo
+                        Total:</label
+                    >
                     <input
                         type="time"
-                        class="form-control text-center w-50 m-auto"
                         id="tempo_total"
                         name="tempo_total"
+                        class="form-control text-center"
                         required
                     />
                 </div>
 
-                <div class="mb-3 m-auto col">
+                <div class="col mb-3">
                     <label for="tempo_total_entrega"
-                        >Tempo Total de Entrega:</label
+                        ><i class="bi bi-stopwatch me-1"></i>Tempo Total de
+                        Entrega:</label
                     >
                     <input
                         type="time"
-                        class="form-control text-center w-50 m-auto"
                         id="tempo_total_entrega"
                         name="tempo_total_entrega"
+                        class="form-control text-center"
                         required
                     />
                 </div>
             </div>
-            <button class="btn btn-warning" type="submit">Cadastrar</button>
+        </fieldset>
+
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-primary px-4">
+                <i class="bi bi-save2 me-1"></i> Cadastrar Entrega
+            </button>
         </div>
     </form>
 </div>

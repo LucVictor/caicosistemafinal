@@ -1,10 +1,13 @@
 {% extends "./template.html" %} {% block content %}
 
-<h2 class="m-2">Listagem de vencimentos de produtos</h2>
+<h2 class="m-2">
+    <i class="bi bi-calendar3"></i> Listagem de vencimentos de produtos
+</h2>
+
 <div class="d-flex justify-content-center text-center">
     <div class="shadow-lg table-responsive">
-        <table class="table-bordered text-center align-middle">
-            <thead>
+        <table class="table-bordered text-center align-middle border-black">
+            <thead class="table border-black">
                 <tr>
                     <th>Inserção</th>
                     <th>Código</th>
@@ -13,17 +16,15 @@
                     <th>Vencimento</th>
                     <th>Dias</th>
                     <th>Última At.</th>
-                    {% if current_user.is_authenticated and current_user.acesso
-                    == 1 or current_user.is_authenticated and
-                    current_user.acesso == 4 %}
-
+                    {% if current_user.is_authenticated and (current_user.acesso
+                    == 1 or current_user.acesso == 4) %}
                     <th class="botoesacao">Ação</th>
                     <th>Usuário</th>
                     {% endif %}
                 </tr>
             </thead>
-            {% for vencimento in vencimentos %}
             <tbody>
+                {% for vencimento in vencimentos %}
                 <tr>
                     <td>{{ vencimento.data_de_insercao.strftime('%d/%m') }}</td>
                     <td>{{ vencimento.codigo_do_produto }}</td>
@@ -33,38 +34,42 @@
                         {{ vencimento.data_de_vencimento.strftime('%d/%m/%Y') }}
                     </td>
                     <td
-                        class="{% if vencimento.dias_restantes < 15 %}bg-danger{% endif %} {% if vencimento.dias_restantes < 30 %}bg-warning{% endif %} {% if vencimento.dias_restantes >= 30 %}bg-success{% endif %}"
+                        class="{% if vencimento.dias_restantes < 15 %}bg-danger {% elif vencimento.dias_restantes < 30 %}bg-warning {% else %}bg-success{% endif %} text-white"
                     >
                         {{ vencimento.dias_restantes }}
                     </td>
                     <td>{{ vencimento.atualizacao.strftime('%d/%m') }}</td>
-                    {% if current_user.is_authenticated and current_user.acesso
-                    == 1 or current_user.is_authenticated and
-                    current_user.acesso == 4%}
-                    <td class="flexNoBoards botoesacao">
+
+                    {% if current_user.is_authenticated and (current_user.acesso
+                    == 1 or current_user.acesso == 4) %}
+                    <td class="botoesacao d-flex">
                         <form
                             action="/vencimentos/editar/{{ vencimento.id }}"
                             method="get"
+                            class="me-1"
                         >
-                            <input
-                                class="btn btn-sm btn-warning me-1"
+                            <button
+                                class="btn btn-sm btn-primary"
                                 type="submit"
-                                value="Editar"
-                            />
+                                title="Editar"
+                            >
+                                <i class="bi bi-pencil-square"></i>
+                            </button>
                         </form>
                         <form
                             action="/vencimentos/deletar/{{ vencimento.id }}"
                             method="post"
                         >
-                            <input
-                                class="btn btn-sm btn-warning"
+                            <button
+                                class="btn btn-sm btn-danger"
                                 type="submit"
-                                value="Apagar"
-                            />
+                                title="Apagar"
+                            >
+                                <i class="bi bi-trash"></i>
+                            </button>
                         </form>
                     </td>
-
-                    <td class="">{{ vencimento.criador }}</td>
+                    <td>{{ vencimento.criador }}</td>
                     {% endif %}
                 </tr>
                 {% endfor %}
@@ -72,4 +77,5 @@
         </table>
     </div>
 </div>
+
 {% endblock %}

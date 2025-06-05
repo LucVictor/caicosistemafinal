@@ -1,90 +1,99 @@
 {% extends "./template.html" %} {% block content %}
 
-<div class="shadow-lg text-black p-1 m-auto border-orange w-25">
-    <h3>Formulário de erro de atacado</h3>
-    <div class="mb-3">
-        <img
-            class="procurarimg"
-            src="../static/imagens/erro.png"
-            width="80"
-            alt=""
-        />
-    </div>
+<div class="shadow-lg p-1 m-auto border-orange w-50">
+    <h3>
+        <i class="bi bi-exclamation-triangle me-2"></i>Formulário de erro de
+        atacado
+    </h3>
+    <hr />
     <form class="m-auto" action="/atacado/cadastrar_erro" method="post">
-        <div class="mb-3 m-auto">
-            <label for="data_do_erro">Data do erro:</label>
-            <input
-                class="form-control text-center w-50 m-auto"
-                type="date"
-                id="data_do_erro"
-                name="data_do_erro"
-                required
-            />
+        <div class="row">
+            <div class="col mb-3 m-auto">
+                <label for="data_do_erro">
+                    <i class="bi bi-calendar-event me-1"></i>Data do erro:
+                </label>
+                <input
+                    class="form-control text-center m-auto"
+                    type="date"
+                    id="data_do_erro"
+                    name="data_do_erro"
+                    required
+                />
+            </div>
+
+            <div class="col mb-3 m-auto">
+                <label for="erro_funcionario">
+                    <i class="bi bi-person-fill me-1"></i>Funcionário:
+                </label>
+                <select
+                    class="form-select text-center m-auto"
+                    name="erro_funcionario"
+                    id="erro_funcionario"
+                >
+                    {% for i in funcionarios %}
+                    <option class="lista">{{ i.nome }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col mb-3 m-auto">
+                <label for="erro_cliente">
+                    <i class="bi bi-people-fill me-1"></i>Cliente:
+                </label>
+                <input
+                    class="form-control text-center m-auto"
+                    type="text"
+                    id="erro_cliente"
+                    name="erro_cliente"
+                    required
+                />
+            </div>
+            <div class="col mb-3 m-auto">
+                <label for="quantidade_de_erros">
+                    <i class="bi bi-x-circle-fill me-1"></i>Quantidade de erros:
+                </label>
+                <input
+                    class="form-control text-center m-auto"
+                    type="number"
+                    id="quantidade_de_erros"
+                    name="quantidade_de_erros"
+                    min="1"
+                    required
+                />
+            </div>
         </div>
 
         <div class="mb-3 m-auto">
-            <label for="erro_funcionario">Funcionário:</label>
-            <select
-                class="form-select text-center w-50 m-auto"
-                name="erro_funcionario"
-                id="erro_funcionario"
-            >
-                {% for i in funcionarios %}
-                <option class="lista">{{ i.nome }}</option>
-                {% endfor %}
-            </select>
-        </div>
-
-        <div class="mb-3 m-auto">
-            <label for="erro_cliente">Cliente:</label>
-            <input
-                class="form-control text-center m-auto"
-                type="text"
-                id="erro_cliente"
-                name="erro_cliente"
-                required
-            />
-        </div>
-
-        <div class="mb-3 m-auto">
-            <label for="quantidade_de_erros">Quantidade de erros:</label>
-            <input
-                class="form-control text-center w-50 m-auto"
-                type="number"
-                id="quantidade_de_erros"
-                name="quantidade_de_erros"
-                min="1"
-                required
-            />
-        </div>
-
-        <div class="mb-3 m-auto">
-            <label for="produto_erro">Produtos do erro:</label>
+            <label for="produto_erro">
+                <i class="bi bi-box-seam me-1"></i>Produtos do erro:
+            </label>
             <textarea
                 class="form-control text-left m-auto"
                 name="produto_erro"
                 id="produto_erro"
                 required
-            >
-            </textarea>
+            ></textarea>
         </div>
 
         <div class="mb-3 m-auto">
-            <label for="descricao_do_erro">Descrição do erro:</label>
+            <label for="descricao_do_erro">
+                <i class="bi bi-journal-text me-1"></i>Descrição do erro:
+            </label>
             <textarea
                 class="form-control text-left m-auto"
                 name="descricao_do_erro"
                 id="descricao_do_erro"
                 required
-            >
-            </textarea>
+            ></textarea>
         </div>
 
-        <input
-            class="btn btn-warning mb-1"
+        <button
             type="submit"
-            value="Cadastrar erro de atacado"
-        />
+            class="btn btn-primary m-auto btn-sm m-2 d-flex align-items-center"
+        >
+            <i class="bi bi-check-circle me-2"></i> Cadastrar
+        </button>
     </form>
 </div>
 {% endblock %}

@@ -1,19 +1,15 @@
 {% extends "./template.html" %} {% block content %}
-<div class="shadow-lg text-black p-1 m-auto border-orange w-50">
-    <h3>Cadastro de Vencimento</h3>
-    <div class="mb-3">
-        <img
-            class="procurarimg"
-            src="../static/imagens/formregister.gif"
-            width="100"
-            alt=""
-        />
-    </div>
+<div class="shadow-lg p-1 m-auto w-50">
+    <h3 class="text-primary">
+        <i class="bi bi-journal-plus"></i> Cadastro de Vencimento
+    </h3>
     <hr />
     <form class="p-4" action="/vencimentos/cadastro" method="post">
         <div class="row">
             <div class="col mb-3">
-                <label for="codigo_produto">Código do Produto:</label>
+                <label for="codigo_produto">
+                    <i class="bi bi-upc-scan"></i> Código do Produto:
+                </label>
                 <input
                     readonly
                     class="form-control text-center m-auto"
@@ -26,7 +22,9 @@
             </div>
 
             <div class="col mb-3">
-                <label for="nome_produto">Nome do Produto:</label>
+                <label for="nome_produto">
+                    <i class="bi bi-box-seam"></i> Nome do Produto:
+                </label>
                 <input
                     readonly
                     class="form-control text-center m-auto"
@@ -41,7 +39,9 @@
         </div>
         <div class="row">
             <div class="col mb-3">
-                <label for="quantidade">Quantidade: </label>
+                <label for="quantidade">
+                    <i class="bi bi-hash"></i> Quantidade:
+                </label>
                 <input
                     class="form-control text-center m-auto"
                     type="number"
@@ -55,7 +55,9 @@
             </div>
 
             <div class="col mb-3">
-                <label for="data_vencimento">Data de Vencimento:</label>
+                <label for="data_vencimento">
+                    <i class="bi bi-calendar-date"></i> Data de Vencimento:
+                </label>
                 <input
                     class="form-control text-center m-auto"
                     type="date"
@@ -65,11 +67,12 @@
                 />
             </div>
         </div>
-        <input
-            class="btn btn-sm btn-warning m-2"
+        <button
             type="submit"
-            value="Cadastrar"
-        />
+            class="btn btn-primary m-auto btn-sm m-2 d-flex align-items-center"
+        >
+            <i class="bi bi-check-circle me-2"></i> Cadastrar
+        </button>
     </form>
-    <div>{% endblock %}</div>
 </div>
+{% endblock %}

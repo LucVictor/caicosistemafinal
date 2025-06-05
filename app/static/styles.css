@@ -1,4 +1,9 @@
 @media print {
+    .somente-impressao {
+        display: block !important;
+    }
+}
+@media print {
     .menu,
     .banner,
     footer,
@@ -9,4 +14,8 @@
     .resumo {
         page-break-after: always;
     }
+}
+
+. {
+    display: none; /* Oculta no navegador */
 }

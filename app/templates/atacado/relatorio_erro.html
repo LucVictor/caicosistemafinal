@@ -1,12 +1,17 @@
 {% extends "./template.html" %} {% block content %}
-<div class="shadow-lg text-black p-1 m-auto border-orange w-25">
-    <h2>Relatório de erros de atacado</h2>
+<div class="shadow-lg p-1 m-auto border-orange w-50">
+    <h2>
+        <i class="bi bi-clipboard-data-fill me-2"></i>Relatório de erros de
+        atacado
+    </h2>
     <form
         class="m-2 w-50 m-auto"
         action="/atacado/erros_relatorio"
         method="post"
     >
-        <label class="m-2" for="data_inicial">Data inicial:</label>
+        <label class="m-2" for="data_inicial">
+            <i class="bi bi-calendar-event me-1"></i>Data inicial:
+        </label>
         <input
             class="form-control text-center"
             type="date"
@@ -15,7 +20,9 @@
             required
         />
 
-        <label class="m-2" for="data_final">Data final</label><br />
+        <label class="m-2" for="data_final">
+            <i class="bi bi-calendar-check me-1"></i>Data final:
+        </label>
         <input
             class="form-control text-center"
             type="date"
@@ -24,7 +31,9 @@
             required
         />
 
-        <input class="btn btn-warning m-2" type="submit" value="Emitir" />
+        <button class="btn btn-primary m-2" type="submit">
+            <i class="bi bi-file-earmark-text-fill me-1"></i>Emitir
+        </button>
     </form>
 </div>
 {% endblock %}

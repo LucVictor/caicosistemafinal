@@ -1,16 +1,36 @@
-{% extends "./template.html" %}
-{% block content %}
-     <div class="shadow-lg text-black p-1 m-auto border-orange w-25">
-    <h2>Relatório de erros</h2>
-    <form class="m-2 w-50 m-auto"  action="/entregas/erros_relatorio" method="post">
+{% extends "./template.html" %} {% block content %}
+<div class="shadow-lg p-1 m-auto border-orange w-50">
+    <h2><i class="bi bi-bar-chart-line-fill"></i> Relatório de erros</h2>
+    <form
+        class="m-2 w-50 m-auto"
+        action="/entregas/erros_relatorio"
+        method="post"
+    >
+        <label class="m-2" for="data_inicial">
+            <i class="bi bi-calendar-check"></i> Data inicial:
+        </label>
+        <input
+            class="form-control text-center"
+            type="date"
+            id="data_inicial"
+            name="data_inicial"
+            required
+        />
 
-        <label class="m-2" for="data_inicial">Data inicial:</label>
-        <input  class="form-control text-center" type="date" id="data_inicial" name="data_inicial" required>
+        <label class="m-2" for="data_final">
+            <i class="bi bi-calendar-range"></i> Data final:
+        </label>
+        <input
+            class="form-control text-center"
+            type="date"
+            id="data_final"
+            name="data_final"
+            required
+        />
 
-        <label  class="m-2" for="data_final">Data final</label><br>
-        <input class="form-control text-center" type="date" id="data_final" name="data_final" required>
-
-        <input class="btn btn-warning m-2" type="submit" value="Emitir">
+        <button class="btn btn-primary m-2" type="submit">
+            <i class="bi bi-file-earmark-bar-graph"></i> Emitir
+        </button>
     </form>
-        </div>
+</div>
 {% endblock %}

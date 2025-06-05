@@ -1,7 +1,11 @@
 {% extends "./template.html" %} {% block content %}
 
-<h3>Listagem de Erros do Atacado</h3>
-<h4>Referente ao mês de {{ mes }}</h4>
+<h3>
+    <i class="bi bi-exclamation-triangle-fill me-2"></i>Listagem de Erros do
+    Atacado
+</h3>
+<h4><i class="bi bi-calendar3 me-2"></i>Referente ao mês de {{ mes }}</h4>
+
 <div
     class="resumo d-flex flex-column justify-content-center align-items-center align-self-center m-1 p-1 text-center"
 >
@@ -9,14 +13,16 @@
         style="width: fit-content; margin: auto auto"
         class="align-items-center align-items-center align-self-center border-orange shadow m-3 p-2 h-25"
     >
-        <h5>Erros por Funcionário</h5>
+        <h5>
+            <i class="bi bi-person-lines-fill me-2"></i>Erros por Funcionário
+        </h5>
         <table
             style="margin: auto auto"
-            class="tabela text-center align-items-center align-middle border-black"
+            class="tabela table-bordered text-center align-items-center align-middle border-black"
         >
             <tr>
-                <th>Funcionário</th>
-                <th>Erros</th>
+                <th><i class="bi bi-person-fill"></i> Funcionário</th>
+                <th><i class="bi bi-exclamation-octagon-fill"></i> Erros</th>
             </tr>
             {% for funcionario in erros_por_funcionario %}
             <tr>
@@ -32,15 +38,21 @@
         >
             <thead>
                 <tr>
-                    <th>Data</th>
-                    <th>Funcionário</th>
-                    <th>Cliente</th>
-                    <th>Erros</th>
-
-                    <th>Produtos</th>
-                    <th>Descrição do erro</th>
-                    <th>Criador</th>
-                    <th class="botoesacao">Ação</th>
+                    <th><i class="bi bi-calendar-day"></i> Data</th>
+                    <th><i class="bi bi-person-fill"></i> Funcionário</th>
+                    <th><i class="bi bi-people-fill"></i> Cliente</th>
+                    <th>
+                        <i class="bi bi-exclamation-triangle-fill"></i> Erros
+                    </th>
+                    <th><i class="bi bi-box-seam"></i> Produtos</th>
+                    <th><i class="bi bi-card-text"></i> Descrição do erro</th>
+                    <th><i class="bi bi-person-badge"></i> Criador</th>
+                    <th class="botoesacao">
+                        <div>
+                            <i class="bi bi-trash3-fill align-self-center;"></i>
+                            Ação
+                        </div>
+                    </th>
                 </tr>
             </thead>
             {% for erro in erros %}
@@ -58,11 +70,13 @@
                             action="/atacado/deletar_erro/{{ erro.id }}"
                             method="post"
                         >
-                            <input
-                                class="botoesacao btn btn-warning btn-sm mb-1"
+                            <button
                                 type="submit"
-                                value="Apagar"
-                            />
+                                class="botoesacao m-auto btn btn-danger btn-sm mb-1"
+                                title="Apagar"
+                            >
+                                <i class="bi bi-trash3-fill"></i>
+                            </button>
                         </form>
                     </td>
                 </tr>
@@ -70,5 +84,6 @@
             </tbody>
         </table>
     </div>
-    {% endblock %}
 </div>
+
+{% endblock %}

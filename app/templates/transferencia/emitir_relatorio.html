@@ -11,56 +11,63 @@
         height: 250px;
     }
 </style>
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+
 <h2 class="m-2">
-    Transferências de {{data_inicial.strftime('%d/%m/%Y')}} á
-    {{data_final.strftime('%d/%m/%Y')}}:
+    <i class="fas fa-exchange-alt me-2"></i>Transferências de
+    {{data_inicial.strftime('%d/%m/%Y')}} à {{data_final.strftime('%d/%m/%Y')}}:
 </h2>
 <br />
-<h4 class="p-2">Total de transferências: {{total_transferencias}}.</h4>
+<h4 class="p-2">
+    <i class="bi bi-check2-circle me-2"></i>Total de transferências:
+    {{total_transferencias}}.
+</h4>
 
 <div class="row border container m-auto fs-6">
     <div class="col">
-        <h4>Transferências por comprador:</h4>
-
+        <h4>
+            <i class="fas fa-user-tag me-2"></i>Transferências por comprador:
+        </h4>
         <div class="m-auto" id="graficoContainer2">
             <canvas id="graficoComprador"></canvas>
         </div>
     </div>
 
     <div
-        class="col border d-flex justify justify-content-center align-items-center flex-column"
+        class="col border d-flex justify-content-center align-items-center flex-column"
     >
-        <h4>Transferências por lojas:</h4>
+        <h4><i class="fas fa-store me-2"></i>Transferências por lojas:</h4>
         <div class="m-auto" id="graficoLojasBarras">
             <canvas id="graficoLoja"></canvas>
         </div>
     </div>
 
     <div class="col">
-        <h4>Transferências por tipo:</h4>
+        <h4><i class="fas fa-tags me-2"></i>Transferências por tipo:</h4>
         <div class="m-auto" id="graficoContainer">
             <canvas id="graficoRosquinha"></canvas>
         </div>
     </div>
 </div>
+
 <hr />
-<h4>Tabela</h4>
+<h4><i class="fas fa-table me-2"></i>Tabela de transferências</h4>
 
 <div class="d-flex justify-content-center text-center">
     <div class="table-responsive w-100 p-3">
         <table class="table table-bordered text-center align-middle">
             <thead>
                 <tr>
-                    <th>Data</th>
-                    <th>Nº Pedido</th>
-                    <th>Loja</th>
-                    <th>Tipo</th>
-                    <th>Comprador</th>
-                    <th>Observação</th>
-                    <th>Ação</th>
-                    <th>Criador</th>
+                    <th><i class="bi bi-calendar3 me-1"></i>Data</th>
+                    <th><i class="bi bi-hash me-1"></i>Nº Pedido</th>
+                    <th><i class="bi bi-shop me-1"></i>Loja</th>
+                    <th><i class="bi bi-tags me-1"></i>Tipo</th>
+                    <th><i class="bi bi-person-check me-1"></i>Comprador</th>
+                    <th><i class="bi bi-chat-left-text me-1"></i>Observação</th>
+                    <th><i class="bi bi-gear-fill me-1"></i>Ação</th>
+                    <th><i class="bi bi-person-badge me-1"></i>Criador</th>
                 </tr>
             </thead>
             <tbody>
@@ -108,7 +115,7 @@
     const lojasQuantidades = {{ lojas_quantidades | tojson }};
     const totalLojas = lojasQuantidades.reduce((a, b) => a + b, 0);
 
-    // Gráfico Rosquinha por Tipo
+    // Gráfico por Tipo
     const ctx = document.getElementById('graficoRosquinha').getContext('2d');
     const grafico = new Chart(ctx, {
         type: 'doughnut',
@@ -116,10 +123,7 @@
             labels: tipos,
             datasets: [{
                 data: quantidades,
-                backgroundColor: [
-                    '#8E44AD', '#3498DB', '#1ABC9C', '#F39C12',
-                    '#D35400', '#C0392B', '#7F8C8D', '#2ECC71'
-                ],
+                backgroundColor: ['#8E44AD', '#3498DB', '#1ABC9C', '#F39C12', '#D35400', '#C0392B', '#7F8C8D', '#2ECC71'],
                 borderColor: '#fff',
                 borderWidth: 2
             }]
@@ -127,39 +131,28 @@
         options: {
             plugins: {
                 datalabels: {
-                    formatter: (value) => `${((value / total) * 100).toFixed(1)}%\n(${value})`,
-                    color: '#000',
+                    formatter: value => `${((value / total) * 100).toFixed(1)}%\n(${value})`,
+                    color: '#fff',
                     font: { weight: 'bold', size: 12 }
                 },
                 legend: {
                     position: 'bottom',
                     labels: {
                         boxWidth: 20,
-                        color: '#000',
-                        generateLabels: function(chart) {
-                            const data = chart.data;
-                            const dataset = data.datasets[0];
-                            return data.labels.map((label, i) => {
-                                const value = dataset.data[i];
-                                return {
-                                    text: `${label} (${value})`,
-                                    fillStyle: dataset.backgroundColor[i],
-                                    strokeStyle: dataset.borderColor,
-                                    lineWidth: 1,
-                                    hidden: !chart.getDatasetMeta(0).data[i],
-                                    index: i
-                                };
-                            });
-                        }
+                        color: '#fff',
+                        generateLabels: chart => chart.data.labels.map((label, i) => ({
+                            text: `${label} (${chart.data.datasets[0].data[i]})`,
+                            fillStyle: chart.data.datasets[0].backgroundColor[i],
+                            strokeStyle: chart.data.datasets[0].borderColor,
+                            lineWidth: 1,
+                            hidden: !chart.getDatasetMeta(0).data[i],
+                            index: i
+                        }))
                     }
                 },
                 tooltip: {
                     callbacks: {
-                        label: (context) => {
-                            const value = context.raw;
-                            const percentage = ((value / total) * 100).toFixed(1);
-                            return `${context.label}: ${value} (${percentage}%)`;
-                        }
+                        label: context => `${context.label}: ${context.raw} (${((context.raw / total) * 100).toFixed(1)}%)`
                     }
                 }
             }
@@ -167,7 +160,7 @@
         plugins: [ChartDataLabels]
     });
 
-    // Gráfico Rosquinha por Comprador
+    // Gráfico por Comprador
     const ctxComprador = document.getElementById('graficoComprador').getContext('2d');
     const graficoComprador = new Chart(ctxComprador, {
         type: 'doughnut',
@@ -175,10 +168,7 @@
             labels: compradores,
             datasets: [{
                 data: qtdTransferencias,
-                backgroundColor: [
-                    '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0',
-                    '#9966FF', '#FF9F40', '#E7E9ED', '#00A36C'
-                ],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40', '#E7E9ED', '#00A36C'],
                 borderColor: '#fff',
                 borderWidth: 2
             }]
@@ -186,39 +176,28 @@
         options: {
             plugins: {
                 datalabels: {
-                    formatter: (value) => `${((value / totalCompras) * 100).toFixed(1)}%\n(${value})`,
-                    color: '#000',
+                    formatter: value => `${((value / totalCompras) * 100).toFixed(1)}%\n(${value})`,
+                    color: '#fff',
                     font: { weight: 'bold', size: 12 }
                 },
                 legend: {
                     position: 'bottom',
                     labels: {
                         boxWidth: 20,
-                        color: '#000',
-                        generateLabels: function(chart) {
-                            const data = chart.data;
-                            const dataset = data.datasets[0];
-                            return data.labels.map((label, i) => {
-                                const value = dataset.data[i];
-                                return {
-                                    text: `${label} (${value})`,
-                                    fillStyle: dataset.backgroundColor[i],
-                                    strokeStyle: dataset.borderColor,
-                                    lineWidth: 1,
-                                    hidden: !chart.getDatasetMeta(0).data[i],
-                                    index: i
-                                };
-                            });
-                        }
+                        color: '#fff',
+                        generateLabels: chart => chart.data.labels.map((label, i) => ({
+                            text: `${label} (${chart.data.datasets[0].data[i]})`,
+                            fillStyle: chart.data.datasets[0].backgroundColor[i],
+                            strokeStyle: chart.data.datasets[0].borderColor,
+                            lineWidth: 1,
+                            hidden: !chart.getDatasetMeta(0).data[i],
+                            index: i
+                        }))
                     }
                 },
                 tooltip: {
                     callbacks: {
-                        label: (context) => {
-                            const value = context.raw;
-                            const percentage = ((value / totalCompras) * 100).toFixed(1);
-                            return `${context.label}: ${value} (${percentage}%)`;
-                        }
+                        label: context => `${context.label}: ${context.raw} (${((context.raw / totalCompras) * 100).toFixed(1)}%)`
                     }
                 }
             }
@@ -226,7 +205,7 @@
         plugins: [ChartDataLabels]
     });
 
-    // Gráfico Rosquinha por Loja
+    // Gráfico por Loja
     const ctxLoja = document.getElementById('graficoLoja').getContext('2d');
     const graficoLoja = new Chart(ctxLoja, {
         type: 'bar',
@@ -234,10 +213,7 @@
             labels: lojas,
             datasets: [{
                 data: lojasQuantidades,
-                backgroundColor: [
-                    '#1F77B4', '#AEC7E8', '#FF7F0E', '#FFBB78',
-                    '#2CA02C', '#98DF8A', '#D62728', '#FF9896'
-                ],
+                backgroundColor: ['#1F77B4', '#AEC7E8', '#FF7F0E', '#FFBB78', '#2CA02C', '#98DF8A', '#D62728', '#FF9896'],
                 borderColor: '#fff',
                 borderWidth: 2
             }]
@@ -245,39 +221,28 @@
         options: {
             plugins: {
                 datalabels: {
-                    formatter: (value) => `${((value / totalLojas) * 100).toFixed(1)}%\n(${value})`,
-                    color: '#000',
+                    formatter: value => `${((value / totalLojas) * 100).toFixed(1)}%\n(${value})`,
+                    color: '#fff',
                     font: { weight: 'bold', size: 12 }
                 },
                 legend: {
                     position: 'bottom',
                     labels: {
                         boxWidth: 20,
-                        color: '#000',
-                        generateLabels: function(chart) {
-                            const data = chart.data;
-                            const dataset = data.datasets[0];
-                            return data.labels.map((label, i) => {
-                                const value = dataset.data[i];
-                                return {
-                                    text: `${label} (${value})`,
-                                    fillStyle: dataset.backgroundColor[i],
-                                    strokeStyle: dataset.borderColor,
-                                    lineWidth: 1,
-                                    hidden: !chart.getDatasetMeta(0).data[i],
-                                    index: i
-                                };
-                            });
-                        }
+                        color: '#fff',
+                        generateLabels: chart => chart.data.labels.map((label, i) => ({
+                            text: `${label} (${chart.data.datasets[0].data[i]})`,
+                            fillStyle: chart.data.datasets[0].backgroundColor[i],
+                            strokeStyle: chart.data.datasets[0].borderColor,
+                            lineWidth: 1,
+                            hidden: !chart.getDatasetMeta(0).data[i],
+                            index: i
+                        }))
                     }
                 },
                 tooltip: {
                     callbacks: {
-                        label: (context) => {
-                            const value = context.raw;
-                            const percentage = ((value / totalLojas) * 100).toFixed(1);
-                            return `${context.label}: ${value} (${percentage}%)`;
-                        }
+                        label: context => `${context.label}: ${context.raw} (${((context.raw / totalLojas) * 100).toFixed(1)}%)`
                     }
                 }
             }

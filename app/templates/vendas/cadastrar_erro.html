@@ -1,19 +1,24 @@
 {% extends "./template.html" %} {% block content %}
-<div class="shadow text-black p-1 m-auto border-orange w-50">
-    <h2>Formulário de erro de vendas:</h2>
-    <div class="mb-4">
+<div class="shadow p-1 m-auto border-orange w-50">
+    <h2>
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>Formulário de erro
+        de vendas:
+    </h2>
+    <div class="mb-4 text-center">
         <img
             class="procurarimg"
-            src="../static/imagens/error.gif"
+            src="{{ url_for('static', filename='imagens/error.gif') }}"
             width="100"
-            alt=""
+            alt="Erro"
         />
     </div>
     <hr />
     <form class="p-2" action="/vendas/cadastrar_erro" method="POST">
         <div class="row">
             <div class="col form-group mb-3 m-auto">
-                <label for="data_do_erro">Data do erro:</label>
+                <label for="data_do_erro"
+                    ><i class="bi bi-calendar-event"></i> Data do erro:</label
+                >
                 <input
                     class="form-control text-center m-auto"
                     type="date"
@@ -24,7 +29,9 @@
             </div>
 
             <div class="mb-3 m-auto col">
-                <label for="erro_cliente">Cliente:</label>
+                <label for="erro_cliente"
+                    ><i class="bi bi-person"></i> Cliente:</label
+                >
                 <input
                     class="form-control text-center m-auto"
                     type="text"
@@ -36,7 +43,9 @@
         </div>
         <div class="row">
             <div class="col form-group mb-3 m-auto">
-                <label for="erro_funcionario">Vendedor:</label>
+                <label for="erro_funcionario"
+                    ><i class="bi bi-person-badge"></i> Vendedor:</label
+                >
                 <select
                     class="form-select text-center m-auto"
                     name="erro_funcionario"
@@ -48,7 +57,10 @@
                 </select>
             </div>
             <div class="col mb-3 m-auto">
-                <label for="quantidade_de_erros">Quantidade de erros:</label>
+                <label for="quantidade_de_erros"
+                    ><i class="bi bi-exclamation-circle"></i> Quantidade de
+                    erros:</label
+                >
                 <input
                     class="form-control text-center m-auto"
                     type="number"
@@ -59,7 +71,9 @@
             </div>
 
             <div class="col mb-3 m-auto">
-                <label for="motorista_da_entrega">Motorista:</label>
+                <label for="motorista_da_entrega"
+                    ><i class="bi bi-truck"></i> Motorista:</label
+                >
                 <select
                     class="form-select text-center m-auto"
                     name="motorista_da_entrega"
@@ -73,26 +87,31 @@
             </div>
         </div>
         <div class="mb-3 m-auto">
-            <label for="produto_erro">Produtos do erro:</label>
+            <label for="produto_erro"
+                ><i class="bi bi-box-seam"></i> Produtos do erro de
+                venda:</label
+            >
             <textarea
                 class="form-control text-left m-auto"
                 name="produto_erro"
                 id="produto_erro"
-            >
-            </textarea>
+            ></textarea>
         </div>
 
         <div class="mb-3 m-auto">
-            <label for="descricao_do_erro">Descrição do erro:</label>
+            <label for="descricao_do_erro"
+                ><i class="bi bi-journal-text"></i> Descrição do erro:</label
+            >
             <textarea
                 class="form-control text-left m-auto"
                 name="descricao_do_erro"
                 id="descricao_do_erro"
-            >
-            </textarea>
+            ></textarea>
         </div>
 
-        <input class="btn btn-warning mb-1" type="submit" value="Cadastrar" />
+        <button class="btn btn-primary mb-1" type="submit">
+            <i class="bi bi-send-check"></i> Cadastrar
+        </button>
     </form>
 </div>
 {% endblock %}

@@ -1,85 +1,127 @@
-{% extends "./template.html" %}
-{% block content %}
-    {% if not total_erros %}
-    <div class="text-black p-1 m-auto border-orange w-25">
-    <h3>Relatório de erros</h3>
-    <form class="m-2 w-50 m-auto" action="/vendas/erros_relatorio" method="post">
+{% extends "./template.html" %} {% block content %} {% if not total_erros %}
+<div class="shadow-lg p-1 m-auto border-orange w-25">
+    <h3>
+        <i class="bi bi-file-earmark-bar-graph-fill me-2"></i>Relatório de erros
+    </h3>
+    <form
+        class="m-2 w-50 m-auto"
+        action="/vendas/erros_relatorio"
+        method="post"
+    >
+        <label class="m-2" for="data_inicial">
+            <i class="bi bi-calendar-event"></i> Data inicial:
+        </label>
+        <input
+            class="form-control text-center"
+            type="date"
+            id="data_inicial"
+            name="data_inicial"
+            required
+        />
 
-        <label  class="m-2"  for="data_inicial">Data inicial:</label>
-        <input class="form-control text-center" type="date" id="data_inicial" name="data_inicial" required>
+        <label class="m-2" for="data_final">
+            <i class="bi bi-calendar-event"></i> Data final:
+        </label>
+        <input
+            class="form-control text-center"
+            type="date"
+            id="data_final"
+            name="data_final"
+            required
+        />
 
-        <label  class="m-2"  for="data_final">Data final</label>
-        <input class="form-control text-center" type="date" id="data_final" name="data_final" required>
-
-        <input  class="btn btn-warning m-2" type="submit" value="Emitir">
+        <button class="btn btn-primary m-2" type="submit">
+            <i class="bi bi-file-earmark-bar-graph"></i> Emitir
+        </button>
     </form>
-        </div>
-    {% endif %}
-
-    {% if total_erros %}
-
-       <h3>Listagem de erros de vendas</h3>
-        <h4>Referente ao período de {{ data_inicial.strftime('%d/%m/%Y') }} á {{ data_final.strftime('%d/%m/%Y') }}</h4>
-    <div class="resumo d-flex justify-content-center m-1 p-1 text-center">
-    <div class="background-suave  border-orange border-black m-3 p-2 h-25">
-    <h4>Erros por Funcionário</h4>
-    <table class="table-bordered m-auto text-center align-middle border-black">
-        <tr>
-            <th>Funcionário</th>
-            <th>Erros</th>
-        </tr>
-        {% for erro_por_funcionario in erros_por_funcionario %}
-        <tr>
-            <td>{{ erro_por_funcionario.erro_funcionario }}</td>
-            <td>{{ erro_por_funcionario.total_erros }}</td>
-        </tr>
-        {% endfor %}
-    </table>
+</div>
+{% endif %} {% if total_erros %}
+<h3><i class="bi bi-list-check me-2"></i>Listagem de erros de vendas</h3>
+<h4>
+    Referente ao período de {{ data_inicial.strftime('%d/%m/%Y') }} á {{
+    data_final.strftime('%d/%m/%Y') }}
+</h4>
+<div class="resumo d-flex justify-content-center m-1 p-1 text-center">
+    <div class="background-suave border-orange border-black m-3 p-2 h-25">
+        <h4><i class="bi bi-people-fill me-2"></i>Erros por Funcionário</h4>
+        <table
+            class="table-bordered m-auto text-center align-middle border-black"
+        >
+            <tr>
+                <th>Funcionário</th>
+                <th>Erros</th>
+            </tr>
+            {% for erro_por_funcionario in erros_por_funcionario %}
+            <tr>
+                <td>{{ erro_por_funcionario.erro_funcionario }}</td>
+                <td>{{ erro_por_funcionario.total_erros }}</td>
+            </tr>
+            {% endfor %}
+        </table>
     </div>
 
-    <div class="background-suave  border-orange border-black m-3 p-2 h-25">
-    <h4>Total de erros: {{ total_erros }}</h4>
-    <h4>Erros por entrega : {{ "%.2f" % ((total_erros / total_de_entregas) * 100) }}%</h4>
+    <div class="background-suave border-orange border-black m-3 p-2 h-25">
+        <h4>
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>Total de erros:
+            {{ total_erros }}
+        </h4>
+        <h4>
+            <i class="bi bi-truck me-2"></i>Erros por entrega : {{ "%.2f" %
+            ((total_erros / total_de_entregas) * 100) }}%
+        </h4>
     </div>
+</div>
 
-
-    </div>
-
-  <div class="table-responsive background-suave fs-14 m-2">
-
+<div class="table-responsive background-suave fs-14 m-2">
     <table class="table-bordered text-center m-auto align-middle border-black">
-  <tr>
-      <th>Data</th>
-      <th>Vendedor</th>
-      <th>Cliente</th>
-      <th>Erros</th>
-      <th>Motorista</th>
-      <th>Produtos</th>
-      <th>Descrição do erro</th>
-      <th>Criador</th>
-      <th class="botoesacao">Ação</th>
+        <thead>
+            <tr>
+                <th><i class="bi bi-calendar3"></i> Data</th>
+                <th><i class="bi bi-person-badge"></i> Vendedor</th>
+                <th><i class="bi bi-people"></i> Cliente</th>
+                <th><i class="bi bi-exclamation-circle"></i> Erros</th>
+                <th><i class="bi bi-truck"></i> Motorista</th>
+                <th><i class="bi bi-box-seam"></i> Produtos</th>
+                <th><i class="bi bi-chat-left-text"></i> Descrição do erro</th>
+                <th><i class="bi bi-person-check"></i> Criador</th>
+                <th class="botoesacao"><i class="bi bi-gear"></i> Ação</th>
+            </tr>
+        </thead>
 
-  </tr>
-   {% for erro in erros %}
-  <tr>
-    <td>{{ erro.data_do_erro.strftime('%d/%m/%Y') }}</td>
-    <td>{{ erro.erro_funcionario }}</td>
-    <td>{{ erro.erro_cliente}}</td>
-    <td>{{ erro.quantidade_de_erros}}</td>
-    <td>{{ erro.motorista_da_entrega }}</td>
-    <td>{{ erro.produto_erro }}</td>
-    <td>{{ erro.descricao_do_erro }}
-    <td>{{ erro.criador }}</td>
-    <td class="botoesacao">
-        <form action="/vendas/editar_erro/{{ erro.id }}" method="get">
-        <input class="btn btn-warning btn-sm mt-1 mb-1" type="submit" value="Editar">
-    </form>
-        <form action="/vendas/deletar/{{ erro.id }}" method="post">
-        <input class="btn btn-warning btn-sm mb-1" type="submit" value="Apagar">
-    </form></td>
-  </tr>
-        {% endfor %}
-</table>
-    </div>
-    {% endif %}
-{% endblock %}
+        <tbody>
+            {% for erro in erros %}
+            <tr>
+                <td>{{ erro.data_do_erro.strftime('%d/%m/%Y') }}</td>
+                <td>{{ erro.erro_funcionario }}</td>
+                <td>{{ erro.erro_cliente }}</td>
+                <td>{{ erro.quantidade_de_erros }}</td>
+                <td>{{ erro.motorista_da_entrega }}</td>
+                <td>{{ erro.produto_erro }}</td>
+                <td>{{ erro.descricao_do_erro }}</td>
+                <td>{{ erro.criador }}</td>
+                <td class="botoesacao d-flex flex-row gap-1">
+                    <form
+                        action="/vendas/editar_erro/{{ erro.id }}"
+                        method="get"
+                        style="display: inline-block"
+                    >
+                        <button type="submit" class="btn btn-warning btn-sm">
+                            <i class="bi bi-pencil-square"></i>
+                        </button>
+                    </form>
+                    <form
+                        action="/vendas/deletar/{{ erro.id }}"
+                        method="post"
+                        style="display: inline-block"
+                    >
+                        <button type="submit" class="btn btn-danger btn-sm">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %} {% endblock %}
