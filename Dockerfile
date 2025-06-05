@@ -1,4 +1,4 @@
-python:3.9-slim
+python:3.10
 ENV SQLALCHEMY_DATABASE_URL="mysql+pymysql://usuario:senha@endereco/banco"
 COPY ./ /app
 WORKDIR /app
