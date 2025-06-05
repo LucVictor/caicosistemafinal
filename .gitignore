@@ -1,5 +1,6 @@
 /.idea
 /.venv
+/.env
 .env
 logs.txt
 /app/static/logs.txt
