@@ -560,17 +560,18 @@
         ></script>
     </body>
     <footer class="m-auto text-center w-25 mb-1">
-        <div class="mt-3 logo m-auto w-50 border-orange shadow-lg">
-            <span>@LucVictor</span
-            ><a href="https://github.com/LucVictor" target="_blank">
+        <a class="mt-3 logo m-auto w-50 shadow-lg">
+            <a href="https://github.com/LucVictor" target="_blank">
+                <span>@lucVictor</span>
+
                 <img
-                    src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+                    src="{{ url_for('static', filename='github.png') }}"
                     class="iconegithub"
                     alt="GitHub"
                     width="30"
                     height="30"
                 />
             </a>
-        </div>
+        </a>
     </footer>
 </html>
