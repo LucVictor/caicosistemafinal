@@ -228,9 +228,10 @@ def conferencia_planilha():
                 divergencia_sistema=divergencia, produto_conferido_lojas=lojas, ajuste=ajuste,
                 criador=criador)
                 db.session.add(nova_conferencia)
-                db.session.commit()
             else:
+                db.session.rollback()
                 return (f"ERROR NA LINHA, Código: {linha['CODIGO']}, Quantidade Física: {linha['FISICO']}, Quantidade Sistema: {linha['SISTEMA']}")
+        db.session.commit()
         db.session.close()
         return redirect(url_for('index_conferencia'))
     conferentes = Funcionarios.query.filter(Funcionarios.funcao=="Estoque")
