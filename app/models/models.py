@@ -9,7 +9,6 @@ class Produto(db.Model):
     def __repr__(self):
         return f'<{self.nome_do_produto}>'
 
-
 class Produto_Vencimento(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     codigo_do_produto = db.Column(db.Integer, nullable=False)
@@ -34,19 +33,16 @@ class Produto_Avaria(db.Model):
     origem = db.Column(db.String(300), nullable=True)
     usoeconsumo = db.Column(db.String(300), nullable=True)
 
-
 class Users(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(250), unique=True, nullable=False)
     password = db.Column(db.String(250), nullable=False)
     acesso = db.Column(db.String(250), nullable=False)
 
-
 class Volume_de_Vendas(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     codigo_do_produto = db.Column(db.Integer, nullable=False)
     mediames = db.Column(db.DECIMAL, nullable=False)
-
 
 class Entrega(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -64,7 +60,9 @@ class Entrega(db.Model):
     resultado_tempo = db.Column(db.String(250), nullable=False)
     reentregas = db.Column(db.Integer, nullable=True)
     entreganrealizadas = db.Column(db.Integer, nullable=True)
-
+    odometro_inicial = db.Column(db.Integer, nullable=True)
+    odometro_final = db.Column(db.Integer, nullable=True)
+    rodagem = db.Column(db.Integer, nullable=True)
 
 class Rotas(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -101,7 +99,6 @@ class Funcionarios(db.Model):
     def faturista(cls, nome):
         return cls(nome=nome, funcao='Faturista')
 
-
 class Erros_Vendas(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     data_do_erro = db.Column(db.Date, nullable=False)
@@ -112,7 +109,6 @@ class Erros_Vendas(db.Model):
     produto_erro = db.Column(db.String(250), nullable=False)
     descricao_do_erro = db.Column(db.String(1000), nullable=True)
     criador = db.Column(db.String(250), nullable=True)
-
 
 class Erros_Logistica(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -127,7 +123,6 @@ class Erros_Logistica(db.Model):
     criador = db.Column(db.String(250), nullable=True)
     tipo_do_erro = db.Column(db.String(250), nullable=True)
 
-
 class Erros_Atacado(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     data_do_erro = db.Column(db.Date, nullable=False)
@@ -137,7 +132,6 @@ class Erros_Atacado(db.Model):
     produto_erro = db.Column(db.String(250), nullable=False)
     descricao_do_erro = db.Column(db.String(1000), nullable=True)
     criador = db.Column(db.String(250), nullable=True)
-
 
 class Produto_Conferido(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -153,12 +147,10 @@ class Produto_Conferido(db.Model):
     produto_conferido_lojas= db.Column(db.Boolean, default=False, nullable=True)
     ajuste = db.Column(db.Boolean, default=False, nullable=True)
 
-
 class Caminhao(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     identificao =  db.Column(db.Integer, nullable=False)
     placa =  db.Column(db.String(250), nullable=False)
-
 
 class Recebimento(db.Model):
     id = db.Column(db.Integer, primary_key=True)

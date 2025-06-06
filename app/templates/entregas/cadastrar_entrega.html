@@ -213,6 +213,49 @@
                 </div>
             </div>
         </fieldset>
+        <fieldset class="mb-4">
+            <legend class="fs-5">
+                <i class="bi bi-geo-alt-fill me-1"></i>Rodagem
+            </legend>
+            <div class="row">
+                <div class="col mb-3">
+                    <label for="odometro_inicial">
+                        <i class="bi bi-flag-fill me-1"></i>Odômetro inicial:
+                    </label>
+                    <div class="input-group">
+                        <input
+                            type="number"
+                            id="odometro_inicial"
+                            name="odometro_inicial"
+                            class="form-control text-center"
+                            required
+                        />
+                    </div>
+                </div>
+
+                <div class="col mb-3">
+                    <label for="odometro_final">
+                        <i class="bi bi-flag me-1"></i>Odômetro final:
+                    </label>
+                    <div class="input-group">
+                        <input
+                            type="number"
+                            id="odometro_final"
+                            name="odometro_final"
+                            class="form-control text-center"
+                            required
+                        />
+                    </div>
+                </div>
+            </div>
+            <div
+                id="alerta"
+                class="d-none small alert alert-danger"
+                role="alert"
+            >
+                Os valores do odômetro estão incorretos
+            </div>
+        </fieldset>
 
         <div class="text-center mt-4">
             <button type="submit" class="btn btn-primary px-4">
@@ -221,4 +264,32 @@
         </div>
     </form>
 </div>
+
+<script>
+    const odometro_inicial = document.querySelector("#odometro_inicial");
+    const odometro_final = document.querySelector("#odometro_final");
+    const alerta = document.querySelector("#alerta");
+
+    odometro_inicial.addEventListener("change", () => {
+        const inicial = odometro_inicial.value;
+        const final = odometro_final.value;
+
+        if (!isNaN(inicial) && !isNaN(final) && final <= inicial) {
+            alerta.classList.remove("d-none");
+        } else {
+            alerta.classList.add("d-none");
+        }
+    });
+
+    odometro_final.addEventListener("change", () => {
+        const inicial = odometro_inicial.value;
+        const final = odometro_final.value;
+
+        if (!isNaN(inicial) && !isNaN(final) && final <= inicial) {
+            alerta.classList.remove("d-none");
+        } else {
+            alerta.classList.add("d-none");
+        }
+    });
+</script>
 {% endblock %}

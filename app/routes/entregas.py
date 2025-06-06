@@ -298,6 +298,11 @@ def entrega_cadastrar():
         tempo_medio_entrega = hora_para_segundo(tempo_total_entrega) / quantidade_de_entregas
         tempo_medio_entrega = segundos_para_hora(tempo_medio_entrega)
 
+        odometro_inicial = int(request.form['odometro_inicial'])
+        odometro_final = int(request.form['odometro_final'])
+        rodagem = int(odometro_final - odometro_inicial)
+
+
         rota_media = Rotas.query.filter_by(rota=rota).first()
         if hora_para_segundo(rota_media.tempo_medio_rota) <= hora_para_segundo(tempo_medio_entrega):
             resultado_tempo = "Negativo"
@@ -318,7 +323,10 @@ def entrega_cadastrar():
             resultado_tempo=resultado_tempo,
             reentregas=reentregas,
             entreganrealizadas=entreganrealizadas,
-            caminhao=caminhao
+            caminhao=caminhao,
+            odometro_inicial=odometro_inicial,
+            odometro_final=odometro_final,
+            rodagem=rodagem
         )
         db.session.add(entrega)
         db.session.commit()
