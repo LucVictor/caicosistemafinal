@@ -1,5 +1,27 @@
 {% extends "./template.html" %} {% block content %}
+<style>
+    table.dataTable th,
+    table.dataTable td {
+        text-align: center !important;
+        vertical-align: middle !important;
+    }
 
+    th.sorting,
+    th.sorting_asc,
+    th.sorting_desc,
+    th.sorting_disabled {
+        text-align: center !important;
+        vertical-align: middle !important;
+    }
+
+    .dataTables_length .form-select {
+        background-color: #212529 !important;
+        color: white;
+    }
+    .dataTables_length {
+        display: flex;
+    }
+</style>
 <h2><i class="bi bi-list-ul"></i> Listagem de Avarias</h2>
 <h5><i class="bi bi-calendar-month"></i> Referente ao mês de {{ mes }}</h5>
 
@@ -73,6 +95,7 @@
 
 <div class="table-responsive m-2 p-2 fs-12">
     <table
+        id="tabelaAvarias"
         class="shadow-lg table-bordered m-auto background-suave table-sm text-center align-middle border-black"
     >
         <thead>
@@ -129,5 +152,42 @@
         </tbody>
     </table>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        new DataTable("#tabelaAvarias", {
+            responsive: true,
+            pageLength: 10,
+            searching: false,
+            order: [[0, "desc"]],
+            columnDefs: [{ orderable: false, targets: [4, 5] }], // Ajuste os índices conforme suas colunas
+            language: {
+                search: "Procurar:",
+                decimal: ",",
+                emptyTable: "Nenhum dado disponível na tabela",
+                info: "Mostrando _START_ até _END_ de _TOTAL_ registros",
+                infoEmpty: "Mostrando 0 até 0 de 0 registros",
+                infoFiltered: "(filtrado de _MAX_ registros no total)",
+                thousands: ".",
+                lengthMenu: "Mostrar _MENU_ registros",
+                loadingRecords: "Carregando...",
+                processing: "Processando...",
+                zeroRecords: "Nenhum registro correspondente encontrado",
+                paginate: {
+                    first: "Primeiro",
+                    last: "Último",
+                    next: "Próximo",
+                    previous: "Anterior",
+                },
+                aria: {
+                    sortAscending:
+                        ": ativar para ordenar a coluna em ordem crescente",
+                    sortDescending:
+                        ": ativar para ordenar a coluna em ordem decrescente",
+                },
+            },
+        });
+    });
+</script>
 
 {% endblock %}

@@ -1,5 +1,27 @@
 {% extends "./template.html" %} {% block content %}
+<style>
+    table.dataTable th,
+    table.dataTable td {
+        text-align: center !important;
+        vertical-align: middle !important;
+    }
 
+    th.sorting,
+    th.sorting_asc,
+    th.sorting_desc,
+    th.sorting_disabled {
+        text-align: center !important;
+        vertical-align: middle !important;
+    }
+
+    .dataTables_length .form-select {
+        background-color: #212529 !important;
+        color: white;
+    }
+    .dataTables_length {
+        display: flex;
+    }
+</style>
 <h2><i class="bi bi-truck me-2"></i>Listagem de Entregas</h2>
 <h4><i class="bi bi-calendar-event me-1"></i>Referente ao mês de {{ mes }}</h4>
 
@@ -108,8 +130,8 @@
 <!-- Tabela detalhada -->
 
 <div class="table-responsive m-2 p-2 fs-12">
-    <table
-        class="shadow-lg table-bordered m-auto table-sm text-center align-middle border-black"
+    <table id="tabelaEntregas"
+        class="small shadow-lg table-bordered m-auto table-sm text-center align-middle border-black"
     >
         <thead class="table-dark border-black">
             <tr>
@@ -165,5 +187,41 @@
     </table>
 </div>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        new DataTable("#tabelaEntregas", {
+            responsive: true,
+            pageLength: 10,
+            searching: false,
+            order: [[0, "desc"]],
+            columnDefs: [{ orderable: false, targets: [4, 5] }], // Ajuste os índices conforme suas colunas
+            language: {
+                search: "Procurar:",
+                decimal: ",",
+                emptyTable: "Nenhum dado disponível na tabela",
+                info: "Mostrando _START_ até _END_ de _TOTAL_ registros",
+                infoEmpty: "Mostrando 0 até 0 de 0 registros",
+                infoFiltered: "(filtrado de _MAX_ registros no total)",
+                thousands: ".",
+                lengthMenu: "Mostrar _MENU_ registros",
+                loadingRecords: "Carregando...",
+                processing: "Processando...",
+                zeroRecords: "Nenhum registro correspondente encontrado",
+                paginate: {
+                    first: "Primeiro",
+                    last: "Último",
+                    next: "Próximo",
+                    previous: "Anterior",
+                },
+                aria: {
+                    sortAscending:
+                        ": ativar para ordenar a coluna em ordem crescente",
+                    sortDescending:
+                        ": ativar para ordenar a coluna em ordem decrescente",
+                },
+            },
+        });
+    });
+</script>
 
 {% endblock %}

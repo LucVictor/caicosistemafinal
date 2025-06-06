@@ -1,7 +1,11 @@
 {% extends "./template.html" %} {% block content %}
+
+<style></style>
+
 <h2 class="m-2"><i class="bi bi-journal-check me-2"></i>Notas conferidas:</h2>
 <br />
-<h4 class="m-2">Total de notas conferidas: {{total_recebimento}}.</h4>
+<h4 class="m-2">Total de notas conferidas: {{ total_recebimento }}.</h4>
+
 <div
     class="d-flex flex-column align-items-center w-50 m-auto justify-content-center text-center mt-4"
 >
@@ -28,10 +32,12 @@
         </tbody>
     </table>
 </div>
-<div class="d-flex justify-content-center text-center">
-    <div class="shadow-lg table-responsive">
+
+<div class="d-flex text-white justify-content-center text-center">
+    <div class="shadow-lg text-white table-responsive">
         <table
-            class="table-bordered table text-center align-middle border-black"
+            id="tabela-recebimentos"
+            class="table small table-dark table-bordered table-striped table-hover text-center border-black"
         >
             <thead>
                 <tr>
@@ -43,35 +49,33 @@
                     <th><i class="bi bi-person"></i> Conferente</th>
                     <th><i class="bi bi-image"></i> Prancheta</th>
                     <th><i class="bi bi-tools"></i> Ação</th>
-                    <th class="botoesacao">
-                        <i class="bi bi-person-circle"></i> Criador
-                    </th>
+                    <th><i class="bi bi-person-circle"></i> Criador</th>
                 </tr>
             </thead>
-            {% for recebimento in recebimentos %}
+
             <tbody>
+                {% for recebimento in recebimentos %}
                 <tr>
                     <td>
                         {{ recebimento.data_recebimento.strftime('%d/%m/%Y') }}
                     </td>
-                    <td>{{ recebimento.quantidade_notas }}</td>
+                    <td class="text-center">
+                        {{ recebimento.quantidade_notas }}
+                    </td>
                     <td
                         class="{{ 'bg-success text-white' if recebimento.estoques else 'text-white' }}"
                     >
                         {{ 'Realizado' if recebimento.estoques else 'Não
                         realizado' }}
                     </td>
-
                     <td
                         class="{{ 'bg-success text-white' if recebimento.prateleiras else 'text-white' }}"
                     >
                         {{ 'Realizado' if recebimento.prateleiras else 'Não
                         realizado' }}
                     </td>
-
                     <td>{{ 'Sim' if recebimento.produto_novo else 'Não' }}</td>
-
-                    <td>{{ recebimento.conferente}}</td>
+                    <td>{{ recebimento.conferente }}</td>
                     <td>
                         <button
                             type="button"
@@ -81,7 +85,6 @@
                         >
                             <i class="bi bi-image me-2"></i> Abrir foto
                         </button>
-
                         <!-- Modal dinâmico -->
                         <div
                             class="modal fade"
@@ -144,11 +147,50 @@
                     {% else %}
                     <td class="flexNoBoards botoesacao"></td>
                     {% endif %}
-                    <td class="">{{ recebimento.criador }}</td>
+                    <td>{{ recebimento.criador }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        new DataTable("#tabela-recebimentos", {
+            responsive: true,
+            pageLength: 10,
+            searching: false,
+            order: [[0, "desc"]],
+            columnDefs: [
+                { orderable: false, targets: [1, 2, 3, 4, 5, 6, 7, 8] },
+            ], // 🔴 Desativa a barra de pesquisa
+            language: {
+                decimal: ",",
+                emptyTable: "Nenhum dado disponível na tabela",
+                info: "Mostrando _START_ até _END_ de _TOTAL_ registros",
+                infoEmpty: "Mostrando 0 até 0 de 0 registros",
+                infoFiltered: "(filtrado de _MAX_ registros no total)",
+                thousands: ".",
+                lengthMenu: "Mostrar _MENU_ registros",
+                loadingRecords: "Carregando...",
+                processing: "Processando...",
+                zeroRecords: "Nenhum registro correspondente encontrado",
+                paginate: {
+                    first: "Primeiro",
+                    last: "Último",
+                    next: "Próximo",
+                    previous: "Anterior",
+                },
+                aria: {
+                    sortAscending:
+                        ": ativar para ordenar a coluna em ordem crescente",
+                    sortDescending:
+                        ": ativar para ordenar a coluna em ordem decrescente",
+                },
+            },
+        });
+    });
+</script>
+
 {% endblock %}

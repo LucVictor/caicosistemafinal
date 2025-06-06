@@ -6,7 +6,7 @@ from ..models.models import Produto_Conferido
 def index_conferencia():
     criador = current_user.username
     conferencias = Produto_Conferido.query.filter(Produto_Conferido.data_conferencia >= primeiro_dia_mes(),
-                                          Produto_Conferido.data_conferencia <= ultimo_dia_mes(), Produto_Conferido.data_conferencia == data_agora()).order_by(
+                                          Produto_Conferido.data_conferencia <= ultimo_dia_mes()).order_by(
         Produto_Conferido.data_conferencia.desc()).all()
     totalitens = len(conferencias)
     return render_template('conferencia/index.html', totalitens=totalitens, criador=criador, conferencias=conferencias, mes=mes_atual())

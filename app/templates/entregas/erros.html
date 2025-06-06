@@ -1,5 +1,27 @@
 {% extends "./template.html" %} {% block content %}
+<style>
+    table.dataTable th,
+    table.dataTable td {
+        text-align: center !important;
+        vertical-align: middle !important;
+    }
 
+    th.sorting,
+    th.sorting_asc,
+    th.sorting_desc,
+    th.sorting_disabled {
+        text-align: center !important;
+        vertical-align: middle !important;
+    }
+
+    .dataTables_length .form-select {
+        background-color: #212529 !important;
+        color: white;
+    }
+    .dataTables_length {
+        display: flex;
+    }
+</style>
 <h3><i class="bi bi-list-check"></i> Listagem de Erros</h3>
 <h4><i class="bi bi-calendar-event"></i> Referente ao mês de {{ mes }}</h4>
 
@@ -55,9 +77,10 @@
 
 <div class="table-responsive m-2 p-2 fs-12">
     <table
-        class="shadow-lg table-bordered m-auto background-suave table-sm text-center align-middle border-black"
+        id="tabelaErros"
+        class="small shadow-lg table-bordered m-auto table-sm text-center align-middle border-black"
     >
-        <thead>
+        <thead class="table-dark border-black">
             <tr>
                 <th><i class="bi bi-calendar-date"></i> Data</th>
                 <th><i class="bi bi-person-circle"></i> Funcionário</th>
@@ -73,8 +96,9 @@
                 </th>
             </tr>
         </thead>
-        {% for erro in erros %}
         <tbody>
+            {% for erro in erros %}
+
             <tr>
                 <td>{{ erro.data_do_erro.strftime('%d/%m/%Y') }}</td>
                 <td>{{ erro.erro_funcionario }}</td>
@@ -114,4 +138,40 @@
     </table>
 </div>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        new DataTable("#tabelaErros", {
+            responsive: true,
+            pageLength: 10,
+            searching: true,
+            order: [[0, "desc"]],
+            columnDefs: [{ orderable: false, targets: [4, 5] }], // Ajuste os índices conforme suas colunas
+            language: {
+                search: "Procurar:",
+                decimal: ",",
+                emptyTable: "Nenhum dado disponível na tabela",
+                info: "Mostrando _START_ até _END_ de _TOTAL_ registros",
+                infoEmpty: "Mostrando 0 até 0 de 0 registros",
+                infoFiltered: "(filtrado de _MAX_ registros no total)",
+                thousands: ".",
+                lengthMenu: "Mostrar _MENU_ registros",
+                loadingRecords: "Carregando...",
+                processing: "Processando...",
+                zeroRecords: "Nenhum registro correspondente encontrado",
+                paginate: {
+                    first: "Primeiro",
+                    last: "Último",
+                    next: "Próximo",
+                    previous: "Anterior",
+                },
+                aria: {
+                    sortAscending:
+                        ": ativar para ordenar a coluna em ordem crescente",
+                    sortDescending:
+                        ": ativar para ordenar a coluna em ordem decrescente",
+                },
+            },
+        });
+    });
+</script>
 {% endblock %}

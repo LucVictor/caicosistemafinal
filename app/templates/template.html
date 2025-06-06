@@ -15,11 +15,6 @@
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
         ></script>
-        <script src="https://cdn.datatables.net/2.1.2/js/dataTables.js"></script>
-        <link
-            rel="stylesheet"
-            href="https://cdn.datatables.net/2.1.2/css/dataTables.dataTables.css"
-        />
         <link
             rel="stylesheet"
             href="{{ url_for('static', filename='style.css') }}"
@@ -37,29 +32,16 @@
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
         />
-
+        <link
+            rel="stylesheet"
+            href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css"
+        />
+        <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
         <meta charset="UTF-8" />
         <title>Caicó</title>
     </head>
-    <style>
-        @media print {
-            .menu,
-            .banner,
-            footer,
-            .navbar,
-            .botoesacao {
-                display: none;
-            }
-            .resumo {
-                page-break-after: always;
-            }
-        }
-        th,
-        td,
-        tr {
-            padding: 5px 5px;
-        }
-    </style>
+
     <body>
         <div class="z-3">
             <nav id="navbar" class="z-3 navbar bg-body-tertiary px-1 mb-1">
