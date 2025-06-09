@@ -27,13 +27,14 @@ def conferencia_cadastrar():
         ajuste = 'ajuste' in request.form
         produtos_conferido_lojas = 'produtos_conferidos_lojas' in request.form
         divergencia_sistema = 'divergencia_sistema' in request.form
+        produto_trocado = 'produto_trocado' in request.form
         criador = current_user.username
         nova_conferencia = Produto_Conferido(data_conferencia=data_conferencia,conferente=conferente,
                                              codigo_produto=codigo_produto,nome_do_produto=nome_do_produto,
                                              quantidade_sistema=quantidade_sistema,quantidade_fisico=quantidade_fisico,
                                              quantidade_diferenca=quantidade_diferenca, ajuste=ajuste,
                                              produto_conferido_lojas=produtos_conferido_lojas, divergencia_sistema=divergencia_sistema,
-                                             criador=criador)
+                                             criador=criador, produto_trocado=produto_trocado)
         db.session.add(nova_conferencia)
         db.session.commit()
         db.session.close()
@@ -211,7 +212,7 @@ def conferencia_planilha():
         if file and allowed_file(file.filename):
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], 'tabela_planilha.xlsx'))
         panilha_bruta = pd.read_excel('app/static/uploads/tabela_planilha.xlsx')
-        panilha_tratada = panilha_bruta[['CODIGO', 'SISTEMA', 'FISICO', 'LOJAS', 'AJUSTE', 'DIVERGENCIA']]
+        panilha_tratada = panilha_bruta[['CODIGO', 'SISTEMA', 'FISICO', 'LOJAS', 'AJUSTE', 'DIVERGENCIA', 'TROCADO']]
         data_conferencia = request.form['data_conferencia']
         conferente = request.form['conferente']
         criador = current_user.username
@@ -221,12 +222,13 @@ def conferencia_planilha():
                 lojas = linha.get('LOJAS', '').strip().lower() == 'sim'
                 ajuste = linha.get ('AJUSTE', '').strip().lower() == 'sim'
                 divergencia = linha.get('DIVERGENCIA', '').strip().lower() == 'sim'
+                produto_trocado = linha.get('TROCADO', '').strip().lower() == 'sim'
                 nova_conferencia = Produto_Conferido(data_conferencia=data_conferencia,conferente=conferente,
                 codigo_produto=produto.codigo_do_produto,nome_do_produto=produto.nome_do_produto,
                 quantidade_sistema=Decimal(str(linha['SISTEMA'])),quantidade_fisico=Decimal(str(linha['FISICO'])),
                 quantidade_diferenca=(Decimal(str(linha['FISICO']))) - Decimal(str(linha['SISTEMA'])),
                 divergencia_sistema=divergencia, produto_conferido_lojas=lojas, ajuste=ajuste,
-                criador=criador)
+                criador=criador, produto_trocado=produto_trocado)
                 db.session.add(nova_conferencia)
             else:
                 db.session.rollback()
