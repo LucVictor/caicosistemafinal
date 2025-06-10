@@ -1,5 +1,27 @@
 {% extends "./template.html" %} {% block content %}
+<style>
+    table.dataTable th,
+    table.dataTable td {
+        text-align: center !important;
+        vertical-align: middle !important;
+    }
 
+    th.sorting,
+    th.sorting_asc,
+    th.sorting_desc,
+    th.sorting_disabled {
+        text-align: center !important;
+        vertical-align: middle !important;
+    }
+
+    .dataTables_length .form-select {
+        background-color: #212529 !important;
+        color: white;
+    }
+    .dataTables_length {
+        display: flex;
+    }
+</style>
 <h2 class="m-2">
     <i class="bi bi-calendar-event me-2"></i> Produtos perdidos de
     {{data_inicial.strftime('%d/%m/%Y')}} á {{data_final.strftime('%d/%m/%Y')}}
@@ -18,7 +40,10 @@
 ></div>
 <div class="d-flex justify-content-center text-center">
     <div class="shadow-lg table-responsive">
-        <table class="table-bordered text-center align-middle border-black">
+        <table
+            id="tabelaConferencias"
+            class="table-bordered text-center align-middle border-black"
+        >
             <thead>
                 <tr>
                     <th><i class="bi bi-calendar-day"></i> Data</th>
@@ -37,8 +62,9 @@
                     </th>
                 </tr>
             </thead>
-            {% for conferencia in conferencias_totais %}
             <tbody>
+                {% for conferencia in conferencias_totais %}
+
                 <tr>
                     <td>
                         {{ conferencia["data_conferencia"].strftime('%d/%m') }}
@@ -95,4 +121,40 @@
     </div>
 </div>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        new DataTable("#tabelaConferencias", {
+            responsive: true,
+            pageLength: 10,
+            searching: true,
+            order: [[0, "desc"]],
+            columnDefs: [{ orderable: false, targets: [4, 5] }], // Ajuste os índices conforme suas colunas
+            language: {
+                search: "Procurar:",
+                decimal: ",",
+                emptyTable: "Nenhum dado disponível na tabela",
+                info: "Mostrando _START_ até _END_ de _TOTAL_ registros",
+                infoEmpty: "Mostrando 0 até 0 de 0 registros",
+                infoFiltered: "(filtrado de _MAX_ registros no total)",
+                thousands: ".",
+                lengthMenu: "Mostrar _MENU_ registros",
+                loadingRecords: "Carregando...",
+                processing: "Processando...",
+                zeroRecords: "Nenhum registro correspondente encontrado",
+                paginate: {
+                    first: "Primeiro",
+                    last: "Último",
+                    next: "Próximo",
+                    previous: "Anterior",
+                },
+                aria: {
+                    sortAscending:
+                        ": ativar para ordenar a coluna em ordem crescente",
+                    sortDescending:
+                        ": ativar para ordenar a coluna em ordem decrescente",
+                },
+            },
+        });
+    });
+</script>
 {% endblock %}
