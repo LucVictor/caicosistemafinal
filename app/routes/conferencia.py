@@ -225,12 +225,13 @@ def conferencia_planilha():
                 ajuste = linha.get ('AJUSTE', '').strip().lower() == 'sim'
                 divergencia = linha.get('DIVERGENCIA', '').strip().lower() == 'sim'
                 produto_trocado = linha.get('TROCADO', '').strip().lower() == 'sim'
+                custo = Decimal(Decimal(produto.preco_do_produto) * (Decimal(str(linha['FISICO']))) - Decimal(str(linha['SISTEMA'])))
                 nova_conferencia = Produto_Conferido(data_conferencia=data_conferencia,conferente=conferente,
                 codigo_produto=produto.codigo_do_produto,nome_do_produto=produto.nome_do_produto,
                 quantidade_sistema=Decimal(str(linha['SISTEMA'])),quantidade_fisico=Decimal(str(linha['FISICO'])),
                 quantidade_diferenca=(Decimal(str(linha['FISICO']))) - Decimal(str(linha['SISTEMA'])),
                 divergencia_sistema=divergencia, produto_conferido_lojas=lojas, ajuste=ajuste,
-                criador=criador, produto_trocado=produto_trocado)
+                criador=criador, produto_trocado=produto_trocado, custo=custo)
                 db.session.add(nova_conferencia)
             else:
                 db.session.rollback()
