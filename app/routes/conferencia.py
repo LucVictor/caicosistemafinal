@@ -17,6 +17,7 @@ def index_conferencia():
 @login_required
 def conferencia_cadastrar():
     if request.method == 'POST':
+        produto = Produto.query.filter(Produto.codigo_do_produto == request.form['codigo_produto']).first()
         data_conferencia = request.form['data_conferencia']
         conferente = request.form['conferente']
         codigo_produto = request.form['codigo_produto']
@@ -29,12 +30,13 @@ def conferencia_cadastrar():
         divergencia_sistema = 'divergencia_sistema' in request.form
         produto_trocado = 'produto_trocado' in request.form
         criador = current_user.username
+        custo = Decimal(Decimal(produto.preco_do_produto) * (Decimal(quantidade_diferenca)))
         nova_conferencia = Produto_Conferido(data_conferencia=data_conferencia,conferente=conferente,
                                              codigo_produto=codigo_produto,nome_do_produto=nome_do_produto,
                                              quantidade_sistema=quantidade_sistema,quantidade_fisico=quantidade_fisico,
                                              quantidade_diferenca=quantidade_diferenca, ajuste=ajuste,
                                              produto_conferido_lojas=produtos_conferido_lojas, divergencia_sistema=divergencia_sistema,
-                                             criador=criador, produto_trocado=produto_trocado)
+                                             criador=criador, produto_trocado=produto_trocado, custo=custo)
         db.session.add(nova_conferencia)
         db.session.commit()
         db.session.close()

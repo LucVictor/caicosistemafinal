@@ -142,6 +142,7 @@ class Produto_Conferido(db.Model):
     quantidade_sistema = db.Column(db.DECIMAL(10,3), nullable=False)
     quantidade_fisico = db.Column(db.DECIMAL(10,3), nullable=False)
     quantidade_diferenca= db.Column(db.DECIMAL(10,3), nullable=False)
+    custo = db.Column(db.DECIMAL(10,3), nullable=False)
     criador = db.Column(db.String(250), nullable=True)
     produto_trocado =  db.Column(db.Boolean, default=False, nullable=True)
     divergencia_sistema = db.Column(db.Boolean, default=False, nullable=True)
