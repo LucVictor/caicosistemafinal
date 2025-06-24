@@ -42,7 +42,7 @@
 
                     {% if current_user.is_authenticated and (current_user.acesso
                     == 1 or current_user.acesso == 4) %}
-                    <td class="botoesacao d-flex">
+                    <td class="botoesacao">
                         <form
                             action="/vencimentos/editar/{{ vencimento.id }}"
                             method="get"

@@ -1,23 +1,5 @@
-@media print {
-    .somente-impressao {
-        display: block !important;
-    }
-}
-@media print {
-    .menu,
-    .banner,
-    footer,
-    .navbar,
-    .botoesacao {
-        display: none;
-    }
-    .resumo {
-        page-break-after: always;
-    }
-}
-
-. {
-    display: none; /* Oculta no navegador */
+.botoesacao {
+    display: flex;
 }
 
 @media print {
@@ -32,6 +14,7 @@
         page-break-after: always;
     }
 }
+
 th,
 td,
 tr {

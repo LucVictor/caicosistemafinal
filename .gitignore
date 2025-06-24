@@ -26,3 +26,4 @@ app/routes/__pycache__/vencimentos.cpython-312.pyc
 app/routes/__pycache__/vendas.cpython-312.pyc
 app/__pycache__/
 app/routes/__pycache__/
+.env

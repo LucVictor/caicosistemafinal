@@ -52,9 +52,7 @@
                     <th><i class="bi bi-arrow-left-right"></i> Diferença</th>
                     <th><i class="bi bi-person-fill"></i> Conferente</th>
                     <th><i class="bi bi-tools"></i> Ação</th>
-                    <th class="botoesacao">
-                        <i class="bi bi-person-badge-fill"></i> Criador
-                    </th>
+                    <th><i class="bi bi-person-badge-fill"></i> Criador</th>
                 </tr>
             </thead>
             <tbody>
@@ -92,7 +90,7 @@
                     </td>
                     {% endif %}
                     <td>{{ conferencia.conferente }}</td>
-                    <td class="flexNoBoards botoesacao">
+                    <td class="flexNoBoards">
                         {% if current_user.is_authenticated and
                         current_user.username == conferencia.criador %}
                         <form

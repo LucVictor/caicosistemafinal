@@ -92,7 +92,7 @@
                     <td>{{ transferencia.tipo }}</td>
                     <td>{{ transferencia.comprador }}</td>
                     <td>{{ transferencia.obs }}</td>
-                    <td class="botoesacao">
+                    <td >
                         {% if current_user.is_authenticated and current_user.username == transferencia.criador %}
                         <form
                             action="/transferencia/deletar/{{ transferencia.id }}"

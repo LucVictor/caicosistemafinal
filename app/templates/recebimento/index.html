@@ -135,7 +135,7 @@
                     </td>
                     {% if current_user.is_authenticated and
                     current_user.username == recebimento.criador %}
-                    <td class="flexNoBoards botoesacao">
+                    <td class="flexNoBoards">
                         <form
                             action="/recebimento/deletar/{{ recebimento.id }}"
                             method="get"
@@ -149,7 +149,7 @@
                         </form>
                     </td>
                     {% else %}
-                    <td class="flexNoBoards botoesacao"></td>
+                    <td class="flexNoBoards"></td>
                     {% endif %}
                     <td>{{ recebimento.criador }}</td>
                 </tr>

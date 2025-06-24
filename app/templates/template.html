@@ -17,7 +17,7 @@
         ></script>
         <link
             rel="stylesheet"
-            href="{{ url_for('static', filename='style.css') }}"
+            href="{{ url_for('static', filename='styles.css') }}"
         />
         <link
             rel="icon"
@@ -45,7 +45,7 @@
     <body>
         <div class="z-3">
             <nav id="navbar" class="z-3 navbar bg-body-tertiary px-1 mb-1">
-                <img src="../static/imagens/logo.png" alt="" width="60rem" />
+                <img src="../static/imagens/logo.png" alt="" width="40rem" />
                 <ul class="nav nav-pills ms-auto">
                     {% if current_user.acesso == 1 or current_user.acesso == 4
                     %}
