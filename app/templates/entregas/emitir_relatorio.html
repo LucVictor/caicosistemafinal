@@ -104,9 +104,9 @@
             {% for entrega in entregas %}
             <tr>
                 <td>{{ entrega.data_da_entrega.strftime('%d/%m/%Y') }}</td>
-                <td>{{ entrega.motorista }}</td>
+                <td>{{ entrega.motorista.title() }}</td>
                 <td>{{ entrega.caminhao }}</td>
-                <td>{{ entrega.conferente }}</td>
+                <td>{{ entrega.conferente.title() }}</td>
                 <td>{{ entrega.rota }}</td>
                 <td>{{ entrega.quantidade_de_entregas }}</td>
                 <td>{{ entrega.reentregas }}</td>

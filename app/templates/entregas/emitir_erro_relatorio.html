@@ -72,13 +72,13 @@
         <tbody>
             <tr>
                 <td>{{ erro.data_do_erro.strftime('%d/%m/%Y') }}</td>
-                <td>{{ erro.erro_funcionario }}</td>
-                <td>{{ erro.erro_cliente }}</td>
-                <td>{{ erro.motorista_da_entrega }}</td>
+                <td>{{ erro.erro_funcionario.title() }}</td>
+                <td>{{ erro.erro_cliente.title() }}</td>
+                <td>{{ erro.motorista_da_entrega.title() }}</td>
                 <td>{{ erro.rota_da_entrega }}</td>
                 <td>{{ erro.quantidade_de_erros }}</td>
-                <td>{{ erro.produto_erro }}</td>
-                <td>{{ erro.descricao_do_erro }}</td>
+                <td>{{ erro.produto_erro.title() }}</td>
+                <td>{{ erro.descricao_do_erro.capitalize() }}</td>
                 <td>{{ erro.criador }}</td>
                 <td class="botoesacao">
                     <div class="botoesacao gap-1 d-flex flex-row">

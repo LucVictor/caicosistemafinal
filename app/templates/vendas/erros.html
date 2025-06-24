@@ -77,7 +77,7 @@
                     <th><i class="bi bi-box-seam"></i> Produtos</th>
                     <th><i class="bi bi-text-left"></i> Descrição do erro</th>
                     <th><i class="bi bi-person"></i> Criador</th>
-                    <th class="botoesacao"><i class="bi bi-tools"></i> Ação</th>
+                    <th><i class="bi bi-tools"></i> Ação</th>
                 </tr>
             </thead>
             <tbody>
@@ -86,14 +86,14 @@
                     <td class="p-1">
                         {{ erro.data_do_erro.strftime('%d/%m/%Y') }}
                     </td>
-                    <td>{{ erro.erro_funcionario }}</td>
-                    <td>{{ erro.erro_cliente }}</td>
+                    <td>{{ erro.erro_funcionario.title() }}</td>
+                    <td>{{ erro.erro_cliente.title() }}</td>
                     <td>{{ erro.quantidade_de_erros }}</td>
-                    <td>{{ erro.motorista_da_entrega }}</td>
-                    <td>{{ erro.produto_erro }}</td>
-                    <td>{{ erro.descricao_do_erro }}</td>
+                    <td>{{ erro.motorista_da_entrega.title() }}</td>
+                    <td>{{ erro.produto_erro.title() }}</td>
+                    <td>{{ erro.descricao_do_erro.capitalize() }}</td>
                     <td>{{ erro.criador }}</td>
-                    <td class="botoesacao">
+                    <td>
                         <div class="d-flex flex-row gap-1">
                             <form
                                 action="/vendas/editar_erro/{{ erro.id }}"
