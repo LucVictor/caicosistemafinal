@@ -25,9 +25,9 @@ def recebimento_cadastrar():
     if request.method == 'POST':
         data_recebimento = request.form['data_recebimento']
         quantidade_notas = request.form['quantidade_notas']
-        estoque = bool(request.form['estoque'])
-        prateleiras = bool(request.form['prateleiras'])
-        produto_novo = bool(request.form['produto_novo'])
+        estoque = request.form['estoque'].lower() == 'true'
+        prateleiras = request.form['prateleiras'].lower() == 'true'
+        produto_novo = request.form['produto_novo'].lower() == 'true'
         conferente = request.form['conferente']
         criador = current_user.username
         file = request.files['foto_prancheta']
