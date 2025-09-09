@@ -4,4 +4,4 @@ services:
     build: .
     container_name: minha_app
     expose:
-      - "8000"  # expõe só dentro da rede docker
+      - "3000"  # expõe só dentro da rede docker
