@@ -3,5 +3,5 @@ services:
   web:
     build: .
     container_name: minha_app
-    ports:
-      - "8001:3000"
+    expose:
+      - "8000"  # expõe só dentro da rede docker
